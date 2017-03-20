@@ -1,0 +1,35 @@
+p {
+  margin: 0;
+}
+
+div {
+  width: 263px;
+  border: 4px solid white;
+  margin: 0;
+  padding: 18px;
+  color: white;
+  font-size: 16px;
+  font-family: courier;
+  text-align: center;
+  background: url(images/duck.png) no-repeat;
+}
+
+.first {
+  background-color: rgb(255, 99, 71);
+  background-size: 30%;
+  background-position: left center;
+}
+
+.second {
+  background-color: rgb(100, 53, 121);
+  background-position: center;
+  background-size: contain;
+  background-size: 60%;
+
+}
+
+.third {
+  background-color: rgb(128, 128, 128);
+  background-size: 30%;
+  background-position: right bottom;
+}

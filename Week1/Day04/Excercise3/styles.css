@@ -1,0 +1,25 @@
+.kis-box {
+  border: 16px solid rgb(66, 133, 244);
+  text-align: center;
+  width: 348px;
+  height: 256px;
+  font-size: 32px;
+  font-family: 'Arimo', sans-serif;
+  color: white;
+}
+
+.south {
+  margin-top: 5px;
+  background-color: rgb(169, 230, 230);
+}
+
+.north {
+  margin: 0;
+  background-color: rgb(230, 118, 118);
+}
+
+p {
+  padding: 20px;
+  height: 128px;
+  margin: 0;
+}

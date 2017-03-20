@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: 'Merriweather', serif;
+}
+
+img {
+  width: 100%;
+}
+/*multi line comment*/
+article {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  margin-bottom: 0px;
+  margin-top: 39px;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 40px;
+  letter-spacing: -1.12px;
+  line-height: 41.6px
+}
+
+h2 {
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
+    margin-bottom: 22px;
+    font-weight: 300;
+    font-size: 27px;
+    letter-spacing: -0.594px;
+    line-height: 32.94px;
+}
+
+section, div {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 21px;
+    letter-spacing: -0.63px;
+    line-height: 33.18px;
+}
+
+section {
+    font-style: italic;
+}
+
+a {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+h3 {
+  text-align: center;
+  font-size: 80;
+  letter-spacing: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}
