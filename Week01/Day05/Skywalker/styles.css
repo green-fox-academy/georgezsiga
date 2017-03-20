@@ -68,35 +68,35 @@ hr {
   background-color: black;
 }
 
-#header {
+.header {
   padding-top: 190px;
   font-family: 'Abril Fatface', cursive;
 }
 
-#intro {
+.intro {
   letter-spacing: 1px;
   line-height: 1.7em;
 }
 
-#achievements > p {
+.achievements > p {
   font-size: 15px;
   letter-spacing: .5px;
   line-height: 1.7em;
 }
 
-#interests li {
+.interests li {
   font-size: 13px;
   letter-spacing: 1px;
   line-height: 1.7em;
 }
 
-#training li, #experience li {
+.training li, .experience li {
   font-size: 15px;
   letter-spacing: .3px;
   line-height: 1.7em;
 }
 
-#training p, #experience p {
+.training p, .experience p {
   font-size: 14px;
   font-style: italic;
   font-family: 'Merriweather', serif;
@@ -104,7 +104,7 @@ hr {
   margin-top: 0;
 }
 
-#training h3, #experience h3 {
+.training h3, .experience h3 {
   font-size: 25px;
   letter-spacing: .5px;
   font-weight: bold;
