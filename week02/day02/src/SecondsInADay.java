@@ -10,7 +10,7 @@ public class SecondsInADay {
         // Write a program that prints the remaining seconds (as an integer) from a
         // day if the current time is represented bt the variables ex 11
 
-        int remainingSeconds = (((24 - currentHours) * 60) + (60 - currentMinutes)) * 60 + (60 - currentSeconds);
+        int remainingSeconds = (((23 - currentHours) * 60) + (59 - currentMinutes)) * 60 + (60 - currentSeconds);
         System.out.println("You have " + remainingSeconds + " seconds left till midnight");
     }
 }
