@@ -11,11 +11,13 @@
 
 public class Append {
   public static void main(String[] args) {
+
     String am = "kuty";
     System.out.println(appendA(am));
   }
 
   public static String appendA (String addanA) {
+
     return (addanA + "a");
   }
 }
