@@ -13,6 +13,6 @@ public class MileToKmConverter {
     int km = scanner.nextInt();
     double m = 0.621371;
     double miles = km * m;
-    System.out.println("You live " + miles + " from your work/home.");
+    System.out.println("You live " + miles + " miles from your work/home.");
   }
 }
