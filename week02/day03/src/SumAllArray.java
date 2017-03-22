@@ -10,7 +10,7 @@ public class SumAllArray {
     int[] ai = {3,4,5,6,7};
     int sum = 0;
     for (int i : ai) {
-      sum += ai[i];
+      sum += i;
     }
     System.out.println(sum);
   }
