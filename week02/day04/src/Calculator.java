@@ -1,13 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Created by georgezsiga on 3/23/17.
  */
-
-public class Calculator {
-  public static void main(String... args) {
     // Create a simple calculator application which reads the parameters from the prompt
     // and prints the result to the prompt.
     // It should support the following operations:
@@ -24,56 +19,41 @@ public class Calculator {
     // Print the result to the prompt
     // Exit
 
+public class Calculator {
+  public static void main(String... args) {
+
     System.out.println("Please type in the expression:");
     Scanner scanner = new Scanner(System.in);
     String userInput = scanner.nextLine();
 
-    double result = 0;
-    double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("+")));
-    double second = Integer.parseInt(userInput.substring(userInput.indexOf("+") + 1));
-    if (userInput.indexOf("+") != -1) {
+    int result = 0;
+    if (userInput.contains("+")) {
+      int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("+")));
+      int second = Integer.parseInt(userInput.substring(userInput.indexOf("+") + 1));
       result = first + second;
-      System.out.println(result);
+      System.out.println("The result of the calculation is: " + result);
     } else {
-      first = Integer.parseInt(userInput.substring(0, userInput.indexOf("-")));
-      second = Integer.parseInt(userInput.substring(userInput.indexOf("-") + 1));
-      if (userInput.indexOf("-") != -1) {
+      if (userInput.contains("-")) {
+        int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("-")));
+        int second = Integer.parseInt(userInput.substring(userInput.indexOf("-") + 1));
         result = first - second;
-        System.out.println(result);
+        System.out.println("The result of the calculation is: " + result);
       } else {
-        first = Integer.parseInt(userInput.substring(0, userInput.indexOf("/")));
-        second = Integer.parseInt(userInput.substring(userInput.indexOf("/") + 1));
-        if (userInput.indexOf("/") != -1) {
-          result = first / second;
-          System.out.println(result);
+        if (userInput.contains("/")) {
+          double resultDivision = 0;
+          double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("/")));
+          double second = Integer.parseInt(userInput.substring(userInput.indexOf("/") + 1));
+          resultDivision = first / second;
+          System.out.println("The result of the calculation is: " + resultDivision);
         } else {
-          first = Integer.parseInt(userInput.substring(0, userInput.indexOf("*")));
-          second = Integer.parseInt(userInput.substring(userInput.indexOf("*") + 1));
-          if (userInput.indexOf("*") != -1) {
+          if (userInput.contains("*")) {
+            int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("*")));
+            int second = Integer.parseInt(userInput.substring(userInput.indexOf("*") + 1));
             result = first * second;
-            System.out.println(result);
+            System.out.println("The result of the calculation is: " + result);
           }
         }
       }
     }
   }
 }
-
-/*
-
-    if (userInput.contains("/")) {
-    } else {
-      if (userInput.contains("*")) {
-        result = first * second;
-      } else {
-        if (userInput.contains("+")) {
-          result = first + second;
-        } else {
-          if (userInput.contains("-")) {
-          }
-        }
-      }
-    }
-    System.out.println("The result of the calculation is: " + result);
-  }
-}*/
