@@ -1,13 +1,15 @@
 import java.util.*;
+import java.util.stream.Stream;
+
 /**
  * Created by georgezsiga on 3/23/17.
  */
 
 
 public class HeWillNever {
-  public static void main(String... args){
-    String out = "";
-    int[] notSoCrypticMessage = new int[] {1, 12, 1, 2, 11, 1, 7, 11, 1, 49, 1, 3, 11, 1, 50, 11};
+  public static void main(String... args) {
+
+    int[] notSoCrypticMessage = new int[]{1, 12, 1, 2, 11, 1, 7, 11, 1, 49, 1, 3, 11, 1, 50, 11};
 
     HashMap<String, String> hmap = new HashMap<String, String>();
 
@@ -20,10 +22,25 @@ public class HeWillNever {
     hmap.put("11", "\n");
     hmap.put("3", "say goodbye");
 
-    // Things are a little bit messed up
-    // Your job is to decode the notSoCrypticMessage by using the hashmap as a look up table
-    // Assemble the fragments into the out variable
+    System.out.println("After Sorting:");
+    Set set2 = hmap.entrySet();
+    Iterator iterator2 = set2.iterator();
+    while (iterator2.hasNext()) {
+      Map.Entry me2 = (Map.Entry) iterator2.next();
+//      System.out.print(me2.getKey() + ": ");
+//      System.out.println(me2.getValue());
+      String out = me2;
 
-    System.out.println(out);
+//    Stream sorted = hmap.entrySet().stream().sorted(Map.Entry.comparingByValue());
+//      hmap.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(System.out::print);
+//    System.out.println(sorted);
+//    ((notSoCrypticMessage) hmap)
+
+      // Things are a little bit messed up
+      // Your job is to decode the notSoCrypticMessage by using the hashmap as a look up table
+      // Assemble the fragments into the out variable
+
+      System.out.println(out);
+    }
   }
 }
