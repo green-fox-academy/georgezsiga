@@ -27,32 +27,41 @@ public class Calculator {
     System.out.println("Please type in the expression:");
     Scanner scanner = new Scanner(System.in);
     String userInput = scanner.nextLine();
+
     double result = 0;
-
     double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("+")));
-
+    double second = Integer.parseInt(userInput.substring(userInput.indexOf("+") + 1));
     if (userInput.indexOf("+") != -1) {
-
-      double second = Integer.parseInt(userInput.substring(userInput.indexOf("+") + 1));
-      System.out.println(first);
-
+      result = first + second;
+      System.out.println(result);
+    } else {
+      first = Integer.parseInt(userInput.substring(0, userInput.indexOf("-")));
+      second = Integer.parseInt(userInput.substring(userInput.indexOf("-") + 1));
+      if (userInput.indexOf("-") != -1) {
+        result = first - second;
+        System.out.println(result);
+      } else {
+        first = Integer.parseInt(userInput.substring(0, userInput.indexOf("/")));
+        second = Integer.parseInt(userInput.substring(userInput.indexOf("/") + 1));
+        if (userInput.indexOf("/") != -1) {
+          result = first / second;
+          System.out.println(result);
+        } else {
+          first = Integer.parseInt(userInput.substring(0, userInput.indexOf("*")));
+          second = Integer.parseInt(userInput.substring(userInput.indexOf("*") + 1));
+          if (userInput.indexOf("*") != -1) {
+            result = first * second;
+            System.out.println(result);
+          }
+        }
+      }
     }
-    System.out.println("yay");
   }
 }
 
 /*
-    double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("-")));
-    double second = Integer.parseInt(userInput.substring(userInput.indexOf("-")+1));
-
-    double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("/")));
-    double second = Integer.parseInt(userInput.substring(userInput.indexOf("/")+1));
-
-    double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("/")));
-    double second = Integer.parseInt(userInput.substring(userInput.indexOf("/")+1));
 
     if (userInput.contains("/")) {
-      result = first / second;
     } else {
       if (userInput.contains("*")) {
         result = first * second;
@@ -61,7 +70,6 @@ public class Calculator {
           result = first + second;
         } else {
           if (userInput.contains("-")) {
-            result = first - second;
           }
         }
       }
