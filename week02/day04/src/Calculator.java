@@ -32,6 +32,13 @@ public class Calculator {
     int first = Integer.parseInt(userInput.substring(0, 1));
     int whatToDo = MATH.indexOf(userInput.substring(1));
     int second = Integer.parseInt(userInput.substring(2));
-    System.out.println(second);
+    int result = 0;
+
+    if (MATH.contains("/")) {
+      result = first / second;
+    }
+
+
+    System.out.println("The result of the calculation is: " + second);
   }
 }
