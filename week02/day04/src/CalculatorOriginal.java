@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,51 +19,19 @@ public class CalculatorOriginal {
     int result = 0;
 
     if (string.equals("+")) {
-      result = (first + second);
-      System.out.println("The result of the calculation is: " + result);
-    } else {
-      if (string.equals("-")) {
-        result = (first - second);
-        System.out.println("The result of the calculation is: " + result);
-      } else {
-        if (string.equals("/"))  {
-          double result2 = 0;
-          result2 = (first / second);
-          System.out.println("The result of the calculation is: " + result2);
-        } else {
-          if (string.equals("*"))  {
-            result = (first * second);
-            System.out.println("The result of the calculation is: " + result);
-          }
-        }
-      }
-    }
-  }
-}
-
-
-/*
-    if (userInput.contains("+")) {
-      int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("+")));
-      int second = Integer.parseInt(userInput.substring(userInput.indexOf("+") + 1));
       result = first + second;
       System.out.println("The result of the calculation is: " + result);
     } else {
-      if (userInput.contains("-")) {
-        int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("-")));
-        int second = Integer.parseInt(userInput.substring(userInput.indexOf("-") + 1));
+      if (string.equals("-")) {
         result = first - second;
+        System.out.println("The result of the calculation is: " + result);
       } else {
-        if (userInput.contains("/")) {
-          double resultDivision = 0;
-          double first = Integer.parseInt(userInput.substring(0, userInput.indexOf("/")));
-          double second = Integer.parseInt(userInput.substring(userInput.indexOf("/") + 1));
-          resultDivision = first / second;
-          System.out.println("The result of the calculation is: " + resultDivision);
+        if (string.equals("/")) {
+          double result2 = 0;
+          result2 = first / second;
+          System.out.println("The result of the calculation is: " + result2);
         } else {
-          if (userInput.contains("*")) {
-            int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("*")));
-            int second = Integer.parseInt(userInput.substring(userInput.indexOf("*") + 1));
+          if (string.equals("*")) {
             result = first * second;
             System.out.println("The result of the calculation is: " + result);
           }
@@ -88,4 +55,3 @@ public class CalculatorOriginal {
 // Waits for the user input
 // Print the result to the prompt
 // Exit
-*/
