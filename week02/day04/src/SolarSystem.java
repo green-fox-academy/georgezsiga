@@ -1,8 +1,7 @@
+import java.util.*;
 /**
  * Created by georgezsiga on 3/23/17.
  */
-import java.util.*;
-
 public class SolarSystem{
   public static void main(String... args){
     ArrayList<String> planetList = new ArrayList<String>(Arrays.asList("Mercury","Venus","Earth","Mars","Jupiter","Uranus","Neptune"));
