@@ -11,10 +11,19 @@ public class CalculatorOriginal {
     Scanner scanner = new Scanner(System.in);
     String userInput = scanner.nextLine();
 
-//    int result = 0;
     String[] splitStr = userInput.split("\\s+");
+    String firstString = splitStr[1];
+    String secondString = splitStr[2];
+    int first = Integer.parseInt(firstString);
+    int second = Integer.parseInt(secondString);
+    int result = 0;
 
-    System.out.println(splitStr[0]);
+    if (splitStr[0] != "+") {
+      result = (first + second);
+      System.out.println("The result of the calculation is: " + result);
+    }
+    System.out.println(first);
+    System.out.println(second);
   }
 }
 
@@ -29,7 +38,6 @@ public class CalculatorOriginal {
         int first = Integer.parseInt(userInput.substring(0, userInput.indexOf("-")));
         int second = Integer.parseInt(userInput.substring(userInput.indexOf("-") + 1));
         result = first - second;
-        System.out.println("The result of the calculation is: " + result);
       } else {
         if (userInput.contains("/")) {
           double resultDivision = 0;
