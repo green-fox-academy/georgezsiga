@@ -24,21 +24,34 @@ public class Calculator {
     // Print the result to the prompt
     // Exit
 
-    ArrayList<String> MATH = new ArrayList<>(Arrays.asList("/","*","+","-"));
-
     System.out.println("Please type in the expression:");
     Scanner scanner = new Scanner(System.in);
     String userInput = scanner.nextLine();
-    int first = Integer.parseInt(userInput.substring(0, 1));
-    int whatToDo = MATH.indexOf(userInput.substring(1));
-    int second = Integer.parseInt(userInput.substring(2));
-    int result = 0;
+    double first = Integer.parseInt(userInput.substring(0, 1));
+    double second = Integer.parseInt(userInput.substring(2));
+    double result = 0;
 
-    if (MATH.contains("/")) {
+
+    if (userInput.contains("/")) {
       result = first / second;
+//      System.out.println("The result of the calculation is: " + result);
+    } else {
+      if (userInput.contains("*")) {
+        result = first * second;
+//        System.out.println("The result of the calculation is: " + result);
+      } else {
+        if (userInput.contains("+")) {
+          result = first + second;
+//          System.out.println("The result of the calculation is: " + result);
+        } else {
+          if (userInput.contains("-")) {
+            result = first - second;
+//            System.out.println("The result of the calculation is: " + result);
+
+          }
+        }
+      }
     }
-
-
-    System.out.println("The result of the calculation is: " + second);
+    System.out.println("The result of the calculation is: " + result);
   }
 }
