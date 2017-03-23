@@ -12,20 +12,36 @@ public class CalculatorOriginal {
     String userInput = scanner.nextLine();
 
     String[] splitStr = userInput.split("\\s+");
+    String string = splitStr[0];
     String firstString = splitStr[1];
     String secondString = splitStr[2];
     int first = Integer.parseInt(firstString);
     int second = Integer.parseInt(secondString);
     int result = 0;
 
-    if (splitStr[0] != "+") {
+    if (string.equals("+")) {
       result = (first + second);
       System.out.println("The result of the calculation is: " + result);
+    } else {
+      if (string.equals("-")) {
+        result = (first - second);
+        System.out.println("The result of the calculation is: " + result);
+      } else {
+        if (string.equals("/"))  {
+          double result2 = 0;
+          result2 = (first / second);
+          System.out.println("The result of the calculation is: " + result2);
+        } else {
+          if (string.equals("*"))  {
+            result = (first * second);
+            System.out.println("The result of the calculation is: " + result);
+          }
+        }
+      }
     }
-    System.out.println(first);
-    System.out.println(second);
   }
 }
+
 
 /*
     if (userInput.contains("+")) {
