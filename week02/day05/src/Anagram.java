@@ -17,14 +17,24 @@ public class Anagram {
     String firstWord = splitStr[0];
     String secondWord = splitStr[1];
 
-    System.out.println(firstWord);
-    System.out.println(secondWord);
+//    System.out.println(firstWord);
+//    System.out.println(secondWord);
 
-//    int first = Integer.parseInt(firstString);
+//    int first = Integer.parseInt(splitStr[0]);
 //    int second = Integer.parseInt(secondString);
 //    int result = 0;
 //
 //
+    if (firstWord.length() != secondWord.length() ) {
+      System.out.println("false");
+      System.exit(0);
+    } /* else {
+      for (int i = 0; i < ; i++) {
+        */
+      }
+    }
+
+
 //    String first = userInput.substring(0, userInput.indexOf(" "));
 //    String second = userInput.substring(userInput.indexOf(" ") + 1);
 //
@@ -41,8 +51,8 @@ public class Anagram {
 //      System.out.println(first);
 //      System.out.println(second);
 //    }
-  }
-}
+//  }
+//}
 
 //
 //  public static String sort (String incomingString) {
