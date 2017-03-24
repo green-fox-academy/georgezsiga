@@ -6,8 +6,11 @@ import java.util.Scanner;
 public class GuessMyNumber {
   public static void main(String[] arg) {
     int myNumber = 54;
-    int life = 10;
-    System.out.println("Hi, I have a number in mind between 1 and 100. Can you guess what it is?");
+
+    System.out.println("Hi, lets play a guessing game.. how good are you? How many lives do you want to have?");
+    Scanner scannerLife = new Scanner(System.in);
+    int life = scannerLife.nextInt();
+    System.out.println("Good! I have a number in mind between 1 and 100. Can you guess what it is? You have " + life + " lives have to guess it.");
 
     while (life > 0) {
       Scanner scanner = new Scanner(System.in);
