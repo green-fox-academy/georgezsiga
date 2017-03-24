@@ -8,7 +8,6 @@ public class GuessMyNumber {
   public static void main(String[] arg) {
     Random random = new Random();
     int myNumber = random.nextInt(100) + 1;
-    System.out.println(myNumber);
 
     System.out.println("Hi, lets play a guessing game.. how good are you? How many lives do you want to have?");
     Scanner scannerLife = new Scanner(System.in);
