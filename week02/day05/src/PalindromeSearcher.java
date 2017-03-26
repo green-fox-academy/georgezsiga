@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -10,19 +11,29 @@ public class PalindromeSearcher {
     String userInput = scanner.nextLine();
     userInput = userInput.toLowerCase();
     String palindromes = "";
-    for (int i = 0; i + 2 < userInput.length(); i++) {
-      for (int j = i + 2; j < userInput.length(); j++) {
-        if (userInput.charAt(i) == userInput.charAt(j)) {
-          palindromes = palindromes + userInput.substring(i, j + 1) + " ";
-          i = i + 1;
+
+    for (int i = 0; i < userInput.length()+1;) {
+      for (int j = i + 2; j < userInput.length() +1;) {
+
+        if ((userInput.charAt(i) == userInput.charAt(j))) {
+          int start = i;
+          int end = j;
+          while (userInput.charAt(start) == userInput.charAt(end)) {
+            palindromes = palindromes + userInput.substring(start, end +1) + ", ";
+            start = start-1;
+            end = end+1;
+          }
+        }
+        i = i + 1;
+        j = j + 1;
+        if (j == userInput.length()+1) {
+          System.out.println(palindromes);
+          System.exit(0);
+        }
         }
       }
-      System.out.println(palindromes);
     }
   }
-}
-
-
 //  Create a function named search palindrome following your current language's style guide.
 // It should take a string, search for palindromes that at least 3 characters long
 // and return a list with the found palindromes.
