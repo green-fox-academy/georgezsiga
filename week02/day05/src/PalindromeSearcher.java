@@ -9,29 +9,20 @@ public class PalindromeSearcher {
     System.out.println("Please give me some text and I wil find all the Palindromes in it");
     String userInput = scanner.nextLine();
     userInput = userInput.toLowerCase();
-    int k = 1;
-
-    if (userInput.length() == 3 && (userInput.charAt(0) == userInput.charAt(2))) {
-      System.out.println(userInput);
-    }
-    while (k < userInput.length()-1) {
-      int i=1;
-      int j=1;
-      while (userInput.charAt(k - i) == userInput.charAt(k + 1)) {
-        for (i = k-i; i >0; i--) {
-          for (j = k+j; j < userInput.length(); j++) {
-            if (userInput.charAt(i) == userInput.charAt(j)) {
-//              String palindrome = userInput.substring(i, j+1);
-              System.out.println(userInput.substring(i, j+1));
-            }
-          }j=j+1;
+    String palindromes = "";
+    for (int i = 0; i + 2 < userInput.length(); i++) {
+      for (int j = i + 2; j < userInput.length(); j++) {
+        if (userInput.charAt(i) == userInput.charAt(j)) {
+          palindromes = palindromes + userInput.substring(i, j + 1) + " ";
+          i = i + 1;
         }
-      }  k=k+1;
-    } /*if (userInput.charAt(userInput.length()-2) == userInput.charAt(userInput.length())) {
-      System.out.println(userInput.substring(userInput.length()-2, 3));
-    }*/
+      }
+      System.out.println(palindromes);
+    }
   }
 }
+
+
 //  Create a function named search palindrome following your current language's style guide.
 // It should take a string, search for palindromes that at least 3 characters long
 // and return a list with the found palindromes.
