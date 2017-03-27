@@ -3,6 +3,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,6 +36,8 @@ public class Lotto {
       for (int n = 15; n < aList.size(); n = n+16) {
         numbers.add(aList.get(n));
       }
+      Collections.sort(numbers);
+//      ArrayList<String> sortedNumbers = new ArrayList<>(Arrays.asList(numbers.sort()));
       System.out.println(numbers);
 
     } catch (Exception e) {
