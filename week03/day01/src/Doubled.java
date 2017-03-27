@@ -18,32 +18,15 @@ public class Doubled {
       // Reads the content from `lorem_ipsum.txt` in the `assets` folder line by line to a String List
       Path filePath = Paths.get("assets/duplicated-chars.txt");
       List<String> lines = Files.readAllLines(filePath);
-//      List<String> letters = new List<String>(lines.subList(?<=\\G.{1}));
-
-//      System.out.println(lines);
-//      ArrayList<String> splitLines = new ArrayList<>(lines.spliterator(""));
       ArrayList aList = new ArrayList(Arrays.asList(lines.toString().split("(?!^)")));
-      System.out.println(aList);
-
       String decryptedLetter = new String();
-      int maxCount =2;
-      String text = "";
-      for (int i = 0; i < lines.size(); i++) {
-        text = lines.get(i);
+      Object text = "";
+      for (int i = 0; i < aList.size(); i++) {
+        text = aList.get(i);
         decryptedLetter = decryptedLetter + text;
-        int tempCount = 0;
-        for (int j = 0; j < lines.size(); j++)
-          if (lines.get(j).equals(text)) {
-            tempCount = tempCount + 1;
-          }
-        if (tempCount == maxCount) {
-          decryptedLetter = decryptedLetter + text;
-          lines.remove(i);
-
-    }
-    }
+        aList.remove(text);
+      }
       System.out.println(decryptedLetter);
-
     } catch (Exception e) {
       System.out.println("Uh-oh, an error happend: " + e.getClass());
     }
