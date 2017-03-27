@@ -15,10 +15,13 @@ public class ReversedLines {
       Path filePath = Paths.get("assets/reversed-lines.txt");
       List<String> lines = Files.readAllLines(filePath);
 
-
-
-
-
+      for (int j = 0; j < lines.size(); j++) {
+        String stringLines = lines.get(j);
+        for (int i = stringLines.length() - 1; i >= 0; i--) {
+          System.out.print(stringLines.charAt(i));
+        }
+        System.out.println();
+      }
     } catch (Exception e) {
       System.out.println("Uh-oh, an error happend: " + e.getClass());
     }
