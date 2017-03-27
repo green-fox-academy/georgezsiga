@@ -127,6 +127,8 @@ public class Lotto {
       topNumbers.add(number);
       numbers.removeAll(topNumbers);
 
+      System.out.println(topNumbers);
+
 //       the catch element...
 
     } catch (Exception e) {
