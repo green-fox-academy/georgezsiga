@@ -18,28 +18,31 @@ public class Doubled {
       // Reads the content from `lorem_ipsum.txt` in the `assets` folder line by line to a String List
       Path filePath = Paths.get("assets/duplicated-chars.txt");
       List<String> lines = Files.readAllLines(filePath);
-      ArrayList letter = new ArrayList(Arrays.asList(lines.toString()));
+//      List<String> letters = new List<String>(lines.subList(?<=\\G.{1}));
 
+//      System.out.println(lines);
+//      ArrayList<String> splitLines = new ArrayList<>(lines.spliterator(""));
+      ArrayList aList = new ArrayList(Arrays.asList(lines.toString().split("(?!^)")));
+      System.out.println(aList);
 
-      ArrayList decryptedLetter = new ArrayList();
-      int maxCount = 0;
-      Object text = 0;
-      for (int i = 0; i < letter.size(); i++) {
-        Object tempText = letter.get(i);
+      String decryptedLetter = new String();
+      int maxCount =2;
+      String text = "";
+      for (int i = 0; i < lines.size(); i++) {
+        text = lines.get(i);
+        decryptedLetter = decryptedLetter + text;
         int tempCount = 0;
-        for (int j = 0; j < letter.size(); j++)
-          if (letter.get(j).equals(tempText)) {
+        for (int j = 0; j < lines.size(); j++)
+          if (lines.get(j).equals(text)) {
             tempCount = tempCount + 1;
           }
         if (tempCount == maxCount) {
-          decryptedLetter.add(text);
-//          number = tempNumber;
-//          maxCount = tempCount;
-        }
-      }
+          decryptedLetter = decryptedLetter + text;
+          lines.remove(i);
+
+    }
+    }
       System.out.println(decryptedLetter);
-//      topNumbers.add(number);
-//      numbers.removeAll(topNumbers);
 
     } catch (Exception e) {
       System.out.println("Uh-oh, an error happend: " + e.getClass());
