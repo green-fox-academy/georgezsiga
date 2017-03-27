@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -18,11 +17,11 @@ public class PalindromeSearcher {
           int start = ia;
           int end = ja;
           while (userInput.charAt(start) == userInput.charAt(end)) {
-            if (start != end-1) {
+            if (start != end - 1) {
               palindromes = palindromes + userInput.substring(start, end + 1) + ",";
             }
-              start = start - 1;
-              end = end + 1;
+            start = start - 1;
+            end = end + 1;
           }
         }
         ia = ia + 1;
