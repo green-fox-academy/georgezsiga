@@ -15,9 +15,10 @@ public class PalindromeSearcher {
     for (int i = 0; i < userInput.length()+1;) {
       for (int j = i + 2; j < userInput.length() +1;) {
 
-        if ((userInput.charAt(i) == userInput.charAt(j))) {
+        if (userInput.charAt(i) == userInput.charAt(j)) {
           int start = i;
           int end = j;
+
           while (userInput.charAt(start) == userInput.charAt(end)) {
             palindromes = palindromes + userInput.substring(start, end +1) + ", ";
             start = start-1;
@@ -26,7 +27,7 @@ public class PalindromeSearcher {
         }
         i = i + 1;
         j = j + 1;
-        if (j == userInput.length()+1) {
+        if (j == userInput.length()) {
           System.out.println(palindromes);
           System.exit(0);
         }
