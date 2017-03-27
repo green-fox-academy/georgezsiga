@@ -37,6 +37,7 @@ public class Lotto {
 //      System.out.println(numbers.get(2));
 //      System.out.println(numbers);
 
+      ArrayList topNumbers = new ArrayList();
       int maxCount = 0;
       Object number = 0;
       for (int x = 0; x < numbers.size(); x++) {
@@ -55,6 +56,8 @@ public class Lotto {
 
       int maxCount2 = 0;
       Object number2 = 0;
+      Object number2a = 0;
+      int maxCount2a  =0;
       for (int x = 0; x < numbers.size(); x++) {
         Object tempNumber2 = numbers.get(x);
         int tempCount2 = 0;
@@ -62,12 +65,16 @@ public class Lotto {
           if (numbers.get(z).equals(tempNumber2)) {
             tempCount2 = tempCount2 + 1;
           }
-        if (tempCount2 > maxCount2 && tempCount2 != maxCount) {
+        if (tempCount2 > maxCount2 && tempCount2 != maxCount)  {
           number2 = tempNumber2;
           maxCount2 = tempCount2;
         }
-      }
-      System.out.println(number2 + " " + maxCount2);
+        if (tempCount2 == maxCount2 && number2 != tempNumber2) {
+          number2a = tempNumber2;
+          maxCount2a = tempCount2;
+      }}
+      System.out.println(number2a + " " + maxCount2a);
+        System.out.println(number2 + " " + maxCount2);
 
       int maxCount3 = 0;
       Object number3 = 0;
