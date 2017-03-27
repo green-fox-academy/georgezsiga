@@ -19,12 +19,23 @@ public class Lotto {
       ArrayList aList = new ArrayList(Arrays.asList(lines.toString().split("[;,]")));
 
 //      System.out.println(aList.get(15));
-
+      ArrayList numbers = new ArrayList();
       for (int i = 11; i < aList.size(); i = i+16) {
-ArrayList numbers =
-//          System.out.println(aList.get(i));
+        numbers.add(aList.get(i));
         }
-
+      for (int j = 12; j < aList.size(); j = j+16) {
+        numbers.add(aList.get(j));
+      }
+      for (int k = 13; k < aList.size(); k = k+16) {
+        numbers.add(aList.get(k));
+      }
+      for (int m = 14; m < aList.size(); m = m+16) {
+        numbers.add(aList.get(m));
+      }
+      for (int n = 15; n < aList.size(); n = n+16) {
+        numbers.add(aList.get(n));
+      }
+      System.out.println(numbers);
 
     } catch (Exception e) {
       System.out.println("Uh-oh, an error happend: " + e.getClass());
