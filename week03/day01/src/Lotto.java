@@ -34,8 +34,7 @@ public class Lotto {
       }
       Collections.sort(numbers); // sort the winning numbers
 
-//      System.out.println(numbers.get(2));
-//      System.out.println(numbers);
+// search for the top 5 numbers
 
       ArrayList topNumbers = new ArrayList();
       int maxCount = 0;
@@ -47,92 +46,88 @@ public class Lotto {
           if (numbers.get(z).equals(tempNumber)) {
             tempCount = tempCount + 1;
           }
-        if (tempCount > maxCount) {              // here I should add the number to the array list or hashmap as a final and nice result.
+        if (tempCount > maxCount) {
           number = tempNumber;
           maxCount = tempCount;
         }
       }
       System.out.println(number + " " + maxCount);
+      topNumbers.add(number);
+      numbers.removeAll(topNumbers);
 
-      int maxCount2 = 0;
-      Object number2 = 0;
-      Object number2a = 0;
-      int maxCount2a  =0;
+      maxCount = 0;
+      number = 0;
       for (int x = 0; x < numbers.size(); x++) {
-        Object tempNumber2 = numbers.get(x);
-        int tempCount2 = 0;
+        Object tempNumber = numbers.get(x);
+        int tempCount = 0;
         for (int z = 0; z < numbers.size(); z++)
-          if (numbers.get(z).equals(tempNumber2)) {
-            tempCount2 = tempCount2 + 1;
+          if (numbers.get(z).equals(tempNumber)) {
+            tempCount = tempCount + 1;
           }
-        if (tempCount2 > maxCount2 && tempCount2 != maxCount)  {
-          number2 = tempNumber2;
-          maxCount2 = tempCount2;
+        if (tempCount > maxCount) {
+          number = tempNumber;
+          maxCount = tempCount;
         }
-        if (tempCount2 == maxCount2 && number2 != tempNumber2) {
-          number2a = tempNumber2;
-          maxCount2a = tempCount2;
-      }}
-      System.out.println(number2a + " " + maxCount2a);
-        System.out.println(number2 + " " + maxCount2);
+      }
+      System.out.println(number + " " + maxCount);
+      topNumbers.add(number);
+      numbers.removeAll(topNumbers);
 
-      int maxCount3 = 0;
-      Object number3 = 0;
-      Object number3a =0;
-      int maxCount3a =0;
-
+      maxCount = 0;
+      number = 0;
       for (int x = 0; x < numbers.size(); x++) {
-        Object tempNumber3 = numbers.get(x);
-        int tempCount3 = 0;
+        Object tempNumber = numbers.get(x);
+        int tempCount = 0;
         for (int z = 0; z < numbers.size(); z++)
-          if (numbers.get(z).equals(tempNumber3)) {
-            tempCount3 = tempCount3 + 1;
+          if (numbers.get(z).equals(tempNumber)) {
+            tempCount = tempCount + 1;
           }
-        if (tempCount3 > maxCount3 && tempCount3 != maxCount && tempCount3 !=maxCount2) {
-          number3 = tempNumber3;
-          maxCount3 = tempCount3;
+        if (tempCount > maxCount) {
+          number = tempNumber;
+          maxCount = tempCount;
         }
-        if (tempCount3 == maxCount3 && number3 != tempNumber3) {
-          number3a = tempNumber3;
-          maxCount3a = tempCount3;
-        }}
-      System.out.println(number3a + " " + maxCount3a);
-      System.out.println(number3 + " " + maxCount3);
+      }
+      System.out.println(number + " " + maxCount);
+      topNumbers.add(number);
+      numbers.removeAll(topNumbers);
 
-//      int maxCount4 = 0;
-//      Object number4 = 0;
-//      for (int x = 0; x < numbers.size(); x++) {
-//        Object tempNumber4 = numbers.get(x);
-//        int tempCount4 = 0;
-//        for (int z = 0; z < numbers.size(); z++)
-//          if (numbers.get(z).equals(tempNumber4)) {
-//            tempCount4 = tempCount4 + 1;
-//          }
-//        if (tempCount4 > maxCount4 && tempCount4 != maxCount && tempCount4 != maxCount2 && tempCount4 != maxCount3) {
-//          number4 = tempNumber4;
-//          maxCount4 = tempCount4;
-//        }
-//      }
-//      System.out.println(number4 + " " + maxCount4);
+      maxCount = 0;
+      number = 0;
+      for (int x = 0; x < numbers.size(); x++) {
+        Object tempNumber = numbers.get(x);
+        int tempCount = 0;
+        for (int z = 0; z < numbers.size(); z++)
+          if (numbers.get(z).equals(tempNumber)) {
+            tempCount = tempCount + 1;
+          }
+        if (tempCount > maxCount) {
+          number = tempNumber;
+          maxCount = tempCount;
+        }
+      }
+      System.out.println(number + " " + maxCount);
+      topNumbers.add(number);
+      numbers.removeAll(topNumbers);
 
-//      int maxCount5 = 0;
-//      Object number5 = 0;
-//      for (int x = 0; x < numbers.size(); x++) {
-//        Object tempNumber5 = numbers.get(x);
-//        int tempCount5 = 0;
-//        for (int z = 0; z < numbers.size(); z++)
-//          if (numbers.get(z).equals(tempNumber5)) {
-//            tempCount5 = tempCount5 + 1;
-//          }
-//        if (tempCount5 > maxCount5 && tempCount5 != maxCount && tempCount5 != maxCount2 && tempCount5 != maxCount3 && tempCount5 != maxCount4) {
-//          number5 = tempNumber5;
-//          maxCount5 = tempCount5;
-//        }
-//      }
-//      System.out.println(number5 + " " + maxCount5);
+      maxCount = 0;
+      number = 0;
+      for (int x = 0; x < numbers.size(); x++) {
+        Object tempNumber = numbers.get(x);
+        int tempCount = 0;
+        for (int z = 0; z < numbers.size(); z++)
+          if (numbers.get(z).equals(tempNumber)) {
+            tempCount = tempCount + 1;
+          }
+        if (tempCount > maxCount) {
+          number = tempNumber;
+          maxCount = tempCount;
+        }
+      }
+      System.out.println(number + " " + maxCount);
+      topNumbers.add(number);
+      numbers.removeAll(topNumbers);
 
-
-      // the catch element...
+//       the catch element...
 
     } catch (Exception e) {
       System.out.println("Uh-oh, an error happend: " + e.getClass());
