@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
+import java.util.Random;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 /**
  * Created by georgezsiga on 3/28/17.
@@ -18,10 +19,14 @@ public class RainbowBox {
 
   public static void drawline(Graphics graphics2) {
     Scanner scanner = new Scanner(System.in);
+
+    Random rand = new Random();
+    int n = rand.nextInt(255) + 0;
     int x = scanner.nextInt();
     int r = scanner.nextInt();
     int g = scanner.nextInt();
     int b = scanner.nextInt();
+
     graphics2.setColor(new Color(r,g,b));
     graphics2.fillRect((300-x)/2, (300-x)/2, x, x);
   }
