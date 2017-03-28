@@ -19,16 +19,13 @@ public class EnvelopeStar {
     graphics2.drawLine(150, 0, 150, 300);
     graphics2.drawLine(0, 150, 300, 150);
 // top left
-    int z = 20;
+    int x = 10;
+    int z = 10;
     for (int i = 140; i > 0; ) {
       graphics2.setColor(Color.BLACK);
-      graphics2.drawLine(150 - i, 0, 150, 150-i);
+      graphics2.drawLine(150, 150-i, 150-x, 150);
       i = i - z;
-      for (int j = 140; j > 0; ) {
-        graphics2.setColor(Color.RED);
-        graphics2.drawLine(0, 150-j, 150-j, 150);
-        j = j - z;
-      }
+      x = x + z;
     }
 // bottom right
     for (int i = 140; i > 0; ) {
