@@ -20,7 +20,29 @@ public class FunctionToCenter {
     Scanner scanner = new Scanner(System.in);
     int x = scanner.nextInt();
     int y = scanner.nextInt();
-    graphics2.setColor(Color.RED);
+    int z = 20;
+      for (int i = 300; i >= 0; ) {
+        graphics2.setColor(Color.BLACK);
+        graphics2.drawLine(300 - i, 0, 150, 150);
+        i = i - z;
+        for (int j = 300; j >= 0; ) {
+          graphics2.setColor(Color.RED);
+          graphics2.drawLine(150, 150, 300, 300 -j);
+          j = j - z;
+        }
+      }
+    int q = 20;
+    for (int i = 300; i >= 0; ) {
+      graphics2.setColor(Color.GREEN);
+      graphics2.drawLine(0, 300-i, 150, 150);
+      i = i - q;
+      for (int j = 300; j >= 0; ) {
+        graphics2.setColor(Color.YELLOW);
+        graphics2.drawLine(150, 150, 300-j, 300);
+        j = j - q;
+      }
+    }
+    graphics2.setColor(Color.BLUE);
     graphics2.drawLine(x, y, 150, 150);
   }
   //    Don't touch the code below
