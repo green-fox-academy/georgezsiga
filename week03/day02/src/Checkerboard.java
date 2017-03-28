@@ -13,16 +13,18 @@ public class Checkerboard {
 
   public static void drawline(Graphics graphics2) {
     int z = 20;
-    for (int i = 300; i > 0; ) {
-      i = i - z;
-      graphics2.setColor(Color.BLACK);
-      graphics2.fillRect(300 - i, 0, 10, 10);
-      for (int j = 300; j > 0; ) {
-
+    for (int k = 300; k > 0 ;) {
+      for (int i = 300; i > 0; ) {
+        i = i - z;
         graphics2.setColor(Color.BLACK);
-        graphics2.fillRect(0, 300-j, 10, 10);
-        j = j - z;
+        graphics2.fillRect(300 - i, 300-k, 10, 10);
+        for (int j = 300; j > 0; ) {
+          graphics2.setColor(Color.BLACK);
+          graphics2.fillRect(300-k, 300 - j, 10, 10);
+          j = j - z;
+        }
       }
+      k = k - (z/2);
     }
   }
 
