@@ -15,6 +15,11 @@ public class LinePlayQuarters {
   }
 
   public static void drawline(Graphics graphics2) {
+
+    graphics2.setColor(Color.BLACK);
+    graphics2.drawLine(150, 0, 150, 300);
+    graphics2.drawLine(0, 150, 300, 150);
+
     int z = 20;
     for (int i = 290; i > 0; ) {
       graphics2.setColor(Color.BLACK);
@@ -30,7 +35,7 @@ public class LinePlayQuarters {
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(300, 300));
+    jFrame.setSize(new Dimension(300, 330));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
