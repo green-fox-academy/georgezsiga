@@ -14,20 +14,15 @@ public class PurpleSteps3D {
   }
 
   public static void drawline(Graphics graphics2) {
-//    int x = 0;
-//    while (x<=5) {
-//      x = x +0;
-    int z = 10;
-      for (int i = 300; i > 100; ) {
+    int z = 0;
+      for (int i = 290; i > 150; ) {
         i = i - z;
+        z = z+10;
         graphics2.setColor(Color.BLACK);
         graphics2.fillRect(300 - i, 300 - i, z, z);
         graphics2.setColor(new Color(153, 58, 164));
         graphics2.fillRect(300 - i + 1, 300 - i + 1, z - 2, z - 2);
-        z = 2 * z;
       }
-//      x = x +1;
-//    }
 
   }
   //    Don't touch the code below
