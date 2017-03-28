@@ -19,18 +19,54 @@ public class LinePlayQuarters {
     graphics2.setColor(Color.BLACK);
     graphics2.drawLine(150, 0, 150, 300);
     graphics2.drawLine(0, 150, 300, 150);
-
+// top left
     int z = 20;
-    for (int i = 290; i > 0; ) {
+    for (int i = 140; i > 0; ) {
       graphics2.setColor(Color.BLACK);
-      graphics2.drawLine(300 - i, 0, 300, 300-i);
+      graphics2.drawLine(150 - i, 0, 150, 150-i);
       i = i - z;
-      for (int j = 290; j > 0; ) {
+      for (int j = 140; j > 0; ) {
         graphics2.setColor(Color.RED);
-        graphics2.drawLine(0, 300-j, 300-j, 300);
+        graphics2.drawLine(0, 150-j, 150-j, 150);
         j = j - z;
       }
     }
+//// top right
+//    int z = 20;
+//    for (int i = 290; i > 0; ) {
+//      graphics2.setColor(Color.BLACK);
+//      graphics2.drawLine(300 - i, 0, 300, 300-i);
+//      i = i - z;
+//      for (int j = 290; j > 0; ) {
+//        graphics2.setColor(Color.RED);
+//        graphics2.drawLine(0, 300-j, 300-j, 300);
+//        j = j - z;
+//      }
+//    }
+////bottom left
+//    int z = 20;
+//    for (int i = 290; i > 0; ) {
+//      graphics2.setColor(Color.BLACK);
+//      graphics2.drawLine(300 - i, 0, 300, 300-i);
+//      i = i - z;
+//      for (int j = 290; j > 0; ) {
+//        graphics2.setColor(Color.RED);
+//        graphics2.drawLine(0, 300-j, 300-j, 300);
+//        j = j - z;
+//      }
+//    }
+//// bottom right
+//    int z = 20;
+//    for (int i = 290; i > 0; ) {
+//      graphics2.setColor(Color.BLACK);
+//      graphics2.drawLine(300 - i, 0, 300, 300-i);
+//      i = i - z;
+//      for (int j = 290; j > 0; ) {
+//        graphics2.setColor(Color.RED);
+//        graphics2.drawLine(0, 300-j, 300-j, 300);
+//        j = j - z;
+//      }
+//    }
   }
   //    Don't touch the code below
   public static void main(String[] args) {
