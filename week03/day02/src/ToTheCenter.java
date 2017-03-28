@@ -18,22 +18,15 @@ public class ToTheCenter {
     drawline(graphics);
     System.out.println("Give me 2 numbers between 0 and 300 (x y)");
     drawline(graphics);
-
-
   }
 
   public static void drawline(Graphics graphics2) {
-
     Scanner scanner = new Scanner(System.in);
     int x = scanner.nextInt();
     int y = scanner.nextInt();
     graphics2.setColor(Color.RED);
     graphics2.drawLine(x, y, 150, 150);
-
   }
-
-
-
 
   //    Don't touch the code below
   public static void main(String[] args) {
