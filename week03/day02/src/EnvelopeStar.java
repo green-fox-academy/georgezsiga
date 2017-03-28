@@ -8,16 +8,13 @@ public class EnvelopeStar {
   public static void mainDraw(Graphics graphics){
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/envelope-star/r2.png]
-
-
     drawline(graphics);
   }
 
   public static void drawline(Graphics graphics2) {
-
-    graphics2.setColor(Color.BLACK);
-    graphics2.drawLine(150, 0, 150, 300);
-    graphics2.drawLine(0, 150, 300, 150);
+//    graphics2.setColor(Color.BLACK);
+//    graphics2.drawLine(150, 0, 150, 300);
+//    graphics2.drawLine(0, 150, 300, 150);
 // top left
     int x = 10;
     int z = 10;
@@ -28,15 +25,12 @@ public class EnvelopeStar {
       x = x + z;
     }
 // bottom right
+    int q = 10;
     for (int i = 140; i > 0; ) {
       graphics2.setColor(Color.GREEN);
-      graphics2.drawLine(300- i, 150, 300, 300-i);
+      graphics2.drawLine(300-i, 150, 150, 300-q);
       i = i - z;
-      for (int j = 140; j > 0; ) {
-        graphics2.setColor(Color.BLUE);
-        graphics2.drawLine(150, 300-j, 300-j, 300);
-        j = j - z;
-      }
+      q = q + z;
     }
 // top right
       for (int j = 140; j > 0; ) {
