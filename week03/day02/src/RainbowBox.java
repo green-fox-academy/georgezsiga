@@ -20,15 +20,25 @@ public class RainbowBox {
   public static void drawline(Graphics graphics2) {
     Scanner scanner = new Scanner(System.in);
 
-    Random rand = new Random();
-    int n = rand.nextInt(255) + 0;
+
     int x = scanner.nextInt();
     int r = scanner.nextInt();
     int g = scanner.nextInt();
     int b = scanner.nextInt();
+    int z = 10;
 
     graphics2.setColor(new Color(r,g,b));
     graphics2.fillRect((300-x)/2, (300-x)/2, x, x);
+
+    for (int i = 300; i > x;) {
+      Random rand = new Random();
+      int n = rand.nextInt(255) + 0;
+      int n1 = rand.nextInt(255) + 0;
+      int n2 = rand.nextInt(255) + 0;
+      graphics2.setColor(new Color(n,n1,n2));
+      graphics2.fillRect(300-i, 300-i, i, i);
+      i = i -z;
+    }
   }
 
   //    Don't touch the code below
