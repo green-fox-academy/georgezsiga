@@ -12,20 +12,24 @@ public class ToTheCenter {
     // the x and y coordinates of the line's starting point
     // and draws a line from that point to the center of the canvas.
     // draw 3 lines with that function.
-
-drawline(graphics);
-
+    System.out.println("Give me 2 numbers between 0 and 300 (x y)");
+    drawline(graphics);
+    System.out.println("Give me 2 numbers between 0 and 300 (x y)");
+    drawline(graphics);
+    System.out.println("Give me 2 numbers between 0 and 300 (x y)");
+    drawline(graphics);
 
 
   }
 
   public static void drawline(Graphics graphics2) {
-    System.out.println("Give me 2 numbers between 0 and 300 (x y)");
+
     Scanner scanner = new Scanner(System.in);
     int x = scanner.nextInt();
     int y = scanner.nextInt();
     graphics2.setColor(Color.RED);
     graphics2.drawLine(x, y, 150, 150);
+
   }
 
 
