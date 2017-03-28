@@ -53,17 +53,17 @@ public class LinePlayQuarters {
         j = j - z;
       }
     }
-//// bottom right
-//    for (int i = 290; i > 0; ) {
-//      graphics2.setColor(Color.BLACK);
-//      graphics2.drawLine(300 - i, 0, 300, 300-i);
-//      i = i - z;
-//      for (int j = 290; j > 0; ) {
-//        graphics2.setColor(Color.RED);
-//        graphics2.drawLine(0, 300-j, 300-j, 300);
-//        j = j - z;
-//      }
-//    }
+// bottom left
+    for (int i = 140; i > 0; ) {
+      graphics2.setColor(Color.MAGENTA);
+      graphics2.drawLine(150 - i, 150, 150, 300-i);
+      i = i - z;
+      for (int j = 140; j > 0; ) {
+        graphics2.setColor(Color.GRAY);
+        graphics2.drawLine(0, 300-j, 150-j, 300);
+        j = j - z;
+      }
+    }
   }
   //    Don't touch the code below
   public static void main(String[] args) {
