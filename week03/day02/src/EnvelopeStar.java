@@ -42,32 +42,22 @@ public class EnvelopeStar {
       }
     }
 // top right
-    for (int i = 140; i > 0; ) {
-      graphics2.setColor(Color.PINK);
-      graphics2.drawLine(300 - i, 0, 300, 150-i);
-      i = i - z;
       for (int j = 140; j > 0; ) {
         graphics2.setColor(Color.ORANGE);
         graphics2.drawLine(150, 150-j, 300-j, 150);
         j = j - z;
-      }
     }
 // bottom left
     for (int i = 140; i > 0; ) {
       graphics2.setColor(Color.MAGENTA);
       graphics2.drawLine(150 - i, 150, 150, 300-i);
       i = i - z;
-      for (int j = 140; j > 0; ) {
-        graphics2.setColor(Color.GRAY);
-        graphics2.drawLine(0, 300-j, 150-j, 300);
-        j = j - z;
-      }
     }
   }
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(300, 300));
+    jFrame.setSize(new Dimension(300, 330));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
