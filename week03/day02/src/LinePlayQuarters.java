@@ -31,20 +31,18 @@ public class LinePlayQuarters {
         j = j - z;
       }
     }
-//// top right
-//    int z = 20;
-//    for (int i = 290; i > 0; ) {
-//      graphics2.setColor(Color.BLACK);
-//      graphics2.drawLine(300 - i, 0, 300, 300-i);
-//      i = i - z;
-//      for (int j = 290; j > 0; ) {
-//        graphics2.setColor(Color.RED);
-//        graphics2.drawLine(0, 300-j, 300-j, 300);
-//        j = j - z;
-//      }
-//    }
+// bottom right
+    for (int i = 140; i > 0; ) {
+      graphics2.setColor(Color.GREEN);
+      graphics2.drawLine(300- i, 150, 300, 300-i);
+      i = i - z;
+      for (int j = 140; j > 0; ) {
+        graphics2.setColor(Color.BLUE);
+        graphics2.drawLine(150, 300-j, 300-j, 300);
+        j = j - z;
+      }
+    }
 ////bottom left
-//    int z = 20;
 //    for (int i = 290; i > 0; ) {
 //      graphics2.setColor(Color.BLACK);
 //      graphics2.drawLine(300 - i, 0, 300, 300-i);
@@ -56,7 +54,6 @@ public class LinePlayQuarters {
 //      }
 //    }
 //// bottom right
-//    int z = 20;
 //    for (int i = 290; i > 0; ) {
 //      graphics2.setColor(Color.BLACK);
 //      graphics2.drawLine(300 - i, 0, 300, 300-i);
