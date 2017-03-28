@@ -13,13 +13,12 @@ public class StarryNight {
     // - The stars should have random color (some shade of grey)
 
 
-
   }
 
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(300, 300));
+    jFrame.setSize(new Dimension(300, 330));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
@@ -29,6 +28,7 @@ public class StarryNight {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
+      this.setBackground(Color.BLACK);
       mainDraw(graphics);
 
     }
