@@ -12,33 +12,24 @@ public class Triangles {
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/triangles/r5.png]
 
-//for (int slide = TIPOFTRIANGLEX-5; slide > 0;) {
-//  slide-=5;
-//  for (int down = TIPOFTRIANGLEY+10; down < 300;) {
-//    down+=10;
-    for (int i = TIPOFTRIANGLEX; i < 290; ) {
-      for (int j = TIPOFTRIANGLEY; j < 290; ) {
-        drawAtriangle(graphics, i, j);
-        i += 5;
-        j += 10;
-      }
-    }
-        for (int i = TIPOFTRIANGLEX-5; i > 10; ) {
-          for (int j = TIPOFTRIANGLEY+10; j < 290; ) {
-            drawAtriangle(graphics, i, j);
+    for (int inside = 0; inside < 140; ) {
+      for (int insideOther = 0; insideOther < 290; ) {
+        for (int i = TIPOFTRIANGLEX; i > 0; ) {
+          for (int j = TIPOFTRIANGLEY; j < 300; ) {
+            drawAtriangle(graphics, i, j, insideOther, inside);
             i -= 5;
             j += 10;
           }
         }
+        inside += 5;
+        insideOther += 10;
       }
+    }
+  }
 
-
-//}
-//  }
-
-  public static void drawAtriangle(Graphics graphics, int i, int j){
-    int xpoints[] = {i, i-5, i+5};
-    int ypoints[] = {j, j+10, j+10};
+  public static void drawAtriangle(Graphics graphics, int i, int j, int insideOther, int inside){
+    int xpoints[] = {i+inside, i-5+inside, i+5+inside};
+    int ypoints[] = {j+insideOther, j+10+insideOther, j+10+insideOther};
     int npoints = 3;
     graphics.drawPolygon(xpoints, ypoints, npoints);
   }
