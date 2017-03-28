@@ -12,12 +12,17 @@ public class RainbowBox {
     // and draws a square of that size and color to the center of the canvas.
     // create a loop that fills the canvas with rainbow colored squares.
 
-    System.out.println("Give me a number between 0 and 300");
+    System.out.println("Give me a number between 0 and 300 and a colour in RGB (123 1 22)");
+    drawline(graphics);
   }
 
   public static void drawline(Graphics graphics2) {
     Scanner scanner = new Scanner(System.in);
     int x = scanner.nextInt();
+    int r = scanner.nextInt();
+    int g = scanner.nextInt();
+    int b = scanner.nextInt();
+    graphics2.setColor(new Color(r,g,b));
     graphics2.fillRect((300-x)/2, (300-x)/2, x, x);
   }
 
