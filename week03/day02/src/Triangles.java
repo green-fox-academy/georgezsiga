@@ -12,13 +12,18 @@ public class Triangles {
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/triangles/r5.png]
 
-    for (int inside = 0; inside < 140; ) {
-      for (int insideOther = 0; insideOther < 290; ) {
-        for (int i = TIPOFTRIANGLEX; i > 0; ) {
-          for (int j = TIPOFTRIANGLEY; j < 300; ) {
+    for (int inside = 0; inside < 140;) {
+      for (int insideOther = 0; insideOther < 290;) {
+        for (int i = TIPOFTRIANGLEX; i > 0;) {
+          for (int j = TIPOFTRIANGLEY; j < 300;) {
+            if (j+insideOther < 300) {
             drawAtriangle(graphics, i, j, insideOther, inside);
             i -= 5;
             j += 10;
+            } else {
+              i -= 5;
+              j += 10;
+            }
           }
         }
         inside += 5;
