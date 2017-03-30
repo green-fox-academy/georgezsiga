@@ -9,10 +9,9 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class YellowBoxes {
   public static void mainDraw(Graphics graphics) {
     // fill the canvas with a checkerboard pattern.
-    int i = 600;
-    int n = 0;
+
     drawBox(graphics);
-    fractals(graphics, i, n);
+    drawLineBase(graphics, 0, 0, 600);
   }
 
   public static void drawBox(Graphics graphics) {
@@ -20,91 +19,94 @@ public class YellowBoxes {
     graphics.fillRect(0, 0, 600, 600);
     graphics.setColor(Color.BLACK);
     graphics.drawRect(0, 0, 600, 600);
-
   }
 
-  public static void drawLineUp(Graphics graphics, int i, int n) {
+  public static void drawLineBase(Graphics graphics, int x, int y, int i) {
     graphics.setColor(Color.BLACK);
-    graphics.drawLine(n + i - i, i / 3, n + i, i / 3);
-    graphics.setColor(Color.RED);
-    graphics.drawLine(n + i - i, (i / 3) * 2, n + i, (i / 3) * 2);
-    graphics.setColor(Color.GREEN);
-    graphics.drawLine(n + (i / 3), i - i, n + (i / 3), i);
-    graphics.setColor(Color.BLUE);
-    graphics.drawLine(n + ((i / 3)) * 2, i - i, n + ((i / 3) * 2), i);
+    graphics.drawLine(x + (i / 3), y,x + (i / 3), y + i);
+    graphics.drawLine(x + ((i / 3) * 2), y , x + ((i / 3) * 2), y + i);
+    graphics.drawLine(x,y + (i / 3), x + i, y + (i / 3));
+    graphics.drawLine(x,y + ((i / 3) * 2), x + i, y + ((i / 3) * 2));
   }
-
-  public static void drawLineDown(Graphics graphics, int i, int n) {
-    graphics.setColor(Color.BLACK);
-    graphics.drawLine(n + i - i, n + n + (i / 3), n + i, n + n + (i / 3));
-    graphics.setColor(Color.RED);
-    graphics.drawLine(n + i - i, n + n + (i / 3) * 2, n + i, n + n + ((i / 3) * 2));
-    graphics.setColor(Color.GREEN);
-    graphics.drawLine(n + (i / 3), n + n + i - i, n + (i / 3), n + n + i);
-    graphics.setColor(Color.BLUE);
-    graphics.drawLine(n + ((i / 3)) * 2, n + n + i - i, n + ((i / 3) * 2), n + n + i);
-  }
-
-  public static void drawLineLeft(Graphics graphics, int i, int n) {
-    graphics.setColor(Color.BLACK);
-    graphics.drawLine(i - i, n + (i / 3), i, n + (i / 3));
-    graphics.setColor(Color.RED);
-    graphics.drawLine(i - i, n + (i / 3) * 2, i, n + ((i / 3) * 2));
-    graphics.setColor(Color.GREEN);
-    graphics.drawLine((i / 3), n + i - i, (i / 3), n + i);
-    graphics.setColor(Color.BLUE);
-    graphics.drawLine(((i / 3)) * 2, n + i - i, ((i / 3) * 2), n + i);
-  }
-
-  public static void drawLineRight(Graphics graphics, int i, int n) {
-    graphics.setColor(Color.BLACK);
-    graphics.drawLine(n + n + i - i, n + (i / 3), n + n + i, n + (i / 3));
-    graphics.setColor(Color.RED);
-    graphics.drawLine(n + n + i - i, n + (i / 3) * 2, n + n + i, n + ((i / 3) * 2));
-    graphics.setColor(Color.GREEN);
-    graphics.drawLine(n + n + (i / 3), n + i - i, n + n + (i / 3), n + i);
-    graphics.setColor(Color.BLUE);
-    graphics.drawLine(n + n + ((i / 3) * 2), n + i - i, n + n + ((i / 3) * 2), n + i);
-  }
-
-  public static void fractals(Graphics graphics, int i, int n) {
-    graphics.setColor(Color.BLACK);
-    if (i == 0) {
-
-    } else {
-      drawLineUp(graphics, i, n);
-      drawLineDown(graphics, i, n);
-      drawLineLeft(graphics, i, n);
-      drawLineRight(graphics, i, n);
-      n = n + (i / 3);
-      i = i / 3;
-      fractals(graphics, i, n);
-    }
-  }
-
-  public static void fractalsUp(Graphics graphics, int i, int n) {
-    graphics.setColor(Color.BLACK);
-    if (i == 0) {
-
-    } else {
-      drawLineUp(graphics, i, n);
-      n = n + (i / 3);
-      i = i / 3;
-      fractalsDown(graphics, i, n);
-    }
-  }
-
-  public static void fractalsDown(Graphics graphics, int i, int n) {
-    graphics.setColor(Color.BLACK);
-    if (i == 0) {
-
-    } else {
-      drawLineDown(graphics, i, n);
-      n = n + (i / 3);
-      i = i / 3;
-      fractalsDown(graphics, i, n);
-    }
-  }
+//
+//  public static void drawLineUp(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    graphics.drawLine(n + i - i, i / 3, n + i, i / 3);
+//    graphics.setColor(Color.RED);
+//    graphics.drawLine(n + i - i, (i / 3) * 2, n + i, (i / 3) * 2);
+//    graphics.setColor(Color.GREEN);
+//    graphics.drawLine(n + (i / 3), i - i, n + (i / 3), i);
+//    graphics.setColor(Color.BLUE);
+//    graphics.drawLine(n + ((i / 3)) * 2, i - i, n + ((i / 3) * 2), i);
+//  }
+//
+//  public static void drawLineDown(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    graphics.drawLine(n + i - i, n + n + (i / 3), n + i, n + n + (i / 3));
+//    graphics.setColor(Color.RED);
+//    graphics.drawLine(n + i - i, n + n + (i / 3) * 2, n + i, n + n + ((i / 3) * 2));
+//    graphics.setColor(Color.GREEN);
+//    graphics.drawLine(n + (i / 3), n + n + i - i, n + (i / 3), n + n + i);
+//    graphics.setColor(Color.BLUE);
+//    graphics.drawLine(n + ((i / 3)) * 2, n + n + i - i, n + ((i / 3) * 2), n + n + i);
+//  }
+//
+//  public static void drawLineLeft(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    graphics.drawLine(i - i, n + (i / 3), i, n + (i / 3));
+//    graphics.setColor(Color.RED);
+//    graphics.drawLine(i - i, n + (i / 3) * 2, i, n + ((i / 3) * 2));
+//    graphics.setColor(Color.GREEN);
+//    graphics.drawLine((i / 3), n + i - i, (i / 3), n + i);
+//    graphics.setColor(Color.BLUE);
+//    graphics.drawLine(((i / 3)) * 2, n + i - i, ((i / 3) * 2), n + i);
+//  }
+//
+//  public static void drawLineRight(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    graphics.drawLine(n + n + i - i, n + (i / 3), n + n + i, n + (i / 3));
+//    graphics.setColor(Color.RED);
+//    graphics.drawLine(n + n + i - i, n + (i / 3) * 2, n + n + i, n + ((i / 3) * 2));
+//    graphics.setColor(Color.GREEN);
+//    graphics.drawLine(n + n + (i / 3), n + i - i, n + n + (i / 3), n + i);
+//    graphics.setColor(Color.BLUE);
+//    graphics.drawLine(n + n + ((i / 3) * 2), n + i - i, n + n + ((i / 3) * 2), n + i);
+//  }
+//
+//  public static void fractals(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    if (i < 10) {
+//      return;
+//    } else {
+//      fractalsUp(graphics, i, n);
+//      fractalsDown(graphics, i, n);
+//      fractals(graphics, i, n);
+//    }
+//  }
+//
+//  public static void fractalsUp(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    if (i < 10) {
+//return;
+//    } else {
+//      drawLineUp(graphics, i, n);
+//      n = n + (i / 3);
+//      i = i / 3;
+//      fractalsDown(graphics, i, n);
+//    }
+//  }
+//
+//  public static void fractalsDown(Graphics graphics, int i, int n) {
+//    graphics.setColor(Color.BLACK);
+//    if (i < 10) {
+//return;
+//    } else {
+//      drawLineDown(graphics, i, n);
+//      n = n + (i / 3);
+//      i = i / 3;
+//      fractalsDown(graphics, i, n);
+//    }
+//  }
 
   //    Don't touch the code below
   public static void main(String[] args) {
