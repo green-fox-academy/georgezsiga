@@ -11,7 +11,8 @@ public class YellowBoxes {
     // fill the canvas with a checkerboard pattern.
 
     drawBox(graphics);
-    drawLineBase(graphics, 0, 0, 600);
+//    drawLineBase(graphics, 0, 0, 600);
+    fractals(graphics, 0,0,600);
   }
 
   public static void drawBox(Graphics graphics) {
@@ -27,6 +28,23 @@ public class YellowBoxes {
     graphics.drawLine(x + ((i / 3) * 2), y , x + ((i / 3) * 2), y + i);
     graphics.drawLine(x,y + (i / 3), x + i, y + (i / 3));
     graphics.drawLine(x,y + ((i / 3) * 2), x + i, y + ((i / 3) * 2));
+  }
+
+    public static void fractals(Graphics graphics, int x, int y, int i) {
+    if (i < 1) {
+      return;
+    } else {
+        drawLineBase(graphics, x, y,i);
+//        x = x + (i / 3);
+//        y = y + (i / 3);
+//        i = i / 3;
+        fractals(graphics, x + (i / 3), y, i / 3);
+        fractals(graphics, x, y + (i / 3), i / 3);
+        fractals(graphics, x + ((i / 3) * 2), y + (i / 3), i /3);
+        fractals(graphics, x + (i / 3), y + ((i / 3) * 2), i /3);
+
+
+    }
   }
 //
 //  public static void drawLineUp(Graphics graphics, int i, int n) {
@@ -73,16 +91,7 @@ public class YellowBoxes {
 //    graphics.drawLine(n + n + ((i / 3) * 2), n + i - i, n + n + ((i / 3) * 2), n + i);
 //  }
 //
-//  public static void fractals(Graphics graphics, int i, int n) {
-//    graphics.setColor(Color.BLACK);
-//    if (i < 10) {
-//      return;
-//    } else {
-//      fractalsUp(graphics, i, n);
-//      fractalsDown(graphics, i, n);
-//      fractals(graphics, i, n);
-//    }
-//  }
+
 //
 //  public static void fractalsUp(Graphics graphics, int i, int n) {
 //    graphics.setColor(Color.BLACK);
