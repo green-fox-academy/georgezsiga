@@ -11,16 +11,14 @@ public class Power {
     System.out.println("Give me two numbers - base and n-th power");
     int base = scanner.nextInt();
     int nPower = scanner.nextInt();
-
     System.out.println(power(base, nPower));
   }
 
   public static int power(int base, int nPower) {
-
     if (nPower == 0) {
-      return base;
+      return 1;
     } else {
-      return base * base;
+      return base * power(base, nPower-1);
     }
   }
 }
