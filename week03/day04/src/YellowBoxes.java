@@ -29,13 +29,19 @@ public class YellowBoxes {
       graphics.drawLine(400, 0, 400, 600);
     }
 
+
     public static Object fractals(Graphics graphics, int i) {
+      graphics.setColor(Color.BLACK);
       if (i == 0) {
         return 0;
+      } else {
+        graphics.drawLine(i - i, i / 3, i, i / 3);
+        graphics.drawLine(i - i, (i / 3) * 2, i, (i / 3) * 2);
+        graphics.drawLine(i / 3, i - i, i / 3, i);
+        graphics.drawLine((i / 3) * 2, i - i, (i / 3) * 2, i);
+        i = i / 3;
+        return fractals(graphics, i);
       }
-      graphics.drawLine(i-i, i /3, i, i / 3);
-      i = i/3;
-      return fractals(graphics, i);
     }
 
     //    Don't touch the code below
