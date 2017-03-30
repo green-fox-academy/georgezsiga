@@ -8,7 +8,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class YellowBoxes {
   public static void mainDraw(Graphics graphics) {
-    // fill the canvas with a checkerboard pattern.
     drawBox(graphics);
     fractals(graphics, 0, 0, 600);
   }
