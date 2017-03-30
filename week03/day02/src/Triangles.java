@@ -11,12 +11,11 @@ public class Triangles {
   public static void mainDraw(Graphics graphics) {
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/triangles/r5.png]
-
     for (int inside = 0; inside < 145;) {
       for (int insideOther = 0; insideOther < 290;) {
         for (int i = TIPOFTRIANGLEX; i > 0;) {
           for (int j = TIPOFTRIANGLEY; j < 300;) {
-            if (j+insideOther < 300 || i+inside < 145) {
+            if (j+insideOther < 300 || i+inside < 0) {
             drawAtriangle(graphics, i, j, insideOther, inside);
             i -= 5;
             j += 10;
@@ -30,7 +29,7 @@ public class Triangles {
         insideOther += 10;
       }
     }
-    graphics.setColor(Color.GREEN);
+    graphics.setColor(Color.BLACK);
     int xpoints[] = {295, 290, 300};
     int ypoints[] = {290, 300, 300};
     int npoints = 3;
