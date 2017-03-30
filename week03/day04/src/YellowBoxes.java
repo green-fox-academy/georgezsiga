@@ -7,8 +7,10 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class YellowBoxes {
     public static void mainDraw(Graphics graphics) {
       // fill the canvas with a checkerboard pattern.
+      int i = 600;
       drawBox(graphics);
       drawLine(graphics);
+      fractals(graphics, i);
     }
 
     public static void drawBox(Graphics graphics) {
@@ -19,12 +21,21 @@ public class YellowBoxes {
 
     }
 
-    public static void drawLine(Graphics graphics) {
+  public static void drawLine(Graphics graphics) {
       graphics.setColor(Color.BLACK);
       graphics.drawLine(0, 200, 600, 200);
       graphics.drawLine(0, 400, 600, 400);
       graphics.drawLine(200, 0, 200, 600);
       graphics.drawLine(400, 0, 400, 600);
+    }
+
+    public static Object fractals(Graphics graphics, int i) {
+      if (i == 0) {
+        return 0;
+      }
+      graphics.drawLine(i-i, i /3, i, i / 3);
+      i = i/3;
+      return fractals(graphics, i);
     }
 
     //    Don't touch the code below
