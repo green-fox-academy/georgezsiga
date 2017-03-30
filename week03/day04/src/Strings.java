@@ -13,10 +13,15 @@ public class Strings {
     System.out.println(modifiedText(text));
   }
 
-  public static int modifiedText(String text) {
-    if (text.charAt(0) == 0) {
-      return 0;
-    }
-      return 2 + bunniesEars(--bunnies);
+  public static String modifiedText(String text) {
+    if (text.contains("x")) {
+      String new1 = text.substring(0, text.indexOf("x"));
+      String new2 = text.substring(text.indexOf("x")+1);
+      text = new1 + "y" + new2;
+      return modifiedText(text);
+    } else {
+      return text;
     }
   }
+}
+
