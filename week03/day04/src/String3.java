@@ -8,19 +8,23 @@ import java.util.Scanner;
 public class String3 {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Give me the number of bunnies");
+    System.out.println("Give me some text");
     String text = scanner.nextLine();
-    System.out.println(modifiedText(text));
+    int loops = text.length();
+    int i = 0;
+    System.out.println(modifiedText(text, loops, i));
   }
 
-  public static String modifiedText(String text) {
-    if (text.contains("x")) {
-      String new1 = text.substring(0, text.indexOf("x"));
-      String new2 = text.substring(text.indexOf("x")+1);
-      text = new1 + new2;
-      return modifiedText(text);
-    } else {
+  public static String modifiedText(String text, int loops, int i) {
+    if (loops == 1) {
       return text;
+    } else {
+      String new1 = text.substring(0, i+1);
+      String new2 = text.substring(i+1);
+      text = new1 + "*" + new2;
+      i +=2;
+      loops -= 1;
+      return modifiedText(text, loops, i);
     }
   }
 }
