@@ -7,30 +7,24 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class YellowBoxes {
     public static void mainDraw(Graphics graphics) {
       // fill the canvas with a checkerboard pattern.
-      drawline(graphics);
+      drawBox(graphics);
     }
 
-    public static void drawline(Graphics graphics2) {
-      int z = 20;
-      for (int k = 300; k >= 0 ;) {
-        for (int i = 310; i >= 0; ) {
-          graphics2.setColor(Color.BLACK);
-          graphics2.fillRect(300 - i, 300-k, 10, 10);
-          i = i - z;
-          for (int j = 310; j >= 0; ) {
-            graphics2.setColor(Color.BLACK);
-            graphics2.fillRect(300-k, 300 - j, 10, 10);
-            j = j - z;
-          }
-        }
-        k = k - z;
-      }
+    public static void drawBox(Graphics graphics) {
+      graphics.setColor(Color.YELLOW);
+      graphics.fillRect(0, 0, 600, 600);
     }
+
+//    public static void drawLine(Graphics graphics) {
+//      graphics.drawLine();
+//
+//
+//    }
 
     //    Don't touch the code below
     public static void main(String[] args) {
       JFrame jFrame = new JFrame("Drawing");
-      jFrame.setSize(new Dimension(300, 330));
+      jFrame.setSize(new Dimension(600, 630));
       jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
       jFrame.add(new ImagePanel());
       jFrame.setLocationRelativeTo(null);
