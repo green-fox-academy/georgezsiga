@@ -12,23 +12,19 @@ import java.util.Scanner;
 public class Fibonacci {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Give me some text");
-    String text = scanner.nextLine();
-    int loops = text.length();
-    int i = 0;
-    System.out.println(modifiedText(text, loops, i));
+    System.out.println("Give me a number");
+    int n = scanner.nextInt();
+    System.out.println(fibonacci(n));
   }
 
-  public static String modifiedText(String text, int loops, int i) {
-    if (loops == 1) {
-      return text;
+  public static int fibonacci(int n) {
+
+    if (n == 1) {
+      return 0;
+    } else if (n == 2) {
+      return 1;
     } else {
-      String new1 = text.substring(0, i+1);
-      String new2 = text.substring(i+1);
-      text = new1 + "*" + new2;
-      i +=2;
-      loops -= 1;
-      return modifiedText(text, loops, i);
+      return fibonacci(n-1) + fibonacci(n-2);
     }
   }
 }
