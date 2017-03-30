@@ -13,11 +13,9 @@ public class NumberAdder {
   }
 
   public static int count(int number) {
-    int count = 0;
     if (number == 0) {
       return 0;
     } else {
-      count = count + number;
       return number + count(--number);
     }
   }
