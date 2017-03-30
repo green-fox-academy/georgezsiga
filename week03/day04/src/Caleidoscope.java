@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
@@ -7,44 +8,34 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Caleidoscope {
   public static void mainDraw(Graphics graphics) {
-    // fill the canvas with a checkerboard pattern.
-    drawBox(graphics);
-    fractals(graphics, 0, 0, 600);
+    drawAbeeHome(graphics, 50, 50, 120, 210);
+    fractals(graphics, 50, 50, 120, 210);
   }
 
-  public static void drawBox(Graphics graphics) {
-    graphics.setColor(Color.YELLOW);
-    graphics.fillRect(0, 0, 600, 600);
-    graphics.setColor(Color.BLACK);
-    graphics.drawRect(0, 0, 600, 600);
+  public static void drawAbeeHome(Graphics graphics, int j, int i, int l, int h) {
+    int xpoints[] = {i, i + l, i + (3 * l), i + (4 * l), i + (3 * l), i + l};
+    int ypoints[] = {j + h, j, j, j + h, j + (2 * h), j + (2 * h)};
+    int npoints = 6;
+    graphics.drawPolygon(xpoints, ypoints, npoints);
   }
 
-  public static void drawLineBase(Graphics graphics, int x, int y, int i) {
-    graphics.setColor(Color.BLACK);
-    graphics.drawLine(x + (i / 3), y, x + (i / 3), y + i);
-    graphics.drawLine(x + ((i / 3) * 2), y, x + ((i / 3) * 2), y + i);
-    graphics.drawLine(x, y + (i / 3), x + i, y + (i / 3));
-    graphics.drawLine(x, y + ((i / 3) * 2), x + i, y + ((i / 3) * 2));
-  }
-
-  public static void fractals(Graphics graphics, int x, int y, int i) {
-    if (i < 1) {
+  public static void fractals(Graphics graphics, int j, int i, int l, int h) {
+    if (l < 3) {
       return;
     } else {
-      drawLineBase(graphics, x, y, i);
-      fractals(graphics, x + (i / 3), y, i / 3);
-      fractals(graphics, x, y + (i / 3), i / 3);
-      fractals(graphics, x + ((i / 3) * 2), y + (i / 3), i / 3);
-      fractals(graphics, x + (i / 3), y + ((i / 3) * 2), i / 3);
+      drawAbeeHome(graphics, j, i, l, h);
+      fractals(graphics, j, i + (l / 2), l / 2, h / 2);
+      fractals(graphics, j + (h / 2), i + (2 * l), l / 2, h / 2);
+      fractals(graphics, j + h, i + (l / 2), l / 2, h / 2);
     }
   }
 
   //    Don't touch the code below
   public static void main(String[] args) {
-    JFrame jFrame = new JFrame("Drawing");
+    JFrame jFrame = new JFrame("Caleidoscope");
     jFrame.setSize(new Dimension(600, 630));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    jFrame.add(new YellowBoxes.ImagePanel());
+    jFrame.add(new Caleidoscope.ImagePanel());
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
   }
