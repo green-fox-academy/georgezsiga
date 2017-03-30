@@ -18,6 +18,8 @@ public class BunniesAgain {
   public static int bunniesEars(int bunnies) {
     if (bunnies == 0) {
       return 0;
+    } else if (bunnies % 2 == 0) {
+      return 3 + bunniesEars(--bunnies);
     } else {
       return 2 + bunniesEars(--bunnies);
     }
