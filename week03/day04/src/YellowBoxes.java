@@ -8,9 +8,11 @@ public class YellowBoxes {
     public static void mainDraw(Graphics graphics) {
       // fill the canvas with a checkerboard pattern.
       int i = 600;
+      int n = 0;
       drawBox(graphics);
       drawLine(graphics);
-      fractals(graphics, i);
+      fractalsUp(graphics, i, n);
+      fractalsDown(graphics, i, n);
     }
 
     public static void drawBox(Graphics graphics) {
@@ -30,19 +32,43 @@ public class YellowBoxes {
     }
 
 
-    public static Object fractals(Graphics graphics, int i) {
+    public static void fractalsUp(Graphics graphics, int i, int n) {
       graphics.setColor(Color.BLACK);
       if (i == 0) {
-        return 0;
+
       } else {
-        graphics.drawLine(i - i, i / 3, i, i / 3);
-        graphics.drawLine(i - i, (i / 3) * 2, i, (i / 3) * 2);
-        graphics.drawLine(i / 3, i - i, i / 3, i);
-        graphics.drawLine((i / 3) * 2, i - i, (i / 3) * 2, i);
+        graphics.setColor(Color.BLACK);
+        graphics.drawLine(n + i - i, i / 3, n + i, i / 3);
+        graphics.setColor(Color.RED);
+        graphics.drawLine(n + i - i, (i / 3) * 2, n + i, (i / 3) * 2);
+        graphics.setColor(Color.GREEN);
+        graphics.drawLine(n + (i / 3), i - i, n + (i / 3), i);
+        graphics.setColor(Color.BLUE);
+        graphics.drawLine(n +((i / 3)) * 2,i - i, n +((i / 3) * 2), i);
+        n = n + ( i / 3);
         i = i / 3;
-        return fractals(graphics, i);
+        fractalsUp(graphics, i, n);
       }
     }
+
+  public static void fractalsDown(Graphics graphics, int i, int n) {
+    graphics.setColor(Color.BLACK);
+    if (i == 0) {
+
+    } else {
+      graphics.setColor(Color.BLACK);
+      graphics.drawLine(n + i - i, n + n + (i / 3), n + i, n + n + (i / 3));
+      graphics.setColor(Color.RED);
+      graphics.drawLine(n + i - i, n + n + (i / 3) * 2, n + i, n + n + ((i / 3) * 2));
+      graphics.setColor(Color.GREEN);
+      graphics.drawLine(n + (i / 3), n + n + i - i, n + (i / 3), n + n + i);
+      graphics.setColor(Color.BLUE);
+      graphics.drawLine(n +((i / 3)) * 2,n + n + i - i, n +((i / 3) * 2), n + n + i);
+      n = n + ( i / 3);
+      i = i / 3;
+      fractalsDown(graphics, i, n);
+    }
+  }
 
     //    Don't touch the code below
     public static void main(String[] args) {
