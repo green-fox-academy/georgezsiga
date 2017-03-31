@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class SquareGrid {
   public static void mainDraw(Graphics graphics) {
     drawBox(graphics, 400, 400, 100, 20);
-//    fractals(graphics, 400, 400, 100);
+    fractals(graphics, 400, 400, 100, 20);
   }
 
   public static void drawBox(Graphics graphics, int x, int y, int l, float w) {
@@ -23,29 +23,21 @@ public class SquareGrid {
     graphics.drawRect(x - l, y - l, 2 * l, 2 * l);
   }
 
-//  public static void fractals(Graphics graphics, int x, int y, int l) {
-//    if (l < 1) {
-//      return;
-//    } else {
-//      drawBox(graphics, x, y, l);
-//      graphics.setColor(Color.GREEN);
-//      fractals(graphics, x - (2 * l), y, l / 3);
-//      graphics.setColor(Color.BLUE);
-//      fractals(graphics, x - (2 * l), y - (2 * l), l / 3);
-//      graphics.setColor(Color.LIGHT_GRAY);
-//      fractals(graphics, x + (2 * l), y, l / 3);
-//      graphics.setColor(Color.YELLOW);
-//      fractals(graphics, x + (2 * l), y + (2 * l), l / 3);
-//      graphics.setColor(Color.ORANGE);
-//      fractals(graphics, x, y + (2 * l), l / 3);
-//      graphics.setColor(Color.PINK);
-//      fractals(graphics, x, y - (2 * l), l / 3);
-//      graphics.setColor(Color.RED);
-//      fractals(graphics, x + (2 * l), y - (2 * l), l / 3);
-//      graphics.setColor(Color.MAGENTA);
-//      fractals(graphics, x - (2 * l), y + (2 * l), l / 3);
-//    }
-//  }
+  public static void fractals(Graphics graphics, int x, int y, int l, float w) {
+    if (l < 4) {
+      return;
+    } else {
+      drawBox(graphics, x, y, l, w);
+      graphics.setColor(Color.GREEN);
+      fractals(graphics, x-l, y-l, l /2, w/2);
+      graphics.setColor(Color.BLUE);
+      fractals(graphics, x+l, y+l, l /2, w/2);
+      graphics.setColor(Color.YELLOW);
+      fractals(graphics, x+l, y-l, l /2, w/2);
+      graphics.setColor(Color.RED);
+      fractals(graphics, x-l, y+l, l /2, w/2);
+    }
+  }
 
   //    Don't touch the code below
   public static void main(String[] args) {
