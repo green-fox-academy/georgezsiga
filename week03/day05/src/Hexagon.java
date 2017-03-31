@@ -2,11 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+
 /**
  * Created by georgezsiga on 3/31/17.
  */
 
 public class Hexagon {
+
   public static void mainDraw(Graphics graphics) {
     drawAbeeHome(graphics, 50, 50, 120, 210);
     fractals(graphics, 50, 50, 120, 210);
@@ -20,13 +22,22 @@ public class Hexagon {
   }
 
   public static void fractals(Graphics graphics, int x, int y, int l, int h) {
-    if (l < 3) {
+    if (h < 1) {
       return;
     } else {
       drawAbeeHome(graphics, x, y, l, h);
-      fractals(graphics, x + (h/3) , y, l / 3, h/3 );
-//      fractals(graphics, j + (h / 3), i + (3 * l), l / 3, h / 3);
-//      fractals(graphics, j + h, i + (l / 3), l / 3, h / 3);
+      graphics.setColor(Color.BLUE);
+      fractals(graphics, x + l - (l / 3), y, l / 3, h / 3);
+      graphics.setColor(Color.RED);
+      fractals(graphics, x + (2 * l), y, l / 3, h / 3);
+      graphics.setColor(Color.GREEN);
+      fractals(graphics, x + l - (l / 3), y + h + (h / 3), l / 3, h / 3);
+      graphics.setColor(Color.ORANGE);
+      fractals(graphics, x + (2 * l), y + h + (h / 3), l / 3, h / 3);
+      graphics.setColor(Color.MAGENTA);
+      fractals(graphics, x + (2 * l) + ((l / 3) * 2), y + h - (h / 3), l / 3, h / 3);
+      graphics.setColor(Color.LIGHT_GRAY);
+      fractals(graphics, x, y + h - (h / 3), l / 3, h / 3);
     }
   }
 
@@ -41,6 +52,7 @@ public class Hexagon {
   }
 
   static class ImagePanel extends JPanel {
+
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
