@@ -8,20 +8,13 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Triangles {
   public static void mainDraw(Graphics graphics) {
-    drawAtriangle(graphics, 450, 450, 150, 130 );
-//    fractals(graphics, 300, 0, 100);
+    drawAtriangle(graphics, 450, 450, 450, 390);
+
   }
 
-//  public static void drawAtriangle(Graphics graphics, int i, int j, int l) {
-//    int xpoints[] = {i + l, i, i + (2 * l)};
-//    int ypoints[] = {j, j + (2 * l), j + (2 * l)};
-//    int npoints = 3;
-//    graphics.drawPolygon(xpoints, ypoints, npoints);
-//  }
-
   public static void drawAtriangle(Graphics graphics, int x, int y, int l, int h) {
-    int xpoints[] = {x, x - l, x + l};
-    int ypoints[] = {y - h, y + h, y + h};
+    int xpoints[] = {x, x + l, x - l};
+    int ypoints[] = {y + h, y - h, y - h};
     int npoints = 3;
     graphics.drawPolygon(xpoints, ypoints, npoints);
   }
