@@ -12,28 +12,28 @@ import javax.swing.JPanel;
 public class Tree {
 
   public static void mainDraw(Graphics graphics) {
-    graphics.setColor(Color.BLACK);
+    graphics.setColor(Color.YELLOW);
     drawAline(graphics, 450, 800, 50);
-//    fractals(graphics, 150, 150, 600, 600);
+    fractals(graphics, 450, 800, 50);
   }
 
   public static void drawAline(Graphics graphics, int x, int y, int l) {
     graphics.drawLine(x, y, x, y+l);
   }
 
-//  public static void fractals(Graphics graphics, int x, int y, int a, int b) {
-//    if (a < 3) {
-//      return;
-//    } else {
-//      drawAcircle(graphics, x, y, a, b);
-//      graphics.setColor(Color.BLUE);
-//      fractals(graphics, x + (a / 4), y, a / 2, b / 2);
-//      graphics.setColor(Color.GREEN);
-//      fractals(graphics, x + ((a / 2) - (a / 30)), y + ((a / 2) - (a / 8)), a / 2, b / 2);
-//      graphics.setColor(Color.RED);
-//      fractals(graphics, x + (a / 30), y + ((a / 2) - (a / 8)), a / 2, b / 2);
-//    }
-//  }
+  public static void fractals(Graphics graphics, int x, int y, int l) {
+    if (l < 3) {
+      return;
+    } else {
+      drawAline(graphics, x, y, l);
+      graphics.setColor(Color.BLUE);
+      fractals(graphics, x + (a / 4), y, a / 2, b / 2);
+      graphics.setColor(Color.GREEN);
+      fractals(graphics, x + ((a / 2) - (a / 30)), y + ((a / 2) - (a / 8)), a / 2, b / 2);
+      graphics.setColor(Color.RED);
+      fractals(graphics, x + (a / 30), y + ((a / 2) - (a / 8)), a / 2, b / 2);
+    }
+  }
 
   //    Don't touch the code below
   public static void main(String[] args) {
@@ -50,6 +50,7 @@ public class Tree {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
+      this.setBackground(Color.GREEN);
       mainDraw(graphics);
 
     }
