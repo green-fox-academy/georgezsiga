@@ -7,7 +7,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Triangles {
   public static void mainDraw(Graphics graphics) {
     drawAtriangle(graphics, 450, 700, 300, 260);
-//    fractals(graphics, 450, 900, 450, 390);
+    fractals(graphics, 450, 700, 300, 260);
   }
 
   public static void drawAtriangle(Graphics graphics, int x, int y, int l, int h) {
@@ -17,13 +17,14 @@ public class Triangles {
     graphics.drawPolygon(xpoints, ypoints, npoints);
   }
 
-
   public static void fractals(Graphics graphics, int x, int y, int l, int h) {
     if (l < 3) {
       return;
     } else {
       drawAtriangle(graphics, x, y, l, h);
-      fractals(graphics, x, y, l/3, h/3);
+      fractals(graphics, x, y, l/2, h/2);
+      fractals(graphics, x - (l/2), y - h, l/2, h/2);
+      fractals(graphics, x + (l/2), y - h, l/2, h/2);
     }
   }
 
