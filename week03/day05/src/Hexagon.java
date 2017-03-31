@@ -12,21 +12,21 @@ public class Hexagon {
     fractals(graphics, 50, 50, 120, 210);
   }
 
-  public static void drawAbeeHome(Graphics graphics, int j, int i, int l, int h) {
-    int xpoints[] = {i, i + l, i + (3 * l), i + (4 * l), i + (3 * l), i + l};
-    int ypoints[] = {j + h, j, j, j + h, j + (2 * h), j + (2 * h)};
+  public static void drawAbeeHome(Graphics graphics, int x, int y, int l, int h) {
+    int xpoints[] = {x, x + l, x + (3 * l), x + (4 * l), x + (3 * l), x + l};
+    int ypoints[] = {y + h, y, y, y + h, y + (2 * h), y + (2 * h)};
     int npoints = 6;
     graphics.drawPolygon(xpoints, ypoints, npoints);
   }
 
-  public static void fractals(Graphics graphics, int j, int i, int l, int h) {
+  public static void fractals(Graphics graphics, int x, int y, int l, int h) {
     if (l < 3) {
       return;
     } else {
-      drawAbeeHome(graphics, j, i, l, h);
-      fractals(graphics, j, i + (l / 2), l / 2, h / 2);
-      fractals(graphics, j + (h / 2), i + (2 * l), l / 2, h / 2);
-      fractals(graphics, j + h, i + (l / 2), l / 2, h / 2);
+      drawAbeeHome(graphics, x, y, l, h);
+      fractals(graphics, x + (h/3) , y, l / 3, h/3 );
+//      fractals(graphics, j + (h / 3), i + (3 * l), l / 3, h / 3);
+//      fractals(graphics, j + h, i + (l / 3), l / 3, h / 3);
     }
   }
 
