@@ -12,28 +12,30 @@ import javax.swing.JPanel;
 public class Tree {
 
   public static void mainDraw(Graphics graphics) {
+    drawAline(graphics, 450, 800, -90, 50);
+//    fractals(graphics, 450, 800, 450, 750, 50);
+  }
+
+  public static void drawAline(Graphics graphics, double startX, double startY, double angle, int l) {
     graphics.setColor(Color.YELLOW);
-    drawAline(graphics, 450, 800, 50);
-    fractals(graphics, 450, 800, 50);
+    double x = startX + l * Math.cos(Math.toRadians(angle));
+    double y= startY + l * Math.sin(Math.toRadians(angle));
+    graphics.drawLine((int)startX, (int)startY, (int)x, (int)y);
   }
 
-  public static void drawAline(Graphics graphics, int x, int y, int l) {
-    graphics.drawLine(x, y, x, y+l);
-  }
-
-  public static void fractals(Graphics graphics, int x, int y, int l) {
-    if (l < 3) {
-      return;
-    } else {
-      drawAline(graphics, x, y, l);
-      graphics.setColor(Color.BLUE);
-      fractals(graphics, x + (a / 4), y, a / 2, b / 2);
-      graphics.setColor(Color.GREEN);
-      fractals(graphics, x + ((a / 2) - (a / 30)), y + ((a / 2) - (a / 8)), a / 2, b / 2);
-      graphics.setColor(Color.RED);
-      fractals(graphics, x + (a / 30), y + ((a / 2) - (a / 8)), a / 2, b / 2);
-    }
-  }
+//  public static void fractals(Graphics graphics, int x, int y, int x2, int y2, int l) {
+//    if (l < 1 ) {
+//      return;
+//    } else {
+//      drawAline(graphics, x, y, x2, y2, l);
+//      fractals(graphics, x, y, x2, y2 - l, l-4);
+//      fractals(graphics, x, y - l, x2 + l, y2 - l, l-4);
+//      fractals(graphics, x2, y2, x2 + l, y2 - l, l-4);
+//      fractals(graphics, x, y - l, x2 - l, y2 - l, l-4);
+////      fractals(graphics, x, y - l, x2 - (l/2), y2 - l, l-10);
+//
+//    }
+//  }
 
   //    Don't touch the code below
   public static void main(String[] args) {
@@ -50,7 +52,7 @@ public class Tree {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
-      this.setBackground(Color.GREEN);
+      this.setBackground(Color.BLACK);
       mainDraw(graphics);
 
     }
