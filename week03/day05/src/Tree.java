@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 public class Tree {
 
   public static void mainDraw(Graphics graphics) {
-    drawAline(graphics, 450, 800, -90, 50);
-//    fractals(graphics, 450, 800, 450, 750, 50);
+    drawAline(graphics, 450, 870, -90, 40);
+    fractals(graphics, 450, 870, -90, 40);
   }
 
   public static void drawAline(Graphics graphics, double startX, double startY, double angle, int l) {
@@ -23,19 +23,16 @@ public class Tree {
     graphics.drawLine((int)startX, (int)startY, (int)x, (int)y);
   }
 
-//  public static void fractals(Graphics graphics, int x, int y, int x2, int y2, int l) {
-//    if (l < 1 ) {
-//      return;
-//    } else {
-//      drawAline(graphics, x, y, x2, y2, l);
-//      fractals(graphics, x, y, x2, y2 - l, l-4);
-//      fractals(graphics, x, y - l, x2 + l, y2 - l, l-4);
-//      fractals(graphics, x2, y2, x2 + l, y2 - l, l-4);
-//      fractals(graphics, x, y - l, x2 - l, y2 - l, l-4);
-////      fractals(graphics, x, y - l, x2 - (l/2), y2 - l, l-10);
-//
-//    }
-//  }
+  public static void fractals(Graphics graphics, double startX, double startY, double angle, int l) {
+    if (l < 1 ) {
+      return;
+    } else {
+      drawAline(graphics, startX, startY, angle, l);
+      fractals(graphics, startX, startY - l, angle, l-1);
+//      fractals(graphics, X, Y, angle + 20, l);
+//      fractals(graphics, X, Y, angle - 20, l);
+    }
+  }
 
   //    Don't touch the code below
   public static void main(String[] args) {
