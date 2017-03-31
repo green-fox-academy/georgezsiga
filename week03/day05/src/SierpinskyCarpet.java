@@ -24,6 +24,7 @@ public class SierpinskyCarpet {
       return;
     } else {
       drawBox(graphics, x, y, l);
+      fractals(graphics, x, y, l / 2);          // Bonus psychedelic feature
       graphics.setColor(Color.GREEN);
       fractals(graphics, x - (2 * l), y, l / 3);
       graphics.setColor(Color.BLUE);
