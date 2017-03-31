@@ -22,8 +22,11 @@ public class Triangles {
       return;
     } else {
       drawAtriangle(graphics, x, y, l, h);
+      graphics.setColor(Color.BLUE);
       fractals(graphics, x, y, l/2, h/2);
+      graphics.setColor(Color.GREEN);
       fractals(graphics, x - (l/2), y - h, l/2, h/2);
+      graphics.setColor(Color.RED);
       fractals(graphics, x + (l/2), y - h, l/2, h/2);
     }
   }
