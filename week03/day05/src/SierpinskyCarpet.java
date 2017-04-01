@@ -12,7 +12,13 @@ import javax.swing.JPanel;
 public class SierpinskyCarpet {
 
   public static void mainDraw(Graphics graphics) {
+
     fractals(graphics, 400, 400, 100);
+  }
+
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
   }
 
   public static void drawBox(Graphics graphics, int x, int y, int l) {
@@ -23,23 +29,16 @@ public class SierpinskyCarpet {
     if (l < 1) {
       return;
     } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       drawBox(graphics, x, y, l);
       fractals(graphics, x, y, l / 2);          // Bonus psychedelic feature
-      graphics.setColor(Color.GREEN);
       fractals(graphics, x - (2 * l), y, l / 3);
-      graphics.setColor(Color.BLUE);
       fractals(graphics, x - (2 * l), y - (2 * l), l / 3);
-      graphics.setColor(Color.LIGHT_GRAY);
       fractals(graphics, x + (2 * l), y, l / 3);
-      graphics.setColor(Color.YELLOW);
       fractals(graphics, x + (2 * l), y + (2 * l), l / 3);
-      graphics.setColor(Color.ORANGE);
       fractals(graphics, x, y + (2 * l), l / 3);
-      graphics.setColor(Color.PINK);
       fractals(graphics, x, y - (2 * l), l / 3);
-      graphics.setColor(Color.RED);
       fractals(graphics, x + (2 * l), y - (2 * l), l / 3);
-      graphics.setColor(Color.MAGENTA);
       fractals(graphics, x - (2 * l), y + (2 * l), l / 3);
     }
   }
