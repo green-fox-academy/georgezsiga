@@ -12,25 +12,20 @@ import javax.swing.JPanel;
 public class Tree {
 
   public static void mainDraw(Graphics graphics) {
-    drawAline(graphics, 450, 870, -90, 40);
-    fractals(graphics, 450, 870, -90, 40);
+    fractals(graphics, 450, 870, -90, 40, 15);
   }
 
-  public static void drawAline(Graphics graphics, double startX, double startY, double angle, int l) {
-    graphics.setColor(Color.YELLOW);
-    double x = startX + l * Math.cos(Math.toRadians(angle));
-    double y= startY + l * Math.sin(Math.toRadians(angle));
-    graphics.drawLine((int)startX, (int)startY, (int)x, (int)y);
-  }
-
-  public static void fractals(Graphics graphics, double startX, double startY, double angle, int l) {
-    if (l < 1 ) {
+  public static void fractals(Graphics graphics, double startX, double startY, double angle, int length, int loop) {
+    if (loop == 0 ) {
       return;
     } else {
-      drawAline(graphics, startX, startY, angle, l);
-      fractals(graphics, startX, startY - l, angle, l-1);
-//      fractals(graphics, X, Y, angle + 20, l);
-//      fractals(graphics, X, Y, angle - 20, l);
+      graphics.setColor(Color.YELLOW);
+      double x = startX + length * Math.cos(Math.toRadians(angle));
+      double y = startY + length * Math.sin(Math.toRadians(angle));
+      graphics.drawLine((int)startX, (int)startY, (int)x, (int)y);
+      fractals(graphics, x, y, angle, length-1, loop - 1);
+      fractals(graphics, x, y, angle + 10, length-1, loop -1);
+      fractals(graphics, x, y, angle - 10, length-1, loop -1);
     }
   }
 
