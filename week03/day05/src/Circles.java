@@ -12,9 +12,12 @@ import javax.swing.JPanel;
 public class Circles {
 
   public static void mainDraw(Graphics graphics) {
-    graphics.setColor(Color.BLACK);
-    drawAcircle(graphics, 150, 150, 600, 600);
     fractals(graphics, 150, 150, 600, 600);
+  }
+
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
   }
 
   public static void drawAcircle(Graphics graphics, int x, int y, int a, int b) {
@@ -25,12 +28,10 @@ public class Circles {
     if (a < 3) {
       return;
     } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       drawAcircle(graphics, x, y, a, b);
-      graphics.setColor(Color.BLUE);
       fractals(graphics, x + (a / 4), y, a / 2, b / 2);
-      graphics.setColor(Color.GREEN);
       fractals(graphics, x + ((a / 2) - (a / 30)), y + ((a / 2) - (a / 8)), a / 2, b / 2);
-      graphics.setColor(Color.RED);
       fractals(graphics, x + (a / 30), y + ((a / 2) - (a / 8)), a / 2, b / 2);
     }
   }
