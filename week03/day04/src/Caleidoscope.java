@@ -7,8 +7,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * Created by georgezsiga on 3/30/17.
  */
 public class Caleidoscope {
+
   public static void mainDraw(Graphics graphics) {
-    drawAbeeHome(graphics, 50, 50, 120, 210);
     fractals(graphics, 50, 50, 120, 210);
   }
 
@@ -41,6 +41,7 @@ public class Caleidoscope {
   }
 
   static class ImagePanel extends JPanel {
+
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
