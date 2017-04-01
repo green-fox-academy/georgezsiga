@@ -10,8 +10,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Hexagon {
 
   public static void mainDraw(Graphics graphics) {
-    drawAbeeHome(graphics, 50, 50, 120, 210);
     fractals(graphics, 50, 50, 120, 210);
+  }
+
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
   }
 
   public static void drawAbeeHome(Graphics graphics, int x, int y, int l, int h) {
@@ -25,18 +29,13 @@ public class Hexagon {
     if (h < 1) {
       return;
     } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       drawAbeeHome(graphics, x, y, l, h);
-      graphics.setColor(Color.BLUE);
       fractals(graphics, x + l - (l / 3), y, l / 3, h / 3);
-      graphics.setColor(Color.RED);
       fractals(graphics, x + (2 * l), y, l / 3, h / 3);
-      graphics.setColor(Color.GREEN);
       fractals(graphics, x + l - (l / 3), y + h + (h / 3), l / 3, h / 3);
-      graphics.setColor(Color.ORANGE);
       fractals(graphics, x + (2 * l), y + h + (h / 3), l / 3, h / 3);
-      graphics.setColor(Color.MAGENTA);
       fractals(graphics, x + (2 * l) + ((l / 3) * 2), y + h - (h / 3), l / 3, h / 3);
-      graphics.setColor(Color.LIGHT_GRAY);
       fractals(graphics, x, y + h - (h / 3), l / 3, h / 3);
     }
   }
