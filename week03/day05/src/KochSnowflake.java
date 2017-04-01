@@ -10,10 +10,11 @@ import javax.swing.JPanel;
  * Created by georgezsiga on 4/1/17.
  */
 public class KochSnowflake {
-
   public static void mainDraw(Graphics graphics) {
 
-    fractals(graphics, 450, 700, 300, 520, 5);
+//    fractals(graphics, 300, 300, +90, 40, 2);
+//    turn(graphics, 300, 300, +90, 40, 2);
+    drawAkoch(graphics, 30, 300, 0,40);
   }
 
   public static int randomColor() {
@@ -21,27 +22,49 @@ public class KochSnowflake {
     return randomColor;
   }
 
-  public static void drawAtriangle(Graphics graphics, int x, int y, int length, int height) {
-    int xpoints[] = {x, x - length, x + length};
-    int ypoints[] = {y, y - height, y - height};
-    int npoints = 3;
-    graphics.drawPolygon(xpoints, ypoints, npoints);
+  public static void drawAkoch(Graphics graphics, double startX, double startY, double angle, double length) {
+    graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+    double x = startX + length * Math.cos(Math.toRadians(angle));
+    double y = startY + length * Math.sin(Math.toRadians(angle));
+    graphics.drawLine((int) startX, (int) startY, (int) x, (int) y);
+    graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+    double x1 = x + length * Math.cos(Math.toRadians(angle-60));
+    double y1 = y + length * Math.sin(Math.toRadians(angle-60));
+    graphics.drawLine((int) x, (int) y, (int) x1, (int) y1);
+    graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+    double x2 = x1 + length * Math.cos(Math.toRadians(angle+60));
+    double y2 = y1 + length * Math.sin(Math.toRadians(angle+60));
+    graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+    double x3 = x2 + length * Math.cos(Math.toRadians(angle));
+    double y3 = y2 + length * Math.sin(Math.toRadians(angle));
+    graphics.drawLine((int) x2, (int) y2, (int) x3, (int) y3);
   }
 
-  public static void fractals(Graphics graphics, int x, int y, int length, int height, int loop) {
-    if (loop < 3) {
-      return;
-    } else {
-      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
-      drawAtriangle(graphics, x, y, length, height);
-
-    }
-  }
-
+//  public static void fractals(Graphics graphics, double startX, double startY, double angle,
+//      int length, int loop) {
+//    if (loop == 0) {
+//      return;
+//    } else {
+//      drawAline(graphics, startX, startY, angle, length);
+//      fractals(graphics, startX, startY, angle - 120, length, loop - 1);
+//      fractals(graphics, startX, startY - length, angle - 60, length, loop - 1);
+//      fractals(graphics, startX, startY - 2*length, angle, length, loop - 1);
+//
+//    }
+//  }
+//  public static void turn(Graphics graphics, double startX, double startY, double angle,
+//      int length, int loop) {
+//    if (loop == 0) {
+//      return;
+//    } else {
+//      fractals(graphics, startX, startY, angle, length, loop);
+//      turn(graphics, startX, startY, angle +60, length, loop);
+//    }
+//  }
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("KochSnowflake");
-    jFrame.setSize(new Dimension(900, 930));
+    jFrame.setSize(new Dimension(600, 630));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new KochSnowflake.ImagePanel());
     jFrame.setLocationRelativeTo(null);
