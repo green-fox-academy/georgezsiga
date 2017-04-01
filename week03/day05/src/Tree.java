@@ -15,17 +15,23 @@ public class Tree {
     fractals(graphics, 450, 870, -90, 40, 15);
   }
 
-  public static void fractals(Graphics graphics, double startX, double startY, double angle, int length, int loop) {
-    if (loop == 0 ) {
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
+  }
+
+  public static void fractals(Graphics graphics, double startX, double startY, double angle,
+      int length, int loop) {
+    if (loop == 0) {
       return;
     } else {
-      graphics.setColor(Color.YELLOW);
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       double x = startX + length * Math.cos(Math.toRadians(angle));
       double y = startY + length * Math.sin(Math.toRadians(angle));
-      graphics.drawLine((int)startX, (int)startY, (int)x, (int)y);
-      fractals(graphics, x, y, angle, length-1, loop - 1);
-      fractals(graphics, x, y, angle + 10, length-1, loop -1);
-      fractals(graphics, x, y, angle - 10, length-1, loop -1);
+      graphics.drawLine((int) startX, (int) startY, (int) x, (int) y);
+      fractals(graphics, x, y, angle, length - 1, loop - 1);
+      fractals(graphics, x, y, angle + 10, length - 1, loop - 1);
+      fractals(graphics, x, y, angle - 10, length - 1, loop - 1);
     }
   }
 
