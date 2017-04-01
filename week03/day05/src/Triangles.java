@@ -9,6 +9,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Triangles {
 
   public static void mainDraw(Graphics graphics) {
+
     fractals(graphics, 450, 700, 300, 260);
   }
 
