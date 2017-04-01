@@ -9,8 +9,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Triangles {
 
   public static void mainDraw(Graphics graphics) {
-    drawAtriangle(graphics, 450, 700, 300, 260);
     fractals(graphics, 450, 700, 300, 260);
+  }
+
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
   }
 
   public static void drawAtriangle(Graphics graphics, int x, int y, int l, int h) {
@@ -24,12 +28,10 @@ public class Triangles {
     if (l < 3) {
       return;
     } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       drawAtriangle(graphics, x, y, l, h);
-      graphics.setColor(Color.BLUE);
       fractals(graphics, x, y, l / 2, h / 2);
-      graphics.setColor(Color.GREEN);
       fractals(graphics, x - (l / 2), y - h, l / 2, h / 2);
-      graphics.setColor(Color.RED);
       fractals(graphics, x + (l / 2), y - h, l / 2, h / 2);
     }
   }
