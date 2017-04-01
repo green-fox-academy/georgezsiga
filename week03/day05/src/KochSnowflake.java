@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 public class KochSnowflake {
   public static void mainDraw(Graphics graphics) {
 
-//    fractals(graphics, 300, 300, +90, 40, 2);
-//    turn(graphics, 300, 300, +90, 40, 2);
-    drawAkoch(graphics, 30, 300, 0,40);
+    fractals(graphics, 30, 300, 0, 40, 2);
+
+//    drawAkoch(graphics, 30, 300, 0,40);
   }
 
   public static int randomColor() {
@@ -40,27 +40,35 @@ public class KochSnowflake {
     graphics.drawLine((int) x2, (int) y2, (int) x3, (int) y3);
   }
 
-//  public static void fractals(Graphics graphics, double startX, double startY, double angle,
-//      int length, int loop) {
-//    if (loop == 0) {
-//      return;
-//    } else {
-//      drawAline(graphics, startX, startY, angle, length);
-//      fractals(graphics, startX, startY, angle - 120, length, loop - 1);
-//      fractals(graphics, startX, startY - length, angle - 60, length, loop - 1);
-//      fractals(graphics, startX, startY - 2*length, angle, length, loop - 1);
-//
-//    }
-//  }
-//  public static void turn(Graphics graphics, double startX, double startY, double angle,
-//      int length, int loop) {
-//    if (loop == 0) {
-//      return;
-//    } else {
-//      fractals(graphics, startX, startY, angle, length, loop);
-//      turn(graphics, startX, startY, angle +60, length, loop);
-//    }
-//  }
+  public static void fractals(Graphics graphics, double startX, double startY, double angle,
+      int length, int loop) {
+    if (loop == 0) {
+      return;
+    } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+      double x = startX + length * Math.cos(Math.toRadians(angle));
+      double y = startY + length * Math.sin(Math.toRadians(angle));
+      graphics.drawLine((int) startX, (int) startY, (int) x, (int) y);
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+      double x1 = x + length * Math.cos(Math.toRadians(angle-60));
+      double y1 = y + length * Math.sin(Math.toRadians(angle-60));
+      graphics.drawLine((int) x, (int) y, (int) x1, (int) y1);
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+      double x2 = x1 + length * Math.cos(Math.toRadians(angle+60));
+      double y2 = y1 + length * Math.sin(Math.toRadians(angle+60));
+      graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+      double x3 = x2 + length * Math.cos(Math.toRadians(angle));
+      double y3 = y2 + length * Math.sin(Math.toRadians(angle));
+      graphics.drawLine((int) x2, (int) y2, (int) x3, (int) y3);
+
+      fractals(graphics, x3, y3, angle - 60, length, loop - 1);
+      fractals(graphics, x3+ length + length/2, y3- 2*length - (length/2
+      ), angle + 60, length, loop - 1);
+      fractals(graphics, x3 + 3*length, y3, angle, length, loop - 1);
+
+    }
+  }
+
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("KochSnowflake");
