@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class KochSnowflake {
   public static void mainDraw(Graphics graphics) {
 
-    fractals(graphics, 30, 300, 0, 40, 2);
+    fractals(graphics, 30, 300, 0, 100, 3);
 
 //    drawAkoch(graphics, 30, 300, 0,40);
   }
@@ -62,6 +62,7 @@ public class KochSnowflake {
       graphics.drawLine((int) x2, (int) y2, (int) x3, (int) y3);
 
       fractals(graphics, x3, y3, angle - 60, length, loop - 1);
+      fractals(graphics, startX, startY, angle, length /3, loop - 1);
       fractals(graphics, x3+ length + length/2, y3- 2*length - (length/2
       ), angle + 60, length, loop - 1);
       fractals(graphics, x3 + 3*length, y3, angle, length, loop - 1);
