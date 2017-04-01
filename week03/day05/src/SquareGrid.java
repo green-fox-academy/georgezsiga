@@ -14,8 +14,12 @@ import javax.swing.JPanel;
 public class SquareGrid {
 
   public static void mainDraw(Graphics graphics) {
-    drawBox(graphics, 400, 400, 100, 20);
     fractals(graphics, 400, 400, 100, 20);
+  }
+
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
   }
 
   public static void drawBox(Graphics graphics, int x, int y, int l, float w) {
@@ -28,14 +32,11 @@ public class SquareGrid {
     if (l < 4) {
       return;
     } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       drawBox(graphics, x, y, l, w);
-      graphics.setColor(Color.GREEN);
       fractals(graphics, x - l, y - l, l / 2, w / 2);
-      graphics.setColor(Color.BLUE);
       fractals(graphics, x + l, y + l, l / 2, w / 2);
-      graphics.setColor(Color.YELLOW);
       fractals(graphics, x + l, y - l, l / 2, w / 2);
-      graphics.setColor(Color.RED);
       fractals(graphics, x - l, y + l, l / 2, w / 2);
     }
   }
