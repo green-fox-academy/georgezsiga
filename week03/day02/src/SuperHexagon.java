@@ -18,13 +18,19 @@ public class SuperHexagon {
     int xpoints[] = {x, x + l, x + (3 * l), x + (4 * l), x + (3 * l), x + l};
     int ypoints[] = {y + h, y, y, y + h, y + (2 * h), y + (2 * h)};
     int npoints = 6;
-    graphics.drawPolygon(xpoints, ypoints, npoints);
+    graphics.fillPolygon(xpoints, ypoints, npoints);
+  }
+
+  public static int randomColor() {
+    int randomColor = (int) (Math.random() * 256);
+    return randomColor;
   }
 
   public static void fractals(Graphics graphics, int x, int y, int length, int height, int loop) {
     if (loop == 0) {
 
     } else {
+      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       drawAbeeHome(graphics, x, y, length, height);
       fractals(graphics, x, y + 2 * height, length, height, loop - 1);
       fractals(graphics, x, y - 2 * height, length, height, loop - 1);
