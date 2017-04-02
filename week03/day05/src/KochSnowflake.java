@@ -12,9 +12,12 @@ import javax.swing.JPanel;
 public class KochSnowflake {
   public static void mainDraw(Graphics graphics) {
     int loop = 4;
-    fractals(graphics, 30, 150, 0, 100, loop);
-    fractals(graphics, 330, 150, 120, 100, loop);
-    fractals(graphics, 180, 410, -120, 100, loop);
+    int length = 100;
+    int startX = 30;
+    int startY = 150;
+    fractals(graphics, startX, startY, 0,length, loop);
+    fractals(graphics, startX + 3*length, startY, 120, length, loop);
+    fractals(graphics, startX + 1.5*length, startY + ((3*length)/2)*1.733, -120, length, loop);
   }
 
   public static int randomColor() {
