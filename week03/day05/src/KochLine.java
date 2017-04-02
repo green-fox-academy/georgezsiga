@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class KochLine {
   public static void mainDraw(Graphics graphics) {
-    fractals(graphics, 30, 300, 0, 100, 4);
+    fractals(graphics, 30, 300, 0, 100, 3);
   }
 
   public static int randomColor() {
@@ -24,20 +24,22 @@ public class KochLine {
     if (loop == 0) {
       return;
     } else {
-      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+      graphics.setColor(Color.BLACK);
+//      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       double x = startX + length * Math.cos(Math.toRadians(angle));
       double y = startY + length * Math.sin(Math.toRadians(angle));
       graphics.drawLine((int) startX, (int) startY, (int) x, (int) y);
 //      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
-////      graphics.setColor(Color.WHITE);
-//      double xw = x + length * Math.cos(Math.toRadians(angle));
-//      double yw = y + length * Math.sin(Math.toRadians(angle));
-//      graphics.drawLine((int) startX, (int) startY, (int) xw, (int) yw);
-      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+      graphics.setColor(Color.WHITE);
+      double xw = x + length * Math.cos(Math.toRadians(angle));
+      double yw = y + length * Math.sin(Math.toRadians(angle));
+      graphics.drawLine((int) startX, (int) startY, (int) xw, (int) yw);
+      graphics.setColor(Color.BLACK);
+//      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       double x1 = x + length * Math.cos(Math.toRadians(angle-60));
       double y1 = y + length * Math.sin(Math.toRadians(angle-60));
       graphics.drawLine((int) x, (int) y, (int) x1, (int) y1);
-      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
+//      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       double x2 = x1 + length * Math.cos(Math.toRadians(angle+60));
       double y2 = y1 + length * Math.sin(Math.toRadians(angle+60));
       graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
@@ -53,10 +55,10 @@ public class KochLine {
 
   //    Don't touch the code below
   public static void main(String[] args) {
-    JFrame jFrame = new JFrame("KochSnowflake");
+    JFrame jFrame = new JFrame("KochLine");
     jFrame.setSize(new Dimension(600, 630));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    jFrame.add(new KochSnowflake.ImagePanel());
+    jFrame.add(new KochLine.ImagePanel());
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
   }
