@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class KochLine {
 
   public static void mainDraw(Graphics graphics) {
-    fractals(graphics, 30, 300, 0, 180, 3);
+    fractals(graphics, 30, 300, 0, 180, 4);
   }
 
   public static int randomColor() {
