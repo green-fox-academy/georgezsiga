@@ -10,14 +10,16 @@ import javax.swing.JPanel;
  * Created by georgezsiga on 4/1/17.
  */
 public class KochSnowflake {
+
   public static void mainDraw(Graphics graphics) {
-    int loop = 4;
-    int length = 100;
+    int loop = 5;
+    int length = 200;
     int startX = 30;
-    int startY = 150;
-    fractals(graphics, startX, startY, 0,length, loop);
-    fractals(graphics, startX + 3*length, startY, 120, length, loop);
-    fractals(graphics, startX + 1.5*length, startY + ((3*length)/2)*1.733, -120, length, loop);
+    int startY = 200;
+    fractals(graphics, startX, startY, 0, length, loop);
+    fractals(graphics, startX + 3 * length, startY, 120, length, loop);
+    fractals(graphics, startX + 1.5 * length, startY + ((3 * length) / 2) * 1.733, -120, length,
+        loop);
   }
 
   public static int randomColor() {
@@ -39,26 +41,26 @@ public class KochSnowflake {
       double yw = y + length * Math.sin(Math.toRadians(angle));
       graphics.drawLine((int) x, (int) y, (int) xw, (int) yw);
       graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
-      double x1 = x + length * Math.cos(Math.toRadians(angle-60));
-      double y1 = y + length * Math.sin(Math.toRadians(angle-60));
+      double x1 = x + length * Math.cos(Math.toRadians(angle - 60));
+      double y1 = y + length * Math.sin(Math.toRadians(angle - 60));
       graphics.drawLine((int) x, (int) y, (int) x1, (int) y1);
-      double x2 = x1 + length * Math.cos(Math.toRadians(angle+60));
-      double y2 = y1 + length * Math.sin(Math.toRadians(angle+60));
+      double x2 = x1 + length * Math.cos(Math.toRadians(angle + 60));
+      double y2 = y1 + length * Math.sin(Math.toRadians(angle + 60));
       graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
       double x3 = x2 + length * Math.cos(Math.toRadians(angle));
       double y3 = y2 + length * Math.sin(Math.toRadians(angle));
       graphics.drawLine((int) x2, (int) y2, (int) x3, (int) y3);
-      fractals(graphics, startX, startY, angle, length/3, loop - 1);
-      fractals(graphics, x2, y2, angle, length/3, loop - 1);
-      fractals(graphics, x, y, angle - 60, length/3, loop - 1);
-      fractals(graphics, x1, y1, angle + 60, length/3, loop - 1);
-          }
+      fractals(graphics, startX, startY, angle, length / 3, loop - 1);
+      fractals(graphics, x2, y2, angle, length / 3, loop - 1);
+      fractals(graphics, x, y, angle - 60, length / 3, loop - 1);
+      fractals(graphics, x1, y1, angle + 60, length / 3, loop - 1);
+    }
   }
 
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("KochSnowflake");
-    jFrame.setSize(new Dimension(600, 630));
+    jFrame.setSize(new Dimension(800, 830));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new KochSnowflake.ImagePanel());
     jFrame.setLocationRelativeTo(null);
