@@ -32,5 +32,6 @@ public class HomeworkExcercisePractice extends JPanel {
     g.setColor(Color.GREEN);
     g.fill3DRect(10, 160, 100, 50, true);
 
+
   }
 }

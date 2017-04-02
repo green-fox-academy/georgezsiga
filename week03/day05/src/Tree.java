@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 public class Tree {
 
   public static void mainDraw(Graphics graphics) {
+
     fractals(graphics, 450, 870, -90, 40, 15);
   }
 
