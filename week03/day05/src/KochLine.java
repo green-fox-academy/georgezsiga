@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class KochLine {
   public static void mainDraw(Graphics graphics) {
-    fractals(graphics, 30, 300, 0, 100, 3);
+    fractals(graphics, 30, 300, 0, 180, 3);
   }
 
   public static int randomColor() {
@@ -33,7 +33,7 @@ public class KochLine {
       graphics.setColor(Color.WHITE);
       double xw = x + length * Math.cos(Math.toRadians(angle));
       double yw = y + length * Math.sin(Math.toRadians(angle));
-      graphics.drawLine((int) startX, (int) startY, (int) xw, (int) yw);
+      graphics.drawLine((int) x, (int) y, (int) xw, (int) yw);
       graphics.setColor(Color.BLACK);
 //      graphics.setColor(new Color(randomColor(), randomColor(), randomColor()));
       double x1 = x + length * Math.cos(Math.toRadians(angle-60));
@@ -68,6 +68,7 @@ public class KochLine {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
+      setBackground(Color.WHITE);
       mainDraw(graphics);
 
     }
