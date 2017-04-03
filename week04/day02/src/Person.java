@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/3/17.
  */
 public class Person {
+
   String name;
   int age;
   String gender;
@@ -27,6 +28,7 @@ public class Person {
     this.age = 30;
     this.gender = "female";
   }
+
   public static void main(String[] args) {
     ArrayList<Person> people = new ArrayList<>();
 
@@ -54,7 +56,7 @@ public class Person {
       sponsor.hire();
     }
 
-    for(Person person : people) {
+    for (Person person : people) {
       person.introduce();
       person.getGoal();
     }
