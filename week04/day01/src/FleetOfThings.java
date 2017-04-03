@@ -24,7 +24,6 @@ public class FleetOfThings {
     // 3. [x] Stand up
     // 4. [x] Eat lunch
 
-
     System.out.println(fleet);
   }
 }
