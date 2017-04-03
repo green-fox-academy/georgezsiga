@@ -27,7 +27,6 @@ public class Person {
     this.age = 30;
     this.gender = "female";
   }
-
   public static void main(String[] args) {
     ArrayList<Person> people = new ArrayList<>();
 
