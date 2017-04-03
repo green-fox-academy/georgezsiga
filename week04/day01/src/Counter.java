@@ -2,18 +2,19 @@
  * Created by georgezsiga on 4/3/17.
  */
 public class Counter {
+
   int value;
   int initialValue;
 
 
   public Counter() {
     value = 0;
-    this.initialValue = value;
+    initialValue = value;
   }
 
   public Counter(int value) {
     this.value = value;
-    this.initialValue = value;
+    initialValue = value;
   }
 
   public void add(int number) {
@@ -22,7 +23,7 @@ public class Counter {
   }
 
   public void add() {
-    value +=1;
+    value += 1;
   }
 
   public int get() {
@@ -30,6 +31,6 @@ public class Counter {
   }
 
   public void reset() {
-  value = initialValue;
+    value = initialValue;
   }
 }
