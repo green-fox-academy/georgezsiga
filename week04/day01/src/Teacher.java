@@ -7,7 +7,6 @@ public class Teacher {
 
   }
 
-  public void answer() {
-
+  public void answer(String answer) {
   }
 }
