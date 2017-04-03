@@ -2,10 +2,8 @@
  * Created by georgezsiga on 4/3/17.
  */
 public class Counter {
-
   int value;
   int initialValue;
-
 
   public Counter() {
     value = 0;
@@ -18,8 +16,7 @@ public class Counter {
   }
 
   public void add(int number) {
-    this.value = value + number;
-
+    value = value + number;
   }
 
   public void add() {
