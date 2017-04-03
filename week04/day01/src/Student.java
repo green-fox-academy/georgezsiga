@@ -7,8 +7,6 @@ public class Student {
 
   }
 
-  public void question(Teacher answer) {
-
-
+  public void question(Teacher teacher) {
   }
 }
