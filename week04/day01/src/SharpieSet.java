@@ -30,14 +30,14 @@ public class SharpieSet {
   }
 
   public void removeTrash() {
-    for (int i = 0; i < sharpies.size();) {
-      if (sharpies.get(i).inkAmount != 0) {
+    for (int i = 0; i < sharpies.size(); ) {
+      if (sharpies.get(i).inkAmount == 0) {
+        sharpies.remove(i);
+      } else {
         i++;
       }
-      sharpies.remove(i);
     }
   }
-
 
   public static void main(String[] args) {
     SharpieSet sharpieSet = new SharpieSet();
