@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/3/17.
  */
 public class Blog {
+
   ArrayList<BlogPost> listOfBlogPosts;
 
   public Blog() {
