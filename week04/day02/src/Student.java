@@ -1,10 +1,7 @@
 /**
  * Created by georgezsiga on 4/3/17.
  */
-public class Student {
-  String name;
-  int age;
-  String gender;
+public class Student extends Person{
   String previousOrganization;
   int skippedDays;
 
@@ -14,6 +11,10 @@ public class Student {
 
   public void getGoal() {
     System.out.println("Be a junior software developer");
+  }
+
+  public void skipDays(int numberOfDays) {
+    skippedDays = skippedDays + numberOfDays;
   }
 
   public Student(String name, int age, String gender, String previousOrganization) {
