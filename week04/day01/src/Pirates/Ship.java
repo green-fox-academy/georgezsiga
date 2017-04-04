@@ -1,5 +1,7 @@
 package Pirates;
 
+import static java.lang.System.out;
+
 import java.util.ArrayList;
 
 /**
@@ -15,12 +17,21 @@ public class Ship {
 
   public Ship() {
     crew = new ArrayList<>();
+    id = shipIDsCreated++;
+  }
+
+  public Captain getCaptain() {
+    return captain;
+  }
+
+  public Parrot getParrot() {
+    return parrot;
   }
 
   public void fillShip() {
-    Captain captain = new Captain();
+    captain = new Captain();
     crew.add(captain);
-    Parrot parrot = new Parrot("George");
+    parrot = new Parrot("George");
     crew.add(parrot);
     int piratesInTheCrew = (int) (Math.random() * 100);
     for (int i = 0; i < piratesInTheCrew; i++) {
@@ -30,7 +41,7 @@ public class Ship {
   }
 
   public void show() {
-    System.out.println("Ship id: " + id + "`s captain is " + captain.getRumsDrank() + " so he is " + captain.getState() + " Alive crew: " + getAliveCrewCount() + "and a parrot");
+    System.out.println("Ship id: " + id + "`s captain has drunk " + captain.getRumsDrank() + " rum, so he is " + captain.getState() + ". Alive crew: " + getAliveCrewCount() + " and a parrot, called: " + parrot.name + ".");
   }
 
   private int getAliveCrewCount() {
@@ -63,7 +74,7 @@ public class Ship {
   }
 
   public void winner() {
-    System.out.println("Yehaa.. Party time!! Let`s get drunk! We have " + randomNumberOfRums());
+    out.println("Yehaa.. Party time!! Let`s get drunk! We have " + randomNumberOfRums());
     captain.drinkSomeRum();
     parrot.drinkSomeRum();
   }
