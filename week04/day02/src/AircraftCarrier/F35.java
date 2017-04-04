@@ -11,6 +11,12 @@ public class F35 extends Aircrafts{
     ammo = 0;
   }
 
+  public int flight() {
+    damage = ammo*baseDamage;
+    ammo = 0;
+    return damage;
+  }
+
   public String getType() {
     this.name = "F35";
     return name;
