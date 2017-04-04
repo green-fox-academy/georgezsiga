@@ -19,6 +19,18 @@ public class AircraftCarrier {
   }
 
   public void addPlanes(String plane) {
-
+    if (airplaneSlots == 0) {
+      System.out.println("Sorry the Aircraft carrier is full. No more room for new planes");
+    } else if (plane == "F16") {
+      F16 F16 = new F16();
+      listOfAirplanes.add(F16);
+      airplaneSlots -= 1;
+    } else {
+      F35 F35 = new F35();
+      listOfAirplanes.add(F35);
+      airplaneSlots -= 1;
+    }
   }
+
+
 }
