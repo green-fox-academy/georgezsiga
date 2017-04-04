@@ -2,7 +2,7 @@
  * Created by georgezsiga on 4/4/17.
  */
 public class Pirate {
-  int rumsDrank;
+  private int rumsDrank;
   boolean isPassedOut, isDead;
 
   public Pirate() {
@@ -35,6 +35,14 @@ public class Pirate {
   public void die() {
     isDead = true;
   }
+
+  public int getRumsDrank() {
+    return rumsDrank;
+  }
+
+  public String getState() {
+    return (isDead) ? "dead" : (isPassedOut) ? "passed out" : "alive";
+    }
 
   public void brawl(Pirate otherPirate) {
     int brawlResult = (int) Math.random() *3;
