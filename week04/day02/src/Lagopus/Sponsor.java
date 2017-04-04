@@ -1,10 +1,10 @@
+package Lagopus;
+
 /**
  * Created by georgezsiga on 4/3/17.
  */
-public class Sponsor {
-  String name;
-  int age;
-  String gender;
+public class Sponsor extends Person {
+
   String company;
   int hiredStudents;
 
@@ -21,17 +21,13 @@ public class Sponsor {
   }
 
   public Sponsor(String name, int age, String gender, String company) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    super(name, age, gender);
     this.company = company;
     this.hiredStudents = 0;
   }
 
   public Sponsor() {
-    this.name = "Jane Doe";
-    this.age = 30;
-    this.gender = "female";
+    super();
     this.company = "Google";
     this.hiredStudents = 0;
   }
