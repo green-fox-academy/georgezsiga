@@ -3,16 +3,14 @@ package Garden;
 /**
  * Created by georgezsiga on 4/4/17.
  */
-public class Tree extends Garden {
+public class Tree extends Plant {
 
-
-
-  public Tree(String color, Double waterAmount) {
+  public Tree(String color, double waterAmount) {
     this.color = color;
     this.waterAmount = waterAmount;
   }
 
-  public void wateringTree(Double wateringAmount) {
+  public void watering(double wateringAmount) {
     if (waterAmount < 10) {
       waterAmount = waterAmount + (wateringAmount * 0.4);
     }
