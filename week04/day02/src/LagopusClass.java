@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by georgezsiga on 4/4/17.
  */
-public class LagopusClass {
+public class LagopusClass extends Person {
   String className;
   List students;
   List mentors;
@@ -22,7 +23,7 @@ public class LagopusClass {
 
   public LagopusClass(String className) {
     this.className = className;
-    this.students = new List;
-    this.mentors = new List;
+    this.students = new ArrayList();
+    this.mentors = new ArrayList();
   }
 }
