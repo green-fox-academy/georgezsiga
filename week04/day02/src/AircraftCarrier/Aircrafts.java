@@ -5,16 +5,15 @@ package AircraftCarrier;
  */
 public class Aircrafts {
   int ammo;
+  int damage;
   String name;
 
-  public void flight() {
+  public void refill(int refillAmmo) {
 
   }
 
-  public void refill() {
-
+  public int flight() {
+    return damage;
   }
-
-
 
 }
