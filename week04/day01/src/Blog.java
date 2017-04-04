@@ -24,8 +24,8 @@ public class Blog {
     listOfBlogPosts.add(blog3);
   }
 
-  public void delete(int index) {
-    blogList.remove(index);
+  public void deleteBlogPost(int index) {
+    listOfBlogPosts.remove(index);
   }
 
   public void update(int index, BlogPost blog) {
