@@ -4,7 +4,8 @@ package Pirates;
  * Created by georgezsiga on 4/4/17.
  */
 public class Pirate {
-  public int rumsDrank;
+
+  private int rumsDrank;
   public boolean isPassedOut, isDead;
 
   public Pirate() {
@@ -17,7 +18,7 @@ public class Pirate {
     if (isDead) {
       System.out.println("he is dead");
     } else {
-      rumsDrank +=1;
+      rumsDrank++;
     }
   }
 
@@ -54,10 +55,10 @@ public class Pirate {
 
   public String getState() {
     return (isDead) ? "dead" : (isPassedOut) ? "passed out" : "alive";
-    }
+  }
 
   public void brawl(Pirate otherPirate) {
-    int brawlResult = (int) Math.random() *3;
+    int brawlResult = (int) Math.random() * 3;
     if (brawlResult == 0) {
       die();
     } else if (brawlResult == 1) {
