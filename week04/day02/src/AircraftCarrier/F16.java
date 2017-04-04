@@ -11,6 +11,12 @@ public class F16 extends Aircrafts {
     ammo = 0;
   }
 
+  public int flight() {
+    damage = ammo*baseDamage;
+    ammo = 0;
+    return damage;
+  }
+
   public String getType() {
     this.name = "F16";
     return name;
