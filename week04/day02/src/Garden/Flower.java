@@ -18,9 +18,9 @@ public class Flower extends Plant {
 
   public void status() {
     if (waterAmount < 5) {
-      System.out.println("The " + color + " flower needs water");
+      System.out.println("The " + color + " Flower needs water");
     } else {
-      System.out.println("The " + color + " flower doesn`t need water");
+      System.out.println("The " + color + " Flower doesn`t need water");
     }
   }
 }
