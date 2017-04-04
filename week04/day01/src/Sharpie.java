@@ -5,7 +5,8 @@ public class Sharpie {
 
   String color;
   float width;
-  float inkAmount;
+  int inkAmount;
+  String name;
 
   @Override
   public String toString() {
@@ -18,7 +19,8 @@ public class Sharpie {
   public Sharpie(String color, float width) {
     this.color = color;
     this.width = width;
-    inkAmount = 100;
+    inkAmount = 0;
+    this.name = color;
   }
 
   public void use() {
@@ -26,8 +28,7 @@ public class Sharpie {
   }
 
   public static void main(String[] args) {
-    Sharpie blue = new Sharpie("blue", 12);
-    blue.use();
+    Sharpie blue = new Sharpie("blue", 12f);
     System.out.println(blue);
   }
 }

@@ -1,3 +1,5 @@
+package Lagopus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class LagopusClass extends Person {
     this.students.add(student);
   }
 
-  public void addStudent(Mentor mentor) {
+  public void addMentor(Mentor mentor) {
     this.mentors.add(mentor);
   }
 

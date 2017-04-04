@@ -46,6 +46,4 @@ public class SharpieSet {
     sharpieSet.removeTrash();
     System.out.println(sharpieSet.sharpies);
   }
-
-
 }

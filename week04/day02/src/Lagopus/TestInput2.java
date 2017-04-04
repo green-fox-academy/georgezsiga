@@ -1,11 +1,19 @@
+package Lagopus;
+
+import Lagopus.LagopusClass;
+import Lagopus.Mentor;
+import Lagopus.Person;
+import Lagopus.Sponsor;
+import Lagopus.Student;
 import java.util.ArrayList;
 
 /**
  * Created by georgezsiga on 4/4/17.
  */
-public class TestInput {
+public class TestInput2 {
 
   public static void main(String[] args) {
+
     ArrayList<Person> people = new ArrayList<>();
 
     Person mark = new Person("Mark", 46, "male");
@@ -36,5 +44,12 @@ public class TestInput {
       person.introduce();
       person.getGoal();
     }
+
+    LagopusClass badass = new LagopusClass("BADA55");
+    badass.addStudent(student);
+    badass.addStudent(john);
+    badass.addMentor(mentor);
+    badass.addMentor(gandhi);
+    badass.info();
   }
 }

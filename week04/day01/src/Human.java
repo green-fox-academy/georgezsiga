@@ -7,9 +7,29 @@ public class Human {
   int age;
   int heightInCms;
   String eyeColor;
+  int id;
+  static int counter = 0;     // belongs to the class, not the object because of the static
 
   public Human() {
 
+  }
+  public Human(String name) {
+    this.name = name;
+    counter++;
+    id = counter++;             // have the number when created...
+  }
+  void putInLenses() {
+    eyeColor = "purple";
+  }
+  void putInLenses(String color) {
+    eyeColor = color;
+  }
+  void putInLenses(int number) {
+
+  }
+
+  void baptism(String name) {
+    this.name = name;
   }
 
   public void speak() {
