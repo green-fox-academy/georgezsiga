@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Ship {
   static int shipIDsCreated = 1;
   ArrayList<Pirate> crew;
-  int id, shipScore;
+  int id, shipScore, alivePirates;
   Captain captain;
   Parrot parrot;
   boolean isThisShipWins;
@@ -51,5 +51,20 @@ public class Ship {
 
   public void calculateShipScore() {
     shipScore = getAliveCrewCount() - captain.getRumsDrank();
+  }
+
+  public void losses() {
+    alivePirates = getAliveCrewCount() - ((int) Math.random() * getAliveCrewCount());
+  }
+
+  public int randomNumberOfRums() {
+    int numberOfRums = (int) Math.random() * (alivePirates*5);
+    return numberOfRums;
+  }
+
+  public void winner() {
+    System.out.println("Yehaa.. Party time!! Let`s get drunk! We have " + randomNumberOfRums());
+    captain.drinkSomeRum();
+    parrot.drinkSomeRum();
   }
 }
