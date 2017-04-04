@@ -17,6 +17,14 @@ public class F35 extends Aircrafts{
     return damage;
   }
 
+  public void refill(int refillAmmo) {
+    if (refillAmmo >= maxAmmo - ammo) {
+      ammo = maxAmmo;
+    } else {
+      ammo = ammo + refillAmmo;
+    }
+  }
+
   public String getType() {
     this.name = "F35";
     return name;
