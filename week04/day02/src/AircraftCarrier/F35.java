@@ -9,7 +9,7 @@ public class F35 extends Aircrafts{
     super(12,50);
   }
 
-  public int flight() {
+  public int fight() {
     damage = ammo*baseDamage;
     ammo = 0;
     return damage;
@@ -29,6 +29,6 @@ public class F35 extends Aircrafts{
   }
 
   public void getStatus() {
-    System.out.println("Type: " + getType() + ", Ammo: " + ammo + ", Base Damage: " + baseDamage + ", All Damage: " + (ammo*baseDamage));
+    System.out.println("Type: " + getType() + ", Ammo: " + ammo + ", Base Damage: " + baseDamage + ", All Damage: " + damage);
   }
 }
