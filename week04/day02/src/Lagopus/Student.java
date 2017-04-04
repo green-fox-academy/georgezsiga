@@ -1,7 +1,11 @@
+package Lagopus;
+
+import Lagopus.Person;
+
 /**
  * Created by georgezsiga on 4/3/17.
  */
-public class Student extends Person{
+public class Student extends Person {
   String previousOrganization;
   int skippedDays;
 
@@ -18,17 +22,13 @@ public class Student extends Person{
   }
 
   public Student(String name, int age, String gender, String previousOrganization) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    super(name, age, gender);
     this.previousOrganization = previousOrganization;
     this.skippedDays = 0;
   }
 
   public Student() {
-    this.name = "Jane Doe";
-    this.age = 30;
-    this.gender = "female";
+    super();
     this.previousOrganization = "The School of Life";
     this.skippedDays = 0;
   }
