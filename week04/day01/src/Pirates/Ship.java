@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/4/17.
  */
 public class Ship {
+
   static int shipIDsCreated = 1;
   ArrayList<Pirate> crew;
   int id, shipScore, alivePirates;
@@ -36,12 +37,15 @@ public class Ship {
     int piratesInTheCrew = (int) (Math.random() * 100);
     for (int i = 0; i < piratesInTheCrew; i++) {
       Pirate p = new Pirate();
-    crew.add(p);
+      crew.add(p);
     }
   }
 
   public void show() {
-    System.out.println("Ship id: " + id + "`s captain has drunk " + captain.getRumsDrank() + " rum, so he is " + captain.getState() + ". Alive crew: " + getAliveCrewCount() + " and a parrot, called: " + parrot.name + ".");
+    System.out.println(
+        "Ship id: " + id + "`s captain has drunk " + captain.getRumsDrank() + " rum, so he is "
+            + captain.getState() + ". Alive crew: " + getAliveCrewCount()
+            + " and a parrot, called: " + parrot.name + ".");
   }
 
   private int getAliveCrewCount() {
@@ -60,22 +64,37 @@ public class Ship {
     }
   }
 
-  public void calculateShipScore() {
-    shipScore = getAliveCrewCount() - captain.getRumsDrank();
-  }
 
   public void losses() {
     alivePirates = getAliveCrewCount() - ((int) Math.random() * getAliveCrewCount());
   }
 
-  public int randomNumberOfRums() {
-    int numberOfRums = (int) Math.random() * (alivePirates*5);
-    return numberOfRums;
-  }
-
   public void winner() {
-    out.println("Yehaa.. Party time!! Let`s get drunk! We have " + randomNumberOfRums());
+    int numberOfRums = (int) Math.random() * (alivePirates * 5);
+    System.out.println(
+        "Yehaa.. Party time!! Let`s get drunk! We have " + numberOfRums + " barrel of rums.");
     captain.drinkSomeRum();
     parrot.drinkSomeRum();
+  }
+
+  public boolean battle(Ship othership) {
+    show();
+    System.out.println("Will attack this ship:");
+    othership.show();
+    System.out.println();
+
+    int thisShipScore = this.getAliveCrewCount() - captain.getRumsDrank();
+    int otherShipScore = othership.getAliveCrewCount() - othership.captain.getRumsDrank();
+
+    Ship wins = (thisShipScore >= otherShipScore) ? this : othership;
+    Ship lose = (thisShipScore < otherShipScore) ? this : othership;
+
+    show();
+    System.out.println("Has won the battle");
+
+    lose.losses();
+    wins.winner();
+
+    return (thisShipScore >= otherShipScore) ? true : false;
   }
 }
