@@ -4,6 +4,7 @@ package AircraftCarrier;
  * Created by georgezsiga on 4/4/17.
  */
 public class Aircrafts {
+
   int ammo;
   int damage;
   int maxAmmo;
@@ -30,13 +31,12 @@ public class Aircrafts {
     return ammo;
   }
 
+
   public int getMaxAmmo() {
     return maxAmmo;
   }
 
-
-
-  public int flight() {
+  public int fight() {
     return damage;
   }
 
