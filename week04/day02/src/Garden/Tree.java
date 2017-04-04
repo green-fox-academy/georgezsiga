@@ -11,8 +11,8 @@ public class Tree extends Garden {
   }
 
   public void wateringTree(Double wateringAmount) {
-    if (waterAmount < 5) {
-      waterAmount = waterAmount + (wateringAmount*0.75);
+    if (waterAmount < 10) {
+      waterAmount = waterAmount + (wateringAmount*0.4);
     }
   }
 }
