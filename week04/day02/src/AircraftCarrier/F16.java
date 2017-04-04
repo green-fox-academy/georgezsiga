@@ -9,8 +9,7 @@ public class F16 extends Aircrafts {
     super(8, 30);
   }
 
-
-  public int flight() {
+  public int fight() {
     damage = ammo * baseDamage;
     ammo = 0;
     return damage;
@@ -32,7 +31,6 @@ public class F16 extends Aircrafts {
   public void getStatus() {
     System.out.println(
         "Type: " + getType() + ", Ammo: " + ammo + ", Base Damage: " + baseDamage + ", All Damage: "
-            + (ammo * baseDamage));
+            + damage);
   }
-
 }
