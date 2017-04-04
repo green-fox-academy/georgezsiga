@@ -1,11 +1,10 @@
+package Lagopus;
+
 /**
  * Created by georgezsiga on 4/3/17.
  */
-public class Mentor {
+public class Mentor extends Person {
 
-  String name;
-  int age;
-  String gender;
   String level;
 
   public void introduce() {
@@ -17,16 +16,12 @@ public class Mentor {
   }
 
   public Mentor(String name, int age, String gender, String level) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    super(name, age, gender);
     this.level = level;
   }
 
   public Mentor() {
-    this.name = "Jane Doe";
-    this.age = 30;
-    this.gender = "female";
+    super();
     this.level = "intermediate";
   }
 }
