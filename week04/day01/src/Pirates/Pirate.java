@@ -1,9 +1,11 @@
+package Pirates;
+
 /**
  * Created by georgezsiga on 4/4/17.
  */
 public class Pirate {
-  private int rumsDrank;
-  boolean isPassedOut, isDead;
+  public int rumsDrank;
+  public boolean isPassedOut, isDead;
 
   public Pirate() {
     rumsDrank = 0;
@@ -14,6 +16,8 @@ public class Pirate {
   public void drinkSomeRum() {
     if (isDead) {
       System.out.println("he is dead");
+    } else {
+      rumsDrank +=1;
     }
   }
 
@@ -26,6 +30,14 @@ public class Pirate {
       System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
       passOut();
     }
+  }
+
+  public boolean isPassedOut() {
+    return isPassedOut;
+  }
+
+  public boolean isDead() {
+    return isDead;
   }
 
   private void passOut() {
