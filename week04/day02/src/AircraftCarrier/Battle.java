@@ -5,10 +5,6 @@ package AircraftCarrier;
  */
 public class Battle {
 
-
-  public void fight() {
-  }
-
   public static void main(String[] args) {
     AircraftCarrier ship1 = new AircraftCarrier(40000);
     ship1.addPlanes("F35");
@@ -24,8 +20,13 @@ public class Battle {
     ship2.addPlanes("F35");
     ship2.addPlanes("F16");
     ship2.fill();
+    ship2.getPlanesStatus();
 
-
+    System.out.println("BATTLE TIME");
+    ship1.fight(ship2);
+    ship1.getPlanesStatus();
+    System.out.println();
+    ship2.getPlanesStatus();
   }
 }
 
