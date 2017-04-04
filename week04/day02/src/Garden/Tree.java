@@ -18,9 +18,9 @@ public class Tree extends Plant {
 
   public void status() {
     if (waterAmount < 10) {
-      System.out.println("The " + color + " tree needs water");
+      System.out.println("The " + color + " Tree needs water");
     } else {
-      System.out.println("The " + color + " tree doesn`t need water");
+      System.out.println("The " + color + " Tree doesn`t need water");
     }
   }
 }
