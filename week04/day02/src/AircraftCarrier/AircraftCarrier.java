@@ -9,6 +9,7 @@ public class AircraftCarrier {
   int airplaneSlots;
   int ammoStoreage;
   int health;
+  int totalDamage;
   ArrayList<Aircrafts> listOfAirplanes;
 
   public AircraftCarrier(int ammoStoreage) {
@@ -32,5 +33,36 @@ public class AircraftCarrier {
     }
   }
 
+  public void fill() {
+    for (Aircrafts planes : listOfAirplanes) {
+      planes.refill(ammoStoreage);
+    }
+  }
 
+  public void fight() {
+
+  }
+
+  public void getPlanesStatus() {
+    for (Aircrafts planes : listOfAirplanes) {
+      totalDamage = totalDamage + planes.damage;
+    }
+    System.out.println("Aircraft count: " + listOfAirplanes.size() + ", Ammo Storage: " + ammoStoreage + ", Total damage: " + totalDamage);
+    System.out.println("Aircrafts:");
+    for (Aircrafts planes : listOfAirplanes) {
+      planes.getStatus();
+    }
+    System.out.println();
+  }
+
+  public static void main(String[] args) {
+    AircraftCarrier ship1 = new AircraftCarrier(45333);
+    ship1.addPlanes("F35");
+    ship1.addPlanes("F35");
+    ship1.addPlanes("F35");
+    ship1.addPlanes("F16");
+    ship1.addPlanes("F16");
+    ship1.fill();
+    ship1.getPlanesStatus();
+  }
 }
