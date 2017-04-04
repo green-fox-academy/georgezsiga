@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/4/17.
  */
 public class AircraftCarrier {
+
   int airplaneSlots;
   int ammoStoreage;
   int health;
@@ -16,7 +17,7 @@ public class AircraftCarrier {
   public AircraftCarrier(int ammoStoreage) {
     this.ammoStoreage = ammoStoreage;
     this.avaiableAmmo = ammoStoreage;
-    this.health = 1000;
+    this.health = 10000;
     this.airplaneSlots = 10;
     this.listOfAirplanes = new ArrayList<Aircrafts>();
   }
@@ -35,6 +36,13 @@ public class AircraftCarrier {
     }
   }
 
+  public void fight(AircraftCarrier otherShip) {
+    for (Aircrafts planes : listOfAirplanes) {
+      totalDamage = totalDamage + planes.fight();
+    }
+    otherShip.health = otherShip.health - totalDamage;
+  }
+
   public void fill() {
     int filling = 0;
     for (Aircrafts planes : listOfAirplanes) {
@@ -48,15 +56,13 @@ public class AircraftCarrier {
     }
   }
 
-  public void fight() {
-
-  }
-
   public void getPlanesStatus() {
     for (Aircrafts planes : listOfAirplanes) {
-      totalDamage = totalDamage + planes.damage;
+      totalDamage = totalDamage + planes.fight();
     }
-    System.out.println("Aircraft count: " + listOfAirplanes.size() + ", Ammo Storage: " + avaiableAmmo + ", Total damage: " + totalDamage);
+    System.out.println(
+        "Aircraft count: " + listOfAirplanes.size() + ", Ammo Storage: " + avaiableAmmo
+            + ", Total damage: " + totalDamage);
     System.out.println("Aircrafts:");
     for (Aircrafts planes : listOfAirplanes) {
       planes.getStatus();
@@ -67,17 +73,5 @@ public class AircraftCarrier {
     } else {
       System.out.println("Good job Jim, your health is: " + health);
     }
-  }
-
-  public static void main(String[] args) {
-    AircraftCarrier ship1 = new AircraftCarrier(40000);
-    ship1.addPlanes("F35");
-    ship1.addPlanes("F35");
-    ship1.addPlanes("F35");
-    ship1.addPlanes("F16");
-    ship1.addPlanes("F16");
-    ship1.fill();
-    ship1.getPlanesStatus();
-
   }
 }
