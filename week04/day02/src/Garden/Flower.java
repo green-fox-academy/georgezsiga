@@ -3,14 +3,14 @@ package Garden;
 /**
  * Created by georgezsiga on 4/4/17.
  */
-public class Flower extends Garden {
+public class Flower extends Plant {
 
-  public Flower(String color, Double waterAmount) {
+  public Flower(String color, double waterAmount) {
     this.color = color;
     this.waterAmount = waterAmount;
   }
 
-  public void wateringFlower(Double wateringAmount) {
+  public void watering(double wateringAmount) {
     if (waterAmount < 5) {
       waterAmount = waterAmount + (wateringAmount * 0.75);
     }
@@ -23,5 +23,4 @@ public class Flower extends Garden {
       System.out.println("The " + color + " flower doesn`t need water");
     }
   }
-
 }
