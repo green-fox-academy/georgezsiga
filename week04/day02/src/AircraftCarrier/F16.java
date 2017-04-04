@@ -5,12 +5,10 @@ package AircraftCarrier;
  */
 public class F16 extends Aircrafts {
 
-  int maxAmmo = 8;
-  int baseDamage = 30;
-
-  public void F16() {
-    ammo = 0;
+  public F16() {
+    super(8, 30);
   }
+
 
   public int flight() {
     damage = ammo * baseDamage;
