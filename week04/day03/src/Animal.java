@@ -37,12 +37,11 @@ public class Animal {
     if (thirst > 0) {
       thirst -= 1;
       hunger += 1;
-      int[]letsPlay = {thirst, hunger};
+      int[] letsPlay = {thirst, hunger};
       return letsPlay;
     } else {
       System.out.println("The " + name + " died of thirst");
-      thirst -= 1;
-      int[]letsPlay = {thirst, hunger};
+      int[] letsPlay = {thirst, hunger};
       return letsPlay;
     }
   }
