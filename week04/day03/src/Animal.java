@@ -19,7 +19,7 @@ public class Animal {
       return hunger;
     } else {
       System.out.println("The " + name + " died of hunger");
-      return 0;
+      return hunger;
     }
   }
 
@@ -29,12 +29,21 @@ public class Animal {
       return thirst;
     } else {
       System.out.println("The " + name + " died of thirst");
-      return 0;
+      return thirst;
     }
   }
 
-  public void play() {
-    hunger += 1;
-    thirst -= 1;
+  public int[] play() {
+    if (thirst > 0) {
+      thirst -= 1;
+      hunger += 1;
+      int[]letsPlay = {thirst, hunger};
+      return letsPlay;
+    } else {
+      System.out.println("The " + name + " died of thirst");
+      thirst -= 1;
+      int[]letsPlay = {thirst, hunger};
+      return letsPlay;
+    }
   }
 }
