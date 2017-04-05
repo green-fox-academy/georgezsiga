@@ -4,10 +4,19 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/5/17.
  */
 public class Sum {
+
   ArrayList<Integer> list;
+  int sum;
+
+  public Sum(ArrayList<Integer> name) {
+    this.list = name;
+  }
 
   public Sum() {
-    this.list = new ArrayList<>();
+  }
+
+  public ArrayList<Integer> getList() {
+    return list;
   }
 
   public void addIntegers(int a) {
@@ -15,11 +24,9 @@ public class Sum {
   }
 
   public int sumList() {
-    int sum = 0;
     for (Integer aint : list) {
       sum = sum + aint;
     }
     return sum;
   }
-
 }
