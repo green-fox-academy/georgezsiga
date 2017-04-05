@@ -23,8 +23,14 @@ public class Animal {
     }
   }
 
-  public void drink() {
-    thirst -= 1;
+  public int drink() {
+    if (thirst > 0) {
+      thirst -= 1;
+      return thirst;
+    } else {
+      System.out.println("The " + name + " died of thirst");
+      return 0;
+    }
   }
 
   public void play() {
