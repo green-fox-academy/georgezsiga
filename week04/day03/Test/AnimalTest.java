@@ -38,6 +38,22 @@ class AnimalTest {
 
   @Test
   void play() {
+    animalTest.hunger = 10;
+    animalTest.thirst = 10;
+    int hunger = 9;
+    int thirst = 9;
+    int[]play = {hunger, thirst};
+    assertArrayEquals(play, animalTest.play());
+  }
+
+  @Test
+  void playEmpty() {
+    animalTest.hunger = 10;
+    animalTest.thirst = 0;
+    int thirst = 0;
+    int hunger = 9;
+    int[]play = {hunger, thirst};
+    assertArrayEquals(play, animalTest.play());
   }
 
 }
