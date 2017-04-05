@@ -10,6 +10,16 @@ public class Sum {
     this.list = new ArrayList<>();
   }
 
+  public void addIntegers(int a) {
+    list.add(a);
+  }
 
+  public int sumList() {
+    int sum = 0;
+    for (Integer aint : list) {
+      sum = sum + aint;
+    }
+    return sum;
+  }
 
 }
