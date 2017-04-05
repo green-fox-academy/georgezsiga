@@ -31,22 +31,23 @@ class ExtensionTest {
   }
 
   @Test
-  void testMedian_four() {
-    assertEquals(5, extension.median(Arrays.asList(7,5,3,5)));
-  }
-  @Test
   void testMedian_five() {
-    assertEquals(3, extension.median(Arrays.asList(1,2,3,4,5)));
+    assertEquals(4, extension.median(Arrays.asList(1,4,2,7,5)));
   }
 
   @Test
-  void testMedian_d1() {
-    assertEquals(4.5, extension.median(Arrays.asList(1,2,3,4,5,6,7,8)));
+  void testMedian_four() {
+    assertEquals(5, extension.median(Arrays.asList(7,5,3,5)));
   }
 
   @Test
   void testMedian_double2() {
     assertEquals(4, extension.median(Arrays.asList(1,1,10,2,20,6)));
+  }
+
+  @Test
+  void testMedian_d1() {
+    assertEquals(4.5, extension.median(Arrays.asList(1,2,3,4,5,6,7,8)));
   }
 
   @Test
@@ -69,18 +70,30 @@ class ExtensionTest {
     assertEquals("lavagovopuvus", extension.translate("lagopus"));
   }
 
-//  @Test
-//  void testTranslate_a() {
-//    assertEquals("ava", extension.translate("a"));
-//  }
+  @Test
+  void testTranslate_a() {
+    assertEquals("ava", extension.translate("a"));
+  }
+
+  @Test
+  void testTranslate_A() {
+    assertEquals("ava", extension.translate("A"));
+  }
+
+  @Test
+  void testTranslate_ada() {
+    assertEquals("avadava", extension.translate("ada"));
+  }
+
   @Test
   void testTranslate_b() {
     assertEquals("b", extension.translate("b"));
   }
-//  @Test
-//  void testTranslate_aaa() {
-//    assertEquals("avaavaava", extension.translate("aaa"));
-//  }
+
+  @Test
+  void testTranslate_aaa() {
+    assertEquals("avaavaava", extension.translate("aaa"));
+  }
 
   @Test
   void testTranslate_bbb() {
