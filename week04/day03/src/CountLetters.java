@@ -23,5 +23,4 @@ public class CountLetters {
     }
     return dictionaryMap;
   }
-
 }
