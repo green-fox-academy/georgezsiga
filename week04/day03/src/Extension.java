@@ -11,9 +11,9 @@ public class Extension {
   }
 
   int maxOfThree(int a, int b, int c) {
-    if (a > b && a > c) {
+    if (a >= b && a >= c) {
       return a;
-    } else if (b > a && b > c ){
+    } else if (b >= a && b >= c){
       return b;
     } else {
       return c;
@@ -23,15 +23,15 @@ public class Extension {
   double median(List<Integer> pool) {
     Collections.sort(pool);
 
-    if (pool.size() % 2 != 0) {
-      int median;
-      median = pool.get((pool.size()-1) / 2);
-      return (double) median;
+    if (pool.size() % 2 == 1) {
+      double median;
+      median = pool.get(pool.size() / 2);
+      return median;
     } else {
-      int a = pool.size();
-      int median;
-      median = (pool.get((a - 1) / 2) + pool.get((a + 1) / 2))/2;
-      return (double) median;
+      double a = pool.get(pool.size());
+      double median;
+      median = ((a / 2) - 1 + (a / 2)/2);
+      return median;
     }
   }
 
