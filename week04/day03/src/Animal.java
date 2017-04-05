@@ -13,8 +13,14 @@ public class Animal {
     this.name = name;
   }
 
-  public void eat() {
-    hunger -= 1;
+  public int eat() {
+    if (hunger > 0) {
+      hunger -= 1;
+      return hunger;
+    } else {
+      System.out.println("The " + name + " died of hunger");
+      return 0;
+    }
   }
 
   public void drink() {
