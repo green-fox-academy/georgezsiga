@@ -81,6 +81,11 @@ class ExtensionTest {
   }
 
   @Test
+  void testTranslate_é() {
+    assertEquals("évé", extension.translate("é"));
+  }
+
+  @Test
   void testTranslate_ada() {
     assertEquals("avadava", extension.translate("ada"));
   }
