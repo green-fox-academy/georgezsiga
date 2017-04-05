@@ -10,7 +10,6 @@ public class Apple {
 
   public String getApple() {
     System.out.println(apple);
-    return apple;
+    return apple + apple;
   }
-
 }
