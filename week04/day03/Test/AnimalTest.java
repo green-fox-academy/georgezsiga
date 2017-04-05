@@ -40,9 +40,9 @@ class AnimalTest {
   void play() {
     animalTest.hunger = 10;
     animalTest.thirst = 10;
-    int hunger = 9;
+    int hunger = 11;
     int thirst = 9;
-    int[]play = {hunger, thirst};
+    int[]play = {thirst, hunger};
     assertArrayEquals(play, animalTest.play());
   }
 
@@ -51,8 +51,8 @@ class AnimalTest {
     animalTest.hunger = 10;
     animalTest.thirst = 0;
     int thirst = 0;
-    int hunger = 9;
-    int[]play = {hunger, thirst};
+    int hunger = 10;
+    int[]play = {thirst, hunger};
     assertArrayEquals(play, animalTest.play());
   }
 
