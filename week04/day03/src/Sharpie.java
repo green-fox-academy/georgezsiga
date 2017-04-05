@@ -15,7 +15,6 @@ public class Sharpie {
     this.name = color;
   }
 
-
   public float use() {
     if (inkAmount > 0) {
       inkAmount -= 1;
