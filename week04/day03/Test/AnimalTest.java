@@ -16,7 +16,24 @@ class AnimalTest {
   }
 
   @Test
+  void eatEmpty() {
+    animalTest.hunger = 0;
+    int hunger = 0;
+    assertEquals(hunger, animalTest.eat());
+  }
+
+  @Test
   void drink() {
+    animalTest.thirst = 10;
+    int thirst = 9;
+    assertEquals(thirst, animalTest.drink());
+  }
+
+  @Test
+  void drinkEmpty() {
+    animalTest.thirst = 0;
+    int thirst = 0;
+    assertEquals(thirst, animalTest.drink());
   }
 
   @Test
