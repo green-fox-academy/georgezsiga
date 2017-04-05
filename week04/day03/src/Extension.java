@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,15 +23,15 @@ public class Extension {
 
   double median(List<Integer> pool) {
     Collections.sort(pool);
-
     if (pool.size() % 2 == 1) {
       double median;
       median = pool.get(pool.size() / 2);
       return median;
     } else {
-      double a = pool.get(pool.size());
+      double a = pool.get(pool.size() / 2) + 1;
+      double b = pool.get((pool.size()-1) / 2) - 1;
       double median;
-      median = ((a / 2) - 1 + (a / 2)/2);
+      median = (a + b) / 2;
       return median;
     }
   }
