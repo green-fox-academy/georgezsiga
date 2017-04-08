@@ -11,7 +11,7 @@ public class Ship {
 
   static int shipIDsCreated = 1;
   ArrayList<Pirate> crew;
-  int id, shipScore, alivePirates;
+  private int id, shipScore, alivePirates, armadaID;
   Captain captain;
   Parrot parrot;
   boolean isThisShipWins;
@@ -19,6 +19,11 @@ public class Ship {
   public Ship() {
     crew = new ArrayList<>();
     id = shipIDsCreated++;
+    this.armadaID = armadaID;
+  }
+
+  public int getId() {
+    return id;
   }
 
   public Captain getCaptain() {
@@ -43,9 +48,9 @@ public class Ship {
 
   public void show() {
     System.out.println(
-        "Ship id: " + id + "`s captain has drunk " + captain.getRumsDrank() + " rum, so he is "
-            + captain.getState() + ". Alive crew: " + getAliveCrewCount()
-            + " and a parrot, called: " + parrot.name + ".");
+        "Ship id: " + getId() + "`s captain has drunk " + getCaptain().getRumsDrank() + " rum, so he is "
+            + getCaptain().getState() + ". Alive crew: " + getAliveCrewCount()
+            + " and a parrot, called: " + getParrot().name + ".");
   }
 
   private int getAliveCrewCount() {
