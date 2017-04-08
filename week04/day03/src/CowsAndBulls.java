@@ -45,13 +45,18 @@ public class CowsAndBulls {
   }
 
   public void compareNumbers() {
+    bull = 0;
+    cow = 0;
     for (int i = 0; i < playerGuess.length; i++) {
+//      if (playerGuess[i] == guessThis.get(i)) {
+          if (guessThis.contains(playerGuess[i])) {
+        bull +=1;
+//      for (int j = 0; j < guessThis.size(); j++) {
       if (playerGuess[i] == guessThis.get(i)) {
-        cow +=1;
-      } else {
-        for (int j = 0; j < guessThis.size(); j++) {
-          if (playerGuess[i] == guessThis.get(j));
-          bull +=1;
+//          if (guessThis.contains(playerGuess[i])) {
+          cow += 1;
+          bull -= 1;
+
         }
       }
     }
