@@ -68,7 +68,6 @@ public class CowsAndBulls {
   public static void main(String[] args) {
     CowsAndBulls newGame = new CowsAndBulls();
     newGame.guessThisNumber();
-    System.out.println(newGame.guessThis);
     while (newGame.cow < 4) {
       newGame.guessTheNumbersInput();
       newGame.compareNumbers();
