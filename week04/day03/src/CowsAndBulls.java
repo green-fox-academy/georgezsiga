@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -5,53 +6,75 @@ import java.util.Scanner;
  */
 public class CowsAndBulls {
 
-  int counter = 0;
-  int cow = 0;
-  int bull = 0;
-  boolean isGameRunning;
-  int[] playerGuess;
-  int[] guessThis;
+  private int counter = 0;
+  private int cow = 0;
+  private int bull = 0;
+  private int number;
+  int number1, number2, number3, number4;
+  private boolean isGameRunning;
+  private int[] playerGuess;
+  private ArrayList<Integer> guessThis;
 
-  public int randomNumber() {
-    int number = (int) (Math.random() * 10);
+  private int randomNumber() {
+    this.number = (int) (Math.random() * 10);
     return number;
   }
 
-  public int[] guessThisNumber() {
-    int[] guessThis = {randomNumber(), randomNumber(), randomNumber(), randomNumber()};
-    return guessThis;
+  public void guessThisNumber() {
+    this.guessThis = new ArrayList<>();
+    guessThis.add(randomNumber());
+    guessThis.add(randomNumber());
+    guessThis.add(randomNumber());
+    guessThis.add(randomNumber());
   }
 
-  public int count() {
+  private void count() {
     counter++;
-    return counter;
   }
 
   public boolean isGameRunning() {
     return isGameRunning;
   }
 
-  public int[] guessTheNumbersInput() {
+  private int[] guessTheNumbersInput() {
     System.out.println("Can you guess the four digits of the number I thought of?");
     Scanner scanner = new Scanner(System.in);
-    int number1 = scanner.nextInt();
-    int number2 = scanner.nextInt();
-    int number3 = scanner.nextInt();
-    int number4 = scanner.nextInt();
-    int[] playerGuess = {number1, number2, number3, number4};
+    this.playerGuess = new int[]{scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt()};
+    this.count();
     return playerGuess;
   }
 
   public void compareNumbers() {
     for (int i = 0; i < playerGuess.length; i++) {
-      if (playerGuess[i] == guessThis[i]) {
+      if (playerGuess[i] == guessThis.get(i)) {
         cow +=1;
       } else {
-        for (int j = 0; j < guessThis.length; j++) {
-          if (playerGuess[i] == guessThis[j]);
+        for (int j = 0; j < guessThis.size(); j++) {
+          if (playerGuess[i] == guessThis.get(j));
           bull +=1;
         }
       }
+    }
+  }
+
+  public void guessResult() {
+    if (cow < 4) {
+      System.out.println(
+          "You have " + cow + " cows, and " + bull + " bulls. You guessed " + counter + " times.");
+    } else {
+      System.out.println("Congratulations! Your guess " + playerGuess[0] + playerGuess[1] + playerGuess[2] + playerGuess[3] + " is the number I thought of. Your guessed it in " + counter + " rounds. You have won the game.");
+      System.exit(0);
+    }
+  }
+
+  public static void main(String[] args) {
+    CowsAndBulls newGame = new CowsAndBulls();
+    newGame.guessThisNumber();
+    System.out.println(newGame.guessThis);
+    while (newGame.cow !=4) {
+    newGame.guessTheNumbersInput();
+    newGame.compareNumbers();
+    newGame.guessResult();
     }
   }
 }
