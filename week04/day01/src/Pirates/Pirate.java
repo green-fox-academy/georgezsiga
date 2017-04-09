@@ -9,7 +9,7 @@ public class Pirate {
   public boolean isPassedOut, isDead;
 
   public Pirate() {
-    rumsDrank = 0;
+    rumsDrank = (int) (Math.random() * 5);
     isPassedOut = false;
     isDead = false;
   }
