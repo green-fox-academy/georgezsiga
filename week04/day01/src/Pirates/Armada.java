@@ -46,8 +46,8 @@ public class Armada {
     otherArmada.show();
     System.out.println();
     while (getShips().size() > 0 && otherArmada.getShips().size() > 0) {
-    Ship shipThisArmada = getShips().get(0);
-    Ship shipOtherArmada = otherArmada.getShips().get(0);
+      Ship shipThisArmada = getShips().get(0);
+      Ship shipOtherArmada = otherArmada.getShips().get(0);
       if (shipThisArmada.battle(shipOtherArmada)) {
         otherArmada.getShips().remove(0);
       } else {
@@ -55,11 +55,11 @@ public class Armada {
       }
     }
     if (getShips().size() == 0) {
-        System.out.println("Our Armada has lost the battle. The winner is:");
-        otherArmada.show();
-      } else {
-        System.out.println("Our Armada has won the battle! The winner is:");
-        show();
-      }
+      System.out.println("Our Armada has lost the battle. The winner is:");
+      otherArmada.show();
+    } else {
+      System.out.println("Our Armada has won the battle! The winner is:");
+      show();
     }
   }
+}
