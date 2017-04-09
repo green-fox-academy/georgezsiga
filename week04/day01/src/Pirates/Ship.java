@@ -75,7 +75,9 @@ public class Ship {
   }
 
   public void winner() {
-    int numberOfRums = (int) Math.random() * (alivePirates * 5);
+    show();
+    System.out.println("Has won the battle");
+    int numberOfRums = (int) (Math.random() * (crew.size() * 2));
     System.out.println(
         "Yehaa.. Party time!! Let`s get drunk! We have " + numberOfRums + " barrel of rums.");
     captain.drinkSomeRum();
@@ -94,9 +96,6 @@ public class Ship {
 
     Ship wins = (thisShipScore >= otherShipScore) ? this : othership;
     Ship lose = (thisShipScore < otherShipScore) ? this : othership;
-
-    show();
-    System.out.println("Has won the battle");
 
     lose.losses();
     wins.winner();
