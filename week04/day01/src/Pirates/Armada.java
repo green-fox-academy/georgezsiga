@@ -19,6 +19,7 @@ public class Armada {
     int shipsInTheArmada = (int) (Math.random() * 10);
     for (int i = 0; i < shipsInTheArmada; i++) {
       Ship s = new Ship();
+      s.fillShip();
       ships.add(s);
     }
   }
