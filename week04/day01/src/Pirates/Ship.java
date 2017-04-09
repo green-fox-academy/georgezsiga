@@ -80,6 +80,7 @@ public class Ship {
         "Yehaa.. Party time!! Let`s get drunk! We have " + numberOfRums + " barrel of rums.");
     captain.drinkSomeRum();
     parrot.drinkSomeRum();
+    System.out.println();
   }
 
   public boolean battle(Ship othership) {
