@@ -1,7 +1,5 @@
 package Pirates;
 
-import static java.lang.System.out;
-
 import java.util.ArrayList;
 
 /**
@@ -11,15 +9,14 @@ public class Ship {
 
   static int shipIDsCreated = 1;
   ArrayList<Pirate> crew;
-  private int id, shipScore, alivePirates, armadaID;
+  private int id, alivePirates, armadaID;
   Captain captain;
   Parrot parrot;
-  boolean isThisShipWins;
 
   public Ship() {
     crew = new ArrayList<>();
     id = shipIDsCreated++;
-    this.armadaID = armadaID;
+    this.armadaID = getArmadaID();
   }
 
   public int getId() {
@@ -46,9 +43,14 @@ public class Ship {
     }
   }
 
+  public int getArmadaID() {
+    return armadaID;
+  }
+
   public void show() {
     System.out.println(
-        "Ship id: " + getId() + "`s captain has drunk " + getCaptain().getRumsDrank() + " rum, so he is "
+        "Ship: " + getId() + "`s captain has drunk " + getCaptain().getRumsDrank()
+            + " rum, so he is "
             + getCaptain().getState() + ". Alive crew: " + getAliveCrewCount()
             + " and a parrot, called: " + getParrot().name + ".");
   }
@@ -59,14 +61,6 @@ public class Ship {
       alivePirates += (!(p instanceof Captain) && !p.isDead) ? 1 : 0;
     }
     return alivePirates;
-  }
-
-  public void isThisShipWin(Ship otherShip) {
-    if (this.shipScore > otherShip.shipScore) {
-      isThisShipWins = true;
-    } else {
-      isThisShipWins = false;
-    }
   }
 
 
