@@ -63,17 +63,33 @@ public class Area extends GameObject implements KeyListener {
   public void keyReleased(KeyEvent e) {
 
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= size;
-      filename = "assets/hero-up.png";
+      if (testBoxY > 0) {
+        testBoxY -= size;
+        filename = "assets/hero-up.png";
+      } else {
+        filename = "assets/hero-up.png";
+      }
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+      if (testBoxY < size*9) {
       testBoxY += size;
       filename = "assets/hero-down.png";
+    } else {
+      filename = "assets/hero-down.png";
+    }
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+      if (testBoxX > 0) {
       testBoxX -= size;
       filename = "assets/hero-left.png";
+  } else {
+    filename = "assets/hero-left.png";
+  }
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      if (testBoxX < size*9) {
       testBoxX += size;
       filename = "assets/hero-right.png";
+    } else {
+    filename = "assets/hero-right.png";
+    }
     }
     repaint();
   }
