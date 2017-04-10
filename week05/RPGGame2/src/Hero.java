@@ -3,7 +3,7 @@
  */
 public class Hero extends Character {
 
-  public Hero(int posX, int posY) {
-    super("assets/hero-down.png", posX, posY);
+  public Hero(String filename, int posX, int posY) {
+    super(filename, posX, posY);
   }
 }
