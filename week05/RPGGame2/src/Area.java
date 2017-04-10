@@ -9,18 +9,27 @@ import java.awt.event.KeyListener;
 public class Area extends GameObject implements KeyListener {
   int testBoxX;
   int testBoxY;
+  int posX;
+  int posY;
 
   public Area() {
-    testBoxX = 300;
-    testBoxY = 300;
-    setPreferredSize(new Dimension(720, 720));
+    testBoxX = 0;
+    testBoxY = 0;
+    posX = 0;
+    posY = 0;
+    setPreferredSize(new Dimension(750, 750));
     setVisible(true);
   }
 
   @Override
   public void paint(Graphics graphics) {
-    GameObject image = new GameObject("floor.png", 300, 300);
-    image.draw(graphics);
+    for (int i = 0; i < 10; i++) {
+      for (int j = 0; j < 10; j++) {
+        Tile image = new Tile("assets/floor.png", i*72, j*72);
+        image.draw(graphics);
+      }
+
+    }
   }
 
   @Override
