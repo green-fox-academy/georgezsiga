@@ -11,6 +11,8 @@ import javax.swing.JComponent;
 public class GameObject extends JComponent {
   BufferedImage image;
   int posX, posY;
+  public static final int TILEWIDTH = 72;
+  public static final int TILEHEIGHT = 72;
 
   public GameObject() {
 
@@ -25,14 +27,17 @@ public class GameObject extends JComponent {
   }
 
   public GameObject(String filename, int posX, int posY) {
-    this.posX = posX;
-    this.posY = posY;
+    this.posX = TILEWIDTH * posX;
+    this.posY = TILEHEIGHT * posY;
+    image(filename);
+  }
+
+  protected void image(String filename) {
     try {
       image = ImageIO.read(new File(filename));
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
 
   public void draw(Graphics graphics) {
