@@ -14,6 +14,7 @@ public class Area extends GameObject implements KeyListener {
   int posY;
   int size;
   String filename;
+  ArrayList<Floor> floorMap;
   ArrayList<Wall> wallMap;
   Hero hero;
   Wall wall;
@@ -24,16 +25,18 @@ public class Area extends GameObject implements KeyListener {
     size = 72;
     filename = "assets/hero-down.png";
     wallMap = new ArrayList<>();
+    floorMap = new ArrayList<>();
+
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
   }
 
   @Override
   public void paint(Graphics graphics) {
+    super.paint(graphics);
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         Floor floor = new Floor( i * size, j * size);
-//        tileMap.add(floor);
         floor.draw(graphics);
       }
     }
