@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/10/17.
  */
 public class Area extends GameObject implements KeyListener {
+
   int testBoxX;
   int testBoxY;
   int posX;
@@ -18,32 +19,77 @@ public class Area extends GameObject implements KeyListener {
   ArrayList<Wall> wallMap;
   Hero hero;
   Wall wall;
+  Boss boss;
+  Skeleton skeleton;
+  int bossX, bossY;
 
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    posX = 0;
-    posY = 0;
+    bossX = 0;
+    bossY = 0;
     size = 72;
     filename = "assets/hero-down.png";
     wallMap = new ArrayList<>();
+    addWall();
     floorMap = new ArrayList<>();
+    addFloor();
+  //    boolean isItFree = false;
+//    while (!isItFree) {
+//      for (int i = 0; i < wallMap.size(); i++) {
+//        wall = wallMap.get(i);
+//        if (wall.getPosX() == boss.getPosX() && wall.getPosY() == boss.getPosY()) {
+//          boss.posX = randomNumber()*size;
+//          boss.posY = randomNumber()*size;
+//        } else {
+//          isItFree = true;
+//        }
+//      }
+//    }
+//    boss = new Boss("assets/boss.png", bossX, bossY);
+  setPreferredSize(new Dimension(720, 720));
 
-    setPreferredSize(new Dimension(720, 720));
-    setVisible(true);
+  setVisible(true);
+
+}
+
+  public void addWall() {
+    for (int i = 1; i < 10; i += 2) {
+      for (int j = 0; j < 10; j++) {
+        if (j % 3 == 0) {
+
+        } else {
+          Wall wall = new Wall(i * size, j * size);
+          wallMap.add(wall);
+        }
+      }
+    }
+  }
+
+
+  public void addFloor() {
+    for (int i = 0; i < 10; i++) {
+      for (int j = 0; j < 10; j++) {
+        Floor floor = new Floor(i * size, j * size);
+        floorMap.add(floor);
+      }
+    }
+  }
+
+  public int randomNumber() {
+    int rNumber = (int) ((Math.random() * 9) + 1);
+    return rNumber;
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        Floor floor = new Floor(i * size, j * size);
-        floor.draw(graphics);
-      }
+    for (int i = 0; i < floorMap.size(); i++) {
+      Floor floor = floorMap.get(i);
+      floor.draw(graphics);
     }
 
-    for (int i = 1; i < 10; i+=2) {
+    for (int i = 1; i < 10; i += 2) {
       for (int j = 0; j < 10; j++) {
         if (j % 3 == 0) {
 
@@ -54,9 +100,9 @@ public class Area extends GameObject implements KeyListener {
         }
       }
     }
-    hero = new Hero(filename, posX, posY);
+    hero = new Hero(filename, testBoxX, testBoxY);
     hero.draw(graphics);
-
+//    boss.draw(graphics);
   }
 
   @Override
@@ -74,53 +120,53 @@ public class Area extends GameObject implements KeyListener {
     boolean canIgoThere = true;
 
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      for (int i = 0; i < wallMap.size() ; i++) {
+      for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()-72) {
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - 72) {
           canIgoThere = false;
         }
       }
-      if (posY > 0 && canIgoThere) {
-        posY -= size;
+      if (testBoxY > 0 && canIgoThere) {
+        testBoxY -= size;
         filename = "assets/hero-up.png";
       } else {
         filename = "assets/hero-up.png";
       }
-    } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-      for (int i = 0; i < wallMap.size() ; i++) {
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()+72) {
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() + 72) {
           canIgoThere = false;
         }
       }
-      if (posY < size*9 && canIgoThere) {
-        posY += size;
+      if (testBoxY < size * 9 && canIgoThere) {
+        testBoxY += size;
         filename = "assets/hero-down.png";
       } else {
         filename = "assets/hero-down.png";
       }
-    } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-      for (int i = 0; i < wallMap.size() ; i++) {
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX()-72 && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX() - 72 && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
         }
       }
-      if (posX > 0 && canIgoThere) {
-        posX -= size;
+      if (testBoxX > 0 && canIgoThere) {
+        testBoxX -= size;
         filename = "assets/hero-left.png";
       } else {
         filename = "assets/hero-left.png";
       }
-    } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      for (int i = 0; i < wallMap.size() ; i++) {
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX()+72 && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX() + 72 && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
         }
       }
-      if (posX < size*9 && canIgoThere) {
-        posX += size;
+      if (testBoxX < size * 9 && canIgoThere) {
+        testBoxX += size;
         filename = "assets/hero-right.png";
       } else {
         filename = "assets/hero-right.png";
@@ -128,6 +174,4 @@ public class Area extends GameObject implements KeyListener {
     }
     repaint();
   }
-
-
 }
