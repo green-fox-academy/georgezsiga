@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 /**
  * Created by georgezsiga on 4/10/17.
@@ -13,14 +14,16 @@ public class Area extends GameObject implements KeyListener {
   int posY;
   int size;
   String filename;
+  ArrayList<Wall> wallMap;
+  Hero hero;
+  Wall wall;
 
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    posX = 0;
-    posY = 0;
     size = 72;
     filename = "assets/hero-down.png";
+    wallMap = new ArrayList<>();
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
   }
@@ -29,8 +32,9 @@ public class Area extends GameObject implements KeyListener {
   public void paint(Graphics graphics) {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        Floor image = new Floor( i * size, j * size);
-        image.draw(graphics);
+        Floor floor = new Floor( i * size, j * size);
+//        tileMap.add(floor);
+        floor.draw(graphics);
       }
     }
 
@@ -40,11 +44,12 @@ public class Area extends GameObject implements KeyListener {
 
         } else {
           Wall wall = new Wall(i * size, j * size);
+          wallMap.add(wall);
           wall.draw(graphics);
         }
       }
     }
-    Hero hero = new Hero(filename, testBoxX, testBoxY);
+    hero = new Hero(filename, testBoxX, testBoxY);
     hero.draw(graphics);
 
   }
@@ -61,15 +66,28 @@ public class Area extends GameObject implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent e) {
+    boolean canIgoThere = true;
 
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      if (testBoxY > 0) {
+      for (int i = 0; i < wallMap.size() ; i++) {
+        wall = wallMap.get(i);
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+          canIgoThere = false;
+        }
+      }
+      if (testBoxY > 0 && canIgoThere) {
         testBoxY -= size;
         filename = "assets/hero-up.png";
       } else {
         filename = "assets/hero-up.png";
       }
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+      for (int i = 0; i < wallMap.size() ; i++) {
+        wall = wallMap.get(i);
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+          canIgoThere = false;
+        }
+      }
       if (testBoxY < size*9) {
       testBoxY += size;
       filename = "assets/hero-down.png";
@@ -77,6 +95,12 @@ public class Area extends GameObject implements KeyListener {
       filename = "assets/hero-down.png";
     }
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+      for (int i = 0; i < wallMap.size() ; i++) {
+        wall = wallMap.get(i);
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+          canIgoThere = false;
+        }
+      }
       if (testBoxX > 0) {
       testBoxX -= size;
       filename = "assets/hero-left.png";
@@ -84,6 +108,12 @@ public class Area extends GameObject implements KeyListener {
     filename = "assets/hero-left.png";
   }
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      for (int i = 0; i < wallMap.size() ; i++) {
+        wall = wallMap.get(i);
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+          canIgoThere = false;
+        }
+      }
       if (testBoxX < size*9) {
       testBoxX += size;
       filename = "assets/hero-right.png";
