@@ -22,6 +22,8 @@ public class Area extends GameObject implements KeyListener {
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
+    posX = 0;
+    posY = 0;
     size = 72;
     filename = "assets/hero-down.png";
     wallMap = new ArrayList<>();
@@ -36,7 +38,7 @@ public class Area extends GameObject implements KeyListener {
     super.paint(graphics);
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        Floor floor = new Floor( i * size, j * size);
+        Floor floor = new Floor(i * size, j * size);
         floor.draw(graphics);
       }
     }
@@ -52,7 +54,7 @@ public class Area extends GameObject implements KeyListener {
         }
       }
     }
-    hero = new Hero(filename, testBoxX, testBoxY);
+    hero = new Hero(filename, posX, posY);
     hero.draw(graphics);
 
   }
@@ -78,8 +80,8 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = false;
         }
       }
-      if (testBoxY > 0 && canIgoThere) {
-        testBoxY -= size;
+      if (posY > 0 && canIgoThere) {
+        posY -= size;
         filename = "assets/hero-up.png";
       } else {
         filename = "assets/hero-up.png";
@@ -91,12 +93,12 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = false;
         }
       }
-      if (testBoxY < size*9 && canIgoThere) {
-      testBoxY += size;
-      filename = "assets/hero-down.png";
-    } else {
-      filename = "assets/hero-down.png";
-    }
+      if (posY < size*9 && canIgoThere) {
+        posY += size;
+        filename = "assets/hero-down.png";
+      } else {
+        filename = "assets/hero-down.png";
+      }
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
       for (int i = 0; i < wallMap.size() ; i++) {
         wall = wallMap.get(i);
@@ -104,12 +106,12 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = false;
         }
       }
-      if (testBoxX > 0 && canIgoThere) {
-      testBoxX -= size;
-      filename = "assets/hero-left.png";
-  } else {
-    filename = "assets/hero-left.png";
-  }
+      if (posX > 0 && canIgoThere) {
+        posX -= size;
+        filename = "assets/hero-left.png";
+      } else {
+        filename = "assets/hero-left.png";
+      }
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
       for (int i = 0; i < wallMap.size() ; i++) {
         wall = wallMap.get(i);
@@ -117,12 +119,12 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = false;
         }
       }
-      if (testBoxX < size*9 && canIgoThere) {
-      testBoxX += size;
-      filename = "assets/hero-right.png";
-    } else {
-    filename = "assets/hero-right.png";
-    }
+      if (posX < size*9 && canIgoThere) {
+        posX += size;
+        filename = "assets/hero-right.png";
+      } else {
+        filename = "assets/hero-right.png";
+      }
     }
     repaint();
   }
