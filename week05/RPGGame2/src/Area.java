@@ -9,11 +9,7 @@ import java.util.ArrayList;
  */
 public class Area extends GameObject implements KeyListener {
 
-  int testBoxX;
-  int testBoxY;
-  int posX;
-  int posY;
-  int size;
+  int testBoxX, testBoxY, size;
   String filename;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
@@ -21,13 +17,10 @@ public class Area extends GameObject implements KeyListener {
   GameObject wall;
   Boss boss;
   Skeleton skeleton;
-  int bossX, bossY;
 
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    bossX = 0;
-    bossY = 0;
     size = 72;
     filename = "assets/hero-down.png";
     wallMap = new ArrayList<>();
@@ -35,32 +28,51 @@ public class Area extends GameObject implements KeyListener {
     floorMap = new ArrayList<>();
     addFloor();
     addBoss();
+    addSkeleton();
+    addSkeleton();
+    addSkeleton();
+    setPreferredSize(new Dimension(720, 720));
+    setVisible(true);
 
+  }
 
-  setPreferredSize(new Dimension(720, 720));
-
-  setVisible(true);
-
-}
-
-public void addBoss() {
-  boss = new Boss("assets/boss.png", randomNumber()*size, randomNumber()*size);
-  boolean isItFree = false;
-  while (!isItFree) {
-    for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == boss.getPosX() && wall.getPosY() == boss.getPosY()) {
-        boss.setPosX(randomNumber()*size);
-        boss.setPosY(randomNumber()*size);
-      } else {
-        isItFree = true;
+  public void addBoss() {
+    int x = randomNumber() * size;
+    int y = randomNumber() * size;
+    boolean isItFree = false;
+    while (!isItFree && (x > 0 || y > 0)) {
+      for (int i = 0; i < wallMap.size(); i++) {
+        wall = wallMap.get(i);
+        if (wall.getPosX() == x && wall.getPosY() == y) {
+          x = (randomNumber() * size);
+          y = (randomNumber() * size);
+        } else {
+          boss = new Boss("assets/boss.png", x, y);
+          isItFree = true;
+        }
       }
     }
+    wallMap.add(boss);
   }
-  wallMap.add(boss);
-}
 
-
+  public void addSkeleton() {
+    int x = randomNumber() * size;
+    int y = randomNumber() * size;
+    boolean isItFree = false;
+    while (!isItFree && (x > 0 || y > 0)) {
+      for (int i = 0; i < wallMap.size(); i++) {
+        wall = wallMap.get(i);
+        if (wall.getPosX() == x && wall.getPosY() == y) {
+          x = (randomNumber() * size);
+          y = (randomNumber() * size);
+        } else {
+          skeleton = new Skeleton("assets/skeleton.png", x, y);
+          isItFree = true;
+        }
+      }
+    }
+    wallMap.add(skeleton);
+  }
 
   public void addWall() {
     for (int i = 1; i < 10; i += 2) {
@@ -86,7 +98,7 @@ public void addBoss() {
   }
 
   public int randomNumber() {
-    int rNumber = (int) ((Math.random() * 9) + 1);
+    int rNumber = (int) (Math.random() * 10);
     return rNumber;
   }
 
@@ -104,9 +116,6 @@ public void addBoss() {
 
     hero = new Hero(filename, testBoxX, testBoxY);
     hero.draw(graphics);
-    boss.draw(graphics);
-    skeleton = new Skeleton("assets/skeleton.png", boss.getPosX()+72, boss.getPosY()+72);
-    skeleton.draw(graphics);
 
   }
 
