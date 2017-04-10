@@ -25,10 +25,20 @@ public class Area extends GameObject implements KeyListener {
   public void paint(Graphics graphics) {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        Tile image = new Tile("assets/floor.png", i*72, j*72);
+        Floor image = new Floor( i * 72, j * 72);
         image.draw(graphics);
       }
+    }
 
+    for (int i = 1; i < 10; i+=2) {
+      for (int j = 0; j < 10; j++) {
+        if (j % 3 == 0) {
+
+        } else {
+          Wall image = new Wall(i * 72, j * 72);
+          image.draw(graphics);
+        }
+      }
     }
   }
 
