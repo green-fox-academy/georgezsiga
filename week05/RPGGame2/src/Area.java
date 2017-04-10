@@ -11,13 +11,17 @@ public class Area extends GameObject implements KeyListener {
   int testBoxY;
   int posX;
   int posY;
+  int size;
+  String filename;
 
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
     posX = 0;
     posY = 0;
-    setPreferredSize(new Dimension(750, 750));
+    size = 72;
+    filename = "assets/hero-down.png";
+    setPreferredSize(new Dimension(720, 720));
     setVisible(true);
   }
 
@@ -25,7 +29,7 @@ public class Area extends GameObject implements KeyListener {
   public void paint(Graphics graphics) {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        Floor image = new Floor( i * 72, j * 72);
+        Floor image = new Floor( i * size, j * size);
         image.draw(graphics);
       }
     }
@@ -35,11 +39,14 @@ public class Area extends GameObject implements KeyListener {
         if (j % 3 == 0) {
 
         } else {
-          Wall image = new Wall(i * 72, j * 72);
-          image.draw(graphics);
+          Wall wall = new Wall(i * size, j * size);
+          wall.draw(graphics);
         }
       }
     }
+    Hero hero = new Hero(filename, testBoxX, testBoxY);
+    hero.draw(graphics);
+
   }
 
   @Override
@@ -56,13 +63,17 @@ public class Area extends GameObject implements KeyListener {
   public void keyReleased(KeyEvent e) {
 
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 100;
+      testBoxY -= size;
+      filename = "assets/hero-up.png";
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 100;
+      testBoxY += size;
+      filename = "assets/hero-down.png";
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 100;
+      testBoxX -= size;
+      filename = "assets/hero-left.png";
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 100;
+      testBoxX += size;
+      filename = "assets/hero-right.png";
     }
     repaint();
   }
