@@ -71,7 +71,7 @@ public class Area extends GameObject implements KeyListener {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       for (int i = 0; i < wallMap.size() ; i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()-72) {
           canIgoThere = false;
         }
       }
@@ -84,11 +84,11 @@ public class Area extends GameObject implements KeyListener {
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
       for (int i = 0; i < wallMap.size() ; i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()+72) {
           canIgoThere = false;
         }
       }
-      if (testBoxY < size*9) {
+      if (testBoxY < size*9 && canIgoThere) {
       testBoxY += size;
       filename = "assets/hero-down.png";
     } else {
@@ -97,11 +97,11 @@ public class Area extends GameObject implements KeyListener {
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
       for (int i = 0; i < wallMap.size() ; i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX()-72 && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
         }
       }
-      if (testBoxX > 0) {
+      if (testBoxX > 0 && canIgoThere) {
       testBoxX -= size;
       filename = "assets/hero-left.png";
   } else {
@@ -110,11 +110,11 @@ public class Area extends GameObject implements KeyListener {
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
       for (int i = 0; i < wallMap.size() ; i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX()+72 && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
         }
       }
-      if (testBoxX < size*9) {
+      if (testBoxX < size*9 && canIgoThere) {
       testBoxX += size;
       filename = "assets/hero-right.png";
     } else {
