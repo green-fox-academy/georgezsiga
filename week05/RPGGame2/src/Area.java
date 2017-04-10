@@ -16,9 +16,9 @@ public class Area extends GameObject implements KeyListener {
   int size;
   String filename;
   ArrayList<Floor> floorMap;
-  ArrayList<Wall> wallMap;
+  ArrayList<GameObject> wallMap;
   Hero hero;
-  Wall wall;
+  GameObject wall;
   Boss boss;
   Skeleton skeleton;
   int bossX, bossY;
@@ -34,24 +34,33 @@ public class Area extends GameObject implements KeyListener {
     addWall();
     floorMap = new ArrayList<>();
     addFloor();
-  //    boolean isItFree = false;
-//    while (!isItFree) {
-//      for (int i = 0; i < wallMap.size(); i++) {
-//        wall = wallMap.get(i);
-//        if (wall.getPosX() == boss.getPosX() && wall.getPosY() == boss.getPosY()) {
-//          boss.posX = randomNumber()*size;
-//          boss.posY = randomNumber()*size;
-//        } else {
-//          isItFree = true;
-//        }
-//      }
-//    }
-//    boss = new Boss("assets/boss.png", bossX, bossY);
+    addBoss();
+
+
   setPreferredSize(new Dimension(720, 720));
 
   setVisible(true);
 
 }
+
+public void addBoss() {
+  boss = new Boss("assets/boss.png", randomNumber()*size, randomNumber()*size);
+  boolean isItFree = false;
+  while (!isItFree) {
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == boss.getPosX() && wall.getPosY() == boss.getPosY()) {
+        boss.setPosX(randomNumber()*size);
+        boss.setPosY(randomNumber()*size);
+      } else {
+        isItFree = true;
+      }
+    }
+  }
+  wallMap.add(boss);
+}
+
+
 
   public void addWall() {
     for (int i = 1; i < 10; i += 2) {
@@ -88,21 +97,17 @@ public class Area extends GameObject implements KeyListener {
       Floor floor = floorMap.get(i);
       floor.draw(graphics);
     }
-
-    for (int i = 1; i < 10; i += 2) {
-      for (int j = 0; j < 10; j++) {
-        if (j % 3 == 0) {
-
-        } else {
-          Wall wall = new Wall(i * size, j * size);
-          wallMap.add(wall);
-          wall.draw(graphics);
-        }
-      }
+    for (int i = 0; i < wallMap.size(); i++) {
+      GameObject wall = wallMap.get(i);
+      wall.draw(graphics);
     }
+
     hero = new Hero(filename, testBoxX, testBoxY);
     hero.draw(graphics);
-//    boss.draw(graphics);
+    boss.draw(graphics);
+    skeleton = new Skeleton("assets/skeleton.png", boss.getPosX()+72, boss.getPosY()+72);
+    skeleton.draw(graphics);
+
   }
 
   @Override
