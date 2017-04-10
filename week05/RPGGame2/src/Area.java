@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Area extends GameObject implements KeyListener {
 
-  int testBoxX, testBoxY, size;
+  int testBoxX, testBoxY;
   String filename;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
@@ -21,7 +21,6 @@ public class Area extends GameObject implements KeyListener {
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    size = 72;
     filename = "assets/hero-down.png";
     wallMap = new ArrayList<>();
     addWall();
@@ -37,15 +36,15 @@ public class Area extends GameObject implements KeyListener {
   }
 
   public void addBoss() {
-    int x = randomNumber() * size;
-    int y = randomNumber() * size;
+    int x = randomNumber() * SIZE;
+    int y = randomNumber() * SIZE;
     boolean isItFree = false;
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
         if (wall.getPosX() == x && wall.getPosY() == y) {
-          x = (randomNumber() * size);
-          y = (randomNumber() * size);
+          x = (randomNumber() * SIZE);
+          y = (randomNumber() * SIZE);
         } else {
           boss = new Boss("assets/boss.png", x, y);
           isItFree = true;
@@ -56,15 +55,15 @@ public class Area extends GameObject implements KeyListener {
   }
 
   public void addSkeleton() {
-    int x = randomNumber() * size;
-    int y = randomNumber() * size;
+    int x = randomNumber() * SIZE;
+    int y = randomNumber() * SIZE;
     boolean isItFree = false;
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
         if (wall.getPosX() == x && wall.getPosY() == y) {
-          x = (randomNumber() * size);
-          y = (randomNumber() * size);
+          x = (randomNumber() * SIZE);
+          y = (randomNumber() * SIZE);
         } else {
           skeleton = new Skeleton("assets/skeleton.png", x, y);
           isItFree = true;
@@ -80,7 +79,7 @@ public class Area extends GameObject implements KeyListener {
         if (j % 3 == 0) {
 
         } else {
-          Wall wall = new Wall(i * size, j * size);
+          Wall wall = new Wall(i * SIZE, j * SIZE);
           wallMap.add(wall);
         }
       }
@@ -91,7 +90,7 @@ public class Area extends GameObject implements KeyListener {
   public void addFloor() {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        Floor floor = new Floor(i * size, j * size);
+        Floor floor = new Floor(i * SIZE, j * SIZE);
         floorMap.add(floor);
       }
     }
@@ -136,12 +135,12 @@ public class Area extends GameObject implements KeyListener {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - 72) {
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - SIZE) {
           canIgoThere = false;
         }
       }
       if (testBoxY > 0 && canIgoThere) {
-        testBoxY -= size;
+        testBoxY -= SIZE;
         filename = "assets/hero-up.png";
       } else {
         filename = "assets/hero-up.png";
@@ -149,12 +148,12 @@ public class Area extends GameObject implements KeyListener {
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() + 72) {
+        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() + SIZE) {
           canIgoThere = false;
         }
       }
-      if (testBoxY < size * 9 && canIgoThere) {
-        testBoxY += size;
+      if (testBoxY < SIZE * 9 && canIgoThere) {
+        testBoxY += SIZE;
         filename = "assets/hero-down.png";
       } else {
         filename = "assets/hero-down.png";
@@ -162,12 +161,12 @@ public class Area extends GameObject implements KeyListener {
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() - 72 && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX() - SIZE && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
         }
       }
       if (testBoxX > 0 && canIgoThere) {
-        testBoxX -= size;
+        testBoxX -= SIZE;
         filename = "assets/hero-left.png";
       } else {
         filename = "assets/hero-left.png";
@@ -175,12 +174,12 @@ public class Area extends GameObject implements KeyListener {
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() + 72 && wall.getPosY() == hero.getPosY()) {
+        if (wall.getPosX() == hero.getPosX() + SIZE && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
         }
       }
-      if (testBoxX < size * 9 && canIgoThere) {
-        testBoxX += size;
+      if (testBoxX < SIZE * 9 && canIgoThere) {
+        testBoxX += SIZE;
         filename = "assets/hero-right.png";
       } else {
         filename = "assets/hero-right.png";
