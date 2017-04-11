@@ -10,7 +10,7 @@ import javax.swing.JComponent;
  */
 public class GameObject extends JComponent {
   BufferedImage image;
-  int posX, posY;
+  int posX, posY, level, maxHP, currentHP, defendDP, strikeSP;
   public static final int SIZE = 72;
 
   public GameObject() {
@@ -36,12 +36,16 @@ public class GameObject extends JComponent {
   public GameObject(String filename, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
+    this.image = getImage(filename);
+  }
+
+  public BufferedImage getImage(String filename) {
     try {
       image = ImageIO.read(new File(filename));
     } catch (IOException e) {
       e.printStackTrace();
     }
-
+    return image;
   }
 
   public void draw(Graphics graphics) {
