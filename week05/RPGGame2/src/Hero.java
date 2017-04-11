@@ -13,5 +13,13 @@ public class Hero extends Character {
     this.strikeSP = 5 + gameLogic.rollTheDice();
   }
 
-
+  @Override
+  public String toString() {
+    return "Hero " +
+        "(level " + level +
+        ") HP: " + currentHP +
+        "/" + maxHP +
+        " | DP: " + defendDP +
+        " | SP: " + strikeSP;
+  }
 }
