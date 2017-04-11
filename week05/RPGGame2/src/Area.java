@@ -143,9 +143,18 @@ public class Area extends GameObject implements KeyListener {
     drawWall(graphics);
     drawHero(graphics);
     Graphics2D g2d = (Graphics2D) graphics;
-    g2d.drawString(hero.toString(), 220, 750);
-    monsterStats(g2d);
+    isHeroDead(g2d);
   }
+
+  public void isHeroDead( Graphics2D g2d) {
+    if (heroMap.size() == 0) {
+      gameMessages(g2d, "You died! Game over.");
+    } else {
+      g2d.drawString(hero.toString(), 216, 750);
+      monsterStats(g2d);
+    }
+  }
+
 
   @Override
   public void keyTyped(KeyEvent keyEvent) {
@@ -177,9 +186,13 @@ public class Area extends GameObject implements KeyListener {
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-        graphics2D.drawString(monster.toString(), 220, 770);
+        graphics2D.drawString(monster.toString(), 216, 770);
       }
     }
+  }
+
+  private void gameMessages(Graphics2D graphics2D, String gameMessage) {
+    graphics2D.drawString(gameMessage, 288, 760);
   }
 
   public void battle() {
@@ -187,6 +200,7 @@ public class Area extends GameObject implements KeyListener {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
         heroStrikes();
+        monsterStrikes();
       }
     }
   }
@@ -195,7 +209,7 @@ public class Area extends GameObject implements KeyListener {
         int strikeValue = monster.strikeSP + (2 * gameLogic.rollTheDice());
         if (strikeValue > hero.defendDP) {
           if (hero.getCurrentHP() <= (strikeValue - hero.defendDP)) {
-
+            heroMap.remove(hero);
           }
         }
         hero.setCurrentHP(strikeValue - hero.defendDP);
