@@ -167,6 +167,12 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = false;
         }
       }
+      for (int i = 0; i < monsterMap.size(); i++) {
+        monster = monsterMap.get(i);
+        if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() + SIZE) {
+          canIgoThere = true;
+        }
+      }
       if (testBoxY < SIZE * 9 && canIgoThere) {
         testBoxY += SIZE;
         filename = "assets/hero-down.png";
@@ -180,6 +186,12 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = false;
         }
       }
+      for (int i = 0; i < monsterMap.size(); i++) {
+        monster = monsterMap.get(i);
+        if (monster.getPosX() == hero.getPosX() - SIZE && monster.getPosY() == hero.getPosY()) {
+          canIgoThere = true;
+        }
+      }
       if (testBoxX > 0 && canIgoThere) {
         testBoxX -= SIZE;
         filename = "assets/hero-left.png";
@@ -191,6 +203,12 @@ public class Area extends GameObject implements KeyListener {
         wall = wallMap.get(i);
         if (wall.getPosX() == hero.getPosX() + SIZE && wall.getPosY() == hero.getPosY()) {
           canIgoThere = false;
+        }
+      }
+      for (int i = 0; i < monsterMap.size(); i++) {
+        monster = monsterMap.get(i);
+        if (monster.getPosX() == hero.getPosX() + SIZE && monster.getPosY() == hero.getPosY()) {
+          canIgoThere = true;
         }
       }
       if (testBoxX < SIZE * 9 && canIgoThere) {
