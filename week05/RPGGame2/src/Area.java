@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -30,9 +31,8 @@ public class Area extends GameObject implements KeyListener {
     addSkeleton();
     addSkeleton();
     addSkeleton();
-    setPreferredSize(new Dimension(720, 720));
+    setPreferredSize(new Dimension(720, 770));
     setVisible(true);
-
   }
 
   public void addBoss() {
@@ -115,6 +115,9 @@ public class Area extends GameObject implements KeyListener {
 
     hero = new Hero(filename, testBoxX, testBoxY);
     hero.draw(graphics);
+    Graphics2D g2d = (Graphics2D)graphics;
+    g2d.drawString(hero.toString(), 100, 750);
+
 
   }
 
