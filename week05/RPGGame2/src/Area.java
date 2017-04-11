@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class Area extends GameObject implements KeyListener {
 
   int testBoxX, testBoxY;
-  String filename;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
   ArrayList<Monster> monsterMap;
@@ -24,12 +23,11 @@ public class Area extends GameObject implements KeyListener {
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    filename = "assets/hero-down.png";
     wallMap = new ArrayList<>();
     addWall();
     floorMap = new ArrayList<>();
     addFloor();
-//    hero = new Hero(filename, testBoxX, testBoxY);
+    hero = new Hero("assets/hero-down.png", testBoxX, testBoxY);
     monsterMap = new ArrayList<>();
     addBoss();
     addSkeleton();
@@ -119,13 +117,9 @@ public class Area extends GameObject implements KeyListener {
       GameObject wall = wallMap.get(i);
       wall.draw(graphics);
     }
-
-    hero = new Hero(filename, testBoxX, testBoxY);
     hero.draw(graphics);
     Graphics2D g2d = (Graphics2D)graphics;
     g2d.drawString(hero.toString(), 100, 750);
-
-
   }
 
   @Override
@@ -169,10 +163,9 @@ public class Area extends GameObject implements KeyListener {
     if (hero.getPosX() < SIZE * 9 && canIgoThere) {
       testBoxX = hero.getPosX() + SIZE;
       hero.setPosX(testBoxX);
-
-      filename = "assets/hero-right.png";
+      hero.image = hero.getImage("assets/hero-right.png");
     } else {
-      filename = "assets/hero-right.png";
+      hero.image = hero.getImage("assets/hero-right.png");
     }
   }
 
@@ -193,9 +186,9 @@ public class Area extends GameObject implements KeyListener {
     if (hero.getPosX() > 0 && canIgoThere) {
       testBoxX = hero.getPosX() - SIZE;
       hero.setPosX(testBoxX);
-      filename = "assets/hero-left.png";
+      hero.image = hero.getImage("assets/hero-left.png");
     } else {
-      filename = "assets/hero-left.png";
+      hero.image = hero.getImage("assets/hero-left.png");
     }
   }
 
@@ -216,9 +209,9 @@ public class Area extends GameObject implements KeyListener {
     if (hero.getPosY() < SIZE * 9 && canIgoThere) {
       testBoxY = hero.getPosY() + SIZE;
       hero.setPosY(testBoxY);
-      filename = "assets/hero-down.png";
+      hero.image = hero.getImage("assets/hero-down.png");
     } else {
-      filename = "assets/hero-down.png";
+      hero.image = hero.getImage("assets/hero-down.png");
     }
   }
 
@@ -239,9 +232,10 @@ public class Area extends GameObject implements KeyListener {
     if (hero.getPosY() > 0 && canIgoThere) {
       testBoxY = hero.getPosY() - SIZE;
       hero.setPosY(testBoxY);
-      filename = "assets/hero-up.png";
+      hero.image = hero.getImage("assets/hero-up.png");
     } else {
-      filename = "assets/hero-up.png";
+      hero.image = hero.getImage("assets/hero-up.png");
+
     }
   }
 }
