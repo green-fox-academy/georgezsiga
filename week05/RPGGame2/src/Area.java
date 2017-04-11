@@ -14,10 +14,12 @@ public class Area extends GameObject implements KeyListener {
   String filename;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
+  ArrayList<Monster> monsterMap;
   Hero hero;
   GameObject wall;
   Boss boss;
   Skeleton skeleton;
+  Monster monster;
 
   public Area() {
     testBoxX = 0;
@@ -27,10 +29,12 @@ public class Area extends GameObject implements KeyListener {
     addWall();
     floorMap = new ArrayList<>();
     addFloor();
+    monsterMap = new ArrayList<>();
     addBoss();
     addSkeleton();
     addSkeleton();
     addSkeleton();
+
     setPreferredSize(new Dimension(720, 770));
     setVisible(true);
   }
@@ -52,6 +56,7 @@ public class Area extends GameObject implements KeyListener {
       }
     }
     wallMap.add(boss);
+    monsterMap.add(boss);
   }
 
   public void addSkeleton() {
@@ -71,6 +76,7 @@ public class Area extends GameObject implements KeyListener {
       }
     }
     wallMap.add(skeleton);
+    monsterMap.add(skeleton);
   }
 
   public void addWall() {
@@ -140,6 +146,12 @@ public class Area extends GameObject implements KeyListener {
         wall = wallMap.get(i);
         if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - SIZE) {
           canIgoThere = false;
+        }
+      }
+      for (int i = 0; i < monsterMap.size(); i++) {
+        monster = monsterMap.get(i);
+        if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() - SIZE) {
+          canIgoThere = true;
         }
       }
       if (testBoxY > 0 && canIgoThere) {
