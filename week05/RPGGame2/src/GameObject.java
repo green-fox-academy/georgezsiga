@@ -53,4 +53,12 @@ public class GameObject extends JComponent {
       graphics.drawImage(image, posX, posY, null);
     }
   }
+
+  public int getCurrentHP() {
+    return currentHP;
+  }
+
+  public void setCurrentHP(int currentHP) {
+    this.currentHP = currentHP;
+  }
 }
