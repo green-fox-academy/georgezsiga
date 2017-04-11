@@ -61,7 +61,9 @@ public class Area extends GameObject implements KeyListener {
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
+        int wallx = wall.getPosX();
+        int wally = wall.getPosY();
+        if (wallx == x && wally == y) {
           x = (randomNumber() * SIZE);
           y = (randomNumber() * SIZE);
         } else {
@@ -146,16 +148,6 @@ public class Area extends GameObject implements KeyListener {
     isHeroDead(g2d);
   }
 
-  public void isHeroDead( Graphics2D g2d) {
-    if (heroMap.size() == 0) {
-      gameMessages(g2d, "You died! Game over.");
-    } else {
-      g2d.drawString(hero.toString(), 216, 750);
-      monsterStats(g2d);
-    }
-  }
-
-
   @Override
   public void keyTyped(KeyEvent keyEvent) {
 
@@ -180,6 +172,15 @@ public class Area extends GameObject implements KeyListener {
       battle();
     }
     repaint();
+  }
+
+  public void isHeroDead( Graphics2D g2d) {
+    if (heroMap.size() == 0) {
+      gameMessages(g2d, "You died! Game over.");
+    } else {
+      g2d.drawString(hero.toString(), 216, 750);
+      monsterStats(g2d);
+    }
   }
 
   public void monsterStats(Graphics2D graphics2D) {
