@@ -16,6 +16,7 @@ public class Area extends GameObject implements KeyListener {
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
   ArrayList<Monster> monsterMap;
+  ArrayList<Hero> heroMap;
   Hero hero;
   GameObject wall;
   Boss boss;
@@ -29,7 +30,8 @@ public class Area extends GameObject implements KeyListener {
     addWall();
     floorMap = new ArrayList<>();
     addFloor();
-    hero = new Hero("assets/hero-down.png", testBoxX, testBoxY);
+    heroMap = new ArrayList<>();
+    addHero();
     monsterMap = new ArrayList<>();
     addBoss();
     addSkeleton();
@@ -38,6 +40,18 @@ public class Area extends GameObject implements KeyListener {
 
     setPreferredSize(new Dimension(720, 790));
     setVisible(true);
+  }
+
+  public void addHero() {
+    hero = new Hero("assets/hero-down.png", testBoxX, testBoxY);
+    heroMap.add(hero);
+  }
+
+  private void drawHero(Graphics graphics) {
+    for (int i = 0; i < heroMap.size(); i++) {
+      GameObject hero = heroMap.get(i);
+      hero.draw(graphics);
+    }
   }
 
   public void addBoss() {
@@ -103,6 +117,20 @@ public class Area extends GameObject implements KeyListener {
     }
   }
 
+  private void drawWall(Graphics graphics) {
+    for (int i = 0; i < wallMap.size(); i++) {
+      GameObject wall = wallMap.get(i);
+      wall.draw(graphics);
+    }
+  }
+
+  public void drawFloor(Graphics graphics) {
+    for (int i = 0; i < floorMap.size(); i++) {
+      Floor floor = floorMap.get(i);
+      floor.draw(graphics);
+    }
+  }
+
   public int randomNumber() {
     int rNumber = (int) (Math.random() * 10);
     return rNumber;
@@ -111,15 +139,9 @@ public class Area extends GameObject implements KeyListener {
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    for (int i = 0; i < floorMap.size(); i++) {
-      Floor floor = floorMap.get(i);
-      floor.draw(graphics);
-    }
-    for (int i = 0; i < wallMap.size(); i++) {
-      GameObject wall = wallMap.get(i);
-      wall.draw(graphics);
-    }
-    hero.draw(graphics);
+    drawFloor(graphics);
+    drawWall(graphics);
+    drawHero(graphics);
     Graphics2D g2d = (Graphics2D) graphics;
     g2d.drawString(hero.toString(), 220, 750);
     monsterStats(g2d);
