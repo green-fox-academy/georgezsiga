@@ -9,7 +9,8 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/10/17.
  */
 public class Area extends GameObject implements KeyListener {
-GameLogic gameLogic = new GameLogic();
+
+  GameLogic gameLogic = new GameLogic();
 
   int testBoxX, testBoxY;
   ArrayList<Floor> floorMap;
@@ -119,7 +120,7 @@ GameLogic gameLogic = new GameLogic();
       wall.draw(graphics);
     }
     hero.draw(graphics);
-    Graphics2D g2d = (Graphics2D)graphics;
+    Graphics2D g2d = (Graphics2D) graphics;
     g2d.drawString(hero.toString(), 220, 750);
     monsterStats(g2d);
   }
@@ -163,16 +164,14 @@ GameLogic gameLogic = new GameLogic();
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-
         int strikeValue = hero.strikeSP + (2 * gameLogic.rollTheDice());
         if (strikeValue > monster.defendDP) {
-          monster.currentHP = strikeValue - monster.defendDP;
+          if (monster.getCurrentHP() <= (strikeValue - monster.defendDP)) {
+            monsterMap.remove(monster);
+            wallMap.remove(monster);
+          }
         }
-        if (monster.currentHP <= 0) {
-          monsterMap.remove(monster);
-          wallMap.remove(monster);
-        }
-
+        monster.setCurrentHP(strikeValue - monster.defendDP);
       }
     }
   }
