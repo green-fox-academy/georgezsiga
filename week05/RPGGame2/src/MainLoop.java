@@ -4,6 +4,7 @@ import javax.swing.JFrame;
  * Created by georgezsiga on 4/10/17.
  */
 public class MainLoop {
+
   public static void main(String[] args) {
 
     JFrame frame = new JFrame("RPG Game");
@@ -13,6 +14,5 @@ public class MainLoop {
     frame.setVisible(true);
     frame.pack();
     frame.addKeyListener(area);
-
   }
 }
