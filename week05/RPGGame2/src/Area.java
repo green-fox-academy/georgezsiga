@@ -140,90 +140,108 @@ public class Area extends GameObject implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent e) {
-    boolean canIgoThere = true;
-
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      for (int i = 0; i < wallMap.size(); i++) {
-        wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - SIZE) {
-          canIgoThere = false;
-        }
-      }
-      for (int i = 0; i < monsterMap.size(); i++) {
-        monster = monsterMap.get(i);
-        if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() - SIZE) {
-          canIgoThere = true;
-        }
-      }
-      if (hero.getPosY() > 0 && canIgoThere) {
-        testBoxY = hero.getPosY() - SIZE;
-        hero.setPosY(testBoxY);
-        filename = "assets/hero-up.png";
-      } else {
-        filename = "assets/hero-up.png";
-      }
+      heroMoveUp();
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      for (int i = 0; i < wallMap.size(); i++) {
-        wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() + SIZE) {
-          canIgoThere = false;
-        }
-      }
-      for (int i = 0; i < monsterMap.size(); i++) {
-        monster = monsterMap.get(i);
-        if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() + SIZE) {
-          canIgoThere = true;
-        }
-      }
-      if (hero.getPosY() < SIZE * 9 && canIgoThere) {
-        testBoxY = hero.getPosY() + SIZE;
-        hero.setPosY(testBoxY);
-        filename = "assets/hero-down.png";
-      } else {
-        filename = "assets/hero-down.png";
-      }
+      heroMoveDown();
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      for (int i = 0; i < wallMap.size(); i++) {
-        wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() - SIZE && wall.getPosY() == hero.getPosY()) {
-          canIgoThere = false;
-        }
-      }
-      for (int i = 0; i < monsterMap.size(); i++) {
-        monster = monsterMap.get(i);
-        if (monster.getPosX() == hero.getPosX() - SIZE && monster.getPosY() == hero.getPosY()) {
-          canIgoThere = true;
-        }
-      }
-      if (hero.getPosX() > 0 && canIgoThere) {
-        testBoxX = hero.getPosX() - SIZE;
-        hero.setPosX(testBoxX);
-        filename = "assets/hero-left.png";
-      } else {
-        filename = "assets/hero-left.png";
-      }
+      heroMoveLeft();
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      for (int i = 0; i < wallMap.size(); i++) {
-        wall = wallMap.get(i);
-        if (wall.getPosX() == hero.getPosX() + SIZE && wall.getPosY() == hero.getPosY()) {
-          canIgoThere = false;
-        }
-      }
-      for (int i = 0; i < monsterMap.size(); i++) {
-        monster = monsterMap.get(i);
-        if (monster.getPosX() == hero.getPosX() + SIZE && monster.getPosY() == hero.getPosY()) {
-          canIgoThere = true;
-        }
-      }
-      if (hero.getPosX() < SIZE * 9 && canIgoThere) {
-        testBoxX = hero.getPosX() + SIZE;
-        hero.setPosX(testBoxX);
-
-        filename = "assets/hero-right.png";
-      } else {
-        filename = "assets/hero-right.png";
-      }
+      heroMoveRight();
     }
     repaint();
+  }
+
+  private void heroMoveRight() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == hero.getPosX() + SIZE && wall.getPosY() == hero.getPosY()) {
+        canIgoThere = false;
+      }
+    }
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() + SIZE && monster.getPosY() == hero.getPosY()) {
+        canIgoThere = true;
+      }
+    }
+    if (hero.getPosX() < SIZE * 9 && canIgoThere) {
+      testBoxX = hero.getPosX() + SIZE;
+      hero.setPosX(testBoxX);
+
+      filename = "assets/hero-right.png";
+    } else {
+      filename = "assets/hero-right.png";
+    }
+  }
+
+  private void heroMoveLeft() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == hero.getPosX() - SIZE && wall.getPosY() == hero.getPosY()) {
+        canIgoThere = false;
+      }
+    }
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() - SIZE && monster.getPosY() == hero.getPosY()) {
+        canIgoThere = true;
+      }
+    }
+    if (hero.getPosX() > 0 && canIgoThere) {
+      testBoxX = hero.getPosX() - SIZE;
+      hero.setPosX(testBoxX);
+      filename = "assets/hero-left.png";
+    } else {
+      filename = "assets/hero-left.png";
+    }
+  }
+
+  private void heroMoveDown() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() + SIZE) {
+        canIgoThere = false;
+      }
+    }
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() + SIZE) {
+        canIgoThere = true;
+      }
+    }
+    if (hero.getPosY() < SIZE * 9 && canIgoThere) {
+      testBoxY = hero.getPosY() + SIZE;
+      hero.setPosY(testBoxY);
+      filename = "assets/hero-down.png";
+    } else {
+      filename = "assets/hero-down.png";
+    }
+  }
+
+  public void heroMoveUp() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - SIZE) {
+        canIgoThere = false;
+      }
+    }
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() - SIZE) {
+        canIgoThere = true;
+      }
+    }
+    if (hero.getPosY() > 0 && canIgoThere) {
+      testBoxY = hero.getPosY() - SIZE;
+      hero.setPosY(testBoxY);
+      filename = "assets/hero-up.png";
+    } else {
+      filename = "assets/hero-up.png";
+    }
   }
 }
