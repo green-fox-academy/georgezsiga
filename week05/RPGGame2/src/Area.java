@@ -164,6 +164,23 @@ public class Area extends GameObject implements KeyListener {
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
+        heroStrikes();
+      }
+    }
+  }
+
+  public void monsterStrikes() {
+        int strikeValue = monster.strikeSP + (2 * gameLogic.rollTheDice());
+        if (strikeValue > hero.defendDP) {
+          if (hero.getCurrentHP() <= (strikeValue - hero.defendDP)) {
+
+          }
+        }
+        hero.setCurrentHP(strikeValue - hero.defendDP);
+      }
+
+
+  public void heroStrikes() {
         int strikeValue = hero.strikeSP + (2 * gameLogic.rollTheDice());
         if (strikeValue > monster.defendDP) {
           if (monster.getCurrentHP() <= (strikeValue - monster.defendDP)) {
@@ -173,8 +190,6 @@ public class Area extends GameObject implements KeyListener {
         }
         monster.setCurrentHP(strikeValue - monster.defendDP);
       }
-    }
-  }
 
   private void heroMoveRight() {
     boolean canIgoThere = true;
