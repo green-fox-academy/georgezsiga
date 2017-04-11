@@ -29,6 +29,7 @@ public class Area extends GameObject implements KeyListener {
     addWall();
     floorMap = new ArrayList<>();
     addFloor();
+//    hero = new Hero(filename, testBoxX, testBoxY);
     monsterMap = new ArrayList<>();
     addBoss();
     addSkeleton();
@@ -154,8 +155,9 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = true;
         }
       }
-      if (testBoxY > 0 && canIgoThere) {
-        testBoxY -= SIZE;
+      if (hero.getPosY() > 0 && canIgoThere) {
+        testBoxY = hero.getPosY() - SIZE;
+        hero.setPosY(testBoxY);
         filename = "assets/hero-up.png";
       } else {
         filename = "assets/hero-up.png";
@@ -173,8 +175,9 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = true;
         }
       }
-      if (testBoxY < SIZE * 9 && canIgoThere) {
-        testBoxY += SIZE;
+      if (hero.getPosY() < SIZE * 9 && canIgoThere) {
+        testBoxY = hero.getPosY() + SIZE;
+        hero.setPosY(testBoxY);
         filename = "assets/hero-down.png";
       } else {
         filename = "assets/hero-down.png";
@@ -192,8 +195,9 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = true;
         }
       }
-      if (testBoxX > 0 && canIgoThere) {
-        testBoxX -= SIZE;
+      if (hero.getPosX() > 0 && canIgoThere) {
+        testBoxX = hero.getPosX() - SIZE;
+        hero.setPosX(testBoxX);
         filename = "assets/hero-left.png";
       } else {
         filename = "assets/hero-left.png";
@@ -211,8 +215,10 @@ public class Area extends GameObject implements KeyListener {
           canIgoThere = true;
         }
       }
-      if (testBoxX < SIZE * 9 && canIgoThere) {
-        testBoxX += SIZE;
+      if (hero.getPosX() < SIZE * 9 && canIgoThere) {
+        testBoxX = hero.getPosX() + SIZE;
+        hero.setPosX(testBoxX);
+
         filename = "assets/hero-right.png";
       } else {
         filename = "assets/hero-right.png";
