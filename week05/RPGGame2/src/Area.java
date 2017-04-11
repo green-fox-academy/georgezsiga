@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Created by georgezsiga on 4/10/17.
  */
 public class Area extends GameObject implements KeyListener {
+GameLogic gameLogic = new GameLogic();
 
   int testBoxX, testBoxY;
   ArrayList<Floor> floorMap;
@@ -45,7 +46,7 @@ public class Area extends GameObject implements KeyListener {
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == x && wall.getPosY() == y) {
+        if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
           x = (randomNumber() * SIZE);
           y = (randomNumber() * SIZE);
         } else {
@@ -65,7 +66,7 @@ public class Area extends GameObject implements KeyListener {
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
-        if (wall.getPosX() == x && wall.getPosY() == y) {
+        if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
           x = (randomNumber() * SIZE);
           y = (randomNumber() * SIZE);
         } else {
@@ -142,8 +143,27 @@ public class Area extends GameObject implements KeyListener {
       heroMoveLeft();
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
       heroMoveRight();
+    } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      battle();
     }
     repaint();
+  }
+
+  public void battle() {
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
+        int strikeValue = hero.strikeSP + (2 * gameLogic.rollTheDice());
+        if (strikeValue > monster.defendDP) {
+          monster.currentHP = strikeValue - monster.defendDP;
+        }
+        if (monster.currentHP <= 0) {
+          monsterMap.remove(monster);
+          wallMap.remove(monster);
+        }
+
+      }
+    }
   }
 
   private void heroMoveRight() {
