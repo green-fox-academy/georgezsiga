@@ -35,7 +35,7 @@ GameLogic gameLogic = new GameLogic();
     addSkeleton();
     addSkeleton();
 
-    setPreferredSize(new Dimension(720, 770));
+    setPreferredSize(new Dimension(720, 790));
     setVisible(true);
   }
 
@@ -120,7 +120,8 @@ GameLogic gameLogic = new GameLogic();
     }
     hero.draw(graphics);
     Graphics2D g2d = (Graphics2D)graphics;
-    g2d.drawString(hero.toString(), 100, 750);
+    g2d.drawString(hero.toString(), 220, 750);
+    monsterStats(g2d);
   }
 
   @Override
@@ -149,10 +150,20 @@ GameLogic gameLogic = new GameLogic();
     repaint();
   }
 
+  public void monsterStats(Graphics2D graphics2D) {
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
+        graphics2D.drawString(monster.toString(), 220, 770);
+      }
+    }
+  }
+
   public void battle() {
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
+
         int strikeValue = hero.strikeSP + (2 * gameLogic.rollTheDice());
         if (strikeValue > monster.defendDP) {
           monster.currentHP = strikeValue - monster.defendDP;
