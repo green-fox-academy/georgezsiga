@@ -11,4 +11,14 @@ public class Skeleton extends Monster {
     this.defendDP = (levelOfGame / 2) * gameLogic.rollTheDice();
     this.strikeSP = levelOfGame * gameLogic.rollTheDice();
   }
+
+  @Override
+  public String toString() {
+    return "Skeleton " +
+        "(level " + level +
+        ") HP: " + currentHP +
+        "/" + maxHP +
+        " | DP: " + defendDP +
+        " | SP: " + strikeSP;
+  }
 }
