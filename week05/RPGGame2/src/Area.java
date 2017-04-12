@@ -219,10 +219,23 @@ public class Area extends GameObject implements KeyListener {
     if (stepCounter % 2 == 1) {
       for (int i = 0; i < monsterMap.size() ; i++) {
         monster = monsterMap.get(i);
-        moveMonsterRight();
+        moveMonster();
       }
     }
     repaint();
+  }
+
+  private void moveMonster() {
+    int randNum = GameLogic.randomMove();
+    if (randNum == 0) {
+      moveMonsterRight();
+    } else if (randNum == 1) {
+      moveMonsterDown();
+    } else if (randNum == 2) {
+      moveMonsterLeft();
+    } else {
+      moveMonsterUp();
+    }
   }
 
   private void moveMonsterRight() {
@@ -236,7 +249,48 @@ public class Area extends GameObject implements KeyListener {
     if (monster.getPosX() < SIZE * 9 && canIgoThere) {
       testBoxX = monster.getPosX() + SIZE;
       monster.setPosX(testBoxX);
+    }
+  }
 
+  private void moveMonsterLeft() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == monster.getPosX() - SIZE && wall.getPosY() == monster.getPosY()) {
+        canIgoThere = false;
+      }
+    }
+    if (monster.getPosX() < SIZE * 9 && canIgoThere) {
+      testBoxX = monster.getPosX() - SIZE;
+      monster.setPosX(testBoxX);
+    }
+  }
+
+  private void moveMonsterUp() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == monster.getPosX() && wall.getPosY() == monster.getPosY() - SIZE) {
+        canIgoThere = false;
+      }
+    }
+    if (monster.getPosY() < SIZE * 9 && canIgoThere) {
+      testBoxX = monster.getPosY() - SIZE;
+      monster.setPosY(testBoxX);
+    }
+  }
+
+  private void moveMonsterDown() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == monster.getPosX() && wall.getPosY() == monster.getPosY() + SIZE) {
+        canIgoThere = false;
+      }
+    }
+    if (monster.getPosY() < SIZE * 9 && canIgoThere) {
+      testBoxX = monster.getPosY() + SIZE;
+      monster.setPosY(testBoxX);
     }
   }
 
