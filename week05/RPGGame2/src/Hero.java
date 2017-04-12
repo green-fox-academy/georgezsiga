@@ -9,9 +9,9 @@ public class Hero extends Character {
     super(image, posX, posY);
     this.level = 1;
     this.maxHP = 38;
-    this.currentHP = 20 + (2 * gameLogic.rollTheDice());
-    this.defendDP = 2 * gameLogic.rollTheDice();
-    this.strikeSP = 5 + gameLogic.rollTheDice();
+    this.currentHP = 20 + (2 * GameLogic.rollTheDice());
+    this.defendDP = 2 * GameLogic.rollTheDice();
+    this.strikeSP = 5 + GameLogic.rollTheDice();
   }
 
   @Override
