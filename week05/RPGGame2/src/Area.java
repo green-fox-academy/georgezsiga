@@ -6,14 +6,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Timer;
 
 /**
  * Created by georgezsiga on 4/10/17.
  */
 public class Area extends GameObject implements KeyListener {
 
-  int testBoxX, testBoxY, stepCounter;
+  int testBoxX, testBoxY;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
   ArrayList<Monster> monsterMap;
@@ -27,7 +26,6 @@ public class Area extends GameObject implements KeyListener {
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    stepCounter = 0;
     floorMap = new ArrayList<>();
     addFloor();
     wallMap = new ArrayList<>();
@@ -47,14 +45,14 @@ public class Area extends GameObject implements KeyListener {
     drawFloor(graphics);
     drawWall(graphics);
     drawHero(graphics);
-    gameLevel(g2d);
+    gameLevel(g2d, mapLevel + 1);
     isHeroDead(g2d);
   }
 
   public void levelUpArea() {
     hero.setPosX(0);
     hero.setPosY(0);
-    heroRestoreHP();
+    hero.heroRestoreHP();
     this.wallMap = new ArrayList<>();
     addWall();
     this.monsterMap = new ArrayList<>();
@@ -62,44 +60,10 @@ public class Area extends GameObject implements KeyListener {
     addMonsters(newMapLevel);
   }
 
-  public void heroLevelUp() {
-    int levelUp = hero.getLevel() + 1;
-    hero.setLevel(levelUp);
-    int maxHP = hero.getMaxHP() + GameLogic.rollTheDice();
-    hero.setMaxHP(maxHP);
-    int dp = hero.getDefendDP() + GameLogic.rollTheDice();
-    hero.setDefendDP(dp);
-    int sp = hero.getStrikeSP() + GameLogic.rollTheDice();
-    hero.setStrikeSP(sp);
-  }
-
-  public void heroRestoreHP() {
-    int maxHP = hero.getMaxHP();
-    int hp = hero.getCurrentHP();
-    int randNum = GameLogic.randomNumber();
-    if (randNum == 1) {
-      hero.setCurrentHP(maxHP);
-    } else if (randNum == 0 || randNum == 2 || randNum == 3 ) {
-      int third = maxHP / 3;
-      if ((hp + third) >= maxHP ) {
-        hero.setCurrentHP(maxHP);
-      } else {
-        hero.setCurrentHP(hp+third);
-      }
-    } else {
-      int tenth = maxHP / 10;
-      if ((hp + tenth) >= maxHP ) {
-        hero.setCurrentHP(maxHP);
-      } else {
-        hero.setCurrentHP(hp+tenth);
-      }
-    }
-  }
-
   public void addMonsters(int newMapLevel) {
     addBoss(newMapLevel);
     addSkeleton(true, newMapLevel);
-    for (int i = 0; i < GameLogic.randomMonsters() ; i++) {
+    for (int i = 0; i < GameLogic.randomMonsters(); i++) {
       addSkeleton(false, newMapLevel);
     }
   }
@@ -225,7 +189,7 @@ public class Area extends GameObject implements KeyListener {
   javax.swing.Timer timer = new javax.swing.Timer(1000, new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-      for (int i = 0; i < monsterMap.size() ; i++) {
+      for (int i = 0; i < monsterMap.size(); i++) {
         monster = monsterMap.get(i);
         moveMonster();
       }
@@ -256,8 +220,8 @@ public class Area extends GameObject implements KeyListener {
     graphics2D.drawString(gameMessage, 288, 760);
   }
 
-  private void gameLevel(Graphics2D graphics2D) {
-    int actLev = monster.getMapLevel();
+  private void gameLevel(Graphics2D graphics2D, int actLev) {
+//    int actLev = GameObject.getMapLevel();
     graphics2D.drawString("Level : " + actLev, 330, 740);
   }
 
@@ -290,22 +254,22 @@ public class Area extends GameObject implements KeyListener {
     if (strikeValue > monster.getDefendDP()) {
       if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
         if (monster.isGotKey() && !monsterMap.contains(boss)) {
-          heroLevelUp();
+          hero.heroLevelUp();
           levelUpArea();
-        } else if (monster == boss && !monsterMap.contains(skeleton) ) {
-          heroLevelUp();
+        } else if (monster == boss && !monsterMap.contains(skeleton)) {
+          hero.heroLevelUp();
           levelUpArea();
         } else {
-            monster.setCurrentHP(0);
-            monsterMap.remove(monster);
-            wallMap.remove(monster);
-            heroLevelUp();
-          }
+          monster.setCurrentHP(0);
+          monsterMap.remove(monster);
+          wallMap.remove(monster);
+          hero.heroLevelUp();
         }
       }
-      int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
-      monster.setCurrentHP(decreasedHP);
     }
+    int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
+    monster.setCurrentHP(decreasedHP);
+  }
 
 
   private void heroMoveRight() {
