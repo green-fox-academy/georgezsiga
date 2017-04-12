@@ -32,9 +32,9 @@ public class Area extends GameObject implements KeyListener {
     addHero();
     monsterMap = new ArrayList<>();
     addBoss();
-    addSkeleton();
-    addSkeleton();
-    addSkeleton();
+    addSkeleton(false);
+    addSkeleton(false);
+    addSkeleton(true);
 
     setPreferredSize(new Dimension(720, 790));
     setVisible(true);
@@ -74,7 +74,7 @@ public class Area extends GameObject implements KeyListener {
     monsterMap.add(boss);
   }
 
-  public void addSkeleton() {
+  public void addSkeleton(boolean gotKey) {
     int x = randomNumber() * SIZE;
     int y = randomNumber() * SIZE;
     boolean isItFree = false;
@@ -85,7 +85,7 @@ public class Area extends GameObject implements KeyListener {
           x = (randomNumber() * SIZE);
           y = (randomNumber() * SIZE);
         } else {
-          skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y);
+          skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y, gotKey);
           isItFree = true;
         }
       }
