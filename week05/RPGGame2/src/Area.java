@@ -6,13 +6,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import javax.swing.JComponent;
 
 /**
  * Created by georgezsiga on 4/10/17.
  */
-public class Area extends GameObject implements KeyListener {
+public class Area extends JComponent implements KeyListener {
+//  GameLogic gameLogic = new GameLogic();
 
-  int testBoxX, testBoxY;
+  int testBoxX, testBoxY, SIZE;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
   ArrayList<Monster> monsterMap;
@@ -24,6 +26,7 @@ public class Area extends GameObject implements KeyListener {
   Monster monster;
 
   public Area() {
+    SIZE = GameObject.SIZE;
     testBoxX = 0;
     testBoxY = 0;
     floorMap = new ArrayList<>();
@@ -220,17 +223,17 @@ public class Area extends GameObject implements KeyListener {
     graphics2D.drawString(gameMessage, 288, 760);
   }
 
-  public void battle() {
-    for (int i = 0; i < monsterMap.size(); i++) {
-      monster = monsterMap.get(i);
-      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-        while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
-          heroStrikes();
-          monsterStrikes();
-        }
-      }
-    }
-  }
+//  public void battle() {
+//    for (int i = 0; i < monsterMap.size(); i++) {
+//      monster = monsterMap.get(i);
+//      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
+//        while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
+//          heroStrikes();
+//          monsterStrikes();
+//        }
+//      }
+//    }
+//  }
 
   public void monsterStrikes() {
     int strikeValue = monster.getStrikeSP() + (2 * GameLogic.rollTheDice());
