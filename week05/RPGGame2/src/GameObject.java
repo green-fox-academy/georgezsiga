@@ -11,7 +11,7 @@ import javax.swing.JComponent;
 public class GameObject extends JComponent {
   BufferedImage image;
   boolean gotKey;
-  int posX, posY, level, maxHP, currentHP, defendDP, strikeSP;
+  int posX, posY, level, mapLevel, maxHP, currentHP, defendDP, strikeSP;
   public static final int SIZE = 72;
 
   public GameObject() {
@@ -73,6 +73,14 @@ public class GameObject extends JComponent {
 
   public void setCurrentHP(int currentHP) {
     this.currentHP = currentHP;
+  }
+
+  public int getMapLevel() {
+    return mapLevel;
+  }
+
+  public void setMapLevel(int mapLevel) {
+    this.mapLevel = mapLevel;
   }
 
   public int getDefendDP() {
