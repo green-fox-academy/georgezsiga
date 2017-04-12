@@ -9,9 +9,9 @@ public class Boss extends Monster {
     super(image, posX, posY);
     this.level = 1;
     this.maxHP = (2 * levelOfGame * 6) + 6;
-    this.currentHP = (2 * levelOfGame * gameLogic.rollTheDice()) + gameLogic.rollTheDice();
-    this.defendDP = ((levelOfGame / 2) * gameLogic.rollTheDice()) + (gameLogic.rollTheDice() / 2);
-    this.strikeSP = (levelOfGame * gameLogic.rollTheDice()) + levelOfGame;
+    this.currentHP = (2 * levelOfGame * GameLogic.rollTheDice()) + GameLogic.rollTheDice();
+    this.defendDP = ((levelOfGame / 2) * GameLogic.rollTheDice()) + (GameLogic.rollTheDice() / 2);
+    this.strikeSP = (levelOfGame * GameLogic.rollTheDice()) + levelOfGame;
   }
 
   @Override
