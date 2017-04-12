@@ -39,11 +39,36 @@ public class Area extends GameObject implements KeyListener {
   public void levelUpArea() {
     hero.setPosX(0);
     hero.setPosY(0);
+    heroRestoreHP();
     this.wallMap = new ArrayList<>();
     addWall();
     this.monsterMap = new ArrayList<>();
     int newMapLevel = monster.getMapLevel() + 1;
     addMonsters(newMapLevel);
+  }
+
+  public void heroRestoreHP() {
+    int maxHP = hero.getMaxHP();
+    int hp = hero.getCurrentHP();
+    int randNum = GameLogic.randomNumber();
+    if (randNum == 1) {
+      hero.setCurrentHP(maxHP);
+    } else if (randNum == 0 || randNum == 2 || randNum == 3 ) {
+      int third = maxHP / 3;
+      if ((hp + third) >= maxHP ) {
+        hero.setCurrentHP(maxHP);
+      } else {
+        hero.setCurrentHP(hp+third);
+      }
+    } else {
+      int tenth = maxHP / 10;
+      if ((hp + tenth) >= maxHP ) {
+        hero.setCurrentHP(maxHP);
+      } else {
+        hero.setCurrentHP(hp+tenth);
+      }
+    }
+
   }
 
   public void addMonsters(int newMapLevel) {
