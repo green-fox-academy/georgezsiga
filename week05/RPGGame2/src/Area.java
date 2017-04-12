@@ -32,8 +32,19 @@ public class Area extends GameObject implements KeyListener {
     addHero();
     monsterMap = new ArrayList<>();
     addMonsters(1);
-    setPreferredSize(new Dimension(720, 790));
+    setPreferredSize(new Dimension(720, 800));
     setVisible(true);
+  }
+
+  @Override
+  public void paint(Graphics graphics) {
+    super.paint(graphics);
+    Graphics2D g2d = (Graphics2D) graphics;
+    drawFloor(graphics);
+    drawWall(graphics);
+    drawHero(graphics);
+    gameLevel(g2d);
+    isHeroDead(g2d);
   }
 
   public void levelUpArea() {
@@ -169,17 +180,6 @@ public class Area extends GameObject implements KeyListener {
     }
   }
 
-
-  @Override
-  public void paint(Graphics graphics) {
-    super.paint(graphics);
-    drawFloor(graphics);
-    drawWall(graphics);
-    drawHero(graphics);
-    Graphics2D g2d = (Graphics2D) graphics;
-    isHeroDead(g2d);
-  }
-
   @Override
   public void keyTyped(KeyEvent keyEvent) {
 
@@ -210,7 +210,7 @@ public class Area extends GameObject implements KeyListener {
     if (heroMap.size() == 0) {
       gameMessages(g2d, "You died! Game over.");
     } else {
-      g2d.drawString(hero.toString(), 216, 750);
+      g2d.drawString(hero.toString(), 216, 760);
       monsterStats(g2d);
     }
   }
@@ -219,13 +219,18 @@ public class Area extends GameObject implements KeyListener {
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-        graphics2D.drawString(monster.toString(), 216, 770);
+        graphics2D.drawString(monster.toString(), 216, 780);
       }
     }
   }
 
   private void gameMessages(Graphics2D graphics2D, String gameMessage) {
     graphics2D.drawString(gameMessage, 288, 760);
+  }
+
+  private void gameLevel(Graphics2D graphics2D) {
+    int actLev = monster.getMapLevel();
+    graphics2D.drawString("Level : " + actLev, 330, 740);
   }
 
   public void battle() {
