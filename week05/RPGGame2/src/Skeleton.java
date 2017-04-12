@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
  * Created by georgezsiga on 4/10/17.
  */
 public class Skeleton extends Monster {
+  boolean gotKey;
 
   public Skeleton(BufferedImage image, int posX, int posY) {
     super(image, posX, posY);
@@ -12,6 +13,7 @@ public class Skeleton extends Monster {
     this.currentHP = 2 * level * GameLogic.rollTheDice();
     this.defendDP = (level / 2) * GameLogic.rollTheDice();
     this.strikeSP = level * GameLogic.rollTheDice();
+    this.gotKey = false;
   }
 
   @Override
