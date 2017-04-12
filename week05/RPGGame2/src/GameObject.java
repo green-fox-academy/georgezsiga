@@ -81,4 +81,12 @@ public class GameObject extends JComponent {
   public void setStrikeSP(int strikeSP) {
     this.strikeSP = strikeSP;
   }
+
+  public int getLevel() {
+    return level;
+  }
+
+  public void setLevel(int level) {
+    this.level = level;
+  }
 }
