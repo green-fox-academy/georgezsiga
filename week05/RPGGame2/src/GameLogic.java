@@ -7,4 +7,10 @@ public class GameLogic {
     int diceRoll = (int) (Math.random() * 6 + 1);
     return diceRoll;
   }
+
+  public static int randomNumber() {
+    int rNumber = (int) (Math.random() * 10);
+    return rNumber;
+  }
+
 }
