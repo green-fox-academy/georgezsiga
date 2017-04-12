@@ -33,10 +33,14 @@ public class GameObject extends JComponent {
     this.posY = posY;
   }
 
-  public GameObject(String filename, int posX, int posY) {
+  public GameObject(BufferedImage image, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
-    this.image = getImage(filename);
+    setImage(image);
+  }
+
+  protected void setImage(BufferedImage image) {
+    this.image = image;
   }
 
   public BufferedImage getImage(String filename) {
