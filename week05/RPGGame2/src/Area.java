@@ -31,7 +31,7 @@ public class Area extends GameObject implements KeyListener {
     heroMap = new ArrayList<>();
     addHero();
     monsterMap = new ArrayList<>();
-    addMonsters();
+    addMonsters(1);
     setPreferredSize(new Dimension(720, 790));
     setVisible(true);
   }
@@ -39,18 +39,18 @@ public class Area extends GameObject implements KeyListener {
   public void levelUpArea() {
     hero.setPosX(0);
     hero.setPosY(0);
-    testBoxY = 0;
     this.wallMap = new ArrayList<>();
     addWall();
     this.monsterMap = new ArrayList<>();
-    addMonsters();
+    int newMapLevel = monster.getMapLevel() + 1;
+    addMonsters(newMapLevel);
   }
 
-  public void addMonsters() {
-    addBoss();
-    addSkeleton(false);
-    addSkeleton(false);
-    addSkeleton(true);
+  public void addMonsters(int newMapLevel) {
+    addBoss(newMapLevel);
+    addSkeleton(false, newMapLevel);
+    addSkeleton(false, newMapLevel);
+    addSkeleton(true, newMapLevel);
   }
 
   public void addHero() {
@@ -65,7 +65,7 @@ public class Area extends GameObject implements KeyListener {
     }
   }
 
-  public void addBoss() {
+  public void addBoss(int newMaplevel) {
     int x = GameLogic.randomNumber() * SIZE;
     int y = GameLogic.randomNumber() * SIZE;
     boolean isItFree = false;
@@ -78,7 +78,7 @@ public class Area extends GameObject implements KeyListener {
           x = (GameLogic.randomNumber() * SIZE);
           y = (GameLogic.randomNumber() * SIZE);
         } else {
-          boss = new Boss(ImageLoader.getInstance().BOSS, x, y);
+          boss = new Boss(ImageLoader.getInstance().BOSS, x, y, newMaplevel);
           isItFree = true;
         }
       }
@@ -87,7 +87,7 @@ public class Area extends GameObject implements KeyListener {
     monsterMap.add(boss);
   }
 
-  public void addSkeleton(boolean gotKey) {
+  public void addSkeleton(boolean gotKey, int newMapLevel) {
     int x = GameLogic.randomNumber() * SIZE;
     int y = GameLogic.randomNumber() * SIZE;
     boolean isItFree = false;
@@ -98,7 +98,7 @@ public class Area extends GameObject implements KeyListener {
           x = (GameLogic.randomNumber() * SIZE);
           y = (GameLogic.randomNumber() * SIZE);
         } else {
-          skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y, gotKey);
+          skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y, gotKey, newMapLevel);
           isItFree = true;
         }
       }
