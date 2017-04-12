@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Area extends GameObject implements KeyListener {
 
-  int testBoxX, testBoxY;
+  int testBoxX, testBoxY, stepCounter;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
   ArrayList<Monster> monsterMap;
@@ -24,6 +24,7 @@ public class Area extends GameObject implements KeyListener {
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
+    stepCounter = 0;
     floorMap = new ArrayList<>();
     addFloor();
     wallMap = new ArrayList<>();
@@ -214,7 +215,29 @@ public class Area extends GameObject implements KeyListener {
     } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
       battle();
     }
+    stepCounter ++;
+    if (stepCounter % 2 == 1) {
+      for (int i = 0; i < monsterMap.size() ; i++) {
+        monster = monsterMap.get(i);
+        moveMonsterRight();
+      }
+    }
     repaint();
+  }
+
+  private void moveMonsterRight() {
+    boolean canIgoThere = true;
+    for (int i = 0; i < wallMap.size(); i++) {
+      wall = wallMap.get(i);
+      if (wall.getPosX() == monster.getPosX() + SIZE && wall.getPosY() == monster.getPosY()) {
+        canIgoThere = false;
+      }
+    }
+    if (monster.getPosX() < SIZE * 9 && canIgoThere) {
+      testBoxX = monster.getPosX() + SIZE;
+      monster.setPosX(testBoxX);
+
+    }
   }
 
   public void isHeroDead(Graphics2D g2d) {
