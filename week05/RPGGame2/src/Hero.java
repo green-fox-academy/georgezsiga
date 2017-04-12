@@ -14,6 +14,17 @@ public class Hero extends Character {
     this.strikeSP = 5 + GameLogic.rollTheDice();
   }
 
+  public void heroLevelUp() {
+    int levelUp = getLevel() + 1;
+    setLevel(levelUp);
+    int maxHP = getMaxHP() + GameLogic.rollTheDice();
+    setMaxHP(maxHP);
+    int dp = getDefendDP() + GameLogic.rollTheDice();
+    setDefendDP(dp);
+    int sp = getStrikeSP() + GameLogic.rollTheDice();
+    setStrikeSP(sp);
+  }
+
   @Override
   public String toString() {
     return "Hero " +
