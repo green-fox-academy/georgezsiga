@@ -53,8 +53,8 @@ public class Area extends GameObject implements KeyListener {
   }
 
   public void addBoss() {
-    int x = randomNumber() * SIZE;
-    int y = randomNumber() * SIZE;
+    int x = GameLogic.randomNumber() * SIZE;
+    int y = GameLogic.randomNumber() * SIZE;
     boolean isItFree = false;
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
@@ -62,8 +62,8 @@ public class Area extends GameObject implements KeyListener {
         int wallx = wall.getPosX();
         int wally = wall.getPosY();
         if (wallx == x && wally == y) {
-          x = (randomNumber() * SIZE);
-          y = (randomNumber() * SIZE);
+          x = (GameLogic.randomNumber() * SIZE);
+          y = (GameLogic.randomNumber() * SIZE);
         } else {
           boss = new Boss(ImageLoader.getInstance().BOSS, x, y);
           isItFree = true;
@@ -75,15 +75,15 @@ public class Area extends GameObject implements KeyListener {
   }
 
   public void addSkeleton(boolean gotKey) {
-    int x = randomNumber() * SIZE;
-    int y = randomNumber() * SIZE;
+    int x = GameLogic.randomNumber() * SIZE;
+    int y = GameLogic.randomNumber() * SIZE;
     boolean isItFree = false;
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
         if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
-          x = (randomNumber() * SIZE);
-          y = (randomNumber() * SIZE);
+          x = (GameLogic.randomNumber() * SIZE);
+          y = (GameLogic.randomNumber() * SIZE);
         } else {
           skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y, gotKey);
           isItFree = true;
@@ -131,10 +131,7 @@ public class Area extends GameObject implements KeyListener {
     }
   }
 
-  public int randomNumber() {
-    int rNumber = (int) (Math.random() * 10);
-    return rNumber;
-  }
+
 
   @Override
   public void paint(Graphics graphics) {
@@ -223,6 +220,12 @@ public class Area extends GameObject implements KeyListener {
         int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
         if (strikeValue > monster.getDefendDP()) {
           if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
+            if (monster.isGotKey()) {
+              int levelUp = hero.getLevel() + 1;
+              hero.setLevel(levelUp);
+              Area area = new Area();
+              repaint();
+            }
             monster.setCurrentHP(0);
             monsterMap.remove(monster);
             wallMap.remove(monster);
