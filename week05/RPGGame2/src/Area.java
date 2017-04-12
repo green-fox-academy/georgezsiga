@@ -227,21 +227,31 @@ public class Area extends GameObject implements KeyListener {
     }
   }
 
+  public void heroLevelUp() {
+    int levelUp = hero.getLevel() + 1;
+    hero.setLevel(levelUp);
+    int maxHP = hero.getMaxHP() + GameLogic.rollTheDice();
+    hero.setMaxHP(maxHP);
+    int dp = hero.getDefendDP() + GameLogic.rollTheDice();
+    hero.setDefendDP(dp);
+    int sp = hero.getStrikeSP() + GameLogic.rollTheDice();
+    hero.setStrikeSP(sp);
+  }
+
 
   public void heroStrikes() {
     int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
     if (strikeValue > monster.getDefendDP()) {
       if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
         if (monster.isGotKey()) {
-          int levelUp = hero.getLevel() + 1;
-          hero.setLevel(levelUp);
+          heroLevelUp();
           levelUpArea();
+        } else {
+          monster.setCurrentHP(0);
+          monsterMap.remove(monster);
+          wallMap.remove(monster);
+          heroLevelUp();
         }
-        monster.setCurrentHP(0);
-        monsterMap.remove(monster);
-        wallMap.remove(monster);
-        int levelUp = hero.getLevel() + 1;
-        hero.setLevel(levelUp);
       }
       int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
       monster.setCurrentHP(decreasedHP);
