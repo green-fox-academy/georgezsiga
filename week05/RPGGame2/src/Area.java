@@ -94,9 +94,10 @@ public class Area extends GameObject implements KeyListener {
 
   public void addMonsters(int newMapLevel) {
     addBoss(newMapLevel);
-    addSkeleton(false, newMapLevel);
-    addSkeleton(false, newMapLevel);
     addSkeleton(true, newMapLevel);
+    for (int i = 0; i < GameLogic.randomMonsters() ; i++) {
+      addSkeleton(false, newMapLevel);
+    }
   }
 
   public void addHero() {
