@@ -1,10 +1,12 @@
+import java.awt.image.BufferedImage;
+
 /**
  * Created by georgezsiga on 4/10/17.
  */
 public class Boss extends Monster {
 
-  public Boss(String filename, int posX, int posY) {
-    super(filename, posX, posY);
+  public Boss(BufferedImage image, int posX, int posY) {
+    super(image, posX, posY);
     this.level = 1;
     this.maxHP = (2 * levelOfGame * 6) + 6;
     this.currentHP = (2 * levelOfGame * gameLogic.rollTheDice()) + gameLogic.rollTheDice();
