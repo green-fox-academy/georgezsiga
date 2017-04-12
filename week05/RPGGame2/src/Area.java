@@ -43,7 +43,7 @@ public class Area extends GameObject implements KeyListener {
   }
 
   public void addHero() {
-    hero = new Hero("assets/hero-down.png", testBoxX, testBoxY);
+    hero = new Hero(ImageLoader.getInstance().HERO_DOWN, testBoxX, testBoxY);
     heroMap.add(hero);
   }
 
@@ -67,7 +67,7 @@ public class Area extends GameObject implements KeyListener {
           x = (randomNumber() * SIZE);
           y = (randomNumber() * SIZE);
         } else {
-          boss = new Boss("assets/boss.png", x, y);
+          boss = new Boss(ImageLoader.getInstance().BOSS, x, y);
           isItFree = true;
         }
       }
@@ -87,7 +87,7 @@ public class Area extends GameObject implements KeyListener {
           x = (randomNumber() * SIZE);
           y = (randomNumber() * SIZE);
         } else {
-          skeleton = new Skeleton("assets/skeleton.png", x, y);
+          skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y);
           isItFree = true;
         }
       }
@@ -102,7 +102,7 @@ public class Area extends GameObject implements KeyListener {
         if (j % 3 == 0) {
 
         } else {
-          Wall wall = new Wall(i * SIZE, j * SIZE);
+          Wall wall = new Wall(ImageLoader.getInstance().WALL, i * SIZE, j * SIZE);
           wallMap.add(wall);
         }
       }
@@ -113,7 +113,7 @@ public class Area extends GameObject implements KeyListener {
   public void addFloor() {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        Floor floor = new Floor(i * SIZE, j * SIZE);
+        Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * SIZE, j * SIZE);
         floorMap.add(floor);
       }
     }
@@ -201,7 +201,7 @@ public class Area extends GameObject implements KeyListener {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
         heroStrikes();
-        monsterStrikes();
+//        monsterStrikes();
       }
     }
   }
