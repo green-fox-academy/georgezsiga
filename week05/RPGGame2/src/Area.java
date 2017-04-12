@@ -31,10 +31,7 @@ public class Area extends GameObject implements KeyListener {
     heroMap = new ArrayList<>();
     addHero();
     monsterMap = new ArrayList<>();
-    addBoss();
-    addSkeleton(false);
-    addSkeleton(false);
-    addSkeleton(true);
+    addMonsters();
     setPreferredSize(new Dimension(720, 790));
     setVisible(true);
   }
@@ -44,8 +41,16 @@ public class Area extends GameObject implements KeyListener {
     hero.setPosY(0);
     testBoxY = 0;
     this.wallMap = new ArrayList<>();
+    addWall();
     this.monsterMap = new ArrayList<>();
+    addMonsters();
+  }
 
+  public void addMonsters() {
+    addBoss();
+    addSkeleton(false);
+    addSkeleton(false);
+    addSkeleton(true);
   }
 
   public void addHero() {
