@@ -65,4 +65,20 @@ public class GameObject extends JComponent {
   public void setCurrentHP(int currentHP) {
     this.currentHP = currentHP;
   }
+
+  public int getDefendDP() {
+    return defendDP;
+  }
+
+  public void setDefendDP(int defendDP) {
+    this.defendDP = defendDP;
+  }
+
+  public int getStrikeSP() {
+    return strikeSP;
+  }
+
+  public void setStrikeSP(int strikeSP) {
+    this.strikeSP = strikeSP;
+  }
 }
