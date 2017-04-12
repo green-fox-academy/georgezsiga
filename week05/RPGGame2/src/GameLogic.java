@@ -3,7 +3,7 @@
  */
 public class GameLogic {
 
-  public int rollTheDice() {
+  public  static int rollTheDice() {
     int diceRoll = (int) (Math.random() * 6 + 1);
     return diceRoll;
   }
