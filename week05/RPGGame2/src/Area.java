@@ -226,6 +226,8 @@ public class Area extends GameObject implements KeyListener {
             monster.setCurrentHP(0);
             monsterMap.remove(monster);
             wallMap.remove(monster);
+            int levelUp = hero.getLevel() + 1;
+            hero.setLevel(levelUp);
           }
           int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
           monster.setCurrentHP(decreasedHP);
