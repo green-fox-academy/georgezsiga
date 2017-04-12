@@ -58,6 +58,17 @@ public class Area extends GameObject implements KeyListener {
     addMonsters(newMapLevel);
   }
 
+  public void heroLevelUp() {
+    int levelUp = hero.getLevel() + 1;
+    hero.setLevel(levelUp);
+    int maxHP = hero.getMaxHP() + GameLogic.rollTheDice();
+    hero.setMaxHP(maxHP);
+    int dp = hero.getDefendDP() + GameLogic.rollTheDice();
+    hero.setDefendDP(dp);
+    int sp = hero.getStrikeSP() + GameLogic.rollTheDice();
+    hero.setStrikeSP(sp);
+  }
+
   public void heroRestoreHP() {
     int maxHP = hero.getMaxHP();
     int hp = hero.getCurrentHP();
@@ -79,7 +90,6 @@ public class Area extends GameObject implements KeyListener {
         hero.setCurrentHP(hp+tenth);
       }
     }
-
   }
 
   public void addMonsters(int newMapLevel) {
@@ -257,37 +267,28 @@ public class Area extends GameObject implements KeyListener {
     }
   }
 
-  public void heroLevelUp() {
-    int levelUp = hero.getLevel() + 1;
-    hero.setLevel(levelUp);
-    int maxHP = hero.getMaxHP() + GameLogic.rollTheDice();
-    hero.setMaxHP(maxHP);
-    int dp = hero.getDefendDP() + GameLogic.rollTheDice();
-    hero.setDefendDP(dp);
-    int sp = hero.getStrikeSP() + GameLogic.rollTheDice();
-    hero.setStrikeSP(sp);
-  }
-
-
   public void heroStrikes() {
     int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
     if (strikeValue > monster.getDefendDP()) {
       if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
-        if (monster.isGotKey()) {
+        if (monster.isGotKey() && !monsterMap.contains(boss)) {
+          heroLevelUp();
+          levelUpArea();
+        } else if (monster == boss && !monsterMap.contains(skeleton) ) {
           heroLevelUp();
           levelUpArea();
         } else {
-          monster.setCurrentHP(0);
-          monsterMap.remove(monster);
-          wallMap.remove(monster);
-          heroLevelUp();
+            monster.setCurrentHP(0);
+            monsterMap.remove(monster);
+            wallMap.remove(monster);
+            heroLevelUp();
+          }
         }
       }
       int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
       monster.setCurrentHP(decreasedHP);
     }
 
-  }
 
   private void heroMoveRight() {
     boolean canIgoThere = true;
