@@ -10,8 +10,6 @@ import java.util.ArrayList;
  */
 public class Area extends GameObject implements KeyListener {
 
-  GameLogic gameLogic = new GameLogic();
-
   int testBoxX, testBoxY;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
@@ -200,32 +198,39 @@ public class Area extends GameObject implements KeyListener {
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-        heroStrikes();
-//        monsterStrikes();
+        while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
+           heroStrikes();
+          monsterStrikes();
+        }
       }
     }
   }
 
   public void monsterStrikes() {
-        int strikeValue = monster.strikeSP + (2 * gameLogic.rollTheDice());
-        if (strikeValue > hero.defendDP) {
-          if (hero.getCurrentHP() <= (strikeValue - hero.defendDP)) {
+        int strikeValue = monster.getStrikeSP() + (2 * GameLogic.rollTheDice());
+        if (strikeValue > hero.getDefendDP()) {
+          if (hero.getCurrentHP() <= (strikeValue - hero.getDefendDP())) {
+            hero.setCurrentHP(0);
             heroMap.remove(hero);
           }
+          int decreasedHP = hero.getCurrentHP() - (strikeValue - hero.getDefendDP());
+          hero.setCurrentHP(decreasedHP);
         }
-        hero.setCurrentHP(strikeValue - hero.defendDP);
       }
 
 
   public void heroStrikes() {
-        int strikeValue = hero.strikeSP + (2 * gameLogic.rollTheDice());
-        if (strikeValue > monster.defendDP) {
-          if (monster.getCurrentHP() <= (strikeValue - monster.defendDP)) {
+        int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
+        if (strikeValue > monster.getDefendDP()) {
+          if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
+            monster.setCurrentHP(0);
             monsterMap.remove(monster);
             wallMap.remove(monster);
           }
+          int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
+          monster.setCurrentHP(decreasedHP);
         }
-        monster.setCurrentHP(strikeValue - monster.defendDP);
+
       }
 
   private void heroMoveRight() {
