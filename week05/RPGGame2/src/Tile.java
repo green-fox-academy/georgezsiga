@@ -1,3 +1,5 @@
+import java.awt.image.BufferedImage;
+
 /**
  * Created by georgezsiga on 4/10/17.
  */
@@ -8,8 +10,8 @@ public class Tile extends GameObject {
     return isWall;
   }
 
-  public Tile(String filename, int posX, int posY) {
-    super(filename, posX, posY);
+  public Tile(BufferedImage image, int posX, int posY) {
+    super(image, posX, posY);
   }
 
 }
