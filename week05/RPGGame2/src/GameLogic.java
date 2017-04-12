@@ -17,4 +17,9 @@ public class GameLogic {
     int rNumber = (int) (Math.random() * 3 + 1);
     return rNumber;
   }
+
+  public static int randomMove() {
+    int rNumber = (int) (Math.random() * 4);
+    return rNumber;
+  }
 }
