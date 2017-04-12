@@ -45,7 +45,6 @@ public class Area extends GameObject implements KeyListener {
     drawFloor(graphics);
     drawWall(graphics);
     drawHero(graphics);
-    gameLevel(g2d, mapLevel + 1);
     isHeroDead(g2d);
   }
 
@@ -210,6 +209,7 @@ public class Area extends GameObject implements KeyListener {
   public void monsterStats(Graphics2D graphics2D) {
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
+      graphics2D.drawString("Level : " + monster.getMapLevel(), 330, 740);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
         graphics2D.drawString(monster.toString(), 216, 780);
       }
@@ -218,11 +218,6 @@ public class Area extends GameObject implements KeyListener {
 
   private void gameMessages(Graphics2D graphics2D, String gameMessage) {
     graphics2D.drawString(gameMessage, 288, 760);
-  }
-
-  private void gameLevel(Graphics2D graphics2D, int actLev) {
-//    int actLev = GameObject.getMapLevel();
-    graphics2D.drawString("Level : " + actLev, 330, 740);
   }
 
   public void battle() {
