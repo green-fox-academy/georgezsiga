@@ -24,10 +24,10 @@ public class Area extends GameObject implements KeyListener {
   public Area() {
     testBoxX = 0;
     testBoxY = 0;
-    wallMap = new ArrayList<>();
-    addWall();
     floorMap = new ArrayList<>();
     addFloor();
+    wallMap = new ArrayList<>();
+    addWall();
     heroMap = new ArrayList<>();
     addHero();
     monsterMap = new ArrayList<>();
@@ -35,9 +35,17 @@ public class Area extends GameObject implements KeyListener {
     addSkeleton(false);
     addSkeleton(false);
     addSkeleton(true);
-
     setPreferredSize(new Dimension(720, 790));
     setVisible(true);
+  }
+
+  public void levelUpArea() {
+    hero.setPosX(0);
+    hero.setPosY(0);
+    testBoxY = 0;
+    this.wallMap = new ArrayList<>();
+    this.monsterMap = new ArrayList<>();
+
   }
 
   public void addHero() {
@@ -132,7 +140,6 @@ public class Area extends GameObject implements KeyListener {
   }
 
 
-
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
@@ -169,7 +176,7 @@ public class Area extends GameObject implements KeyListener {
     repaint();
   }
 
-  public void isHeroDead( Graphics2D g2d) {
+  public void isHeroDead(Graphics2D g2d) {
     if (heroMap.size() == 0) {
       gameMessages(g2d, "You died! Game over.");
     } else {
@@ -196,7 +203,7 @@ public class Area extends GameObject implements KeyListener {
       monster = monsterMap.get(i);
       if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
         while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
-           heroStrikes();
+          heroStrikes();
           monsterStrikes();
         }
       }
@@ -204,39 +211,38 @@ public class Area extends GameObject implements KeyListener {
   }
 
   public void monsterStrikes() {
-        int strikeValue = monster.getStrikeSP() + (2 * GameLogic.rollTheDice());
-        if (strikeValue > hero.getDefendDP()) {
-          if (hero.getCurrentHP() <= (strikeValue - hero.getDefendDP())) {
-            hero.setCurrentHP(0);
-            heroMap.remove(hero);
-          }
-          int decreasedHP = hero.getCurrentHP() - (strikeValue - hero.getDefendDP());
-          hero.setCurrentHP(decreasedHP);
-        }
+    int strikeValue = monster.getStrikeSP() + (2 * GameLogic.rollTheDice());
+    if (strikeValue > hero.getDefendDP()) {
+      if (hero.getCurrentHP() <= (strikeValue - hero.getDefendDP())) {
+        hero.setCurrentHP(0);
+        heroMap.remove(hero);
       }
+      int decreasedHP = hero.getCurrentHP() - (strikeValue - hero.getDefendDP());
+      hero.setCurrentHP(decreasedHP);
+    }
+  }
 
 
   public void heroStrikes() {
-        int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
-        if (strikeValue > monster.getDefendDP()) {
-          if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
-            if (monster.isGotKey()) {
-              int levelUp = hero.getLevel() + 1;
-              hero.setLevel(levelUp);
-              Area area = new Area();
-              repaint();
-            }
-            monster.setCurrentHP(0);
-            monsterMap.remove(monster);
-            wallMap.remove(monster);
-            int levelUp = hero.getLevel() + 1;
-            hero.setLevel(levelUp);
-          }
-          int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
-          monster.setCurrentHP(decreasedHP);
+    int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
+    if (strikeValue > monster.getDefendDP()) {
+      if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
+        if (monster.isGotKey()) {
+          int levelUp = hero.getLevel() + 1;
+          hero.setLevel(levelUp);
+          levelUpArea();
         }
-
+        monster.setCurrentHP(0);
+        monsterMap.remove(monster);
+        wallMap.remove(monster);
+        int levelUp = hero.getLevel() + 1;
+        hero.setLevel(levelUp);
       }
+      int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
+      monster.setCurrentHP(decreasedHP);
+    }
+
+  }
 
   private void heroMoveRight() {
     boolean canIgoThere = true;
