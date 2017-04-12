@@ -218,8 +218,8 @@ public class Area extends GameObject implements KeyListener {
     } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
       battle();
     }
-    timer.start();
     repaint();
+    timer.start();
   }
 
   javax.swing.Timer timer = new javax.swing.Timer(1000, new ActionListener() {
