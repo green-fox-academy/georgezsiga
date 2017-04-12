@@ -25,6 +25,29 @@ public class Hero extends Character {
     setStrikeSP(sp);
   }
 
+  public void heroRestoreHP() {
+    int maxHP = getMaxHP();
+    int hp = getCurrentHP();
+    int randNum = GameLogic.randomNumber();
+    if (randNum == 1) {
+      setCurrentHP(maxHP);
+    } else if (randNum == 0 || randNum == 2 || randNum == 3 ) {
+      int third = maxHP / 3;
+      if ((hp + third) >= maxHP ) {
+        setCurrentHP(maxHP);
+      } else {
+        setCurrentHP(hp+third);
+      }
+    } else {
+      int tenth = maxHP / 10;
+      if ((hp + tenth) >= maxHP ) {
+        setCurrentHP(maxHP);
+      } else {
+        setCurrentHP(hp+tenth);
+      }
+    }
+  }
+
   @Override
   public String toString() {
     return "Hero " +
