@@ -10,6 +10,7 @@ import javax.swing.JComponent;
  */
 public class GameObject extends JComponent {
   BufferedImage image;
+  boolean gotKey;
   int posX, posY, level, maxHP, currentHP, defendDP, strikeSP;
   public static final int SIZE = 72;
 
@@ -37,6 +38,14 @@ public class GameObject extends JComponent {
     this.posX = posX;
     this.posY = posY;
     setImage(image);
+  }
+
+  public boolean isGotKey() {
+    return gotKey;
+  }
+
+  public void setGotKey(boolean gotKey) {
+    this.gotKey = gotKey;
   }
 
   protected void setImage(BufferedImage image) {
@@ -88,5 +97,13 @@ public class GameObject extends JComponent {
 
   public void setLevel(int level) {
     this.level = level;
+  }
+
+  public int getMaxHP() {
+    return maxHP;
+  }
+
+  public void setMaxHP(int maxHP) {
+    this.maxHP = maxHP;
   }
 }
