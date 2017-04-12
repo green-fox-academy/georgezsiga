@@ -8,8 +8,8 @@ public class Hero extends Character {
   public Hero(BufferedImage image, int posX, int posY) {
     super(image, posX, posY);
     this.level = 1;
-    this.maxHP = 38;
-    this.currentHP = 20 + (2 * GameLogic.rollTheDice());
+    this.maxHP = 20 + (3 * GameLogic.rollTheDice());
+    this.currentHP = maxHP;
     this.defendDP = 2 * GameLogic.rollTheDice();
     this.strikeSP = 5 + GameLogic.rollTheDice();
   }
