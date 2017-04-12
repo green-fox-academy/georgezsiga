@@ -13,4 +13,8 @@ public class GameLogic {
     return rNumber;
   }
 
+  public static int randomMonsters() {
+    int rNumber = (int) (Math.random() * 3 + 1);
+    return rNumber;
+  }
 }
