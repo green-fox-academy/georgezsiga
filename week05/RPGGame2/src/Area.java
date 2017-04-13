@@ -81,7 +81,7 @@ public class Area extends JComponent implements KeyListener {
   }
 
   private void drawMonsters(Graphics graphics) {
-    for (int i = 0; i < monsterMap.size() ; i++) {
+    for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
       monster.draw(graphics);
     }
@@ -202,13 +202,10 @@ public class Area extends JComponent implements KeyListener {
     timer.start();
   }
 
-  javax.swing.Timer timer = new javax.swing.Timer(1500, new ActionListener() {
+  javax.swing.Timer timer = new javax.swing.Timer(1000, new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-      for (int i = 0; i < monsterMap.size(); i++) {
-        monster = monsterMap.get(i);
-        gameLogic.moveMonster();
-      }
+      gameLogic.moveMonster();
       repaint();
     }
   });
