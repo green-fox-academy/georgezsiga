@@ -15,10 +15,6 @@ public class GameObject extends JComponent {
   boolean isWall, gotKey;
   BufferedImage image;
 
-  public GameObject() {
-
-  }
-
   public GameObject(BufferedImage image, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
@@ -40,12 +36,8 @@ public class GameObject extends JComponent {
 
   public void draw(Graphics graphics) {
     if (image != null) {
-      graphics.drawImage(image, posX, posY, null);
+      graphics.drawImage(image, posX * SIZE, posY * SIZE, null);
     }
-  }
-
-  public void setMapLevel(int mapLevel) {
-    this.mapLevel = mapLevel;
   }
 
   public int getCurrentHP() {
@@ -110,13 +102,5 @@ public class GameObject extends JComponent {
 
   public boolean isGotKey() {
     return gotKey;
-  }
-
-  public void setGotKey(boolean gotKey) {
-    this.gotKey = gotKey;
-  }
-
-  public boolean isWall() {
-    return isWall;
   }
 }
