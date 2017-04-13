@@ -13,7 +13,7 @@ import javax.swing.JComponent;
  */
 public class Area extends JComponent implements KeyListener {
 
-  int testBoxX, testBoxY, SIZE;
+  int testBoxX, testBoxY;
   GameLogic gameLogic;
   ArrayList<GameObject> finalMap, wallMap;
   ArrayList<Monster> monsterMap;
@@ -25,7 +25,6 @@ public class Area extends JComponent implements KeyListener {
   Skeleton skeleton;
 
   public Area() {
-    SIZE = GameObject.SIZE;
     RandomMap randomMap = new RandomMap();
     finalMap = new ArrayList<>();
     finalMap = randomMap.getFinalMap();
@@ -125,8 +124,8 @@ public class Area extends JComponent implements KeyListener {
   }
 
   public void addBoss(int newMaplevel) {
-    int x = GameLogic.randomNumber() * SIZE;
-    int y = GameLogic.randomNumber() * SIZE;
+    int x = GameLogic.randomNumber();
+    int y = GameLogic.randomNumber();
     boolean isItFree = false;
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
@@ -134,8 +133,8 @@ public class Area extends JComponent implements KeyListener {
         int wallx = wall.getPosX();
         int wally = wall.getPosY();
         if (wallx == x && wally == y) {
-          x = (GameLogic.randomNumber() * SIZE);
-          y = (GameLogic.randomNumber() * SIZE);
+          x = GameLogic.randomNumber();
+          y = GameLogic.randomNumber();
         } else {
           boss = new Boss(ImageLoader.getInstance().BOSS, x, y, newMaplevel);
           isItFree = true;
@@ -147,15 +146,15 @@ public class Area extends JComponent implements KeyListener {
   }
 
   public void addSkeleton(boolean gotKey, int newMapLevel) {
-    int x = GameLogic.randomNumber() * SIZE;
-    int y = GameLogic.randomNumber() * SIZE;
+    int x = GameLogic.randomNumber();
+    int y = GameLogic.randomNumber();
     boolean isItFree = false;
     while (!isItFree && (x > 0 || y > 0)) {
       for (int i = 0; i < wallMap.size(); i++) {
         wall = wallMap.get(i);
         if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
-          x = (GameLogic.randomNumber() * SIZE);
-          y = (GameLogic.randomNumber() * SIZE);
+          x = GameLogic.randomNumber();
+          y = GameLogic.randomNumber();
         } else {
           skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y, gotKey, newMapLevel);
           isItFree = true;
