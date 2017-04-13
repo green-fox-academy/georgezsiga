@@ -13,6 +13,11 @@ public class GameObject extends JComponent {
   boolean gotKey;
   int posX, posY, level, mapLevel, maxHP, currentHP, defendDP, strikeSP;
   public static final int SIZE = 72;
+  boolean isWall;
+
+  public boolean isWall() {
+    return isWall;
+  }
 
   public GameObject() {
 
@@ -33,6 +38,8 @@ public class GameObject extends JComponent {
   public void setPosY(int posY) {
     this.posY = posY;
   }
+
+
 
   public GameObject(BufferedImage image, int posX, int posY) {
     this.posX = posX;
