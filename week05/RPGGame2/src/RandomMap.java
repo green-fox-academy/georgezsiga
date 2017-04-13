@@ -5,7 +5,6 @@ import java.util.ArrayList;
  */
 public class RandomMap {
 
-  int SIZE = GameObject.SIZE;
   ArrayList<GameObject> finalMap;
   ArrayList<GameObject> tempList;
   ArrayList<GameObject> tempList2;
@@ -18,12 +17,10 @@ public class RandomMap {
   public void addRandomTile(int i, int j) {
     int randNum = GameLogic.randomTiles();
     if (randNum == 0) {
-      Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * SIZE,
-          j * SIZE);
+      Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i, j);
       finalMap.add(floor);
     } else {
-      Wall wall = new Wall(ImageLoader.getInstance().WALL, i * SIZE,
-          j * SIZE);
+      Wall wall = new Wall(ImageLoader.getInstance().WALL, i, j);
       finalMap.add(wall);
     }
   }
@@ -33,8 +30,7 @@ public class RandomMap {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (i == 0 && j == 0) {
-          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
-              j * GameObject.SIZE);
+          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i, j);
           finalMap.add(floor);
         } else if (i == 0 && j > 0) {
           addRandomTile(i, j);
@@ -44,8 +40,7 @@ public class RandomMap {
           if (finalMap.get(a) instanceof Floor && finalMap.get(b) instanceof Floor) {
             addRandomTile(i, j);
           } else {
-            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
-                j * GameObject.SIZE);
+            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i, j);
             finalMap.add(floor);
           }
         } else if (i > 0 && i < 9 && j == 9) {
@@ -66,8 +61,7 @@ public class RandomMap {
           if (size < 1) {
             addRandomTile(i, j);
           } else {
-            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
-                j * GameObject.SIZE);
+            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i, j);
             finalMap.add(floor);
           }
         } else if (i == 9 && j > 0) {
@@ -76,8 +70,7 @@ public class RandomMap {
           if (finalMap.get(a) instanceof Floor && finalMap.get(b) instanceof Floor) {
             addRandomTile(i, j);
           } else {
-            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
-                j * GameObject.SIZE);
+            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i, j);
             finalMap.add(floor);
           }
         } else {
@@ -100,8 +93,7 @@ public class RandomMap {
           if (size < 2) {
             addRandomTile(i, j);
           } else {
-            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
-                j * GameObject.SIZE);
+            Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i, j);
             finalMap.add(floor);
           }
         }
