@@ -9,50 +9,20 @@ import javax.swing.JComponent;
  * Created by georgezsiga on 4/10/17.
  */
 public class GameObject extends JComponent {
-  BufferedImage image;
-  boolean gotKey;
-  int posX, posY, level, mapLevel, maxHP, currentHP, defendDP, strikeSP;
-  public static final int SIZE = 72;
-  boolean isWall;
 
-  public boolean isWall() {
-    return isWall;
-  }
+  public static final int SIZE = 72;
+  int posX, posY, level, mapLevel, maxHP, currentHP, defendDP, strikeSP;
+  boolean isWall, gotKey;
+  BufferedImage image;
 
   public GameObject() {
 
   }
 
-  public int getPosX() {
-    return posX;
-  }
-
-  public void setPosX(int posX) {
-    this.posX = posX;
-  }
-
-  public int getPosY() {
-    return posY;
-  }
-
-  public void setPosY(int posY) {
-    this.posY = posY;
-  }
-
-
-
   public GameObject(BufferedImage image, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
     setImage(image);
-  }
-
-  public boolean isGotKey() {
-    return gotKey;
-  }
-
-  public void setGotKey(boolean gotKey) {
-    this.gotKey = gotKey;
   }
 
   protected void setImage(BufferedImage image) {
@@ -74,6 +44,10 @@ public class GameObject extends JComponent {
     }
   }
 
+  public void setMapLevel(int mapLevel) {
+    this.mapLevel = mapLevel;
+  }
+
   public int getCurrentHP() {
     return currentHP;
   }
@@ -82,12 +56,24 @@ public class GameObject extends JComponent {
     this.currentHP = currentHP;
   }
 
-  public int getMapLevel() {
-    return mapLevel;
+  public int getPosX() {
+    return posX;
   }
 
-  public void setMapLevel(int mapLevel) {
-    this.mapLevel = mapLevel;
+  public void setPosX(int posX) {
+    this.posX = posX;
+  }
+
+  public int getPosY() {
+    return posY;
+  }
+
+  public void setPosY(int posY) {
+    this.posY = posY;
+  }
+
+  public int getMapLevel() {
+    return mapLevel;
   }
 
   public int getDefendDP() {
@@ -120,5 +106,17 @@ public class GameObject extends JComponent {
 
   public void setMaxHP(int maxHP) {
     this.maxHP = maxHP;
+  }
+
+  public boolean isGotKey() {
+    return gotKey;
+  }
+
+  public void setGotKey(boolean gotKey) {
+    this.gotKey = gotKey;
+  }
+
+  public boolean isWall() {
+    return isWall;
   }
 }
