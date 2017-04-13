@@ -115,9 +115,9 @@ public class GameLogic {
     if (hero.getPosX() < 9 && canIgoThere) {
       testBoxX = hero.getPosX() + 1;
       hero.setPosX(testBoxX);
-      hero.setImage(hero.getImage("assets/hero-right.png");
+      hero.setImage(hero.getImage("assets/hero-right.png"));
     } else {
-      hero.setImage(hero.getImage("assets/hero-right.png");
+      hero.setImage(hero.getImage("assets/hero-right.png"));
     }
   }
 
@@ -138,9 +138,9 @@ public class GameLogic {
     if (hero.getPosX() > 0 && canIgoThere) {
       testBoxX = hero.getPosX() - 1;
       hero.setPosX(testBoxX);
-      hero.setImage(hero.getImage("assets/hero-left.png");
+      hero.setImage(hero.getImage("assets/hero-left.png"));
     } else {
-      hero.setImage(hero.getImage("assets/hero-left.png");
+      hero.setImage(hero.getImage("assets/hero-left.png"));
     }
   }
 
@@ -161,9 +161,9 @@ public class GameLogic {
     if (hero.getPosY() < 1 * 9 && canIgoThere) {
       testBoxY = hero.getPosY() + 1;
       hero.setPosY(testBoxY);
-      hero.setImage(hero.getImage("assets/hero-down.png");
+      hero.setImage(hero.getImage("assets/hero-down.png"));
     } else {
-      hero.setImage(hero.getImage("assets/hero-down.png");
+      hero.setImage(hero.getImage("assets/hero-down.png"));
     }
   }
 
