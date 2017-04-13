@@ -101,12 +101,14 @@ public class GameLogic {
   public void heroMoveRight() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      if (wallMap.get(i).getPosX() == hero.getPosX() + 1 && wallMap.get(i).getPosY() == hero.getPosY()) {
+      if (wallMap.get(i).getPosX() == hero.getPosX() + 1 && wallMap.get(i).getPosY() == hero
+          .getPosY()) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      if (monsterMap.get(i).getPosX() == hero.getPosX() + 1 && monsterMap.get(i).getPosY() == hero.getPosY()) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() + 1 && monsterMap.get(i).getPosY() == hero
+          .getPosY()) {
         canIgoThere = true;
       }
     }
@@ -121,12 +123,14 @@ public class GameLogic {
   public void heroMoveLeft() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      if (wallMap.get(i).getPosX() == hero.getPosX() - 1 && wallMap.get(i).getPosY() == hero.getPosY()) {
+      if (wallMap.get(i).getPosX() == hero.getPosX() - 1 && wallMap.get(i).getPosY() == hero
+          .getPosY()) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      if (monsterMap.get(i).getPosX() == hero.getPosX() - 1 && monsterMap.get(i).getPosY() == hero.getPosY()) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() - 1 && monsterMap.get(i).getPosY() == hero
+          .getPosY()) {
         canIgoThere = true;
       }
     }
@@ -141,13 +145,15 @@ public class GameLogic {
   public void heroMoveDown() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      if (wallMap.get(i).getPosX() == hero.getPosX() && wallMap.get(i).getPosY() == hero.getPosY() + 1) {
+      if (wallMap.get(i).getPosX() == hero.getPosX()
+          && wallMap.get(i).getPosY() == hero.getPosY() + 1) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
-      if (monsterMap.get(i).getPosX() == hero.getPosX() && monsterMap.get(i).getPosY() == hero.getPosY() + 1) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX()
+          && monsterMap.get(i).getPosY() == hero.getPosY() + 1) {
         canIgoThere = true;
       }
     }
@@ -162,12 +168,14 @@ public class GameLogic {
   public void heroMoveUp() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      if (wallMap.get(i).getPosX() == hero.getPosX() && wallMap.get(i).getPosY() == hero.getPosY() - 1) {
+      if (wallMap.get(i).getPosX() == hero.getPosX()
+          && wallMap.get(i).getPosY() == hero.getPosY() - 1) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      if (monsterMap.get(i).getPosX() == hero.getPosX() && monsterMap.get(i).getPosY() == hero.getPosY() - 1) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX()
+          && monsterMap.get(i).getPosY() == hero.getPosY() - 1) {
         canIgoThere = true;
       }
     }
@@ -181,27 +189,29 @@ public class GameLogic {
 
   public void moveMonster() {
     int randNum = GameLogic.randomMove();
-    if (randNum == 0) {
-      moveMonsterRight();
-    } else if (randNum == 1) {
-      moveMonsterDown();
-    } else if (randNum == 2) {
-      moveMonsterLeft();
-    } else {
-      moveMonsterUp();
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (randNum == 0) {
+        moveMonsterRight();
+      } else if (randNum == 1) {
+        moveMonsterDown();
+      } else if (randNum == 2) {
+        moveMonsterLeft();
+      } else {
+        moveMonsterUp();
+      }
     }
   }
 
   private void moveMonsterRight() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-//      wall = wallMap.get(i);
-      if (wall.getPosX() == monster.getPosX() + 1 && wall.getPosY() == monster.getPosY()) {
+      if (wallMap.get(i).getPosX() == monster.getPosX() + 1 && wallMap.get(i).getPosY() == monster
+          .getPosY()) {
         canIgoThere = false;
       }
     }
     if (monster.getPosX() < 9 && canIgoThere) {
-//      testBoxX = monster.getPosX() + 1;
       monster.setPosX(monster.getPosX() + 1);
     }
   }
@@ -209,41 +219,38 @@ public class GameLogic {
   private void moveMonsterLeft() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == monster.getPosX() - 1 && wall.getPosY() == monster.getPosY()) {
+      if (wallMap.get(i).getPosX() == monster.getPosX() - 1 && wallMap.get(i).getPosY() == monster
+          .getPosY()) {
         canIgoThere = false;
       }
     }
     if (monster.getPosX() > 0 && canIgoThere) {
-      testBoxX = monster.getPosX() - 1;
-      monster.setPosX(testBoxX);
+      monster.setPosX(monster.getPosX() - 1);
     }
   }
 
   private void moveMonsterUp() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == monster.getPosX() && wall.getPosY() == monster.getPosY() - 1) {
+      if (wallMap.get(i).getPosX() == monster.getPosX()
+          && wallMap.get(i).getPosY() == monster.getPosY() - 1) {
         canIgoThere = false;
       }
     }
     if (monster.getPosY() > 0 && canIgoThere) {
-      testBoxX = monster.getPosY() - 1;
-      monster.setPosY(testBoxX);
+      monster.setPosY(monster.getPosY() - 1);
     }
   }
 
   private void moveMonsterDown() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-//      wall = wallMap.get(i);
-      if (wallMap.get(i).getPosX() == monster.getPosX() && wallMap.get(i).getPosY() == monster.getPosY() + 1) {
+      if (wallMap.get(i).getPosX() == monster.getPosX()
+          && wallMap.get(i).getPosY() == monster.getPosY() + 1) {
         canIgoThere = false;
       }
     }
     if (monster.getPosY() < 9 && canIgoThere) {
-//      testBoxX = monster.getPosY() + 1;
       monster.setPosY(monster.getPosY() + 1);
     }
   }
