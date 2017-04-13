@@ -101,20 +101,17 @@ public class GameLogic {
   public void heroMoveRight() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == hero.getPosX() + 1 && wall.getPosY() == hero.getPosY()) {
+      if (wallMap.get(i).getPosX() == hero.getPosX() + 1 && wallMap.get(i).getPosY() == hero.getPosY()) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      monster = monsterMap.get(i);
-      if (monster.getPosX() == hero.getPosX() + 1 && monster.getPosY() == hero.getPosY()) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() + 1 && monsterMap.get(i).getPosY() == hero.getPosY()) {
         canIgoThere = true;
       }
     }
     if (hero.getPosX() < 9 && canIgoThere) {
-      testBoxX = hero.getPosX() + 1;
-      hero.setPosX(testBoxX);
+      hero.setPosX(hero.getPosX() + 1);
       hero.setImage(hero.getImage("assets/hero-right.png"));
     } else {
       hero.setImage(hero.getImage("assets/hero-right.png"));
@@ -124,20 +121,17 @@ public class GameLogic {
   public void heroMoveLeft() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == hero.getPosX() - 1 && wall.getPosY() == hero.getPosY()) {
+      if (wallMap.get(i).getPosX() == hero.getPosX() - 1 && wallMap.get(i).getPosY() == hero.getPosY()) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      monster = monsterMap.get(i);
-      if (monster.getPosX() == hero.getPosX() - 1 && monster.getPosY() == hero.getPosY()) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() - 1 && monsterMap.get(i).getPosY() == hero.getPosY()) {
         canIgoThere = true;
       }
     }
     if (hero.getPosX() > 0 && canIgoThere) {
-      testBoxX = hero.getPosX() - 1;
-      hero.setPosX(testBoxX);
+      hero.setPosX(hero.getPosX() - 1);
       hero.setImage(hero.getImage("assets/hero-left.png"));
     } else {
       hero.setImage(hero.getImage("assets/hero-left.png"));
@@ -147,20 +141,18 @@ public class GameLogic {
   public void heroMoveDown() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() + 1) {
+      if (wallMap.get(i).getPosX() == hero.getPosX() && wallMap.get(i).getPosY() == hero.getPosY() + 1) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
       monster = monsterMap.get(i);
-      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() + 1) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() && monsterMap.get(i).getPosY() == hero.getPosY() + 1) {
         canIgoThere = true;
       }
     }
     if (hero.getPosY() < 1 * 9 && canIgoThere) {
-      testBoxY = hero.getPosY() + 1;
-      hero.setPosY(testBoxY);
+      hero.setPosY(hero.getPosY() + 1);
       hero.setImage(hero.getImage("assets/hero-down.png"));
     } else {
       hero.setImage(hero.getImage("assets/hero-down.png"));
@@ -170,25 +162,20 @@ public class GameLogic {
   public void heroMoveUp() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == hero.getPosX() && wall.getPosY() == hero.getPosY() - 1) {
+      if (wallMap.get(i).getPosX() == hero.getPosX() && wallMap.get(i).getPosY() == hero.getPosY() - 1) {
         canIgoThere = false;
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      monster = monsterMap.get(i);
-      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY() - 1) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() && monsterMap.get(i).getPosY() == hero.getPosY() - 1) {
         canIgoThere = true;
       }
     }
     if (hero.getPosY() > 0 && canIgoThere) {
-      testBoxY = hero.getPosY() - 1;
-      hero.setPosY(testBoxY);
+      hero.setPosY(hero.getPosY() - 1);
       hero.setImage(hero.getImage("assets/hero-up.png"));
     } else {
       hero.setImage(hero.getImage("assets/hero-up.png"));
-
-
     }
   }
 
@@ -208,14 +195,14 @@ public class GameLogic {
   private void moveMonsterRight() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
+//      wall = wallMap.get(i);
       if (wall.getPosX() == monster.getPosX() + 1 && wall.getPosY() == monster.getPosY()) {
         canIgoThere = false;
       }
     }
     if (monster.getPosX() < 9 && canIgoThere) {
-      testBoxX = monster.getPosX() + 1;
-      monster.setPosX(testBoxX);
+//      testBoxX = monster.getPosX() + 1;
+      monster.setPosX(monster.getPosX() + 1);
     }
   }
 
@@ -250,14 +237,14 @@ public class GameLogic {
   private void moveMonsterDown() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
-      wall = wallMap.get(i);
-      if (wall.getPosX() == monster.getPosX() && wall.getPosY() == monster.getPosY() + 1) {
+//      wall = wallMap.get(i);
+      if (wallMap.get(i).getPosX() == monster.getPosX() && wallMap.get(i).getPosY() == monster.getPosY() + 1) {
         canIgoThere = false;
       }
     }
     if (monster.getPosY() < 9 && canIgoThere) {
-      testBoxX = monster.getPosY() + 1;
-      monster.setPosY(testBoxX);
+//      testBoxX = monster.getPosY() + 1;
+      monster.setPosY(monster.getPosY() + 1);
     }
   }
 }
