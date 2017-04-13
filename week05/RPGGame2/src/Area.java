@@ -14,21 +14,18 @@ import javax.swing.JComponent;
 public class Area extends JComponent implements KeyListener {
 
   int testBoxX, testBoxY, SIZE;
-  ArrayList<Floor> floorMap;
-  ArrayList<GameObject> wallMap;
+  GameLogic gameLogic;
+  ArrayList<GameObject> finalMap, wallMap;
   ArrayList<Monster> monsterMap;
   ArrayList<Hero> heroMap;
-  GameLogic gameLogic;
-  Hero hero;
   GameObject wall;
   Floor floor;
   Wall walls;
+  Hero hero;
+  Monster monster;
   Boss boss;
   Skeleton skeleton;
-  Monster monster;
 
-  ArrayList<GameObject> backgroundMap;
-  ArrayList<GameObject> finalMap;
 
   public Area() {
     SIZE = GameObject.SIZE;
@@ -48,6 +45,16 @@ public class Area extends JComponent implements KeyListener {
     gameLogic = new GameLogic(this);
   }
 
+  @Override
+  public void paint(Graphics graphics) {
+    super.paint(graphics);
+    Graphics2D g2d = (Graphics2D) graphics;
+    drawRandomMap(graphics);
+    drawHero(graphics);
+    drawMonsters(graphics);
+    isHeroDead(g2d);
+  }
+
   private void drawRandomMap(Graphics graphics) {
     for (int i = 0; i < finalMap.size(); i++) {
       GameObject tile = finalMap.get(i);
@@ -55,13 +62,18 @@ public class Area extends JComponent implements KeyListener {
     }
   }
 
-  @Override
-  public void paint(Graphics graphics) {
-    super.paint(graphics);
-    Graphics2D g2d = (Graphics2D) graphics;
-    drawRandomMap(graphics);
-    drawHero(graphics);
-    isHeroDead(g2d);
+  private void drawHero(Graphics graphics) {
+    for (int i = 0; i < heroMap.size(); i++) {
+      GameObject hero = heroMap.get(i);
+      hero.draw(graphics);
+    }
+  }
+
+  private void drawMonsters(Graphics graphics) {
+    for (int i = 0; i < monsterMap.size() ; i++) {
+      monster = monsterMap.get(i);
+      monster.draw(graphics);
+    }
   }
 
   public void levelUpArea() {
@@ -86,13 +98,6 @@ public class Area extends JComponent implements KeyListener {
   public void addHero() {
     hero = new Hero(ImageLoader.getInstance().HERO_DOWN, testBoxX, testBoxY);
     heroMap.add(hero);
-  }
-
-  private void drawHero(Graphics graphics) {
-    for (int i = 0; i < heroMap.size(); i++) {
-      GameObject hero = heroMap.get(i);
-      hero.draw(graphics);
-    }
   }
 
   public void addBoss(int newMaplevel) {
@@ -144,20 +149,6 @@ public class Area extends JComponent implements KeyListener {
       } else {
 
       }
-    }
-  }
-
-  private void drawWall(Graphics graphics) {
-    for (int i = 0; i < wallMap.size(); i++) {
-      GameObject wall = wallMap.get(i);
-      wall.draw(graphics);
-    }
-  }
-
-  public void drawFloor(Graphics graphics) {
-    for (int i = 0; i < floorMap.size(); i++) {
-      Floor floor = floorMap.get(i);
-      floor.draw(graphics);
     }
   }
 
