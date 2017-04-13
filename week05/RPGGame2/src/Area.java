@@ -37,20 +37,12 @@ public class Area extends JComponent implements KeyListener {
     finalMap = randomMap.getFinalMap();
     testBoxX = 0;
     testBoxY = 0;
-//    backgroundMap = new ArrayList<>();
-//    finalMap = new ArrayList<>();
-//    randomMap = new ArrayList<>();
-//    addBackgroundMap();
-//    checkTunnels();
-//    replaceCoordinates();
-//    floorMap = new ArrayList<>();
-//    addFloor();
-//    wallMap = new ArrayList<>();
-//    addWall();
+    wallMap = new ArrayList<>();
+    addWall();
     heroMap = new ArrayList<>();
     addHero();
-//    monsterMap = new ArrayList<>();
-//    addMonsters(1);
+    monsterMap = new ArrayList<>();
+    addMonsters(1);
     setPreferredSize(new Dimension(720, 800));
     setVisible(true);
     gameLogic = new GameLogic(this);
@@ -146,24 +138,11 @@ public class Area extends JComponent implements KeyListener {
   }
 
   public void addWall() {
-    for (int i = 1; i < 10; i += 2) {
-      for (int j = 0; j < 10; j++) {
-        if (j % 3 == 0) {
+    for (int i = 1; i < finalMap.size(); i++) {
+      if (finalMap.get(i) instanceof Wall) {
+        wallMap.add(finalMap.get(i));
+      } else {
 
-        } else {
-          Wall wall = new Wall(ImageLoader.getInstance().WALL, i * SIZE, j * SIZE);
-          wallMap.add(wall);
-        }
-      }
-    }
-  }
-
-
-  public void addFloor() {
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * SIZE, j * SIZE);
-        floorMap.add(floor);
       }
     }
   }
