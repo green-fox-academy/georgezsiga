@@ -10,7 +10,7 @@ public class ImageLoader {
 
   private static ImageLoader instance;
 
-  public BufferedImage FLOOR, WALL, HERO_UP, HERO_DOWN, HERO_LEFT, HERO_RIGHT, BOSS, SKELETON;
+  public BufferedImage FLOOR, WALL, HERO_UP, HERO_DOWN, HERO_LEFT, HERO_RIGHT, BOSS, SKELETON, AZE, KOND, SZILVI, TOJAS, GYURI;
 
 
   private ImageLoader() {
@@ -23,6 +23,12 @@ public class ImageLoader {
       HERO_RIGHT = ImageIO.read(new File("assets/hero-right.png"));
       BOSS = ImageIO.read(new File("assets/boss.png"));
       SKELETON = ImageIO.read(new File("assets/skeleton.png"));
+      AZE = ImageIO.read(new File("assets/aze.jpg"));
+      KOND = ImageIO.read(new File("assets/kond.jpg"));
+      SZILVI = ImageIO.read(new File("assets/szilvi.jpg"));
+      TOJAS = ImageIO.read(new File("assets/tojas.jpg"));
+      GYURI = ImageIO.read(new File("assets/gyuri.jpg"));
+
     } catch (IOException e) {
       e.printStackTrace();
     }
