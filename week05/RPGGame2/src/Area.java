@@ -12,43 +12,207 @@ import javax.swing.JComponent;
  * Created by georgezsiga on 4/10/17.
  */
 public class Area extends JComponent implements KeyListener {
-//  GameLogic gameLogic = new GameLogic();
 
   int testBoxX, testBoxY, SIZE;
   ArrayList<Floor> floorMap;
   ArrayList<GameObject> wallMap;
   ArrayList<Monster> monsterMap;
   ArrayList<Hero> heroMap;
+  GameLogic gameLogic;
   Hero hero;
   GameObject wall;
+  Floor floor;
+  Wall walls;
   Boss boss;
   Skeleton skeleton;
   Monster monster;
+
+  ArrayList<GameObject> backgroundMap;
+  ArrayList<GameObject> finalMap;
+  ArrayList<GameObject> tempList;
+  ArrayList<GameObject> tempList2;
+  ArrayList<GameObject> randomMap;
 
   public Area() {
     SIZE = GameObject.SIZE;
     testBoxX = 0;
     testBoxY = 0;
-    floorMap = new ArrayList<>();
-    addFloor();
-    wallMap = new ArrayList<>();
-    addWall();
-    heroMap = new ArrayList<>();
-    addHero();
-    monsterMap = new ArrayList<>();
-    addMonsters(1);
+    backgroundMap = new ArrayList<>();
+    finalMap = new ArrayList<>();
+    randomMap = new ArrayList<>();
+    addBackgroundMap();
+    checkTunnels();
+//    replaceCoordinates();
+//    floorMap = new ArrayList<>();
+//    addFloor();
+//    wallMap = new ArrayList<>();
+//    addWall();
+//    heroMap = new ArrayList<>();
+//    addHero();
+//    monsterMap = new ArrayList<>();
+//    addMonsters(1);
     setPreferredSize(new Dimension(720, 800));
     setVisible(true);
+//    gameLogic = new GameLogic(this);
   }
+  private void drawbackGroundMap(Graphics graphics) {
+    for (int i = 0; i < backgroundMap.size(); i++) {
+      GameObject tile = backgroundMap.get(i);
+      tile.draw(graphics);
+    }
+  }
+  private void drawRandomMap(Graphics graphics) {
+    for (int i = 0; i < finalMap.size(); i++) {
+      GameObject tile = finalMap.get(i);
+      tile.draw(graphics);
+    }
+  }
+
+  public void addBackgroundMap() {
+    for (int i = 0; i < 10; i++) {
+      for (int j = 0; j < 10; j++) {
+        int randNum = GameLogic.randomTiles();
+        if (randNum == 0) {
+          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * SIZE,
+              j * SIZE);
+          backgroundMap.add(floor);
+        } else {
+          Wall wall = new Wall(ImageLoader.getInstance().WALL, i * SIZE,
+              j * SIZE);
+          backgroundMap.add(wall);
+        }
+      }
+    }
+  }
+
+  public void addRandomTile(int i, int j) {
+    int randNum = GameLogic.randomTiles();
+    if (randNum == 0) {
+      Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * SIZE,
+          j * SIZE);
+      finalMap.add(floor);
+    } else {
+      Wall wall = new Wall(ImageLoader.getInstance().WALL, i * SIZE,
+          j * SIZE);
+      finalMap.add(wall);
+    }
+  }
+
+  public void checkTunnels() {
+    for (int i = 0; i < 10; i++) {
+      for (int j = 0; j < 10; j++) {
+      if (i == 0 && j == 0) {
+        Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
+            j * GameObject.SIZE);
+        finalMap.add(floor);
+      } else if (i == 0 && j > 0) {
+        addRandomTile(i,j);
+      } else if (j == 0 && i > 0 ) {
+        int a = (i-1)*10;
+        int b = ((i-1)*10)+1;
+        if (finalMap.get(a) instanceof Floor && finalMap.get(b) instanceof Floor) {
+          addRandomTile(i,j);
+//          Wall wall = new Wall(ImageLoader.getInstance().WALL, i * GameObject.SIZE,
+//              j * GameObject.SIZE);
+//          finalMap.add(wall);
+        } else {
+          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
+              j * GameObject.SIZE);
+          finalMap.add(floor);
+        }
+      } else if (i > 0 && i < 9 && j == 9) {
+        tempList = new ArrayList<>();
+        tempList2 = new ArrayList();
+        int a = ((i - 1) * 10) + 9;
+        int b = ((i - 1) * 10) + 8;
+        int c = (i * 10) - 1;
+        GameObject tempa = finalMap.get(a);
+        GameObject tempb = finalMap.get(b);
+        GameObject tempc = finalMap.get(c);
+        tempList.add(finalMap.get(a));
+        tempList.add(finalMap.get(b));
+        tempList.add(finalMap.get(c));
+        for (int k = 0; k < tempList.size(); k++) {
+          if (tempList.get(k) instanceof Wall) {
+            tempList2.add(tempList.get(k));
+          }
+        }
+        int size = tempList2.size();
+        if (size < 1) {
+          addRandomTile(i, j);
+        } else {
+          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
+              j * GameObject.SIZE);
+          finalMap.add(floor);
+        }
+      } else if (i == 9 && j > 0) {
+        int a = ((i - 1) * 10)+ j -1;
+        int b = (i * 10)+ j -1;
+        if (finalMap.get(a) instanceof Floor && finalMap.get(b) instanceof Floor) {
+          addRandomTile(i,j);
+//          Wall wall = new Wall(ImageLoader.getInstance().WALL, i * GameObject.SIZE,
+//              j * GameObject.SIZE);
+//          finalMap.add(wall);
+        } else {
+          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
+              j * GameObject.SIZE);
+          finalMap.add(floor);
+        }
+
+      } else {
+        tempList = new ArrayList<>();
+        tempList2 = new ArrayList();
+        int a = ((i-1)*10)+j;
+        int b = ((i-1)*10)+j+1;
+        int c = ((i-1)*10)+j-1;
+        int d = ((i*10)+j)-1;
+        tempList.add(finalMap.get(a));
+        tempList.add(finalMap.get(b));
+        tempList.add(finalMap.get(c));
+        tempList.add(finalMap.get(d));
+        for (int k = 0; k < tempList.size(); k++) {
+          if (tempList.get(k) instanceof Wall) {
+            tempList2.add(tempList.get(k));
+          }
+        }
+        int size = tempList2.size();
+        if (size < 2) {
+          addRandomTile(i, j);
+        } else {
+          Floor floor = new Floor(ImageLoader.getInstance().FLOOR, i * GameObject.SIZE,
+              j * GameObject.SIZE);
+          finalMap.add(floor);
+        }
+      }
+
+    }
+  }
+
+}
+//
+//    public void replaceCoordinates() {
+//      for (int i = 0; i < finalMap.size() ; i++) {
+//        GameObject tempq = finalMap.get(i);
+//        for (int j = 0; j < 10; j++) {
+//          for (int k = 0; k < 10; k++) {
+//            tempq.setPosX(j);
+//            tempq.setPosY(k);
+//            randomMap.add(tempq);
+//          }
+//                  }
+//      }
+//    }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
     Graphics2D g2d = (Graphics2D) graphics;
-    drawFloor(graphics);
-    drawWall(graphics);
-    drawHero(graphics);
-    isHeroDead(g2d);
+//    drawbackGroundMap(graphics);
+    drawRandomMap(graphics);
+//    drawFloor(graphics);
+//    drawWall(graphics);
+//    drawHero(graphics);
+//    isHeroDead(g2d);
   }
 
   public void levelUpArea() {
@@ -188,7 +352,7 @@ public class Area extends JComponent implements KeyListener {
     timer.start();
   }
 
-  javax.swing.Timer timer = new javax.swing.Timer(1000, new ActionListener() {
+  javax.swing.Timer timer = new javax.swing.Timer(1500, new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
       for (int i = 0; i < monsterMap.size(); i++) {
@@ -223,17 +387,17 @@ public class Area extends JComponent implements KeyListener {
     graphics2D.drawString(gameMessage, 288, 760);
   }
 
-//  public void battle() {
-//    for (int i = 0; i < monsterMap.size(); i++) {
-//      monster = monsterMap.get(i);
-//      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-//        while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
-//          heroStrikes();
-//          monsterStrikes();
-//        }
-//      }
-//    }
-//  }
+  public void battle() {
+    for (int i = 0; i < monsterMap.size(); i++) {
+      monster = monsterMap.get(i);
+      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
+        while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
+          heroStrikes();
+          monsterStrikes();
+        }
+      }
+    }
+  }
 
   public void monsterStrikes() {
     int strikeValue = monster.getStrikeSP() + (2 * GameLogic.rollTheDice());
