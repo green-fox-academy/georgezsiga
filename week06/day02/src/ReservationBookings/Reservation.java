@@ -16,6 +16,7 @@ public class Reservation implements Reservationy {
 
   @Override
   public String getDowBooking() {
+    dow = "";
     for (int i = 0; i < 8 ; i++) {
       int nr = (int) (Math.random() * alphabet.length());
       dow = dow + alphabet.charAt(nr);
@@ -28,5 +29,10 @@ public class Reservation implements Reservationy {
     int nr = (int) (Math.random() * days.size());
     String bookingDay = days.get(nr);
     return bookingDay;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(formatForPlay, getDowBooking(), getCodeBooking());
   }
 }
