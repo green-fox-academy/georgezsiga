@@ -5,14 +5,22 @@ package Zoo;
  */
 public class Bird extends Animal {
 
+  int numberOfEggs;
+  String featherColor, peakColor;
+
+  public Bird(String name) {
+    super(name);
+    wantChild();
+  }
+
   @Override
   public void greet() {
 
   }
 
   @Override
-  public void wantChild() {
-
+  public String wantChild() {
+    return "I want a child from an egg";
   }
 
   @Override
