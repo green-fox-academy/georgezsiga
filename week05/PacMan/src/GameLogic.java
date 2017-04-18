@@ -1,15 +1,15 @@
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
- * Created by georgezsiga on 4/11/17.
+ * Created by georgezsiga on 4/17/17.
  */
 public class GameLogic {
 
-  int testBoxX, testBoxY;
   Area area;
   Monster monster;
   ArrayList<Monster> monsterMap;
-  ArrayList<GameObject> wallMap;
+  ArrayList<GameObject> wallMap, finalMap;
   ArrayList<Hero> heroMap;
   GameObject wall;
   Hero hero;
@@ -24,6 +24,7 @@ public class GameLogic {
     this.boss = areaInherited.boss;
     this.skeleton = areaInherited.skeleton;
     this.wallMap = areaInherited.wallMap;
+    this.finalMap = areaInherited.finalMap;
     this.heroMap = areaInherited.heroMap;
   }
 
@@ -33,12 +34,12 @@ public class GameLogic {
   }
 
   public static int randomNumber() {
-    int rNumber = (int) (Math.random() * 10);
+    int rNumber = (int) (Math.random() * 40);
     return rNumber;
   }
 
   public static int randomMonsters() {
-    int rNumber = (int) (Math.random() * 3 + 1);
+    int rNumber = (int) (Math.random() * 8 + 1);
     return rNumber;
   }
 
@@ -52,52 +53,6 @@ public class GameLogic {
     return rNumber;
   }
 
-  public void battle() {
-    for (int i = 0; i < monsterMap.size(); i++) {
-      monster = monsterMap.get(i);
-      if (monster.getPosX() == hero.getPosX() && monster.getPosY() == hero.getPosY()) {
-        while (hero.getCurrentHP() > 0 && monster.getCurrentHP() > 0) {
-          heroStrikes();
-          monsterStrikes();
-        }
-      }
-    }
-  }
-
-  public void heroStrikes() {
-    int strikeValue = hero.getStrikeSP() + (2 * GameLogic.rollTheDice());
-    if (strikeValue > monster.getDefendDP()) {
-      if (monster.getCurrentHP() <= (strikeValue - monster.getDefendDP())) {
-        if (monster.isGotKey() && !monsterMap.contains(boss)) {
-          hero.heroLevelUp();
-          area.levelUpArea();
-        } else if (monster == boss && !monsterMap.contains(skeleton)) {
-          hero.heroLevelUp();
-          area.levelUpArea();
-        } else {
-          monster.setCurrentHP(0);
-          monsterMap.remove(monster);
-          wallMap.remove(monster);
-          hero.heroLevelUp();
-        }
-      }
-    }
-    int decreasedHP = monster.getCurrentHP() - (strikeValue - monster.getDefendDP());
-    monster.setCurrentHP(decreasedHP);
-  }
-
-  public void monsterStrikes() {
-    int strikeValue = monster.getStrikeSP() + (2 * GameLogic.rollTheDice());
-    if (strikeValue > hero.getDefendDP()) {
-      if (hero.getCurrentHP() <= (strikeValue - hero.getDefendDP())) {
-        hero.setCurrentHP(0);
-        heroMap.remove(hero);
-      }
-      int decreasedHP = hero.getCurrentHP() - (strikeValue - hero.getDefendDP());
-      hero.setCurrentHP(decreasedHP);
-    }
-  }
-
   public void heroMoveRight() {
     boolean canIgoThere = true;
     for (int i = 0; i < wallMap.size(); i++) {
@@ -107,16 +62,14 @@ public class GameLogic {
       }
     }
     for (int i = 0; i < monsterMap.size(); i++) {
-      if (monsterMap.get(i).getPosX() == hero.getPosX() + 1 && monsterMap.get(i).getPosY() == hero
-          .getPosY()) {
+      if (monsterMap.get(i).getPosX() == hero.getPosX() + 1 && monsterMap.get(i).getPosY() == hero.getPosY()) {
         canIgoThere = true;
       }
     }
-    if (hero.getPosX() < 9 && canIgoThere) {
+    if (hero.getPosX() < 39 && canIgoThere) {
       hero.setPosX(hero.getPosX() + 1);
-//      hero.setImage(hero.getImage("assets/hero-right.png"));
-    } else {
-//      hero.setImage(hero.getImage("assets/hero-right.png"));
+    } else if (hero.getPosX() == 39){
+      hero.setPosX(0);
     }
   }
 
@@ -136,9 +89,8 @@ public class GameLogic {
     }
     if (hero.getPosX() > 0 && canIgoThere) {
       hero.setPosX(hero.getPosX() - 1);
-//      hero.setImage(hero.getImage("assets/hero-left.png"));
-    } else {
-//      hero.setImage(hero.getImage("assets/hero-left.png"));
+    } else if (hero.getPosX() == 0) {
+      hero.setPosX(39);
     }
   }
 
@@ -157,11 +109,10 @@ public class GameLogic {
         canIgoThere = true;
       }
     }
-    if (hero.getPosY() < 1 * 9 && canIgoThere) {
+    if (hero.getPosY() < 39 && canIgoThere) {
       hero.setPosY(hero.getPosY() + 1);
-//      hero.setImage(hero.getImage("assets/hero-down.png"));
-    } else {
-//      hero.setImage(hero.getImage("assets/hero-down.png"));
+    } else if (hero.getPosY() == 39) {
+      hero.setPosY(0);
     }
   }
 
@@ -181,9 +132,8 @@ public class GameLogic {
     }
     if (hero.getPosY() > 0 && canIgoThere) {
       hero.setPosY(hero.getPosY() - 1);
-//      hero.setImage(hero.getImage("assets/hero-up.png"));
-    } else {
-//      hero.setImage(hero.getImage("assets/hero-up.png"));
+    } else if (hero.getPosY() == 0) {
+      hero.setPosY(39);
     }
   }
 
@@ -201,6 +151,7 @@ public class GameLogic {
         moveMonsterUp();
       }
     }
+    area.areTheyOnTheSameTile();
   }
 
   private void moveMonsterRight() {
@@ -211,8 +162,10 @@ public class GameLogic {
         canIgoThere = false;
       }
     }
-    if (monster.getPosX() < 9 && canIgoThere) {
+    if (monster.getPosX() < 39 && canIgoThere) {
       monster.setPosX(monster.getPosX() + 1);
+    } else if (monster.getPosX() == 39){
+      monster.setPosX(0);
     }
   }
 
@@ -226,6 +179,8 @@ public class GameLogic {
     }
     if (monster.getPosX() > 0 && canIgoThere) {
       monster.setPosX(monster.getPosX() - 1);
+    } else if (monster.getPosX() == 0) {
+      monster.setPosX(39);
     }
   }
 
@@ -239,6 +194,8 @@ public class GameLogic {
     }
     if (monster.getPosY() > 0 && canIgoThere) {
       monster.setPosY(monster.getPosY() - 1);
+    } else if (monster.getPosY() == 0) {
+      monster.setPosY(39);
     }
   }
 
@@ -250,8 +207,10 @@ public class GameLogic {
         canIgoThere = false;
       }
     }
-    if (monster.getPosY() < 9 && canIgoThere) {
+    if (monster.getPosY() < 39 && canIgoThere) {
       monster.setPosY(monster.getPosY() + 1);
+    } else if (monster.getPosY() == 39) {
+      monster.setPosY(0);
     }
   }
 }

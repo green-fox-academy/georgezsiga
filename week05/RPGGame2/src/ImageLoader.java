@@ -15,8 +15,8 @@ public class ImageLoader {
 
   private ImageLoader() {
     try {
-      FLOOR = ImageIO.read(new File("assets/floor.png"));
-      WALL = ImageIO.read(new File("assets/wall.png"));
+      FLOOR = ImageIO.read(new File("assets/floor.jpg"));         // mentor game
+      WALL = ImageIO.read(new File("assets/wall.jpg"));           // mentor game
       HERO_UP = ImageIO.read(new File("assets/hero-up.png"));
       HERO_DOWN = ImageIO.read(new File("assets/hero-down.png"));
       HERO_LEFT = ImageIO.read(new File("assets/hero-left.png"));

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 
@@ -112,14 +113,18 @@ public class Area extends JComponent implements KeyListener {
 
   public void addMonsters(int newMapLevel) {
     addBoss(newMapLevel);
-    addSkeleton(true, newMapLevel);
-    for (int i = 0; i < GameLogic.randomMonsters(); i++) {
-      addSkeleton(false, newMapLevel);
-    }
+//    addSkeleton(true, newMapLevel);
+//    for (int i = 0; i < GameLogic.randomMonsters(); i++) {
+//      addSkeleton(false, newMapLevel);
+    addSkeletonKond(true, newMapLevel);
+    addSkeletonSzilvi(false, newMapLevel);
+    addSkeletonTojas(false, newMapLevel);
+//    }
   }
 
   public void addHero() {
-    hero = new Hero(ImageLoader.getInstance().HERO_DOWN, testBoxX, testBoxY);
+//    hero = new Hero(ImageLoader.getInstance().HERO_DOWN, testBoxX, testBoxY);
+    hero = new Hero(ImageLoader.getInstance().GYURI, testBoxX, testBoxY);       // mentor game
     heroMap.add(hero);
   }
 
@@ -136,7 +141,8 @@ public class Area extends JComponent implements KeyListener {
           x = GameLogic.randomNumber();
           y = GameLogic.randomNumber();
         } else {
-          boss = new Boss(ImageLoader.getInstance().BOSS, x, y, newMaplevel);
+//          boss = new Boss(ImageLoader.getInstance().BOSS, x, y, newMaplevel);
+          boss = new Boss(ImageLoader.getInstance().AZE, x, y, newMaplevel);           // mentor game
           isItFree = true;
         }
       }
@@ -157,6 +163,66 @@ public class Area extends JComponent implements KeyListener {
           y = GameLogic.randomNumber();
         } else {
           skeleton = new Skeleton(ImageLoader.getInstance().SKELETON, x, y, gotKey, newMapLevel);
+          isItFree = true;
+        }
+      }
+    }
+    wallMap.add(skeleton);
+    monsterMap.add(skeleton);
+  }
+
+  public void addSkeletonKond(boolean gotKey, int newMapLevel) {  // mentor game
+    int x = GameLogic.randomNumber();
+    int y = GameLogic.randomNumber();
+    boolean isItFree = false;
+    while (!isItFree && (x > 0 || y > 0)) {
+      for (int i = 0; i < wallMap.size(); i++) {
+        wall = wallMap.get(i);
+        if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
+          x = GameLogic.randomNumber();
+          y = GameLogic.randomNumber();
+        } else {
+          skeleton = new Skeleton(ImageLoader.getInstance().KOND, x, y, gotKey, newMapLevel);
+          isItFree = true;
+        }
+      }
+    }
+    wallMap.add(skeleton);
+    monsterMap.add(skeleton);
+  }
+
+  public void addSkeletonTojas(boolean gotKey, int newMapLevel) {    //  mentor game
+    int x = GameLogic.randomNumber();
+    int y = GameLogic.randomNumber();
+    boolean isItFree = false;
+    while (!isItFree && (x > 0 || y > 0)) {
+      for (int i = 0; i < wallMap.size(); i++) {
+        wall = wallMap.get(i);
+        if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
+          x = GameLogic.randomNumber();
+          y = GameLogic.randomNumber();
+        } else {
+          skeleton = new Skeleton(ImageLoader.getInstance().TOJAS, x, y, gotKey, newMapLevel);
+          isItFree = true;
+        }
+      }
+    }
+    wallMap.add(skeleton);
+    monsterMap.add(skeleton);
+  }
+
+  public void addSkeletonSzilvi(boolean gotKey, int newMapLevel) {        // mentor game
+    int x = GameLogic.randomNumber();
+    int y = GameLogic.randomNumber();
+    boolean isItFree = false;
+    while (!isItFree && (x > 0 || y > 0)) {
+      for (int i = 0; i < wallMap.size(); i++) {
+        wall = wallMap.get(i);
+        if ((wall.getPosX() == x) && (wall.getPosY() == y)) {
+          x = GameLogic.randomNumber();
+          y = GameLogic.randomNumber();
+        } else {
+          skeleton = new Skeleton(ImageLoader.getInstance().SZILVI, x, y, gotKey, newMapLevel);
           isItFree = true;
         }
       }
@@ -202,7 +268,7 @@ public class Area extends JComponent implements KeyListener {
     timer.start();
   }
 
-  javax.swing.Timer timer = new javax.swing.Timer(1000, new ActionListener() {
+  javax.swing.Timer timer = new javax.swing.Timer(500, new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
       gameLogic.moveMonster();
