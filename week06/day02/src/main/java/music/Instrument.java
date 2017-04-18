@@ -9,4 +9,7 @@ public abstract class Instrument {
 
   public abstract void play();
 
+  public Instrument(String name) {
+    this.name = name;
+  }
 }
