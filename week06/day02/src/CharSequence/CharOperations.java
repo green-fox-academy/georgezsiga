@@ -5,6 +5,12 @@ package CharSequence;
  */
 public class CharOperations implements CharSequence{
 
+  String myString;
+
+  public CharOperations(String string) {
+    this.myString = string;
+  }
+
   @Override
   public int length() {
     return 0;
@@ -17,16 +23,15 @@ public class CharOperations implements CharSequence{
 
   @Override
   public CharSequence subSequence(int from, int till) {
-    String input = "alma";
     String reversed = "";
     for (int i = till; i > from-1 ; i--) {
-      reversed = reversed + input.charAt(i);
+      reversed = reversed + myString.charAt(i);
     }
     return reversed;
   }
 
   public static void main(String[] args) {
-    CharOperations charOp = new CharOperations();
+    CharOperations charOp = new CharOperations("alma");
     System.out.println(charOp.subSequence(1,3));
   }
 }
