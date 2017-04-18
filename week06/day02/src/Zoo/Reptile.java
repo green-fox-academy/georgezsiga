@@ -14,4 +14,24 @@ public class Reptile extends Animal {
   public void wantChild() {
 
   }
+
+  @Override
+  public void eat() {
+
+  }
+
+  @Override
+  public void drink() {
+
+  }
+
+  @Override
+  public void sleep() {
+
+  }
+
+  @Override
+  public void move() {
+
+  }
 }
