@@ -8,9 +8,13 @@ public abstract class Animal {
   int age;
   String name, gender;
 
+  public Animal(String name) {
+    this.name = name;
+  }
+
   public abstract void greet();
 
-  public abstract void wantChild();
+  public abstract String wantChild();
 
   public abstract void eat();
 
@@ -20,4 +24,7 @@ public abstract class Animal {
 
   public abstract void move();
 
+  public String getName() {
+    return name;
+  }
 }
