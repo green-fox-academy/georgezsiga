@@ -5,14 +5,22 @@ package Zoo;
  */
 public class Mammal extends Animal {
 
+  int numberOfBabies;
+
+  public Mammal(String name) {
+    super(name);
+    wantChild();
+  }
+
+
   @Override
   public void greet() {
 
   }
 
   @Override
-  public void wantChild() {
-
+  public String wantChild() {
+    return "I want babies by mating";
   }
 
   @Override
