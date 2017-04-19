@@ -15,4 +15,9 @@ public class Screen {
     this.height = height;
     this.resolution = resolution;
   }
+
+  Monitor annotation = Screen.class.getAnnotation(Monitor.class);
+  String aspectRatio = annotation.aspectRatio();
+  String classification = annotation.classification();
+
 }
