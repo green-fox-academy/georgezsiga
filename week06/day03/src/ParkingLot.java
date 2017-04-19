@@ -62,6 +62,20 @@ public class ParkingLot {
     ParkingLot parkingLot = new ParkingLot();
     System.out.println("We have: " + parkingLot.countCarTypes(CarType.TRABANT) + " Trabants in our car park");
     System.out.println("We have: " + parkingLot.countCarTypes(CarType.ZSIGULI) + " Zsigulis in our car park");
+    System.out.println();
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.BLACK) + " black Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.RED) + " red Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.BLUE) + " blue Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.GREEN) + " green Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.PURPLE) + " purple Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.YELLOW) + " yellow Trabants in our car park");
+    System.out.println();
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.BLACK) + " black Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.RED) + " red Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.BLUE) + " blue Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.GREEN) + " green Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.PURPLE) + " purple Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.YELLOW) + " yellow Zsigulis in our car park");
   }
 
 }
