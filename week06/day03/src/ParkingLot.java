@@ -29,6 +29,7 @@ public class ParkingLot {
     }
     return type;
   }
+
   public Color randomColor() {
     Color color;
     Color[] colors = {Color.BLACK, Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW};
@@ -37,8 +38,19 @@ public class ParkingLot {
     return color;
   }
 
-  public static void main(String[] args) {
+  public int countCarTypes(CarType carType) {
+    int counter = 0;
+    for (int i = 0; i <parkingLot.size() ; i++) {
+      if (parkingLot.get(i).carType.equals(carType)) {
+        counter ++;
+      }
+    }
+    return counter;
+  }
 
+  public static void main(String[] args) {
+    ParkingLot parkingLot = new ParkingLot();
+    System.out.println(parkingLot.countCarTypes(CarType.TRABANT));
   }
 
 }
