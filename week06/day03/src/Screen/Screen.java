@@ -5,6 +5,7 @@ package Screen;
  */
 @Monitor
 public class Screen {
+
   int width, height, resolution;
 
   public Screen(int width, int height, int resolution) {
