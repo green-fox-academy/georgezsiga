@@ -7,8 +7,10 @@ package Screen;
 public class Screen {
 
   int width, height, resolution;
+  ScreenSize size;
 
-  public Screen(int width, int height, int resolution) {
+  public Screen(int width, int height, int resolution, ScreenSize screenSize) {
+    this.size = screenSize;
     this.width = width;
     this.height = height;
     this.resolution = resolution;
