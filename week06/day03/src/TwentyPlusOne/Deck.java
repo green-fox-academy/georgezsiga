@@ -38,4 +38,22 @@ public class Deck {
     return getThisCard;
   }
 
+  public Card drawFirst() {
+    Card card = deck.get(0);
+    deck.remove(card);
+    return card;
+  }
+
+  public Card drawLast() {
+    Card card = deck.get(deck.size());
+    deck.remove(card);
+    return card;
+  }
+
+  public Card drawRandom() {
+    Card card = deck.get(randomGetACard(deck.size()));
+    deck.remove(card);
+    return card;
+  }
+
 }
