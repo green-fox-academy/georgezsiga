@@ -23,4 +23,19 @@ public class Deck {
     }
   }
 
+  public void shuffleDeck() {
+    ArrayList<Card> tempDeck = new ArrayList<>();
+    while (deck.size() > 0) {
+      Card card = deck.get(randomGetACard(deck.size()));
+      tempDeck.add(card);
+      deck.remove(card);
+    }
+    deck = tempDeck;
+  }
+
+  public int randomGetACard(int deckSize) {
+    int getThisCard = (int) (Math.random() * deckSize);
+    return getThisCard;
+  }
+
 }
