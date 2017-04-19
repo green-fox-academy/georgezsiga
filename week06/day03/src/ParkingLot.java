@@ -16,7 +16,7 @@ public class ParkingLot {
   }
 
   private void addCars() {
-    for (int i = 0; i < 256 ; i++) {
+    for (int i = 0; i < 256; i++) {
       Car car = new Car(randomCarType(), randomColor());
       parkingLot.add(car);
     }
@@ -24,7 +24,7 @@ public class ParkingLot {
 
   public CarType randomCarType() {
     CarType type;
-    int randNum = (int) (Math.random()*2);
+    int randNum = (int) (Math.random() * 2);
     if (randNum == 0) {
       type = CarType.TRABANT;
     } else {
@@ -36,16 +36,16 @@ public class ParkingLot {
   public Color randomColor() {
     Color color;
     Color[] colors = {Color.BLACK, Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW};
-    int randNum = (int) (Math.random()*6);
+    int randNum = (int) (Math.random() * 6);
     color = colors[randNum];
     return color;
   }
 
   public int countCarTypes(CarType carType) {
     int counter = 0;
-    for (int i = 0; i <parkingLot.size() ; i++) {
+    for (int i = 0; i < parkingLot.size(); i++) {
       if (parkingLot.get(i).carType.equals(carType)) {
-        counter ++;
+        counter++;
       }
     }
     return counter;
@@ -53,9 +53,9 @@ public class ParkingLot {
 
   public int countCarTypesAndColors(CarType carType, Color color) {
     int counter = 0;
-    for (int i = 0; i <parkingLot.size() ; i++) {
+    for (int i = 0; i < parkingLot.size(); i++) {
       if (parkingLot.get(i).carType.equals(carType) && parkingLot.get(i).color.equals(color)) {
-        counter ++;
+        counter++;
       }
     }
     return counter;
@@ -99,25 +99,44 @@ public class ParkingLot {
 
   public static void main(String[] args) {
     ParkingLot parkingLot = new ParkingLot();
-    System.out.println("We have: " + parkingLot.countCarTypes(CarType.TRABANT) + " Trabants in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypes(CarType.ZSIGULI) + " Zsigulis in our car park");
+    System.out.println(
+        "We have: " + parkingLot.countCarTypes(CarType.TRABANT) + " Trabants in our car park");
+    System.out.println(
+        "We have: " + parkingLot.countCarTypes(CarType.ZSIGULI) + " Zsigulis in our car park");
     System.out.println();
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.BLACK) + " black Trabants in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.RED) + " red Trabants in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.BLUE) + " blue Trabants in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.GREEN) + " green Trabants in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.PURPLE) + " purple Trabants in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.YELLOW) + " yellow Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.BLACK)
+        + " black Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.RED)
+        + " red Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.BLUE)
+        + " blue Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.GREEN)
+        + " green Trabants in our car park");
+    System.out.println(
+        "We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.PURPLE)
+            + " purple Trabants in our car park");
+    System.out.println(
+        "We have: " + parkingLot.countCarTypesAndColors(CarType.TRABANT, Color.YELLOW)
+            + " yellow Trabants in our car park");
     System.out.println();
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.BLACK) + " black Zsigulis in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.RED) + " red Zsigulis in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.BLUE) + " blue Zsigulis in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.GREEN) + " green Zsigulis in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.PURPLE) + " purple Zsigulis in our car park");
-    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.YELLOW) + " yellow Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.BLACK)
+        + " black Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.RED)
+        + " red Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.BLUE)
+        + " blue Zsigulis in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.GREEN)
+        + " green Zsigulis in our car park");
+    System.out.println(
+        "We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.PURPLE)
+            + " purple Zsigulis in our car park");
+    System.out.println(
+        "We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.YELLOW)
+            + " yellow Zsigulis in our car park");
     System.out.println();
 //    System.out.println(parkingLot.carTypes(parkingLot.parkingLot));
-    System.out.println(parkingLot.findTheMostCommonCar(parkingLot.parkingLot));
+    System.out.println("The most common car in the parkinglot is: " + parkingLot
+        .findTheMostCommonCar(parkingLot.parkingLot));
   }
 
 }
