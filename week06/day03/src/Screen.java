@@ -1,7 +1,7 @@
 /**
  * Created by georgezsiga on 4/19/17.
  */
-
+@Monitor
 public class Screen {
   int widht, height, resolution;
 
