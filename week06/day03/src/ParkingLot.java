@@ -50,7 +50,8 @@ public class ParkingLot {
 
   public static void main(String[] args) {
     ParkingLot parkingLot = new ParkingLot();
-    System.out.println(parkingLot.countCarTypes(CarType.TRABANT));
+    System.out.println("We have: " + parkingLot.countCarTypes(CarType.TRABANT) + " Trabants in our car park");
+    System.out.println("We have: " + parkingLot.countCarTypes(CarType.ZSIGULI) + " Zsigulis in our car park");
   }
 
 }
