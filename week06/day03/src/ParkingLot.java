@@ -14,7 +14,7 @@ public class ParkingLot {
 
   private void addCars() {
     for (int i = 0; i < 256 ; i++) {
-      Car car = new Car(randomCarType(), Color.BLACK);
+      Car car = new Car(randomCarType(), randomColor());
       parkingLot.add(car);
     }
   }
@@ -28,6 +28,13 @@ public class ParkingLot {
       type = CarType.ZSIGULI;
     }
     return type;
+  }
+  public Color randomColor() {
+    Color color;
+    Color[] colors = {Color.BLACK, Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW};
+    int randNum = (int) (Math.random()*6);
+    color = colors[randNum];
+    return color;
   }
 
   public static void main(String[] args) {
