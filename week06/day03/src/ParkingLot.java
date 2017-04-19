@@ -48,6 +48,16 @@ public class ParkingLot {
     return counter;
   }
 
+  public int countCarTypesAndColors(CarType carType, Color color) {
+    int counter = 0;
+    for (int i = 0; i <parkingLot.size() ; i++) {
+      if (parkingLot.get(i).carType.equals(carType) && parkingLot.get(i).color.equals(color)) {
+        counter ++;
+      }
+    }
+    return counter;
+  }
+
   public static void main(String[] args) {
     ParkingLot parkingLot = new ParkingLot();
     System.out.println("We have: " + parkingLot.countCarTypes(CarType.TRABANT) + " Trabants in our car park");
