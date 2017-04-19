@@ -6,14 +6,13 @@ package Screen;
 @Monitor(aspectRatio = "16:9", classification = "LCD")
 public class Screen169 extends Screen {
 
-
   public Screen169(int width, int height, int resolution, ScreenSize screenSize) {
     super(width, height, resolution, screenSize);
   }
+
   Monitor annotation = Screen169.class.getAnnotation(Monitor.class);
   String aspectRatio = annotation.aspectRatio();
   String classification = annotation.classification();
-
 
   @Override
   public String toString() {
@@ -24,7 +23,5 @@ public class Screen169 extends Screen {
         ", size=" + size +
         ", classification=" + classification +
         ", aspectratio=" + aspectRatio;
-
   }
-
 }
