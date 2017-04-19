@@ -8,10 +8,12 @@ public class Card {
   private final CardSuit cardSuit;
   private final CardRank cardRank;
   private final CardColor cardColor;
+  int value;
 
   public Card(CardSuit cardSuit, CardRank cardRank) {
     this.cardSuit = cardSuit;
     this.cardRank = cardRank;
+    this.value = cardRank.getValue();
     this.cardColor = whatColor(cardSuit);
   }
 
