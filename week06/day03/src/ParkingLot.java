@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by georgezsiga on 4/19/17.
@@ -73,6 +75,28 @@ public class ParkingLot {
     return carTypes;
   }
 
+  public String findTheMostCommonCar(ArrayList<Car> listOfCars) {
+    HashMap<String, Integer> carTypes = new HashMap<>();
+    for (int i = 0; i < listOfCars.size(); i++) {
+      String key = listOfCars.get(i).color + " " + listOfCars.get(i).carType;
+      if (carTypes.containsKey(key)) {
+        int val = carTypes.get(key);
+        carTypes.put(key, val + 1);
+      } else {
+        carTypes.put(key, 1);
+      }
+    }
+    int tempValue = 0;
+    String tempKey = "";
+    for (Map.Entry<String, Integer> entry : carTypes.entrySet()) {
+      if (entry.getValue() > tempValue) {
+        tempValue = entry.getValue();
+        tempKey = entry.getKey();
+      }
+    }
+    return tempKey;
+  }
+
   public static void main(String[] args) {
     ParkingLot parkingLot = new ParkingLot();
     System.out.println("We have: " + parkingLot.countCarTypes(CarType.TRABANT) + " Trabants in our car park");
@@ -92,7 +116,8 @@ public class ParkingLot {
     System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.PURPLE) + " purple Zsigulis in our car park");
     System.out.println("We have: " + parkingLot.countCarTypesAndColors(CarType.ZSIGULI, Color.YELLOW) + " yellow Zsigulis in our car park");
     System.out.println();
-    System.out.println(parkingLot.carTypes(parkingLot.parkingLot));
+//    System.out.println(parkingLot.carTypes(parkingLot.parkingLot));
+    System.out.println(parkingLot.findTheMostCommonCar(parkingLot.parkingLot));
   }
 
 }
