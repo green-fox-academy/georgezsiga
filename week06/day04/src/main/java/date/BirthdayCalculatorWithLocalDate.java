@@ -44,14 +44,20 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
 
   @Override
   public boolean isAnniversaryToday(LocalDate date) {
-    // TODO - return with true if today is the same month+day as date
+    int monthBirthday = date.getMonthValue();
+    int dayBirthday = date.getDayOfMonth();
+    if (monthBirthday == LocalDate.now().getMonthValue() && dayBirthday == LocalDate.now().getDayOfMonth()) {
+      return true;
+    }
+
     return false;
   }
 
   @Override
   public int calculateAgeInYears(LocalDate birthday) {
-    // TODO - return how many years age the input date 'birthday' was
-    return 0;
+    int yearsBirthday = birthday.getYear();
+    int yearsOfToday = LocalDate.now().getYear();
+    return yearsOfToday - yearsBirthday;
   }
 
   @Override
