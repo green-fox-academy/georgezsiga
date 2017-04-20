@@ -7,12 +7,15 @@ public class CreditCard implements CreditCardy{
 
   final String format = "Name=%s CC#=%s CVV=%d";
   int sum;
-  String ccNumber, codeAccount;
+  String ccNumber, codeAccount, name;
+  int counter = 0;
 
   public CreditCard(String codeAccount) {
     this.ccNumber = randomCcNumber();
     this.sum = cumeSumCVV(codeAccount);
     this.codeAccount = codeAccount;
+    this.counter ++;
+    this.name = "ABC" + counter;
 
   }
 
@@ -33,7 +36,7 @@ public class CreditCard implements CreditCardy{
 
   @Override
   public String getNameCardholder() {
-    return null;
+    return name;
   }
 
   @Override
