@@ -38,29 +38,29 @@ public class Main {
   public static void main(String[] args) {
     Main main = new Main();
     OptionParser parser = new OptionParser();
-    parser.accepts("l");
     parser.accepts("y").withRequiredArg();
     parser.accepts("f").withRequiredArg();
     parser.accepts("o").withRequiredArg();
     OptionSet options = parser.parse(args);
 
-    if (options.has("f") && options.has("y")) {
-      String filename = options.valueOf("f").toString();
-      String year = options.valueOf( "y").toString();
-      List<String[]> list = main.readFile(filename);
-      for (int i = 0; i < list.size(); i++) {
-        String line = Arrays.toString(list.get(0));
-        if (line.contains(year)) {
-          list.remove(list.get(0));
+    if (!options.has("y")) {
+      System.out.println("I need a year");
+    } else {
+      String year = options.valueOf("y").toString();
+      String sourceFile =
+          options.has("f") ? options.valueOf("f").toString() : "src/main/resources/otos.csv";
+      String outputFile =
+          options.has("o") ? options.valueOf("o").toString() : "src/main/resources/output.csv";
+      List<String[]> list = main.readFile(sourceFile);
+      List<String[]> updatedList = new ArrayList<>();
+      for (String[] line : list) {
+        if (Arrays.toString(line).contains(year + ".")) {
+          updatedList.add(line);
         } else {
 
         }
       }
-      main.writeFile("output.csv", list);
-    }
-
-    if (options.has("l")) {
-      System.out.println("`-l` was given with the no additional information.");
+      main.writeFile(outputFile, updatedList);
     }
   }
 }
