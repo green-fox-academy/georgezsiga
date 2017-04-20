@@ -5,7 +5,7 @@ package CreditCard;
  */
 public class CreditCard implements CreditCardy{
 
-  final String format = "Name=%s CC#=%s CVV=%d";
+  final String format = "Name=%s CC#=%s CVV=%d (validated)";
   int sum;
   String ccNumber, codeAccount, name;
   int counter = 0;
@@ -14,7 +14,7 @@ public class CreditCard implements CreditCardy{
     this.ccNumber = randomCcNumber();
     this.sum = cumeSumCVV(codeAccount);
     this.codeAccount = codeAccount;
-    this.counter ++;
+    this.counter += 1;
     this.name = "ABC" + counter;
 
   }
@@ -56,5 +56,28 @@ public class CreditCard implements CreditCardy{
   @Override
   public String toString() {
     return String.format(format, getNameCardholder(), ccNumber, getSumCVV());
+  }
+
+  public static void main(String[] args) {
+    CreditCard card = new CreditCard("8752");
+    System.out.println(card);
+    card = new CreditCard("8752");
+    System.out.println(card);
+    card = new CreditCard("1234");
+    System.out.println(card);
+    card = new CreditCard("5346");
+    System.out.println(card);
+    card = new CreditCard("8712");
+    System.out.println(card);
+    card = new CreditCard("1256");
+    System.out.println(card);
+    card = new CreditCard("1874");
+    System.out.println(card);
+    card = new CreditCard("3426");
+    System.out.println(card);
+    card = new CreditCard("7634");
+    System.out.println(card);
+    card = new CreditCard("2452");
+    System.out.println(card);
   }
 }
