@@ -8,12 +8,12 @@ import java.time.format.DateTimeParseException;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestBirthdayCalculatorWithLocalDate {
+public class TestLocalDateBirthdayCalculator {
 
   private static final String EXPECTED_DATE_STR = "2016-11-30";
   private static final LocalDate EXPECTED_DATE = LocalDate.parse(EXPECTED_DATE_STR, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-  private BirthdayCalculator<LocalDate> birthdayCalculator = new BirthdayWithLocalDate();
+  private BirthdayCalculator<LocalDate> birthdayCalculator = new BirthdayCalculatorWithLocalDate();
 
   @Test
   public void testParseDate() throws Exception {
@@ -38,7 +38,7 @@ public class TestBirthdayCalculatorWithLocalDate {
 
   @Test(expected = NullPointerException.class)
   public void testPrintMonthAndDayWithNull() throws Exception {
-    birthdayCalculator.printMonthAndDay(null);
+    birthdayCalculator.printMonthAndDay((LocalDate) null);
   }
 
   @Test
@@ -50,7 +50,7 @@ public class TestBirthdayCalculatorWithLocalDate {
 
   @Test(expected = NullPointerException.class)
   public void testIsAnniversaryTodayWithNull() throws Exception {
-    birthdayCalculator.isAnniversaryToday(null);
+    birthdayCalculator.isAnniversaryToday((LocalDate) null);
   }
 
   @Test
@@ -61,7 +61,7 @@ public class TestBirthdayCalculatorWithLocalDate {
 
   @Test(expected = NullPointerException.class)
   public void testCalculateAgeInYearsWithNull() throws Exception {
-    birthdayCalculator.calculateAgeInYears(null);
+    birthdayCalculator.calculateAgeInYears((LocalDate) null);
   }
 
   @Test
@@ -93,6 +93,6 @@ public class TestBirthdayCalculatorWithLocalDate {
 
   @Test(expected = NullPointerException.class)
   public void testCalculateDaysToNextAnniversaryWithNull() throws Exception {
-    birthdayCalculator.calculateDaysToNextAnniversary(null);
+    birthdayCalculator.calculateDaysToNextAnniversary((LocalDate) null);
   }
 }
