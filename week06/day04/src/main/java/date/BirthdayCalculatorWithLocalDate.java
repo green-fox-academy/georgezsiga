@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.time.temporal.ChronoUnit;
 /**
  * Created by georgezsiga on 4/20/17.
  */
@@ -60,9 +61,20 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
 
   @Override
   public int calculateDaysToNextAnniversary(LocalDate date) {
-    int months = LocalDate.now().getMonthValue() - date.getMonthValue();
-    // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
-    return months;
+    LocalDate monthandday = date.minusYears(date.getYear());
+    LocalDate localdatemonthandday = LocalDate.now().minusYears(LocalDate.now().getYear());
+    int days = 0;
+    if (localdatemonthandday.isBefore(monthandday)) {
+      days = (int) localdatemonthandday.until(monthandday, ChronoUnit.DAYS)+ 1;
+      return days;
+    } else if (monthandday.isBefore(localdatemonthandday)){
+      LocalDate nextbirthday = LocalDate
+          .of(LocalDate.now().getYear() + 1, date.getMonth(), date.getDayOfMonth());
+      days = (int) LocalDate.now().until(nextbirthday, ChronoUnit.DAYS);
+      return days;
+    } else {
+      return days;
+    }
   }
 
   public static void main(String[] args) {
