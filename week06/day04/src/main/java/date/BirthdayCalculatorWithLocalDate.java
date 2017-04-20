@@ -1,17 +1,12 @@
 package date;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 /**
  * Created by georgezsiga on 4/20/17.
  */
 public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<LocalDate> {
-
-  @Override
-  public LocalDate parseDate(String str) {
-    // TODO - return with the parsed date; format is: yyyy-MM-dd
-    return null;
-  }
 
   @Override
   public String printMonthAndDay(T date) {
@@ -33,11 +28,15 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
   public int calculateDaysToNextAnniversary(T date) {
     return 0;
   }
+  @Override
+  public LocalDate parseDate(String str) {
+    return LocalDate.parse(str, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+  }
 
   @Override
   public String printMonthAndDay(LocalDate date) {
-    int day = LocalDate.now().getDayOfMonth();
-    int month = LocalDate.now().getMonth().getValue();
+    int day = date.getDayOfMonth();
+    int month = date.getMonth().getValue();
     String today = month + ". " + day + ".";
     return today;
   }
@@ -49,7 +48,6 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
     if (monthBirthday == LocalDate.now().getMonthValue() && dayBirthday == LocalDate.now().getDayOfMonth()) {
       return true;
     }
-
     return false;
   }
 
@@ -62,8 +60,9 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
 
   @Override
   public int calculateDaysToNextAnniversary(LocalDate date) {
+    int months = LocalDate.now().getMonthValue() - date.getMonthValue();
     // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
-    return 0;
+    return months;
   }
 
   public static void main(String[] args) {
