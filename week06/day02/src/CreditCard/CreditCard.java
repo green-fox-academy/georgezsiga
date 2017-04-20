@@ -6,10 +6,13 @@ package CreditCard;
 public class CreditCard implements CreditCardy{
 
   final String format = "Name=%s CC#=%s CVV=%d";
-  String ccNumber;
+  int sum;
+  String ccNumber, codeAccount;
 
-  public CreditCard() {
+  public CreditCard(String codeAccount) {
     this.ccNumber = randomCcNumber();
+    this.sum = cumeSumCVV(codeAccount);
+    this.codeAccount = codeAccount;
 
   }
 
@@ -25,7 +28,7 @@ public class CreditCard implements CreditCardy{
 
   @Override
   public int getSumCVV() {
-    return 0;
+    return sum;
   }
 
   @Override
@@ -35,16 +38,20 @@ public class CreditCard implements CreditCardy{
 
   @Override
   public String getCodeAccount() {
-    return null;
+    return codeAccount;
   }
 
   @Override
   public int cumeSumCVV(String codeAccount) {
-    return 0;
+    int sum = 0;
+    for (int i = 0; i <codeAccount.length() ; i++) {
+      sum = sum + codeAccount.charAt(i);
+    }
+    return sum;
   }
 
   @Override
   public String toString() {
-    return String.format(format, getNameCardholder(), CreditCard(), cumeSumCVV());
+    return String.format(format, getNameCardholder(), ccNumber, getSumCVV());
   }
 }
