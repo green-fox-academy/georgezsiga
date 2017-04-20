@@ -2,7 +2,8 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -12,43 +13,54 @@ import joptsimple.OptionSet;
  */
 public class Main {
 
-  public List<String[]> readFile() {
+  public List<String[]> readFile(String fileName) {
     try {
-      CSVReader reader = new CSVReader(new FileReader("src/resources/otos.csv"), ';');
-      List<String[]> lines = reader.readAll();
-      return lines;
-    } catch (Exception e) {
-      System.out.println("Problem");
+      CSVReader reader = new CSVReader(new FileReader(fileName), ';');
+      return reader.readAll();
     }
-    return null;
+    catch (Exception e) {
+      System.out.println("Problem");
+      return null;
+    }
   }
 
-  public void writeFile(List<String[]> lines) {
+  public void writeFile(String fileName, List<String[]> lines) {
     try {
-      CSVWriter writer = new CSVWriter(new FileWriter("src/resources/result.csv"), ';',
-          CSVWriter.NO_QUOTE_CHARACTER);
+      CSVWriter writer = new CSVWriter(new FileWriter(fileName), ';', CSVWriter.NO_QUOTE_CHARACTER);
       writer.writeAll(lines);
       writer.close();
-    } catch (Exception e) {
+    }
+    catch (Exception e) {
       System.out.println("Problem");
     }
   }
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) {
+    Main main = new Main();
     OptionParser parser = new OptionParser();
     parser.accepts("l");
-    parser.accepts("a").withRequiredArg();
-    parser.accepts("a").withRequiredArg();
+    parser.accepts("y").withRequiredArg();
+    parser.accepts("f").withRequiredArg();
+    parser.accepts("o").withRequiredArg();
     OptionSet options = parser.parse(args);
 
-    if (options.has("a")) {
-      System.out.println("`-a` was given with the argument " + options.valueOf("a"));
+    if (options.has("f") && options.has("y")) {
+      String filename = options.valueOf("f").toString();
+      String year = options.valueOf( "y").toString();
+      List<String[]> list = main.readFile(filename);
+      for (int i = 0; i < list.size(); i++) {
+        String line = Arrays.toString(list.get(0));
+        if (line.contains(year)) {
+          list.remove(list.get(0));
+        } else {
+
+        }
+      }
+      main.writeFile("output.csv", list);
     }
 
     if (options.has("l")) {
       System.out.println("`-l` was given with the no additional information.");
     }
-
-
   }
 }
