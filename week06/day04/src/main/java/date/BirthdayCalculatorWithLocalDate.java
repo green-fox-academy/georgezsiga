@@ -1,40 +1,63 @@
 package date;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 /**
  * Created by georgezsiga on 4/20/17.
  */
-public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
+public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<LocalDate> {
 
   @Override
   public LocalDate parseDate(String str) {
     // TODO - return with the parsed date; format is: yyyy-MM-dd
+    return null;
+  }
+
+  @Override
+  public String printMonthAndDay(T date) {
+    return null;
+  }
+
+  @Override
+  public boolean isAnniversaryToday(T date) {
+    return false;
+  }
+
+  @Override
+  public int calculateAgeInYears(T birthday) {
+    return 0;
+  }
+
+  @Override
+  public int calculateDaysToNextAnniversary(T date) {
+    return 0;
   }
 
   @Override
   public String printMonthAndDay(LocalDate date) {
     // TODO - return the date formatted: month & day (MM. dd.)
+    return null;
   }
 
   @Override
   public boolean isAnniversaryToday(LocalDate date) {
     // TODO - return with true if today is the same month+day as date
+    return false;
   }
 
   @Override
   public int calculateAgeInYears(LocalDate birthday) {
     // TODO - return how many years age the input date 'birthday' was
+    return 0;
   }
 
   @Override
   public int calculateDaysToNextAnniversary(LocalDate date) {
     // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
+    return 0;
   }
 
   public static void main(String[] args) {
-    new BirthdayWithLocalDate().run();
+    new BirthdayCalculatorWithLocalDate().run();
   }
 
   private void run() {
