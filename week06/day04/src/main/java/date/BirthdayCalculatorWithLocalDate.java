@@ -1,5 +1,6 @@
 package date;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Scanner;
 /**
  * Created by georgezsiga on 4/20/17.
@@ -24,6 +25,7 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
 
   @Override
   public int calculateAgeInYears(T birthday) {
+
     return 0;
   }
 
@@ -34,8 +36,10 @@ public class BirthdayCalculatorWithLocalDate implements BirthdayCalculator<Local
 
   @Override
   public String printMonthAndDay(LocalDate date) {
-    // TODO - return the date formatted: month & day (MM. dd.)
-    return null;
+    int day = LocalDate.now().getDayOfMonth();
+    int month = LocalDate.now().getMonth().getValue();
+    String today = month + ". " + day + ".";
+    return today;
   }
 
   @Override
