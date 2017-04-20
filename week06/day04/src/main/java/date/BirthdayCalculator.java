@@ -1,11 +1,14 @@
 package date;
 
+
+import java.time.LocalDate;
+
 /**
  * Created by georgezsiga on 4/20/17.
  */
-public class BirthdayCalculator {
+public interface BirthdayCalculator<L> {
 
-  T parseDate(String str);
+  LocalDate parseDate(String str);
 
   String printMonthAndDay(T date);
 
@@ -15,4 +18,11 @@ public class BirthdayCalculator {
 
   int calculateDaysToNextAnniversary(T date);
 
+  String printMonthAndDay(LocalDate date);
+
+  boolean isAnniversaryToday(LocalDate date);
+
+  int calculateAgeInYears(LocalDate birthday);
+
+  int calculateDaysToNextAnniversary(LocalDate date);
 }
