@@ -33,7 +33,7 @@ public class ToDo extends ToDoList {
   }
 
   public String toFile() {
-    return id + ";" + toDo + ";" + createdAt + ";" + completedAt + "\t";
+    return id + ";" + toDo + ";" + createdAt + ";" + completedAt;
   }
 
   @Override
