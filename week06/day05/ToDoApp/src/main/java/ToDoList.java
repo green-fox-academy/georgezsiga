@@ -1,13 +1,12 @@
 import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.lang.Object;
 
 /**
  * Created by georgezsiga on 4/21/17.
@@ -20,23 +19,18 @@ public class ToDoList {
     this.toDoList = new ArrayList<>();
   }
 
+  public ArrayList<ToDo> getToDoList() {
+    return toDoList;
+  }
+
   public void addToDo(String toDo) {
     ToDo newToDo = new ToDo(toDo);
     toDoList.add(newToDo);
   }
 
-//  public void addFromFile() {
-//    List<String[]> listFromFile = readFile();
-//    for (String[] line : listFromFile) {
-////      String lineString = line.toString();
-//      ToDo newItem = new ToDo(line.toString());
-//      toDoList.add(newItem);
-//    }
-//  }
-
   public void soutList() {
     for (ToDo toDoItem : toDoList) {
-      System.out.println(toDoItem);
+      System.out.println(toDoItem.toFile());
     }
   }
 
@@ -74,19 +68,23 @@ public class ToDoList {
         toDoList.add(toDoItem);
       }
     } catch (Exception e) {
-      System.out.println(e);
+      System.out.println("Houston we have a problem");
 
     }
   }
 
-  public void writeFile(List<String[]> lines) {
-    try {
-      CSVWriter writer = new CSVWriter(new FileWriter("src/main/resources/todolist.csv"), ';',
-          CSVWriter.NO_QUOTE_CHARACTER);
-      writer.writeAll(lines);
-      writer.close();
-    } catch (Exception e) {
-      System.out.println("Problem");
+  public void printToFile(ArrayList<ToDo> toDoList) {
+    ArrayList<String> list = new ArrayList<>();
+    for (ToDo item : toDoList) {
+      String line = item.toFile();
+      list.add(line);
+      try {
+        Path filePath = Paths.get("src/main/resources/todolist.csv");
+        Files.write(filePath, list);
+      } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println("Uh-oh, could not write the file!");
+      }
     }
   }
 }
