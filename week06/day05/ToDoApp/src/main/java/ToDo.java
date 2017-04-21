@@ -4,20 +4,21 @@ import java.time.LocalDate;
  * Created by georgezsiga on 4/21/17.
  */
 public class ToDo extends ToDoList {
-  private static int idCounter = 0;
+  private static int idCounter = 1;
   private int id;
   private String toDo;
   private LocalDate createdAt, completedAt;
+  private static LocalDate nullDate = LocalDate.of(1111, 11, 11);
 
   public ToDo(String toDo) {
     this.id = idCounter++;
     this.toDo = toDo;
     this.createdAt = LocalDate.now();
-    this.completedAt = null;
+    this.completedAt = nullDate;
   }
 
-  public ToDo(int id, String toDo, LocalDate createdAt, LocalDate completedAt) {
-    this.id = id;
+  public ToDo(String toDo, LocalDate createdAt, LocalDate completedAt) {
+    this.id = idCounter++;
     this.toDo = toDo;
     this.createdAt = createdAt;
     this.completedAt = completedAt;
@@ -32,14 +33,13 @@ public class ToDo extends ToDoList {
   }
 
   public String toFile() {
-    return id + ";" + toDo + ";" + createdAt + ";" + completedAt + ";";
+    return id + ";" + toDo + ";" + createdAt + ";" + completedAt + "\t";
   }
 
   @Override
   public String toString() {
-    if (completedAt == null)
+    if (completedAt.equals(nullDate))
       return "id: " + id + ", toDo: " + toDo + ", ToDo created: " + createdAt + ", this task is not completed yet";
     return "id: " + id + ", toDo: " + toDo + ", ToDo created: " + createdAt + ", completed: " + completedAt;
   }
-
 }
