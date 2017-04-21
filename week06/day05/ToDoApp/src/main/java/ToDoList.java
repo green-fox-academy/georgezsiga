@@ -35,30 +35,37 @@ public class ToDoList {
   }
 
   public void removeToDo(int number) {
-    int startListLength = toDoList.size();
-    for (ToDo toDoItem : toDoList) {
-      if (toDoItem.getId() == number) {
-        toDoList.remove(toDoItem);
+    if (number > 0 && number < toDoList.size()) {
+      for (ToDo toDoItem : toDoList) {
+        if (toDoItem.getId() == number) {
+          toDoList.remove(toDoItem);
+        }
       }
-    }
-    int finishListLength = toDoList.size();
-    if (startListLength == finishListLength) {
-      System.out.println("There is no ToDo with that ID number");
+    } else {
+      System.out.println("The index is out of bounds");
     }
   }
 
   public void completeToDo(int number) {
-    for (ToDo toDoItem : toDoList) {
-      if (toDoItem.getId() == number) {
-        toDoItem.setCompletedAt(LocalDate.now());
+    if (number > 0 && number < toDoList.size()) {
+      for (ToDo toDoItem : toDoList) {
+        if (toDoItem.getId() == number) {
+          toDoItem.setCompletedAt(LocalDate.now());
+        } else {
+          System.out.println("The index is out of bounds");
+        }
       }
     }
   }
 
   public void updateToDo(int number, String newToDoDescription) {
-    for (ToDo toDoItem : toDoList) {
-      if (toDoItem.getId() == number) {
-        toDoItem.setToDo(newToDoDescription);
+    if (number > 0 && number < toDoList.size()) {
+      for (ToDo toDoItem : toDoList) {
+        if (toDoItem.getId() == number) {
+          toDoItem.setToDo(newToDoDescription);
+        } else {
+          System.out.println("The index is out of bounds");
+        }
       }
     }
   }
