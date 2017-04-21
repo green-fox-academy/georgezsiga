@@ -15,4 +15,16 @@ public class ToDoList {
     ToDo newToDo = new ToDo(toDo);
     toDoList.add(newToDo);
   }
+
+  public void removeToDo(int number) {
+    int startListLength = toDoList.size();
+    for (ToDo toDoItem: toDoList) {
+      if (toDoItem.getId() == number)
+        toDoList.remove(toDoItem);
+    }
+    int finishListLength = toDoList.size();
+    if (startListLength == finishListLength) {
+      System.out.println("There is no ToDo with that ID number");
+    }
+  }
 }
