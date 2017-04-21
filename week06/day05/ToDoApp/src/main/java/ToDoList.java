@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -25,6 +26,13 @@ public class ToDoList {
     int finishListLength = toDoList.size();
     if (startListLength == finishListLength) {
       System.out.println("There is no ToDo with that ID number");
+    }
+  }
+
+  public void completeToDo(int number) {
+    for (ToDo toDoItem: toDoList) {
+      if (toDoItem.getId() == number)
+        toDoItem.setCompletedAt(LocalDate.now());
     }
   }
 }
