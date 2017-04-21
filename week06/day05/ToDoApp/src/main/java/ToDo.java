@@ -16,6 +16,25 @@ public class ToDo extends ToDoList {
     this.completedAt = null;
   }
 
+  public ToDo(int id, String toDo, LocalDate createdAt, LocalDate completedAt) {
+    this.id = id;
+    this.toDo = toDo;
+    this.createdAt = createdAt;
+    this.completedAt = completedAt;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setCompletedAt(LocalDate completedAt) {
+    this.completedAt = completedAt;
+  }
+
+  public String toFile() {
+    return id + ";" + toDo + ";" + createdAt + ";" + completedAt + ";";
+  }
+
   @Override
   public String toString() {
     if (completedAt == null)
