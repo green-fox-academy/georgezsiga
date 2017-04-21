@@ -1,26 +1,18 @@
-import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Created by georgezsiga on 4/21/17.
  */
 public class ToDoList {
 
-  private static int idCounter = 0;
-  private int id;
-  private String toDo;
-  private LocalDate createdAt, completedAt;
+  private ArrayList<ToDo> toDoList;
 
-  public ToDoList(String toDo, LocalDate createdAt) {
-    this.id = idCounter++;
-    this.toDo = toDo;
-    this.createdAt = createdAt;
-    this.completedAt = null;
+  public ToDoList() {
+  this.toDoList = new ArrayList<>();
   }
 
-  @Override
-  public String toString() {
-    if (completedAt == null)
-      return "id: " + id + ", toDo: " + toDo + ", ToDo created: " + createdAt + ", this task is not completed yet";
-    return "id: " + id + ", toDo: " + toDo + ", ToDo created: " + createdAt + ", completed: " + completedAt;
+  public void addToDo(String toDo) {
+    ToDo newToDo = new ToDo(toDo);
+    toDoList.add(newToDo);
   }
 }
