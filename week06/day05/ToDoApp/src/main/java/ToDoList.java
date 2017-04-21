@@ -47,14 +47,14 @@ public class ToDoList {
   }
 
   public void completeToDo(int number) {
-    if (number > 0 && number < toDoList.size()) {
+    if (number > 0 && number < getToDoList().size()) {
       for (ToDo toDoItem : toDoList) {
         if (toDoItem.getId() == number) {
           toDoItem.setCompletedAt(LocalDate.now());
-        } else {
-          System.out.println("The index is out of bounds");
         }
       }
+    } else {
+      System.out.println("The index is out of bounds");
     }
   }
 
@@ -63,10 +63,10 @@ public class ToDoList {
       for (ToDo toDoItem : toDoList) {
         if (toDoItem.getId() == number) {
           toDoItem.setToDo(newToDoDescription);
-        } else {
-          System.out.println("The index is out of bounds");
         }
       }
+    } else {
+      System.out.println("The index is out of bounds");
     }
   }
 
