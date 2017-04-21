@@ -9,10 +9,10 @@ public class ToDo extends ToDoList {
   private String toDo;
   private LocalDate createdAt, completedAt;
 
-  public ToDo(String toDo, LocalDate createdAt) {
+  public ToDo(String toDo) {
     this.id = idCounter++;
     this.toDo = toDo;
-    this.createdAt = createdAt;
+    this.createdAt = LocalDate.now();
     this.completedAt = null;
   }
 
