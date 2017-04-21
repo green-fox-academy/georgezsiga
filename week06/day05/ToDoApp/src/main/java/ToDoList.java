@@ -30,7 +30,7 @@ public class ToDoList {
 
   public void soutList() {
     for (ToDo toDoItem : toDoList) {
-      System.out.println(toDoItem.toFile());
+      System.out.println(toDoItem.toString());
     }
   }
 
@@ -51,6 +51,30 @@ public class ToDoList {
     for (ToDo toDoItem : toDoList) {
       if (toDoItem.getId() == number) {
         toDoItem.setCompletedAt(LocalDate.now());
+      }
+    }
+  }
+
+  public void updateToDo(int number, String newToDoDescription) {
+    for (ToDo toDoItem : toDoList) {
+      if (toDoItem.getId() == number) {
+        toDoItem.setToDo(newToDoDescription);
+      }
+    }
+  }
+
+  public void getUnfinishedTasks() {
+    for (ToDo toDoItem : toDoList) {
+      if (toDoItem.getCompletedAt().equals(ToDo.getNullDate())) {
+        System.out.println(toDoItem.toString());
+      }
+    }
+  }
+
+  public void getFinishedTasks() {
+    for (ToDo toDoItem : toDoList) {
+      if (!toDoItem.getCompletedAt().equals(ToDo.getNullDate())) {
+        System.out.println(toDoItem.toString());
       }
     }
   }
