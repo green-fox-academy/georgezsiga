@@ -1,6 +1,3 @@
-package com.greenfoxacademy.springstart;
-
-import main.java.com.greenfoxacademy.springstart.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
