@@ -16,7 +16,7 @@ Command line arguments:
  -c  Completes a task
       -c 3              - completes the third task on the list
 
- -u  Uncheck a task
+ -u  Update a task
       -u 3              - unchecks the third task on the list
 
 So, what do you want to do?
