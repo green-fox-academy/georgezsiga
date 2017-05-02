@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SpringVersion3Application {
 
-	@RequestMapping("/hello")
-	@ResponseBody
-	public String hello() {
-		return "Hello World!";
-	}
+  @RequestMapping("/hello")
+  @ResponseBody
+  public String hello() {
+    return "Hello World!";
+  }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringVersion3Application.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SpringVersion3Application.class, args);
+  }
 }
