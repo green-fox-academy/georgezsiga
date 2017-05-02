@@ -27,12 +27,6 @@ public class MultiLanguage {
       "Sholem Aleychem", "Sawubona"};
 
   public String getRandomColor() {
-//    String letters = "0123456789ABCDEF";
-//    String color = "#";
-//    for (int i = 0; i < 6; i++ ) {
-//      color += letters.charAt((int) Math.random() * 16);
-//    }
-//    return color;
     String letters = "0123456789ABCDEF";
     String color = "#";
     for (int i = 0; i < 6; i++ ) {
@@ -41,11 +35,16 @@ public class MultiLanguage {
     return color;
   }
 
+  public int getRandomSize() {
+    int size = (int) (Math.random() * 50) + 10;
+    return size;
+  }
+
   @RequestMapping("/languages")
   public String languages(@RequestParam("name") String name, Model list) {
 
     for (String hello : hellos) {
-      Language lang = new Language(hello + " " + name, getRandomColor());
+      Language lang = new Language(hello + " " + name, getRandomColor(), getRandomSize());
       entries.add(lang);
       long expectedvalue = atomicLong.get();
       long newValue = atomicLong.get() + 1;
