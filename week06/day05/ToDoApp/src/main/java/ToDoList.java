@@ -35,19 +35,26 @@ public class ToDoList {
   }
 
   public void removeToDo(int number) {
-    if (number > 0 && number < toDoList.size()) {
-      for (ToDo toDoItem : toDoList) {
-        if (toDoItem.getId() == number) {
-          toDoList.remove(toDoItem);
-        }
+    int listAtThebeginning = toDoList.size();
+    ArrayList<ToDo> tempList = new ArrayList<>();
+    for (ToDo toDoItem : toDoList) {
+      int idnum = toDoItem.getId();
+      if (idnum == number) {
+
+      } else {
+        tempList.add(toDoItem);
       }
-    } else {
+    }
+    int listAtTheEnd = tempList.size();
+    toDoList = tempList;
+    if (listAtThebeginning == listAtTheEnd) {
       System.out.println("The index is out of bounds");
+    } else {
     }
   }
 
   public void completeToDo(int number) {
-    if (number > 0 && number < getToDoList().size()) {
+    if (number > 0 && number <= getToDoList().size()) {
       for (ToDo toDoItem : toDoList) {
         if (toDoItem.getId() == number) {
           toDoItem.setCompletedAt(LocalDate.now());
@@ -59,7 +66,7 @@ public class ToDoList {
   }
 
   public void updateToDo(int number, String newToDoDescription) {
-    if (number > 0 && number < toDoList.size()) {
+    if (number > 0 && number <= getToDoList().size()) {
       for (ToDo toDoItem : toDoList) {
         if (toDoItem.getId() == number) {
           toDoItem.setToDo(newToDoDescription);
