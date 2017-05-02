@@ -16,4 +16,7 @@ public class Language {
 
   @Getter
   String color;
+
+  @Getter
+  int size;
 }
