@@ -1,4 +1,4 @@
-package Controllers;
+package com.greenfoxacademy.springVersion3.Controllers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,11 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Greeting {
+public class Language {
 
-  @Getter long id;
-  @Getter String content;
+  @Getter
+  String content;
 
+  @Getter
+  String color;
 }
