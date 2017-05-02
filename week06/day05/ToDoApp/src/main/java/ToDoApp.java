@@ -11,9 +11,9 @@ public class ToDoApp {
     OptionParser parser = new OptionParser();
     parser.accepts("l").withOptionalArg();
     parser.accepts("a").withOptionalArg();
-    parser.accepts("r").withRequiredArg();
-    parser.accepts("c").withRequiredArg();
-    parser.accepts("u").withRequiredArg();
+    parser.accepts("r").withOptionalArg();
+    parser.accepts("c").withOptionalArg();
+    parser.accepts("u").withOptionalArg();
     OptionSet options = parser.parse(args);
     list.readFromFile();
 
@@ -29,16 +29,19 @@ public class ToDoApp {
         if (options.hasArgument("a")) {
           list.addToDo(options.valueOf("a").toString());
           list.soutList();
-          System.out.println("has argument a");
         } else {
-          System.out.println("a");
+          System.out.println("You need to give a New Task, in order to add a new task.. ");
         }
       }
       if (options.has("r")) {
         if (options.hasArgument("r")) {
-          System.out.println("has argument r");
+          int number = Integer.parseInt(options.valueOf("r").toString());
+          list.removeToDo(number);
+          list.soutList();
         } else {
           System.out.println("You need to give an index to remove a task");
+          System.out.println();
+          list.soutList();
         }
       }
       if (options.has("c")) {
@@ -48,6 +51,8 @@ public class ToDoApp {
           list.soutList();
         } else {
           System.out.println("You need to give an index to finish a task");
+          System.out.println();
+          list.soutList();
         }
       }
       if (options.has("u")) {
@@ -55,10 +60,13 @@ public class ToDoApp {
           System.out.println("has argument u");
         } else {
           System.out.println("You need to give an index to update a task");
+          System.out.println();
+          list.soutList();
         }
       }
       list.printToFile(list.getToDoList());
     } catch (Exception e) {
+      System.out.println(e);
       System.out.println("Huston we have a problem");
     }
   }
