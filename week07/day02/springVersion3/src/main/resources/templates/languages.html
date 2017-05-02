@@ -8,7 +8,7 @@
 <table>
   <tbody>
   <tr th:each="e : ${entries}">
-    <td th:text="${e.content}" th:style="'color: ' + ${e.color}"></td>
+    <td th:text="${e.content}" th:style="'font-size: ' + ${e.size} + 'px; color: ' + ${e.color}"></td>
   </tr>
   </tbody>
 </table>
