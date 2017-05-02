@@ -28,6 +28,22 @@ public class ToDo extends ToDoList {
     return id;
   }
 
+  public LocalDate getCompletedAt() {
+    return completedAt;
+  }
+
+  public static LocalDate getNullDate() {
+    return nullDate;
+  }
+
+  public String getToDo() {
+    return toDo;
+  }
+
+  public void setToDo(String toDo) {
+    this.toDo = toDo;
+  }
+
   public void setCompletedAt(LocalDate completedAt) {
     this.completedAt = completedAt;
   }
@@ -39,7 +55,7 @@ public class ToDo extends ToDoList {
   @Override
   public String toString() {
     if (completedAt.equals(nullDate))
-      return "id: " + id + ", toDo: " + toDo + ", ToDo created: " + createdAt + ", this task is not completed yet";
-    return "id: " + id + ", toDo: " + toDo + ", ToDo created: " + createdAt + ", completed: " + completedAt;
+      return id + " (" + createdAt + ") - " + toDo + " - this task is not completed yet";
+    return id + " (" + createdAt + ") - " + toDo + " - completed: " + completedAt;
   }
 }
