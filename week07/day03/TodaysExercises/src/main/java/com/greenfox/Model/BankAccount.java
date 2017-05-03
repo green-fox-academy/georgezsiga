@@ -15,4 +15,8 @@ public class BankAccount {
   @Getter String animalType;
   @Getter double balance;
   @Getter String goodOrBad;
+
+  public void setBalance(double balance) {
+    this.balance = balance;
+  }
 }
