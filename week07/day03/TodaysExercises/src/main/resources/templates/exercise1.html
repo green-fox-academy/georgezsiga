@@ -8,7 +8,7 @@
 <body>
 <tbody>
 <tr th:each="e : ${animalAccount}">
-  <td th:text="${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)}"></td>
+  <td th:text="${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra'"></td>
 </tr>
 </tbody>
 </body>
