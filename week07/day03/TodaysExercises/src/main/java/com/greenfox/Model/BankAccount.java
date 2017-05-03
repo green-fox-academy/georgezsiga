@@ -14,4 +14,5 @@ public class BankAccount {
   @Getter String name;
   @Getter String animalType;
   @Getter double balance;
+  @Getter String goodOrBad;
 }
