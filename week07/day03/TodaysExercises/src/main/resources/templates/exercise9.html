@@ -12,23 +12,15 @@
   </div>
   <div th:case="'Bad guy'"
        th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Bad guy'">
-  </div><a th:href="'/hit?id=' + ${eStat.index}">Add 10 Zebra</a>
-
-  <!--<form action="/form" th:object="${entry}">-->
-    <!--Name of Lionking Character: <input type="text" th:field="*{name}" />-->
-    <!--What type of animal is it?: <input type="text" th:field="*{animalType}" />-->
-    <!--How many Zebras does it have on its bank account?: <input type="text" th:field="*{balance}"/>-->
-    <!--Is it "Good guy" or "Bad guy"?: <input type="text" th:field="*{goodOrBad}" />-->
-    <!--<input type="submit" value="HITIT with a form" />-->
-  <!--</form>-->
+  </div>
+  <a th:href="'/hit?id=' + ${eStat.index}">Add 10 Zebra</a>
 </th:block>
-<form>
+<form action="/form">
   Name of Lionking Character:<input type="text" name="name"/><br/>
-  What type of animal is it?:<input type="text" name="name"/><br/>
-  How many Zebras does it have on its bank account?:<input type="text" name="name"/><br/>
-  Is it "Good guy" or "Bad guy"?:<input type="text" name="name"/><br/>
+  What type of animal is it?:<input type="text" name="animalType"/><br/>
+  How many Zebras does it have on its bank account?:<input type="text" name="balance"/><br/>
+  Is it "Good guy" or "Bad guy"?:<input type="text" name="goodOrBad"/><br/>
   <input type="submit" value="Add a new character"/>
 </form>
-
 </body>
 </html>
