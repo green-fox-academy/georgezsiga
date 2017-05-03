@@ -13,5 +13,5 @@ public class BankAccount {
 
   @Getter String name;
   @Getter String animalType;
-  @Getter String balance;
+  @Getter double balance;
 }
