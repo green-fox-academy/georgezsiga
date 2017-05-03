@@ -6,10 +6,13 @@
   <meta charset="utf-8" />
 </head>
 <body>
+<table>
 <tbody>
 <tr th:each="e : ${animalAccount}">
-  <td th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra'"></td><br/>
+  <td th:if="${e.name} == 'Mufasa'" th:style="'color: ' + ${color}" th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra'" ></td>
+  <td th:if="${e.name} != 'Mufasa'" th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra'"></td>
 </tr>
 </tbody>
+</table>
 </body>
 </html>
