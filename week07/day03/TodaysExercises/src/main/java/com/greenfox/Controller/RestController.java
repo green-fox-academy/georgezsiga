@@ -77,4 +77,11 @@ public class RestController {
     accounts.get(id).setBalance(newBalance);
     return "redirect:/exercise10";
   }
+
+  @RequestMapping("/form")
+  public String sendTheForm(String name, String animalType, double balance, String goodOrBad) {
+    BankAccount account = new BankAccount(name, animalType, balance, goodOrBad);
+    accounts.add(account);
+    return "redirect:/exercise10";
+  }
 }
