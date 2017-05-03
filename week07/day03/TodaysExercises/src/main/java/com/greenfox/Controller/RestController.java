@@ -17,7 +17,7 @@ public class RestController {
 
   @RequestMapping("/exercise1")
   public String exercise1(Model model) {
-    BankAccount account = new BankAccount("Simba", "lion", 2000);
+    BankAccount account = new BankAccount("Simba", "lion", 2000, "Good guy");
     accounts.add(account);
     model.addAttribute("animalAccount", accounts);
     return "exercise1";
@@ -31,15 +31,15 @@ public class RestController {
 
   @RequestMapping("/exercise5")
   public String exercise5(Model model, Model color) {
-    BankAccount account = new BankAccount("Simba", "lion", 2000);
+    BankAccount account = new BankAccount("Simba", "lion", 2000, "Good guy");
     accounts.add(account);
-    account = new BankAccount("Mufasa", "lion", 20000);
+    account = new BankAccount("Mufasa", "lion", 20000, "Good guy");
     accounts.add(account);
-    account = new BankAccount("Pumbaa", "pig", 100);
+    account = new BankAccount("Pumbaa", "pig", 100, "Bad guy");
     accounts.add(account);
-    account = new BankAccount("Rafiki", "monkey", 11000);
+    account = new BankAccount("Rafiki", "monkey", 11000, "Bad guy");
     accounts.add(account);
-    account = new BankAccount("Zazu", "parrot", 500);
+    account = new BankAccount("Zazu", "parrot", 500, "Good guy");
     accounts.add(account);
     model.addAttribute("animalAccount", accounts);
     color.addAttribute("color", "yellow");
