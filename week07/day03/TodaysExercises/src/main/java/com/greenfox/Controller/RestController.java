@@ -62,4 +62,19 @@ public class RestController {
     color.addAttribute("color", "yellow");
     return "exercise9";
   }
+
+  @RequestMapping("/exercise10")
+  public String exercise10(Model model, Model color) {
+    model.addAttribute("animalAccount", accounts);
+    color.addAttribute("color", "yellow");
+    return "exercise10";
+  }
+
+  @RequestMapping("/hit")
+  public String hitTheButton(@RequestParam("id") int id) {
+    double oldBalance = accounts.get(id).getBalance();
+    double newBalance = oldBalance + 10;
+    accounts.get(id).setBalance(newBalance);
+    return "redirect:/exercise10";
+  }
 }
