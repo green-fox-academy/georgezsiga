@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Thymeleaf Exercise #</title>
+  <link rel="stylesheet" th:href="@{/style.css}"/>
+  <meta charset="utf-8"/>
+</head>
+<body>
+<th:block th:each="e : ${animalAccount}" th:switch="${e.goodOrBad}">
+  <div th:case="'Good guy'"
+       th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Good guy'">
+  </div>
+  <div th:case="'Bad guy'"
+       th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Bad guy'">
+  </div>
+</th:block>
+</body>
+</html>
