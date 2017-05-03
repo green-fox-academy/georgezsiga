@@ -13,7 +13,9 @@
   <div th:case="'Bad guy'"
        th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Bad guy'">
   </div>
-  <a th:href="'/hit?id=' + ${eStat.index}">Add 10 Zebra</a>
+  <div
+      style="height: 20px; width: 100px; border: 2px solid #999; background: aquamarine; text-align: center; padding-top: 2px;">
+    <a th:href="'/hit?id=' + ${eStat.index}">Add 10 Zebra</a></div>
 </th:block>
 <form action="/form">
   Name of Lionking Character:<input type="text" name="name"/><br/>
