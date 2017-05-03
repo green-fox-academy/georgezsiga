@@ -29,4 +29,19 @@ public class RestController {
     return "exercise4";
   }
 
+  @RequestMapping("/exercise5")
+  public String exercise5(Model model) {
+    BankAccount account = new BankAccount("Simba", "lion", 2000);
+    accounts.add(account);
+    account = new BankAccount("Mufasa", "lion", 20000);
+    accounts.add(account);
+    account = new BankAccount("Pumbaa", "pig", 100);
+    accounts.add(account);
+    account = new BankAccount("Rafiki", "monkey", 11000);
+    accounts.add(account);
+    account = new BankAccount("Zazu", "parrot", 500);
+    accounts.add(account);
+    model.addAttribute("animalAccount", accounts);
+    return "exercise5";
+  }
 }
