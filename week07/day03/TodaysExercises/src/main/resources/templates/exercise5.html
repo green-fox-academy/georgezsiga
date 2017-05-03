@@ -2,17 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Thymeleaf Exercise #</title>
-  <link rel="stylesheet" th:href="@{/style.css}" />
-  <meta charset="utf-8" />
+  <link rel="stylesheet" th:href="@{/style.css}"/>
+  <meta charset="utf-8"/>
 </head>
 <body>
 <table>
-<tbody>
-<tr th:each="e : ${animalAccount}">
-  <td th:if="${e.name} == 'Mufasa'" th:style="'color: ' + ${color}" th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra'" ></td>
-  <td th:if="${e.name} != 'Mufasa'" th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra'"></td>
-</tr>
-</tbody>
+  <tbody>
+  <tr th:each="e : ${animalAccount}">
+    <td th:if="${e.name} == 'Mufasa'" th:style="'color: ' + ${color}"
+        th:text="${e.goodOrBad == 'Bad guy'}?
+      ${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Bad guy' :
+      ${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra '+'Good guy'"></td>
+    <td th:if="${e.name} != 'Mufasa'"
+        th:text="${e.goodOrBad == 'Bad guy'}?
+      ${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Bad guy' :
+      ${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra '+'Good guy'"></td>
+  </tr>
+  </tbody>
 </table>
 </body>
 </html>
