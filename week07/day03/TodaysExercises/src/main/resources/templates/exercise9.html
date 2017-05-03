@@ -12,7 +12,7 @@
   </div>
   <div th:case="'Bad guy'"
        th:text="${eStat.index} + ' ' + ${e.animalType} + ' ' + ${e.name} + ' ' + ${#numbers.formatDecimal(e.balance, 0, 2)} + ' Zebra ' + 'Bad guy'">
-  </div>
+  </div><a th:href="'/hit?id=' + ${eStat.index}">Add 10 Zebra</a>
 </th:block>
 </body>
 </html>
