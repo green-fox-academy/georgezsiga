@@ -2,7 +2,6 @@ package com.greenfox.Controller;
 
 import com.greenfox.Model.BankAccount;
 import java.util.ArrayList;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ public class RestController {
 
   @RequestMapping("/exercise1")
   public String exercise1(Model model) {
-    BankAccount account = new BankAccount("Simba", "lion", "2000");
+    BankAccount account = new BankAccount("Simba", "lion", 2000);
     accounts.add(account);
     model.addAttribute("animalAccount", accounts);
     return "exercise1";
