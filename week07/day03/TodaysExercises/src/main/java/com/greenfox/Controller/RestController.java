@@ -30,7 +30,7 @@ public class RestController {
   }
 
   @RequestMapping("/exercise5")
-  public String exercise5(Model model) {
+  public String exercise5(Model model, Model color) {
     BankAccount account = new BankAccount("Simba", "lion", 2000);
     accounts.add(account);
     account = new BankAccount("Mufasa", "lion", 20000);
@@ -42,6 +42,7 @@ public class RestController {
     account = new BankAccount("Zazu", "parrot", 500);
     accounts.add(account);
     model.addAttribute("animalAccount", accounts);
+    color.addAttribute("color", "yellow");
     return "exercise5";
   }
 }
