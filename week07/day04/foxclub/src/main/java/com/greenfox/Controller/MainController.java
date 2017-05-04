@@ -10,12 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class MainController {
+  Pikachu pikachu = new Pikachu("Mr. Pikachu", "Strawberry", "Smoothie");
 
   @RequestMapping("/")
   public String homepage(Model model, Model list) {
-    Pikachu pikachu = new Pikachu("Mr. Pikachu", "Strawberry", "Smoothie");
     model.addAttribute("pikachu", pikachu);
     list.addAttribute("listOfTricks", pikachu.getListOfTricks());
     return "index";
+  }
+
+  @RequestMapping("/nutritionStore")
+  public String nutritionStore(Model model, Model list) {
+    model.addAttribute("pikachu", pikachu);
+    list.addAttribute("listOfTricks", pikachu.getListOfTricks());
+    return "nutritionStore";
+  }
+
+  @RequestMapping("/nutritionform")
+  public String nutritionForm(String food, String drink) {
+    pikachu.setFood(food);
+    pikachu.setDrink(drink);
+    return "redirect:/";
   }
 }
