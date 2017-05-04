@@ -79,13 +79,13 @@ public class Pikachu {
   public String toString() {
     if (listOfTricks.get(0).equals("You know no tricks yet. Go and learn some!")) {
       return "This is " + name +
-          ". Currently living on " + food +
-          " and " + drink +
+          ". Currently eats " + food +
+          " and drinks " + drink +
           ". He knows 0 tricks.";
     }
     return "This is " + name +
-        ". Currently living on " + food +
-        " and " + drink +
+        ". Currently eats " + food +
+        " and drinks " + drink +
         ". He knows " + listOfTricks.size() + " tricks.";
   }
 }
