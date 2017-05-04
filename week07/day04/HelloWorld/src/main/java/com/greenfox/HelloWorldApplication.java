@@ -18,7 +18,7 @@ public class HelloWorldApplication {
 		hw.setMessage("Hello World");
 		hw.getMessage();
 
-		MyColor rainbow	= factory.getBean(MyColor.class);
+		MyColor rainbow	= (MyColor) factory.getBean("green");
 		rainbow.printColor();
 	}
 }
