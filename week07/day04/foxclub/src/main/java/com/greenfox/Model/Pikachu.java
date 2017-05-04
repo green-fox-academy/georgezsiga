@@ -26,6 +26,18 @@ public class Pikachu {
     listOfTricks.add("You know no tricks yet. Go and learn some!");
   }
 
+  public void setFood(String food) {
+    this.food = food;
+  }
+
+  public void setDrink(String drink) {
+    this.drink = drink;
+  }
+
+  public void setListOfTricks(ArrayList<String> listOfTricks) {
+    this.listOfTricks = listOfTricks;
+  }
+
   @Override
   public String toString() {
     if (listOfTricks.get(0).equals("You know no tricks yet. Go and learn some!")) {
