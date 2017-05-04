@@ -12,9 +12,12 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 public class Pikachu {
 
-  @Getter String name;
-  @Getter String food;
-  @Getter String drink;
+  @Getter
+  String name;
+  @Getter
+  String food;
+  @Getter
+  String drink;
   @Getter
   ArrayList<String> listOfTricks;
 
@@ -34,8 +37,17 @@ public class Pikachu {
     this.drink = drink;
   }
 
-  public void setListOfTricks(ArrayList<String> listOfTricks) {
-    this.listOfTricks = listOfTricks;
+  public void addTrick(String trick) {
+    if (listOfTricks.contains(trick)) {
+
+    } else {
+      if (listOfTricks.get(0).equals("You know no tricks yet. Go and learn some!")) {
+        listOfTricks = new ArrayList<>();
+        listOfTricks.add(trick);
+      } else {
+        listOfTricks.add(trick);
+      }
+    }
   }
 
   @Override
