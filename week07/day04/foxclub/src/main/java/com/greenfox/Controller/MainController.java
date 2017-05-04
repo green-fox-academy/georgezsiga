@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Period;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,13 @@ public class MainController {
   Pikachu pikachu = new Pikachu("Mr. Pikachu", "Strawberry", "Smoothie");
 
   @RequestMapping("/")
-  public String homepage(Model model, Model list, Model action) {
+  public String homepage(Model model, Model list, Model action, Model age) {
     readPikachuFromFile();
     model.addAttribute("pikachu", pikachu);
     list.addAttribute("listOfTricks", pikachu.getListOfTricks());
     action.addAttribute("actionHistory", pikachu.getActionHistory());
+    Period ageOfPikachu = Period.between(pikachu.getDob(), LocalDate.now());
+    age.addAttribute("age", ageOfPikachu.getDays());
     writePikachuToFile();
     return "index";
   }
