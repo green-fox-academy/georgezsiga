@@ -5,6 +5,6 @@ package com.greenfox.service;
  */
 public interface MessageService {
 
-  public void sendingMessage();
+  void sendingMessage(String service, String message);
 
 }
