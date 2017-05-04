@@ -22,6 +22,7 @@ public class HelloWorldConfig {
 
   @Bean
   @Primary
+  @Qualifier("green")
   public MyColor getGreen() {
     return new GreenColor();
   }
