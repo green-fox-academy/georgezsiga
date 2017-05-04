@@ -7,11 +7,15 @@ import lombok.Getter;
  */
 public class TwitterService implements MessageService {
 
-  @Getter String twitter;
-  @Getter String message;
+  @Getter
+  String twitter;
+  @Getter
+  String message;
 
   @Override
-  public void sendingMessage() {
+  public void sendingMessage(String twitter, String message) {
+    this.twitter = twitter;
+    this.message = message;
     System.out.println(toString());
   }
 
