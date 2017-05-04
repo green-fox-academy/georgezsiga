@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Official Pikachu fan page!</title>
+  <STYLE>
+  html {
+  position: relative;
+  max-width: 800px;
+  height: 100%;
+  background: #1AD1E5;
+  }
+  </STYLE>
 </head>
-<body>
+<body width="auto" max-width="800px" align="center">
 <h1>Official Pikachu fan page!</h1>
-<li>
-  <a href="/">Information</a></li>
-<li>
-  <a href="/nutritionStore.html">Nutrition Store</a>
-</li>
-<li>
-  <a href="/trickCenter.html">Trick Center</a>
-</li>
-<li>
-<a href="/actionHistory.html">Action History</a>
-</li>
+<table align="center">
+  <tr>
+    <td><a style="text-decoration: none" href="/"> - Information - </a></td>
+    <td><a style="text-decoration: none" href="/nutritionStore.html"> - Nutrition Store - </a></td>
+    <td><a style="text-decoration: none" href="/trickCenter.html"> - Trick Center - </a></td>
+    <td><a style="text-decoration: none" href="/actionHistory.html"> - Action History - </a></td>
+  </tr>
+</table>
 <br/>
 <br/>
 <img src="pikachu.png" width="300px"/>
 <p th:text="${pikachu.toString()}"></p>
-<h1>Known tricks</h1>
+<h2>Known tricks</h2>
 <th:block th:each="p : ${listOfTricks}">
   <li th:text="${p}"></li>
 </th:block>
