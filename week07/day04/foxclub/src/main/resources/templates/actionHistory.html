@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Official Pikachu fan page!</title>
+</head>
+<body>
+<h1>Action History</h1>
+<li>
+  <a href="/">Information</a></li>
+<li>
+  <a href="/nutritionStore.html">Nutrition Store</a>
+</li>
+<li>
+  <a href="/trickCenter.html">Trick Center</a>
+</li>
+<li>
+  <a href="/actionHistory.html">Action History</a>
+</li>
+<br/>
+<br/>
+<img src="pikachu.png" width="300px"/>
+<br/><br/>
+
+<form action="/trickform">Learn new Tricks <select name="trick">
+  <th:block th:each="t : ${tricks}">
+    <option th:value="${t}" th:text="${t}"></option>
+  </th:block>
+</select> <input type="submit" value="Teach it to me!"/></form>
+
+</body>
+</html>
