@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Official Pikachu fan page!</title>
+</head>
+<body>
+<h1>Official Pikachu fan page!</h1>
+<li>
+  <a href="/">Information</a>
+</li>
+<br/>
+<br/>
+<img src="pikachu.png" width="300px"/>
+<p th:text="${pikachu.toString()}"></p>
+<h1>Known tricks</h1>
+<th:block th:each="p : ${listOfTricks}">
+  <li th:text="${p}"></li>
+</th:block>
+</body>
+</html>
