@@ -1,6 +1,12 @@
 package com.greenfox.Controller;
 
 import com.greenfox.Model.Pikachu;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import org.springframework.stereotype.Controller;
@@ -16,8 +22,10 @@ public class MainController {
 
   @RequestMapping("/")
   public String homepage(Model model, Model list) {
+    readPikachuFromFile();
     model.addAttribute("pikachu", pikachu);
     list.addAttribute("listOfTricks", pikachu.getListOfTricks());
+    writePikachuToFile();
     return "index";
   }
 
@@ -61,4 +69,27 @@ public class MainController {
     model.addAttribute("actionHistory", pikachu.getActionHistory());
     return "actionHistory";
   }
+
+  public void writePikachuToFile() {
+    try {
+      FileOutputStream f = new FileOutputStream(new File("pikachu.txt"));
+      ObjectOutputStream o = new ObjectOutputStream(f);
+      o.writeObject(pikachu);
+      o.close();
+    } catch (Exception e) {
+      System.out.println("Houston, we have a problem");
+    }
+  }
+
+  public void readPikachuFromFile() {
+    try {
+      FileInputStream fi = new FileInputStream(new File("pikachu.txt"));
+      ObjectInputStream oi = new ObjectInputStream(fi);
+      pikachu = (Pikachu) oi.readObject();
+      oi.close();
+    } catch (Exception e) {
+      System.out.println("Houston, we have a problem");
+    }
+  }
+
 }
