@@ -7,11 +7,15 @@ import lombok.Getter;
  */
 public class EmilService implements MessageService {
 
-  @Getter String email;
-  @Getter String message;
+  @Getter
+  String email;
+  @Getter
+  String message;
 
   @Override
-  public void sendingMessage() {
+  public void sendingMessage(String email, String message) {
+    this.email = email;
+    this.message = message;
     System.out.println(toString());
   }
 
