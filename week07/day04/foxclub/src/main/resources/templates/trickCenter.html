@@ -17,13 +17,13 @@
 <br/>
 <br/>
 <img src="pikachu.png" width="300px"/>
-<br/>
-<form action="/trickform">Learn new Tricks <input id="trick" list="tricks" name="trick"/> <input type="submit" value="Teach it to me!"/></form>
-<datalist id="tricks">
-  <option>Learn Java</option>
-  <option>Make coffee</option>
-  <option>Walk on the moon</option>
-  <option>Sleep</option>
-</datalist>
+<br/><br/>
+
+<form action="/trickform">Learn new Tricks <select name="trick">
+  <th:block th:each="t : ${tricks}">
+    <option th:value="${t}" th:text="${t}"></option>
+  </th:block>
+</select> <input type="submit" value="Teach it to me!"/></form>
+
 </body>
 </html>
