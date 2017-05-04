@@ -1,5 +1,7 @@
 package com.greenfox.Model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +24,12 @@ public class Pikachu {
   ArrayList<String> listOfTricks;
   @Getter
   ArrayList<String> tricks;
+  @Getter
+  ArrayList<String> actionHistory;
+  @Getter
+  LocalDate dob;
+  @Getter
+  LocalTime time;
 
 
   public Pikachu(String name, String food, String drink) {
@@ -34,6 +42,10 @@ public class Pikachu {
     tricks.add("Walk on the moon");
     tricks.add("Sleep");
     tricks.add("Eat");
+    this.actionHistory = new ArrayList<>();
+    this.dob = LocalDate.now();
+    this.time = LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+    actionHistory.add(name + " was born on " + dob + " at " + time);
   }
 
   public void setFood(String food) {
@@ -57,6 +69,10 @@ public class Pikachu {
         tricks.remove(trick);
       }
     }
+  }
+
+  public void addAction(String action) {
+    actionHistory.add(action);
   }
 
   @Override
