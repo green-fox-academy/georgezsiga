@@ -63,17 +63,17 @@ public class Pikachu implements Serializable {
     } else {
       if (listOfTricks.get(0).equals("You doesn`t know any tricks yet. Go and learn some!")) {
         listOfTricks = new ArrayList<>();
-        listOfTricks.add(trick);
+        listOfTricks.add(trick + " - learned it on " + LocalDate.now());
         tricks.remove(trick);
       } else {
-        listOfTricks.add(trick);
+        listOfTricks.add(trick + " - learned it on " + LocalDate.now());
         tricks.remove(trick);
       }
     }
   }
 
   public void addAction(String action) {
-    actionHistory.add(action);
+    actionHistory.add(0, action);
   }
 
   @Override
