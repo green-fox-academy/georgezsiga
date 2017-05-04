@@ -37,7 +37,7 @@ public class Pikachu {
     this.food = food;
     this.drink = drink;
     this.listOfTricks = new ArrayList<>();
-    listOfTricks.add("You know no tricks yet. Go and learn some!");
+    listOfTricks.add("You doesn`t know any tricks yet. Go and learn some!");
     this.tricks = new ArrayList<>();
     tricks.add("Walk on the moon");
     tricks.add("Sleep");
@@ -60,7 +60,7 @@ public class Pikachu {
     if (listOfTricks.contains(trick)) {
 
     } else {
-      if (listOfTricks.get(0).equals("You know no tricks yet. Go and learn some!")) {
+      if (listOfTricks.get(0).equals("You doesn`t know any tricks yet. Go and learn some!")) {
         listOfTricks = new ArrayList<>();
         listOfTricks.add(trick);
         tricks.remove(trick);
@@ -77,11 +77,11 @@ public class Pikachu {
 
   @Override
   public String toString() {
-    if (listOfTricks.get(0).equals("You know no tricks yet. Go and learn some!")) {
+    if (listOfTricks.get(0).equals("You doesn`t know any tricks yet. Go and learn some!")) {
       return "This is " + name +
           ". Currently eats " + food +
           " and drinks " + drink +
-          ". He knows 0 tricks.";
+          ". He doesn`t know any tricks.";
     }
     return "This is " + name +
         ". Currently eats " + food +
