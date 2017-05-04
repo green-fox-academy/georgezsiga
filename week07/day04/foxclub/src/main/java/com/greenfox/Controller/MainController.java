@@ -28,6 +28,8 @@ public class MainController {
 
   @RequestMapping("/nutritionform")
   public String nutritionForm(String food, String drink) {
+    if (food.equals("")) food = "nothing";
+    if (drink.equals("")) drink = "nothing";
     String action = "Food has been changed from " + pikachu.getFood() + " to " + food + " on " + LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
