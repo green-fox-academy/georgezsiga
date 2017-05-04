@@ -22,11 +22,10 @@
 <img src="pikachu.png" width="300px"/>
 <br/><br/>
 
-<form action="/trickform">Learn new Tricks <select name="trick">
-  <th:block th:each="t : ${tricks}">
-    <option th:value="${t}" th:text="${t}"></option>
-  </th:block>
-</select> <input type="submit" value="Teach it to me!"/></form>
+<h2>Action History</h2>
+<th:block th:each="a : ${actionHistory}">
+  <li th:text="${a}"></li>
+</th:block>
 
 </body>
 </html>
