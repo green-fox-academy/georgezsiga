@@ -28,7 +28,10 @@ public class MainController {
 
   @RequestMapping("/nutritionform")
   public String nutritionForm(String food, String drink) {
-    String action = "Bought " + food + " and " + drink + " from the Nutrition Store on " + LocalDate.now() + " at " + LocalTime
+    String action = "Food has been changed from " + pikachu.getFood() + " to " + food + " on " + LocalDate.now() + " at " + LocalTime
+        .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+    pikachu.addAction(action);
+    action = "Drink has been changed from " + pikachu.getDrink() + " to " + drink + " on " + LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
     pikachu.setFood(food);
@@ -44,7 +47,7 @@ public class MainController {
 
   @RequestMapping("/trickform")
   public String trickForm(String trick) {
-    String action = "Learned " + trick + " at the Trick Center on " + LocalDate.now() + " at " + LocalTime
+    String action = "Learned to " + trick + " at the Trick Center on " + LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
     pikachu.addTrick(trick);
