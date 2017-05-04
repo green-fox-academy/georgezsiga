@@ -20,6 +20,9 @@ public class Pikachu {
   String drink;
   @Getter
   ArrayList<String> listOfTricks;
+  @Getter
+  ArrayList<String> tricks;
+
 
   public Pikachu(String name, String food, String drink) {
     this.name = name;
@@ -27,6 +30,10 @@ public class Pikachu {
     this.drink = drink;
     this.listOfTricks = new ArrayList<>();
     listOfTricks.add("You know no tricks yet. Go and learn some!");
+    this.tricks = new ArrayList<>();
+    tricks.add("Walk on the moon");
+    tricks.add("Sleep");
+    tricks.add("Eat");
   }
 
   public void setFood(String food) {
@@ -44,8 +51,10 @@ public class Pikachu {
       if (listOfTricks.get(0).equals("You know no tricks yet. Go and learn some!")) {
         listOfTricks = new ArrayList<>();
         listOfTricks.add(trick);
+        tricks.remove(trick);
       } else {
         listOfTricks.add(trick);
+        tricks.remove(trick);
       }
     }
   }
