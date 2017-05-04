@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Official Pikachu fan page!</title>
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
 <h1>Nutrition Store</h1>
-<li>
-  <a href="/">Information</a></li>
-<li>
-  <a href="/nutritionStore.html">Nutrition Store</a>
-</li>
-<li>
-  <a href="/trickCenter.html">Trick Center</a>
-</li>
-<li>
-<a href="/actionHistory.html">Action History</a>
-</li>
+<table>
+  <tr>
+    <td><a style="text-decoration: none" href="/"> - Information - </a></td>
+    <td><a style="text-decoration: none" href="/nutritionStore.html"> - Nutrition Store - </a></td>
+    <td><a style="text-decoration: none" href="/trickCenter.html"> - Trick Center - </a></td>
+    <td><a style="text-decoration: none" href="/actionHistory.html"> - Action History - </a></td>
+  </tr>
+</table>
 <br/>
 <br/>
 <img src="pikachu.png" width="300px"/>
 <br/>
-<form action="/nutritionform">Food <input id="food" list="foods" name="food"/> Drink <input id="drink" list="drinks" name="drink"/> <input type="submit" value="Give it to me!"/></form>
+<br/>
+<form action="/nutritionform">Food <input id="food" list="foods" name="food" autocomplete="off"/> Drink <input id="drink" list="drinks" name="drink" autocomplete="off"/> <input type="submit" value="Give it to me!"/></form>
 <datalist id="foods">
   <option>Strawberry</option>
   <option>Banana</option>
