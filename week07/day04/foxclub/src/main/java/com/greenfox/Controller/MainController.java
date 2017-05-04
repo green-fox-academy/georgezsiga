@@ -36,13 +36,13 @@ public class MainController {
   @RequestMapping("/trickCenter")
   public String trickCenter(Model model, Model list) {
     model.addAttribute("pikachu", pikachu);
-    list.addAttribute("listOfTricks", pikachu.getListOfTricks());
-    return "nutritionStore";
+    list.addAttribute("tricks", pikachu.getTricks());
+    return "trickCenter";
   }
 
   @RequestMapping("/trickform")
   public String trickForm(String trick) {
-    pikachu.setFood(trick);
+    pikachu.addTrick(trick);
     return "redirect:/";
   }
 }
