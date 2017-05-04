@@ -4,7 +4,6 @@ import com.greenfox.Model.Pikachu;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
@@ -21,10 +20,11 @@ public class MainController {
   Pikachu pikachu = new Pikachu("Mr. Pikachu", "Strawberry", "Smoothie");
 
   @RequestMapping("/")
-  public String homepage(Model model, Model list) {
+  public String homepage(Model model, Model list, Model action) {
     readPikachuFromFile();
     model.addAttribute("pikachu", pikachu);
     list.addAttribute("listOfTricks", pikachu.getListOfTricks());
+    action.addAttribute("actionHistory", pikachu.getActionHistory());
     writePikachuToFile();
     return "index";
   }
@@ -46,6 +46,7 @@ public class MainController {
     pikachu.addAction(action);
     pikachu.setFood(food);
     pikachu.setDrink(drink);
+    writePikachuToFile();
     return "redirect:/";
   }
 
@@ -61,6 +62,7 @@ public class MainController {
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
     pikachu.addTrick(trick);
+    writePikachuToFile();
     return "redirect:/";
   }
 
