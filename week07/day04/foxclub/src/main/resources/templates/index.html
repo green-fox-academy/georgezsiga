@@ -18,6 +18,8 @@
 <br/>
 <br/>
 <img src="pikachu.png" width="300px"/>
+<br/>
+<p th:text="'I am ' + ${age} + ' days old!'"></p>
 <p th:text="${pikachu.toString()}"></p>
 <h2>Known tricks</h2>
 <th:block th:each="p : ${listOfTricks}">
