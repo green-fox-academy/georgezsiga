@@ -1,5 +1,6 @@
 package com.greenfox.Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Pikachu {
+public class Pikachu implements Serializable {
 
   @Getter
   String name;
@@ -88,4 +89,5 @@ public class Pikachu {
         " and drinks " + drink +
         ". He knows " + listOfTricks.size() + " tricks.";
   }
+
 }
