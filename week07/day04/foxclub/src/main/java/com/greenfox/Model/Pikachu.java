@@ -57,6 +57,10 @@ public class Pikachu implements Serializable {
     this.drink = drink;
   }
 
+  public void setDob(LocalDate dob) {
+    this.dob = dob;
+  }
+
   public void addTrick(String trick) {
     if (listOfTricks.contains(trick)) {
 
