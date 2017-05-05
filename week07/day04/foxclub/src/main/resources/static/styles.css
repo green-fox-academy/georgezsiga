@@ -3,10 +3,6 @@ html {
   height: 100%;
 }
 
-body {
-  height: 100%;
-}
-
 body, table {
   position: relative;
   max-width: 900px;
@@ -40,7 +36,26 @@ h1 {
   background-repeat: no-repeat;
 }
 
+.school {
+  background-size: 100%;
+  background-image: url(school.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.history {
+  background-size: 100%;
+  background-image: url(history.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .picture {
   padding-top: 200px;
   width: 200px;
 }
+
+.actions {
+  height: 100%;
+}
+
