@@ -45,6 +45,7 @@ public class MainController {
       String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime
           .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
       pikachu.addAction(actionSleep);
+      pikachu.setWeight(pikachu.getWeight()-10);
     }
     action.addAttribute("actionHistory", pikachu.getActionHistory());
     Period ageOfPikachu = Period.between(pikachu.getDob(), LocalDate.now());
@@ -58,6 +59,7 @@ public class MainController {
     String wakeUp = "Woke up on "+ LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(wakeUp);
+    pikachu.setHappiness(pikachu.getHappiness()+10);
     writePikachuToFile();
     return "redirect:/";
   }
@@ -74,9 +76,13 @@ public class MainController {
     String action = "Food has been changed from " + pikachu.getFood() + " to " + food + " on " + LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
+    pikachu.setHappiness(pikachu.getHappiness()+2);
+    pikachu.setWeight(pikachu.getWeight()+5);
     action = "Drink has been changed from " + pikachu.getDrink() + " to " + drink + " on " + LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
+    pikachu.setHappiness(pikachu.getHappiness()+2);
+    pikachu.setWeight(pikachu.getWeight()+5);
     pikachu.setFood(food);
     pikachu.setDrink(drink);
     writePikachuToFile();
@@ -85,7 +91,7 @@ public class MainController {
 
   @RequestMapping("/trickCenter")
   public String trickCenter(Model list) {
-    list.addAttribute("tricks", pikachu.getTricks());
+      list.addAttribute("tricks", pikachu.getTricks());
     return "trickCenter";
   }
 
@@ -95,6 +101,18 @@ public class MainController {
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(action);
     pikachu.addTrick(trick);
+    pikachu.setHappiness(pikachu.getHappiness()+2);
+    writePikachuToFile();
+    return "redirect:/";
+  }
+
+  @RequestMapping("/newtrickform")
+  public String newTrickForm(String newTrick) {
+    pikachu.getTricks().add(newTrick);
+    String action = "Signed up for a course on " + newTrick + " at the Trick Center on " + LocalDate.now() + " at " + LocalTime
+        .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+    pikachu.addAction(action);
+    pikachu.setHappiness(pikachu.getHappiness()+2);
     writePikachuToFile();
     return "redirect:/";
   }
