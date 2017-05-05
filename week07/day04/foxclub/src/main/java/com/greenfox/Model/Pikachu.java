@@ -1,5 +1,6 @@
 package com.greenfox.Model;
 
+import com.greenfox.Controller.MainController;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -77,6 +78,14 @@ public class Pikachu implements Serializable {
     this.weight = weight;
     if (this.weight >= 100)
       this.weight = 100;
+  }
+
+  public boolean isDead() {
+    if (this.weight <= 0)
+      return true;
+    if (this.happiness <= 0)
+      return true;
+    return false;
   }
 
   public void addTrick(String trick) {
