@@ -31,11 +31,11 @@
   </tr>
   </tbody>
 </table>
-<h2>Last Action taken</h2>
+<h3>Last Action taken</h3>
 <th:block>
   <li th:text="${actionHistory.get(0)}"></li>
 </th:block>
-<h2>Known tricks</h2>
+<h3>Known tricks</h3>
 <th:block th:each="p : ${listOfTricks}">
   <li th:text="${p}"></li>
 </th:block>
