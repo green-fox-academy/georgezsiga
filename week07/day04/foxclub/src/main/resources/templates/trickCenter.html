@@ -5,7 +5,7 @@
   <title>Official Pikachu fan page!</title>
   <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
-<body>
+<body class="actions">
 <h1>Trick Center</h1>
 <table>
   <tr>
@@ -17,10 +17,10 @@
   </tr>
 </table>
 <br/>
-<br/>
-<img src="pikachu.png" width="300px"/>
-<br/><br/>
-
+<div class="school">
+  <img class="picture" src="pikachu.png"/>
+</div>
+<h3>What would you like to learn?</h3>
 <form action="/trickform">Learn new Tricks <select name="trick">
   <th:block th:each="t : ${tricks}">
     <option th:value="${t}" th:text="${t}"></option>
