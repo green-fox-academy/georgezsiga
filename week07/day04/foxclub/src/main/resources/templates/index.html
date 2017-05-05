@@ -5,7 +5,7 @@
   <title>Official Pikachu fan page!</title>
   <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
-<body class="actions">
+<body>
 <h1>Official Pikachu fan page!</h1>
 <table>
   <tr>
@@ -20,15 +20,18 @@
 <div class="daylight">
 <img class="picture" src="pikachu.png"/>
 </div>
-<p th:text="'I am ' + ${age} + ' days old!'"></p>
+<h3 th:text="'I am ' + ${age} + ' days old!'"></h3>
 <p th:text="${pikachu.toString()}"></p>
-<h2>Known tricks</h2>
-<th:block th:each="p : ${listOfTricks}">
-  <li th:text="${p}"></li>
-</th:block>
+<span th:text="'Happiness: ' + ${pikachu.happiness} + '%'"></span>
+<span th:text="'Weight: ' + ${pikachu.weight} + '%'"></span>
 <h2>Last Action taken</h2>
 <th:block>
   <li th:text="${actionHistory.get(0)}"></li>
 </th:block>
+<h2>Known tricks</h2>
+<th:block th:each="p : ${listOfTricks}">
+  <li th:text="${p}"></li>
+</th:block>
+<br/>
 </body>
 </html>
