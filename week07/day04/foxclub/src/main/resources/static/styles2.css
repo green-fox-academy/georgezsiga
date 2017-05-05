@@ -15,6 +15,13 @@ body, table {
   background-repeat: no-repeat;
 }
 
+.dead {
+  background-size: cover;
+  background-image: url(rip.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .picture {
   padding-top: 400px;
 }
