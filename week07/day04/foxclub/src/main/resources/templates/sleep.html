@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Official Pikachu fan page!</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css"/>
+</head>
+<body>
+<h1>Official Pikachu fan page!</h1>
+<p><a style="text-decoration: none" href="/wakeup.html"> - Wake me up - </a></p>
+<div class="sleep">
+<img class="picture" src="pikachuSleep.png" width="300px"/>
+</div>
+<p th:text="'I am ' + ${age} + ' days old!'"></p>
+<h2>I am sleeping now.. please do not disturb!</h2>
+<th:block>
+  <p th:text="${actionHistory.get(0)}"></p>
+</th:block>
+</body>
+</html>
