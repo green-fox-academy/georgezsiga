@@ -45,7 +45,6 @@ public class MainController {
       String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime
           .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
       pikachu.addAction(actionSleep);
-      pikachu.setWeight(pikachu.getWeight()-10);
     }
     action.addAttribute("actionHistory", pikachu.getActionHistory());
     Period ageOfPikachu = Period.between(pikachu.getDob(), LocalDate.now());
@@ -54,14 +53,35 @@ public class MainController {
     return "sleep";
   }
 
+  @RequestMapping("/dead")
+  public String dead() {
+    return "dead";
+  }
+
+  @RequestMapping("/new")
+  public String startAgain() {
+    readPikachuFromFile();
+    pikachu = new Pikachu("New Pikachu", "Banana", "Water");
+    writePikachuToFile();
+    return "redirect:/";
+  }
+
   @RequestMapping("/wakeup")
   public String wakeUp() {
     String wakeUp = "Woke up on "+ LocalDate.now() + " at " + LocalTime
         .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     pikachu.addAction(wakeUp);
     pikachu.setHappiness(pikachu.getHappiness()+10);
+    pikachu.setWeight(pikachu.getWeight()-10);
+    if (pikachu.isDead()) {
+      String dead = "Pikachu died on "+ LocalDate.now() + " at " + LocalTime
+          .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+      pikachu.addAction(dead);
+      return "redirect:/dead";
+    } else {
     writePikachuToFile();
     return "redirect:/";
+    }
   }
 
   @RequestMapping("/nutritionStore")
