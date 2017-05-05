@@ -32,6 +32,32 @@ public class MainController {
     return "index";
   }
 
+  @RequestMapping("/sleep")
+  public String sleep(Model action, Model age) {
+    readPikachuFromFile();
+    if (pikachu.getActionHistory().get(0).startsWith("Went to sleep")) {
+
+    } else {
+      String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime
+          .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+      pikachu.addAction(actionSleep);
+    }
+    action.addAttribute("actionHistory", pikachu.getActionHistory());
+    Period ageOfPikachu = Period.between(pikachu.getDob(), LocalDate.now());
+    age.addAttribute("age", ageOfPikachu.getDays());
+    writePikachuToFile();
+    return "sleep";
+  }
+
+  @RequestMapping("/wakeup")
+  public String wakeUp() {
+    String wakeUp = "Woke up on "+ LocalDate.now() + " at " + LocalTime
+        .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+    pikachu.addAction(wakeUp);
+    writePikachuToFile();
+    return "redirect:/";
+  }
+
   @RequestMapping("/nutritionStore")
   public String nutritionStore() {
     return "nutritionStore";
