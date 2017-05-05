@@ -31,6 +31,10 @@ public class Pikachu implements Serializable {
   LocalDate dob;
   @Getter
   LocalTime time;
+  @Getter
+  int happyness;
+  @Getter
+  int hunger;
 
 
   public Pikachu(String name, String food, String drink) {
@@ -47,6 +51,8 @@ public class Pikachu implements Serializable {
     this.dob = LocalDate.now();
     this.time = LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
     actionHistory.add(name + " was born on " + dob + " at " + time);
+    this.happyness = 0;
+    this.hunger = 0;
   }
 
   public void setFood(String food) {
@@ -59,6 +65,14 @@ public class Pikachu implements Serializable {
 
   public void setDob(LocalDate dob) {
     this.dob = dob;
+  }
+
+  public void setHappyness(int happyness) {
+    this.happyness = happyness;
+  }
+
+  public void setHunger(int hunger) {
+    this.hunger = hunger;
   }
 
   public void addTrick(String trick) {
