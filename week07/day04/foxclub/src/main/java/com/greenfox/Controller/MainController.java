@@ -25,11 +25,15 @@ public class MainController {
     readPikachuFromFile();
     model.addAttribute("pikachu", pikachu);
     list.addAttribute("listOfTricks", pikachu.getListOfTricks());
-    action.addAttribute("actionHistory", pikachu.getActionHistory());
-    Period ageOfPikachu = Period.between(pikachu.getDob(), LocalDate.now());
-    age.addAttribute("age", ageOfPikachu.getDays());
-    writePikachuToFile();
-    return "index";
+    if (pikachu.getActionHistory().get(0).startsWith("Went to sleep")) {
+      return "redirect:/sleep";
+    } else {
+      action.addAttribute("actionHistory", pikachu.getActionHistory());
+      Period ageOfPikachu = Period.between(pikachu.getDob(), LocalDate.now());
+      age.addAttribute("age", ageOfPikachu.getDays());
+      writePikachuToFile();
+      return "index";
+    }
   }
 
   @RequestMapping("/sleep")
