@@ -1,0 +1,25 @@
+body, table {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 100%;
+  background: #111111;
+  text-align: center;
+  color: gold;
+}
+
+.sleep {
+  height: 568px;
+  background-image: url(moon.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.picture {
+  padding-top: 400px;
+}
+
+a {
+  color: gold;
+  font-size: 20px;
+}
