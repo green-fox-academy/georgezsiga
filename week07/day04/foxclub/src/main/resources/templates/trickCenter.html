@@ -21,11 +21,13 @@
   <img class="picture" src="pikachu.png"/>
 </div>
 <h3>What would you like to learn?</h3>
-<form action="/trickform">Learn new Tricks <select name="trick">
+<form action="/trickform">Learn new Tricks <select title="trick" name="trick">
   <th:block th:each="t : ${tricks}">
-    <option th:value="${t}" th:text="${t}"></option>
+    <option  th:value="${t}" th:text="${t}"></option>
   </th:block>
 </select> <input type="submit" value="Teach it to me!"/></form>
 
+<h3>What courses should I sign up for?</h3>
+<form action="/newtrickform">Advise me what should I learn in the future <input title="newtrick" type="text" name="newTrick" autocomplete="off"/> <input type="submit" value="Sign up for it"/></form>
 </body>
 </html>
