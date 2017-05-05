@@ -22,8 +22,15 @@
 </div>
 <h3 th:text="'I am ' + ${age} + ' days old!'"></h3>
 <p th:text="${pikachu.toString()}"></p>
-<span th:text="'Happiness: ' + ${pikachu.happiness} + '%'"></span>
-<span th:text="'Weight: ' + ${pikachu.weight} + '%'"></span>
+<table>
+  <tbody>
+  <tr>
+    <td>Happiness: </td><td class="bar" th:width="${pikachu.happiness}"></td><td><span th:text="${pikachu.happiness} + '%'"></span></td>
+    <td> || </td>
+    <td>Weight: </td><td class="bar" th:width="${pikachu.weight}"></td><td><span th:text="${pikachu.weight} + '%'"></span></td>
+  </tr>
+  </tbody>
+</table>
 <h2>Last Action taken</h2>
 <th:block>
   <li th:text="${actionHistory.get(0)}"></li>
