@@ -17,14 +17,14 @@
   </tr>
 </table>
 <br/>
-<br/>
-<img src="pikachu.png" width="300px"/>
-<br/><br/>
-
+<div class="history">
+  <img class="picture" src="pikachu.png"/>
+</div>
 <h2>Action History</h2>
+
 <th:block th:each="a : ${actionHistory}">
   <li th:text="${a}"></li>
 </th:block>
-
+<br/>
 </body>
 </html>
