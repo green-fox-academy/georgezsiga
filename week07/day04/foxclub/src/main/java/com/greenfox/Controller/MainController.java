@@ -36,6 +36,26 @@ public class MainController {
     }
   }
 
+  @RequestMapping("/login")
+  public String login(Model pokemon, Model type) {
+    readPikachuFromFile();
+    pokemon.addAttribute("pokemon", pikachu.getTricks());
+    type.addAttribute("type", pikachu.getListOfTricks());
+  return "login";
+  }
+
+  @RequestMapping("/loginform")
+  public String loginform(Model pokemon, Model type) {
+
+    return "redirect:/";
+  }
+
+  @RequestMapping("/signupform")
+  public String signupform(Model pokemon, Model type) {
+
+    return "redirect:/";
+  }
+
   @RequestMapping("/sleep")
   public String sleep(Model action, Model age) {
     readPikachuFromFile();
