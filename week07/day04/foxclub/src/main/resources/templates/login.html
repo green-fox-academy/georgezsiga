@@ -16,7 +16,7 @@
   <th:block th:each="p : ${pokemon}">
     <option  th:value="${p}" th:text="${p}"></option>
   </th:block>
-</select> Shout his calling word: <input title="callerid" type="text" name="callerid" autocomplete="off"/> <input type="submit" value="Come to me!"/></form>
+</select> Shout his calling word: <input title="callerid" type="text" name="callerid" placeholder="Call your Pokemon" autocomplete="off" required="required"/> <input type="submit" value="Come to me!"/></form>
 
 <h3>Don`t have a Pokemon yet? Get one!</h3>
 <form action="/signupform">What type of pokemon do you want? <select title="type" name="type">
@@ -24,8 +24,8 @@
     <option  th:value="${t}" th:text="${t}"></option>
   </th:block>
 </select><br/>
-  What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" placeholder="Give a name" autocomplete="off"/><br/>
-  Choose a calling word: <input title="newcallerid" type="password" name="newcallerid" placeholder="you need to remember this" autocomplete="off"/><br/>
+  What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" placeholder="Give a name" autocomplete="off" required="required"/><br/>
+  Choose a calling word: <input title="newcallerid" type="password" name="newcallerid" placeholder="you need to remember this" autocomplete="off" required="required"/><br/>
 <input type="submit" value="Get my new Pokemon!"/></form>
 <br/>
 </body>
