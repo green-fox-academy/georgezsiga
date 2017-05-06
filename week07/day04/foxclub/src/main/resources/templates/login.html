@@ -6,16 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
-<h1>Login page</h1>
-<table>
-  <tr>
-    <td><a style="text-decoration: none" href="/"> - Information - </a></td>
-    <td><a style="text-decoration: none" href="/nutritionStore.html"> - Nutrition Store - </a></td>
-    <td><a style="text-decoration: none" href="/trickCenter.html"> - Trick Center - </a></td>
-    <td><a style="text-decoration: none" href="/actionHistory.html"> - Action History - </a></td>
-    <td><a style="text-decoration: none" href="/sleep.html"> - Go To Sleep - </a></td>
-  </tr>
-</table>
+<h1>Call your Pokemon, or create a new one!</h1>
 <br/>
 <div class="daylight">
   <img class="picture" src="pikachu.png"/>
@@ -32,7 +23,10 @@
   <th:block th:each="t : ${type}">
     <option  th:value="${t}" th:text="${t}"></option>
   </th:block>
-</select> What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" autocomplete="off"/> Choose a calling word: <input title="newcallerid" type="text" name="newcallerid" autocomplete="off"/> <input title="newtrick" type="text" name="newTrick" autocomplete="off"/> <input type="submit" value="Get my new Pokemon!"/></form>
-
+</select><br/>
+  What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" placeholder="Give a name" autocomplete="off"/><br/>
+  Choose a calling word: <input title="newcallerid" type="password" name="newcallerid" placeholder="you need to remember this" autocomplete="off"/><br/>
+<input type="submit" value="Get my new Pokemon!"/></form>
+<br/>
 </body>
 </html>
