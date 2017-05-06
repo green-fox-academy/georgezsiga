@@ -66,3 +66,7 @@ h2, h3 {
 .bar {
   background: #456543;
 }
+
+input:required {
+  border: 2px dotted red;
+}
