@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Official Pikachu fan page!</title>
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
+</head>
+<body>
+<h1>Login page</h1>
+<table>
+  <tr>
+    <td><a style="text-decoration: none" href="/"> - Information - </a></td>
+    <td><a style="text-decoration: none" href="/nutritionStore.html"> - Nutrition Store - </a></td>
+    <td><a style="text-decoration: none" href="/trickCenter.html"> - Trick Center - </a></td>
+    <td><a style="text-decoration: none" href="/actionHistory.html"> - Action History - </a></td>
+    <td><a style="text-decoration: none" href="/sleep.html"> - Go To Sleep - </a></td>
+  </tr>
+</table>
+<br/>
+<div class="daylight">
+  <img class="picture" src="pikachu.png"/>
+</div>
+<h3>Login to your Pokemon</h3>
+<form action="/loginform">Choose your pokemon: <select title="pokemon" name="pokemon">
+  <th:block th:each="p : ${pokemon}">
+    <option  th:value="${p}" th:text="${p}"></option>
+  </th:block>
+</select> Shout his calling word: <input title="callerid" type="text" name="callerid" autocomplete="off"/> <input type="submit" value="Come to me!"/></form>
+
+<h3>Don`t have a Pokemon yet? Get one!</h3>
+<form action="/signupform">What type of pokemon do you want? <select title="type" name="type">
+  <th:block th:each="t : ${type}">
+    <option  th:value="${t}" th:text="${t}"></option>
+  </th:block>
+</select> What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" autocomplete="off"/> Choose a calling word: <input title="newcallerid" type="text" name="newcallerid" autocomplete="off"/> <input title="newtrick" type="text" name="newTrick" autocomplete="off"/> <input type="submit" value="Get my new Pokemon!"/></form>
+
+</body>
+</html>
