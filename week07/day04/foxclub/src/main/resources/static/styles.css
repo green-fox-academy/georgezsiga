@@ -93,3 +93,7 @@ h2, h3 {
 input:required {
   border: 2px dotted red;
 }
+
+.error {
+  color: gold;
+}
