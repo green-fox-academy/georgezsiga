@@ -9,7 +9,7 @@
 <h1>Call your Pokemon, or create a new one!</h1>
 <br/>
 <div class="daylight">
-  <img class="picture" src="pikachu.png"/>
+  <img class="picture" src="pikachu.png"/>("pikachu")
 </div>
 <h3>Login to your Pokemon</h3>
 <form action="/loginform">Choose your pokemon: <select title="pokemon" name="pokemon">
@@ -21,7 +21,7 @@
 <h3>Don`t have a Pokemon yet? Get one!</h3>
 <form action="/signupform">What type of pokemon do you want? <select title="type" name="type">
   <th:block th:each="t : ${type}">
-    <option  th:value="${t.Name()}" th:text="${t.Name()}"></option>
+    <option  th:value="${t.getName()}" th:text="${t.getName()}"></option>
   </th:block>
 </select><br/>
   What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" placeholder="Give a name" autocomplete="off" required="required"/><br/>
