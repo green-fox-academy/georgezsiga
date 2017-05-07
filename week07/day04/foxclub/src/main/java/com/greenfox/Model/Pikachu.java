@@ -19,6 +19,10 @@ public class Pikachu implements Serializable {
   @Getter
   String name;
   @Getter
+  String callerId;
+  @Getter
+  String type;
+  @Getter
   String food;
   @Getter
   String drink;
@@ -38,10 +42,12 @@ public class Pikachu implements Serializable {
   int weight;
 
 
-  public Pikachu(String name, String food, String drink) {
+  public Pikachu(String name, String type, String callerId) {
     this.name = name;
-    this.food = food;
-    this.drink = drink;
+    this.callerId = callerId;
+    this.type = type;
+    this.food = "nothing";
+    this.drink = "nothing";
     this.listOfTricks = new ArrayList<>();
     listOfTricks.add("You doesn`t know any tricks yet. Go and learn some!");
     this.tricks = new ArrayList<>();
