@@ -12,6 +12,16 @@ body, table {
   font-size: 18px;
 }
 
+.dark {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 100%;
+  background: #111111;
+  text-align: center;
+  color: gold;
+}
+
 a {
   color: black;
   font-size: 20px;
@@ -26,37 +36,50 @@ h2, h3 {
   margin: 10px;
 }
 
-.daylight {
+.darka {
+  color: gold;
+  font-size: 20px;
+}
+
+.daylight, .store, .school, .history, .sleep, .dead {
   background-size: 100%;
-  background-image: url(daylight.jpg);
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.daylight {
+  background-image: url(daylight.jpg);
 }
 
 .store {
-  background-size: 100%;
   background-image: url(food2.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .school {
-  background-size: 100%;
   background-image: url(school.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .history {
-  background-size: 100%;
   background-image: url(history.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.sleep {
+  height: 568px;
+  background-image: url(moon.jpg);
+}
+
+.dead {
+  background-size: cover;
+  background-image: url(rip.jpg);
 }
 
 .picture {
   padding-top: 200px;
   width: 200px;
+}
+
+.picture2 {
+  padding-top: 400px;
 }
 
 .actions {
