@@ -14,7 +14,12 @@ public enum TypeOfPokemons {
   TEDDIURSA("teddiursa");
 
   private final String name;
+
   TypeOfPokemons(String name) {
     this.name = name;
+  }
+
+  public String Name() {
+    return name;
   }
 }
