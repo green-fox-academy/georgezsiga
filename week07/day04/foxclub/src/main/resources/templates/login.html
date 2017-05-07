@@ -21,7 +21,7 @@
 <h3>Don`t have a Pokemon yet? Get one!</h3>
 <form action="/signupform">What type of pokemon do you want? <select title="type" name="type">
   <th:block th:each="t : ${type}">
-    <option  th:value="${t}" th:text="${t}"></option>
+    <option  th:value="${t.Name()}" th:text="${t.Name()}"></option>
   </th:block>
 </select><br/>
   What should be the name of your pokemon? <input title="nameofpokemon" type="text" name="nameofpokemon" placeholder="Give a name" autocomplete="off" required="required"/><br/>
