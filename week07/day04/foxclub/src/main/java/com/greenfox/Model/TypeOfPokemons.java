@@ -19,7 +19,7 @@ public enum TypeOfPokemons {
     this.name = name;
   }
 
-  public String Name() {
+  public String getName() {
     return name;
   }
 }
