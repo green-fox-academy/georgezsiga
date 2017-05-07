@@ -27,12 +27,6 @@ public class Pikachu implements Serializable {
   @Getter
   String drink;
   @Getter
-  ArrayList<String> listOfTricks;
-  @Getter
-  ArrayList<String> tricks;
-  @Getter
-  ArrayList<String> actionHistory;
-  @Getter
   LocalDate dob;
   @Getter
   LocalTime time;
@@ -40,6 +34,15 @@ public class Pikachu implements Serializable {
   int happiness;
   @Getter
   int weight;
+  @Getter
+  ArrayList<String> listOfTricks;
+  @Getter
+  ArrayList<String> tricks;
+  @Getter
+  ArrayList<String> actionHistory;
+  @Getter
+  ArrayList<String> types;
+
 
 
   public Pikachu(String name, String type, String callerId) {
