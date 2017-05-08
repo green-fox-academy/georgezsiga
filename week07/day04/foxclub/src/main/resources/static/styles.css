@@ -12,6 +12,10 @@ body, table {
   font-size: 18px;
 }
 
+body {
+  height: inherit;
+}
+
 .dark {
   position: relative;
   max-width: 900px;
@@ -20,6 +24,10 @@ body, table {
   background: #111111;
   text-align: center;
   color: gold;
+}
+
+.th {
+  background: #91553D;
 }
 
 a {
