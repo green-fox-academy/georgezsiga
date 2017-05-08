@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8"/>
   <title>Official Pikachu fan page!</title>
@@ -7,7 +7,7 @@
 </head>
 <body class="dark">
 <h1>Game Over! Your Pikachu Died!</h1>
-<p><a style="text-decoration: none" href="/new.html" class="darka"> - Start a new game - </a></p>
+<p><a style="text-decoration: none" th:href="'/new.html?name=' + ${pikachu.name}" class="darka"> - Start a new game - </a></p>
 <div class="dead">
   <img class="picture2" src="d.png" width="300px"/>
 </div>
