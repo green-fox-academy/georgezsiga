@@ -43,8 +43,6 @@ public class Pikachu implements Serializable {
   @Getter
   ArrayList<String> types;
 
-
-
   public Pikachu(String name, String type, String callerId) {
     this.name = name;
     this.callerId = callerId;
