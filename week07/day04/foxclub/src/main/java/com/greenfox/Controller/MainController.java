@@ -116,6 +116,7 @@ public class MainController {
       if (p.getName().equals(name)) {
         poke.remove(p);
         writePokemonsToFile();
+        return "redirect:/login";
       }
     }
     return "redirect:/login";
