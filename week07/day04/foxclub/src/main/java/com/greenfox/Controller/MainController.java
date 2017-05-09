@@ -58,11 +58,11 @@ public class MainController {
     return "login";
   }
 
-  @RequestMapping(value = "/loginform", method = RequestMethod.POST)
-  public String loginform(@RequestParam(value="name", required = false) String name, @RequestParam(value = "callerid", required = false) String callerid) {
+  @RequestMapping("/loginform")
+  public String loginform(@RequestParam(value="name") String name, String callerid) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
-        if (p.getName().equals(name)) {
+        if (p.getName().equals(name) && p.getCallerId().equals(callerid)) {
           return "redirect:/?name=" + name;
         }
     }
@@ -71,10 +71,18 @@ public class MainController {
 
   @RequestMapping("/signupform")
   public String signupform(String type, String nameofpokemon, String newcallerid) {
-    pikachu = new Pikachu(nameofpokemon, type, newcallerid);
-    poke.add(pikachu);
-    writePokemonsToFile();
-    return "redirect:/?name=" + nameofpokemon;
+    readPokemonsFromFile();
+    for (Pikachu p : poke) {
+      if (p.getName().equals(nameofpokemon)) {
+        return "redirect:/login?error=nameistaken";
+    } else {
+      pikachu = new Pikachu(nameofpokemon, type, newcallerid);
+      poke.add(pikachu);
+      writePokemonsToFile();
+      return "redirect:/?name=" + nameofpokemon;
+    }
+  }
+  return "redirect:/login?error=oops";
   }
 
   @RequestMapping("/sleep")
@@ -107,6 +115,11 @@ public class MainController {
       }
     }
     return "dead";
+  }
+
+  @RequestMapping("/about")
+  public String about() {
+    return "about";
   }
 
   @RequestMapping("/new")
