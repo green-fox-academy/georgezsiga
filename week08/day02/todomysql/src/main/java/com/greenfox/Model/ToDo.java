@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
@@ -16,25 +17,32 @@ public class ToDo {
 
   @Column
   @Id
+  @Getter
   @GeneratedValue(strategy = GenerationType.AUTO)
   int id;
 
   @Column
+  @Getter
   String title;
 
   @Column
+
   boolean isUrgent = false;
 
   @Column
+
   boolean isDone = false;
 
-
-  public ToDo(String title) {
-    this.title = title;
+  public boolean getIsUrgent() {
+    return isUrgent;
   }
 
-  @Override
-  public String toString() {
-    return title;
+  public boolean getIsDone() {
+    return isDone;
   }
+
+  public ToDo(String title) { this.title = title;
+  }
+
+
 }
