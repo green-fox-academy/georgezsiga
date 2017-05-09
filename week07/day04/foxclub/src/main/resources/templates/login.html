@@ -7,12 +7,12 @@
 </head>
 <body>
 <h1>Call your Pokemon, or create a new one!</h1>
-<br/>
+<p><a style="text-decoration: none" href="/about.html"> - About - </a></p>
 <div class="daylight">
   <img class="picture" src="pikachu.png"/>
 </div>
 <h3>Login to your Pokemon</h3>
-<form action="/loginform" method="post">Choose your pokemon: <select title="name" name="name">
+<form action="/loginform">Choose your pokemon: <select title="name" name="name">
   <th:block th:each="p : ${pokemon}">
     <option  th:value="${p.name}" th:text="${p.name}"></option>
   </th:block>
@@ -31,7 +31,10 @@
 <br/>
 <th:block th:switch="${message}">
 <h2 class="error" th:case="wrongcallerid" th:text="'Opps ... Wrong caller Id! Try again!'"></h2>
+<h2 class="error" th:case="nameistaken" th:text="'Opps ... This name is already taken! Please try an other name!'"></h2>
+<h2 class="error" th:case="oops" th:text="'Opps ... Something unexpected happened! Please try again!'"></h2>
 </th:block>
+
 <br/>
 </body>
 </html>
