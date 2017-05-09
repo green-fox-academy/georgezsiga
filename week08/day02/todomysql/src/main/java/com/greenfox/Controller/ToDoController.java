@@ -1,5 +1,6 @@
 package com.greenfox.Controller;
 
+import com.greenfox.Model.ToDo;
 import com.greenfox.Repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,13 +34,24 @@ public class ToDoController {
   }
 
   @RequestMapping("/add")
-  public String add(Model model) {
+  public String add() {
     return "add";
   }
 
   @RequestMapping("/addform")
-  public String addform(Model model) {
+  public String addform(String title, Model model) {
+    toDoRepository.save(new ToDo(title));
     return "redirect:/";
   }
 
+  @RequestMapping("/delete")
+  public String delete() {
+    return "delete";
+  }
+
+  @RequestMapping("/deleteform")
+  public String deleteform(String title, Model model) {
+
+    return "redirect:/";
+  }
 }
