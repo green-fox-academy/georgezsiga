@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by georgezsiga on 5/9/17.
  */
-public interface Repository extends CrudRepository<ToDo, Long> {
+public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
 }
