@@ -75,23 +75,22 @@ public class MainController {
     Pattern spec = Pattern.compile("[^a-zA-Z0-9]");
     if (spec.matcher(nameofpokemon).find()) {
       return "redirect:/login?error=specialcharacter";
-    } else if (spec.matcher(newcallerid).find()) {
-      return "redirect:/login?error=specialcharacter";
     } else {
-      readPokemonsFromFile();
-      for (Pikachu p : poke) {
-        String testname = p.getName();
-        if (testname.equals(nameofpokemon)) {
-          return "redirect:/login?error=nameistaken";
-        }
-            pikachu = new Pikachu(nameofpokemon, type, newcallerid);
-            poke.add(pikachu);
-            writePokemonsToFile();
-            return "redirect:/?name=" + nameofpokemon;
+      if (spec.matcher(newcallerid).find())
+        return "redirect:/login?error=specialcharacter";
+    }
+    readPokemonsFromFile();
+    for (Pikachu p : poke) {
+      if (p.getName().equals(nameofpokemon)) {
+        return "redirect:/login?error=nameistaken";
+      } else {
 
-        }
       }
-  return "redirect:/login?error=oops";
+    }
+    pikachu = new Pikachu(nameofpokemon, type, newcallerid);
+    poke.add(pikachu);
+    writePokemonsToFile();
+    return "redirect:/?name=" + nameofpokemon;
   }
 
   @RequestMapping("/sleep")
