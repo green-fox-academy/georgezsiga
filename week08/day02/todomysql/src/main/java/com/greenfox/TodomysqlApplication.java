@@ -19,9 +19,6 @@ public class TodomysqlApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		toDoRepository.save(new ToDo("I want to run"));
-		toDoRepository.save(new ToDo("I want to run more"));
-		toDoRepository.save(new ToDo("I want to run and more"));
-		toDoRepository.save(new ToDo("I want to run and even more"));
+
 	}
 }
