@@ -8,6 +8,7 @@
 <body>
 <h1>Todos for today:</h1>
 <a href="add.html">Add new ToDo</a>
+<div><br/></div>
 <table>
   <thead>
   <td>ID</td>
@@ -21,6 +22,8 @@
     <td th:text="${t.title}"></td>
     <td th:text="${t.getIsDone()}"></td>
     <td th:text="${t.getIsUrgent()}"></td>
+    <td><a th:href="'/'+ ${t.id} + '/delete'">delete</a></td>
+    <td><a th:href="'/'+ ${t.id} + '/edit'">edit</a></td>
   </tr>
   </tbody>
 </table>
