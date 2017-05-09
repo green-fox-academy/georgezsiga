@@ -1,4 +1,4 @@
-package com.greenfox;
+package com.greenfox.Model;
 
 /**
  * Created by georgezsiga on 5/9/17.
