@@ -1,8 +1,7 @@
 package com.greenfox.Controller;
 
-import com.greenfox.Repository.Repository;
+import com.greenfox.Repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ToDoController {
 
   @Autowired
-  private Repository repository;
+  private ToDoRepository toDoRepository;
 
   @RequestMapping("/")
   public String home(Model model) {
@@ -24,7 +23,7 @@ public class ToDoController {
 
   @RequestMapping("/list")
   public String list(Model model) {
-
+  model.addAttribute("todo", toDoRepository.findAll());
     return "todolist";
   }
 
