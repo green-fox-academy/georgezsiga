@@ -37,12 +37,9 @@
   <li th:text="${actionHistory.get(0)}"></li>
 </th:block>
 <h3>Known tricks</h3>
-<th:block th:each="p : ${listOfTricks}">
+<div class="th"><th:block th:each="p : ${listOfTricks}">
   <li th:text="${p}"></li>
 </th:block>
-<br/>
-<br/>
-<br/>
-<br/>
+  <br/></div>
 </body>
 </html>
