@@ -51,4 +51,20 @@ public class ToDoController {
     return "redirect:/";
   }
 
+  @RequestMapping("/{id}/edit")
+  public String edit(@PathVariable long id, Model model) {
+    model.addAttribute("t", toDoRepository.findOne(id));
+    return "edit";
+  }
+
+  @RequestMapping("/{id}/editform")
+  public String edit(@PathVariable long id, String title, Boolean isDone, Boolean isUrgent) {
+    ToDo todo = toDoRepository.findOne(id);
+    todo.setTitle(title);
+    todo.setDone(isDone);
+    todo.setUrgent(isUrgent);
+    toDoRepository.save(todo);
+    return "redirect:/";
+  }
+
 }
