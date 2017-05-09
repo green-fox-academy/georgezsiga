@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>My ToDo list</title>
+</head>
+<body>
+<h2>Edit existing ToDo</h2>
+<th:block th:each="t : ${todo}">
+<form th:action="'/' + ${t.id} + '/editform'">
+  <input title="title" type="text" name="title" th:value="${t.title}" autocomplete="off" required="required"/><br/>
+  Is it Done? <input title="isDone" type="checkbox" th:value="${t.getIsDone}"/><br/>
+  Is it Urgent? <input title="isUrgent" type="checkbox" th:value="${t.getIsUrgent}"/><br/>
+
+  <input type="submit" value="Edit ToDo"/> <a href="/">cancel</a>
+</form>
+</th:block>
+<br/>
+<a href="/">Go back</a>
+
+</body>
+</html>
