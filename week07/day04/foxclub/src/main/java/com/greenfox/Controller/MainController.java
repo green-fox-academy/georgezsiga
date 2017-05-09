@@ -61,7 +61,7 @@ public class MainController {
     return "login";
   }
 
-  @RequestMapping("/loginform")
+  @RequestMapping(value = "/loginform", method = RequestMethod.POST)
   public String loginform(@RequestParam("name") String name, @RequestParam("callerid") String callerid) {
     Pattern spec = Pattern.compile("[^a-zA-Z0-9]");
     if (spec.matcher(name).find()) {
@@ -80,7 +80,7 @@ public class MainController {
     return "redirect:/login?error=wrongcallerid";
   }
 
-  @RequestMapping("/signupform")
+  @RequestMapping(value = "/signupform", method = RequestMethod.POST)
   public String signupform(@RequestParam("type") String type,
       @RequestParam("nameofpokemon") String nameofpokemon,
       @RequestParam("newcallerid") String newcallerid) {
