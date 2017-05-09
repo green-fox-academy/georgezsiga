@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -70,18 +71,26 @@ public class MainController {
   }
 
   @RequestMapping("/signupform")
-  public String signupform(String type, String nameofpokemon, String newcallerid) {
-    readPokemonsFromFile();
-    for (Pikachu p : poke) {
-      if (p.getName().equals(nameofpokemon)) {
-        return "redirect:/login?error=nameistaken";
+  public String signupform(@RequestParam("type") String type, @RequestParam("nameofpokemon") String nameofpokemon, @RequestParam("newcallerid") String newcallerid) {
+    Pattern spec = Pattern.compile("[^a-zA-Z0-9]");
+    if (spec.matcher(nameofpokemon).find()) {
+      return "redirect:/login?error=specialcharacter";
+    } else if (spec.matcher(newcallerid).find()) {
+      return "redirect:/login?error=specialcharacter";
     } else {
-      pikachu = new Pikachu(nameofpokemon, type, newcallerid);
-      poke.add(pikachu);
-      writePokemonsToFile();
-      return "redirect:/?name=" + nameofpokemon;
-    }
-  }
+      readPokemonsFromFile();
+      for (Pikachu p : poke) {
+        String testname = p.getName();
+        if (testname.equals(nameofpokemon)) {
+          return "redirect:/login?error=nameistaken";
+        }
+            pikachu = new Pikachu(nameofpokemon, type, newcallerid);
+            poke.add(pikachu);
+            writePokemonsToFile();
+            return "redirect:/?name=" + nameofpokemon;
+
+        }
+      }
   return "redirect:/login?error=oops";
   }
 
