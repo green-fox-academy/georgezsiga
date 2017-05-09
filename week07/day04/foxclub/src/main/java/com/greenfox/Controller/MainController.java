@@ -29,7 +29,8 @@ public class MainController {
   ArrayList<Pikachu> poke = new ArrayList<>();
 
   @RequestMapping("/")
-  public String homepage(@RequestParam(value = "name", required = false) String name, Model model, Model list, Model action,
+  public String homepage(@RequestParam(value = "name", required = false) String name, Model model,
+      Model list, Model action,
       Model age) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
@@ -51,33 +52,45 @@ public class MainController {
   }
 
   @RequestMapping("/login")
-  public String login(@RequestParam(value = "error", required = false) String errormessage, Model pokemon, Model type, Model message) {
+  public String login(@RequestParam(value = "error", required = false) String errormessage,
+      Model pokemon, Model type, Model message) {
     readPokemonsFromFile();
     pokemon.addAttribute("pokemon", poke);
     type.addAttribute("type", TypeOfPokemons.values());
-      message.addAttribute("message", errormessage);
+    message.addAttribute("message", errormessage);
     return "login";
   }
 
   @RequestMapping("/loginform")
-  public String loginform(@RequestParam(value="name") String name, String callerid) {
+  public String loginform(@RequestParam("name") String name, @RequestParam("callerid") String callerid) {
+    Pattern spec = Pattern.compile("[^a-zA-Z0-9]");
+    if (spec.matcher(name).find()) {
+      return "redirect:/login?error=specialcharacter";
+    } else {
+      if (spec.matcher(callerid).find()) {
+        return "redirect:/login?error=specialcharacter";
+      }
+    }
     readPokemonsFromFile();
     for (Pikachu p : poke) {
-        if (p.getName().equals(name) && p.getCallerId().equals(callerid)) {
-          return "redirect:/?name=" + name;
-        }
+      if (p.getName().equals(name) && p.getCallerId().equals(callerid)) {
+        return "redirect:/?name=" + name;
+      }
     }
     return "redirect:/login?error=wrongcallerid";
   }
 
   @RequestMapping("/signupform")
-  public String signupform(@RequestParam("type") String type, @RequestParam("nameofpokemon") String nameofpokemon, @RequestParam("newcallerid") String newcallerid) {
+  public String signupform(@RequestParam("type") String type,
+      @RequestParam("nameofpokemon") String nameofpokemon,
+      @RequestParam("newcallerid") String newcallerid) {
     Pattern spec = Pattern.compile("[^a-zA-Z0-9]");
     if (spec.matcher(nameofpokemon).find()) {
       return "redirect:/login?error=specialcharacter";
     } else {
-      if (spec.matcher(newcallerid).find())
+      if (spec.matcher(newcallerid).find()) {
         return "redirect:/login?error=specialcharacter";
+      }
     }
     readPokemonsFromFile();
     for (Pikachu p : poke) {
@@ -94,14 +107,16 @@ public class MainController {
   }
 
   @RequestMapping("/sleep")
-  public String sleep(@RequestParam(value = "name", required = false) String name, Model model, Model action, Model age) {
+  public String sleep(@RequestParam(value = "name", required = false) String name, Model model,
+      Model action, Model age) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
         if (p.getActionHistory().get(0).startsWith("Went to sleep")) {
 
         } else {
-          String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+          String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime
+              .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
           p.addAction(actionSleep);
         }
         model.addAttribute("pikachu", p);
@@ -168,18 +183,20 @@ public class MainController {
   }
 
   @RequestMapping("/nutritionStore")
-  public String nutritionStore(@RequestParam(value = "name", required = false) String name, Model model) {
+  public String nutritionStore(@RequestParam(value = "name", required = false) String name,
+      Model model) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
         model.addAttribute("pikachu", p);
       }
-      }
+    }
     return "nutritionStore";
   }
 
   @RequestMapping("/nutritionform")
-  public String nutritionForm(@RequestParam(value = "name", required = false) String name, Model model, String food, String drink) {
+  public String nutritionForm(@RequestParam(value = "name", required = false) String name,
+      Model model, String food, String drink) {
     if (food.equals("")) {
       food = "nothing";
     }
@@ -215,19 +232,21 @@ public class MainController {
   }
 
   @RequestMapping("/trickCenter")
-    public String trickCenter(@RequestParam(value = "name", required = false) String name, Model model, Model list) {
-      readPokemonsFromFile();
-      for (Pikachu p : poke) {
-        if (p.getName().equals(name)) {
-          model.addAttribute("pikachu", p);
-          list.addAttribute("tricks", p.getTricks());
-        }
+  public String trickCenter(@RequestParam(value = "name", required = false) String name,
+      Model model, Model list) {
+    readPokemonsFromFile();
+    for (Pikachu p : poke) {
+      if (p.getName().equals(name)) {
+        model.addAttribute("pikachu", p);
+        list.addAttribute("tricks", p.getTricks());
       }
+    }
     return "trickCenter";
   }
 
   @RequestMapping("/trickform")
-  public String trickForm(@RequestParam(value = "name", required = false) String name, String trick) {
+  public String trickForm(@RequestParam(value = "name", required = false) String name,
+      String trick) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
@@ -245,7 +264,8 @@ public class MainController {
   }
 
   @RequestMapping("/newtrickform")
-  public String newTrickForm(@RequestParam(value = "name", required = false) String name, String newTrick) {
+  public String newTrickForm(@RequestParam(value = "name", required = false) String name,
+      String newTrick) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
@@ -263,7 +283,8 @@ public class MainController {
   }
 
   @RequestMapping("/actionHistory")
-  public String actionHistory(@RequestParam(value = "name", required = false) String name, Model model, Model action) {
+  public String actionHistory(@RequestParam(value = "name", required = false) String name,
+      Model model, Model action) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
