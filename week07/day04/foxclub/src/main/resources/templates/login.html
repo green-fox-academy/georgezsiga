@@ -19,13 +19,13 @@
   <img class="picture3" src="furret.png"/>
 </div>
 <h3>Login to your Pokemon</h3>
-<form action="/loginform">Name of your pokemon:
+<form action="/loginform" method="post" enctype="application/x-www-form-urlencoded">Name of your pokemon:
   <input title="name" type="text" name="name" placeholder="Name of Pokemon" autocomplete="off" required="required"/> Shout his calling word:
   <input title="callerid" type="password" name="callerid" placeholder="Call your Pokemon" autocomplete="off" required="required"/>
   <input type="submit" value="Come to me!"/>
 </form>
 <h3>Don`t have a Pokemon yet? Get one!</h3>
-<form action="/signupform">What type of pokemon do you want? <select title="type" name="type">
+<form action="/signupform" method="post" enctype="application/x-www-form-urlencoded">What type of pokemon do you want? <select title="type" name="type">
   <th:block th:each="t : ${type}">
     <option  th:value="${t.getName()}" th:text="${t.getName()}"></option>
   </th:block>
@@ -35,9 +35,10 @@
 <input type="submit" value="Get my new Pokemon!"/></form>
 <br/>
 <th:block th:switch="${message}">
-<h2 class="error" th:case="wrongcallerid" th:text="'Opps ... Wrong caller Id! Try again!'"></h2>
+<h2 class="error" th:case="wrongcallerid" th:text="'Opps ... Wrong name or calling name! Try again!'"></h2>
 <h2 class="error" th:case="nameistaken" th:text="'Opps ... This name is already taken! Please try an other name!'"></h2>
 <h2 class="error" th:case="oops" th:text="'Opps ... Something unexpected happened! Please try again!'"></h2>
+<h2 class="error" th:case="specialcharacter" th:text="'Opps ... It can only contain numbers and letters! No special characters, no space! Please try again!'"></h2>
 </th:block>
 
 <br/>
