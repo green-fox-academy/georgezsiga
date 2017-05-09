@@ -19,13 +19,11 @@
   <img class="picture3" src="furret.png"/>
 </div>
 <h3>Login to your Pokemon</h3>
-<form action="/loginform">Choose your pokemon: <select title="name" name="name">
-  <th:block th:each="p : ${pokemon}">
-    <option  th:value="${p.name}" th:text="${p.name}"></option>
-  </th:block>
-</select> Shout his calling word: <input title="callerid" type="password" name="callerid" placeholder="Call your Pokemon" autocomplete="off" required="required"/> <input type="submit" value="Come to me!"/>
+<form action="/loginform">Name of your pokemon:
+  <input title="name" type="text" name="name" placeholder="Name of Pokemon" autocomplete="off" required="required"/> Shout his calling word:
+  <input title="callerid" type="password" name="callerid" placeholder="Call your Pokemon" autocomplete="off" required="required"/>
+  <input type="submit" value="Come to me!"/>
 </form>
-
 <h3>Don`t have a Pokemon yet? Get one!</h3>
 <form action="/signupform">What type of pokemon do you want? <select title="type" name="type">
   <th:block th:each="t : ${type}">
