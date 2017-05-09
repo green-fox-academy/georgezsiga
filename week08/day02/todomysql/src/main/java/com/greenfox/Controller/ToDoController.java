@@ -32,4 +32,14 @@ public class ToDoController {
     return "todolist";
   }
 
+  @RequestMapping("/add")
+  public String add(Model model) {
+    return "add";
+  }
+
+  @RequestMapping("/addform")
+  public String addform(Model model) {
+    return "redirect:/";
+  }
+
 }
