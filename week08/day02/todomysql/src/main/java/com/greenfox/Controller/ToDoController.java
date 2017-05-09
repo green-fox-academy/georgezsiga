@@ -17,7 +17,7 @@ public class ToDoController {
 
   @RequestMapping("/")
   public String home(Model model) {
-
+    model.addAttribute("todo", toDoRepository.findAll());
     return "todolist";
   }
 
