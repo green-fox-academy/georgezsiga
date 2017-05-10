@@ -14,7 +14,8 @@ public class AppendA {
 
   String appended;
 
-  public AppendA(String appended) {
-    this.appended = appended + "a";
+  public AppendA(String append) {
+    String app = append + "a";
+    this.appended = app;
   }
 }
