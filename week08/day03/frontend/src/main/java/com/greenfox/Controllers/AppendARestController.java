@@ -30,7 +30,7 @@ public class AppendARestController {
   }
 
   @GetMapping("/appenda/{appendable}")
-  public Greeter greeter(@PathVariable String appendable) {
+  public AppendA appendA(@PathVariable String appendable) {
     AppendA a = new AppendA(appendable);
     return a;
   }
