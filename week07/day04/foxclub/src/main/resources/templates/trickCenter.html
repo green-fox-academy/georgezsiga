@@ -9,11 +9,11 @@
 <h1>Trick Center</h1>
 <table >
   <tr>
-    <td><a style="text-decoration: none" th:href="'/?name=' + ${pikachu.name}"> - Information - </a></td>
-    <td><a style="text-decoration: none" th:href="'/nutritionStore.html?name=' + ${pikachu.name}"> - Nutrition Store - </a></td>
-    <td><a style="text-decoration: none" th:href="'/trickCenter.html?name=' + ${pikachu.name}"> - Trick Center - </a></td>
-    <td><a style="text-decoration: none" th:href="'/actionHistory.html?name=' + ${pikachu.name}"> - Action History - </a></td>
-    <td><a style="text-decoration: none" th:href="'/sleep.html?name=' + ${pikachu.name}"> - Go To Sleep - </a></td>
+    <td><a style="text-decoration: none" th:href="'/?name=' + ${pikachu.name}+ '&amp;random=' + ${pikachu.actionHistory.get(0)}"> - Information - </a></td>
+    <td><a style="text-decoration: none" th:href="'/nutritionStore.html?name=' + ${pikachu.name}+ '&amp;random=' + ${pikachu.actionHistory.get(0)}"> - Nutrition Store - </a></td>
+    <td><a style="text-decoration: none" th:href="'/trickCenter.html?name=' + ${pikachu.name}+ '&amp;random=' + ${pikachu.actionHistory.get(0)}"> - Trick Center - </a></td>
+    <td><a style="text-decoration: none" th:href="'/actionHistory.html?name=' + ${pikachu.name}+ '&amp;random=' + ${pikachu.actionHistory.get(0)}"> - Action History - </a></td>
+    <td><a style="text-decoration: none" th:href="'/sleep.html?name=' + ${pikachu.name}+ '&amp;random=' + ${pikachu.actionHistory.get(0)}"> - Go To Sleep - </a></td>
     <td><a style="text-decoration: none" href="/login.html"> - Logout - </a></td>
   </tr>
 </table>
@@ -22,13 +22,13 @@
   <img class="picture" th:src="${pikachu.type} + '.png'"/>
 </div>
 <h3>What would you like to learn?</h3>
-<form action="/trickform"><input type="hidden" name="name" th:value="${pikachu.name}"/>Learn new Tricks <select title="trick" name="trick">
+<form action="/trickform" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="name" th:value="${pikachu.name}"/><input type="hidden" name="random" th:value="${pikachu.actionHistory.get(0)}"/>Learn new Tricks <select title="trick" name="trick">
   <th:block th:each="t : ${tricks}">
     <option  th:value="${t}" th:text="${t}"></option>
   </th:block>
 </select> <input type="submit" value="Teach it to me!"/></form>
 
 <h3>What courses should I sign up for?</h3>
-<form action="/newtrickform"><input type="hidden" name="name" th:value="${pikachu.name}"/>Advise me what should I learn in the future <input title="newtrick" type="text" name="newTrick" autocomplete="off" placeholder="Add a new trick to the list" required="required"/> <input type="submit" value="Sign up for it"/></form>
+<form action="/newtrickform" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="name" th:value="${pikachu.name}"/><input type="hidden" name="random" th:value="${pikachu.actionHistory.get(0)}"/>Advise me what should I learn in the future <input title="newtrick" type="text" name="newTrick" autocomplete="off" placeholder="Add a new trick to the list" required="required"/> <input type="submit" value="Sign up for it"/></form><br/>
 </body>
 </html>

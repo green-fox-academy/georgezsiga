@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,24 +28,45 @@ public class MainController {
   Pikachu pikachu;
   ArrayList<Pikachu> poke = new ArrayList<>();
 
+  public String randomNumber() {
+    int a = (int) (Math.random() * 10);
+    int b = (int) (Math.random() * 10);
+    int c = (int) (Math.random() * 10);
+    int d = (int) (Math.random() * 10);
+    int e = (int) (Math.random() * 10);
+    return Integer.toString(a) + Integer.toString(b) + Integer.toString(c) + Integer.toString(d)
+        + Integer.toString(e);
+  }
+
   @RequestMapping("/")
-  public String homepage(@RequestParam(value = "name", required = false) String name, Model model,
-      Model list, Model action,
-      Model age) {
+  public String homepage(@RequestParam(value = "name", required = false) String name,
+      @RequestParam(value = "random", required = false) String random, Model model, Model list,
+      Model action, Model age) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        model.addAttribute("pikachu", p);
-        list.addAttribute("listOfTricks", p.getListOfTricks());
-        if (p.getActionHistory().get(0).startsWith("Went to sleep")) {
-          return "redirect:/sleep?name=" + p.getName();
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          model.addAttribute("pikachu", p);
+          list.addAttribute("listOfTricks", p.getListOfTricks());
+          if (p.getActionHistory().get(0).startsWith("Went to sleep")) {
+            random = randomNumber();
+            p.addAction(random);
+            writePokemonsToFile();
+            return "redirect:/sleep?name=" + p.getName() + "&random=" + random;
+          } else {
+            action.addAttribute("actionHistory", p.getActionHistory());
+            Period ageOfPikachu = Period.between(p.getDob(), LocalDate.now());
+            age.addAttribute("age", ageOfPikachu.getDays());
+            random = randomNumber();
+            p.addAction(random);
+            writePokemonsToFile();
+            return "index";
+          }
         } else {
-          action.addAttribute("actionHistory", p.getActionHistory());
-          Period ageOfPikachu = Period.between(p.getDob(), LocalDate.now());
-          age.addAttribute("age", ageOfPikachu.getDays());
-          writePokemonsToFile();
-          return "index";
+          return "redirect:/login?error=logout";
         }
+
       }
     }
     return "redirect:/login";
@@ -62,7 +83,8 @@ public class MainController {
   }
 
   @RequestMapping(value = "/loginform", method = RequestMethod.POST)
-  public String loginform(@RequestParam("name") String name, @RequestParam("callerid") String callerid) {
+  public String loginform(@RequestParam("name") String name,
+      @RequestParam("callerid") String callerid) {
     Pattern spec = Pattern.compile("[^a-zA-Z0-9]");
     if (spec.matcher(name).find()) {
       return "redirect:/login?error=specialcharacter";
@@ -74,7 +96,10 @@ public class MainController {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name) && p.getCallerId().equals(callerid)) {
-        return "redirect:/?name=" + name;
+        String random = randomNumber();
+        p.addAction(random);
+        writePokemonsToFile();
+        return "redirect:/?name=" + name + "&random=" + random;
       }
     }
     return "redirect:/login?error=wrongcallerid";
@@ -102,39 +127,57 @@ public class MainController {
     }
     pikachu = new Pikachu(nameofpokemon, type, newcallerid);
     poke.add(pikachu);
+    String random = randomNumber();
+    pikachu.addAction(random);
     writePokemonsToFile();
-    return "redirect:/?name=" + nameofpokemon;
+    return "redirect:/?name=" + nameofpokemon + "&random=" + random;
   }
 
   @RequestMapping("/sleep")
-  public String sleep(@RequestParam(value = "name", required = false) String name, Model model,
+  public String sleep(@RequestParam(value = "name") String name,
+      @RequestParam(value = "random", required = false) String random, Model model,
       Model action, Model age) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        if (p.getActionHistory().get(0).startsWith("Went to sleep")) {
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          if (p.getActionHistory().get(0).startsWith("Went to sleep")) {
 
+          } else {
+            String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime
+                .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+            p.addAction(actionSleep);
+          }
+          model.addAttribute("pikachu", p);
+          action.addAttribute("actionHistory", p.getActionHistory());
+          Period ageOfPikachu = Period.between(p.getDob(), LocalDate.now());
+          age.addAttribute("age", ageOfPikachu.getDays());
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
         } else {
-          String actionSleep = "Went to sleep on " + LocalDate.now() + " at " + LocalTime
-              .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-          p.addAction(actionSleep);
+          return "redirect:/login?error=logout";
         }
-        model.addAttribute("pikachu", p);
-        action.addAttribute("actionHistory", p.getActionHistory());
-        Period ageOfPikachu = Period.between(p.getDob(), LocalDate.now());
-        age.addAttribute("age", ageOfPikachu.getDays());
-        writePokemonsToFile();
       }
     }
     return "sleep";
   }
 
   @RequestMapping("/dead")
-  public String dead(@RequestParam(value = "name", required = false) String name, Model model) {
+  public String dead(@RequestParam("name") String name,
+      @RequestParam(value = "random") String random) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        model.addAttribute("pikachu", p);
+        if (p.getActionHistory().get(0).equals(random)) {
+          poke.remove(p);
+          writePokemonsToFile();
+          return "redirect:/login";
+        } else {
+          return "redirect:/login?error=logout";
+        }
+
       }
     }
     return "dead";
@@ -145,57 +188,65 @@ public class MainController {
     return "about";
   }
 
-  @RequestMapping("/new")
-  public String startAgain(@RequestParam(value = "name", required = false) String name) {
-    readPokemonsFromFile();
-    for (Pikachu p : poke) {
-      if (p.getName().equals(name)) {
-        poke.remove(p);
-        writePokemonsToFile();
-        return "redirect:/login";
-      }
-    }
-    return "redirect:/login";
-  }
-
   @RequestMapping("/wakeup")
-  public String wakeUp(@RequestParam(value = "name", required = false) String name) {
+  public String wakeUp(@RequestParam("name") String name, @RequestParam("random") String random) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        String wakeUp = "Woke up on " + LocalDate.now() + " at " + LocalTime
-            .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-        p.addAction(wakeUp);
-        p.setHappiness(p.getHappiness() + 10);
-        p.setWeight(p.getWeight() - 10);
-        if (p.isDead()) {
-          String dead = "Pikachu died on " + LocalDate.now() + " at " + LocalTime
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          String wakeUp = "Woke up on " + LocalDate.now() + " at " + LocalTime
               .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-          p.addAction(dead);
-          return "redirect:/dead?name=" + name;
+          p.addAction(wakeUp);
+          p.setHappiness(p.getHappiness() + 10);
+          p.setWeight(p.getWeight() - 10);
+          if (p.isDead()) {
+            String dead = "Pikachu died on " + LocalDate.now() + " at " + LocalTime
+                .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+            p.addAction(dead);
+            random = randomNumber();
+            p.addAction(random);
+            writePokemonsToFile();
+            return "redirect:/dead?name=" + name + "&random=" + random;
+          } else {
+            random = randomNumber();
+            p.addAction(random);
+            writePokemonsToFile();
+          }
         } else {
-          writePokemonsToFile();
-
+          return "redirect:/login?error=logout";
         }
       }
+
     }
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + name + "&random=" + random;
   }
 
   @RequestMapping("/nutritionStore")
-  public String nutritionStore(@RequestParam(value = "name", required = false) String name,
+  public String nutritionStore(@RequestParam("name") String name,
+      @RequestParam("random") String random,
       Model model) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        model.addAttribute("pikachu", p);
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          model.addAttribute("pikachu", p);
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
+        } else {
+          return "redirect:/login?error=logout";
+        }
       }
+
     }
     return "nutritionStore";
   }
 
-  @RequestMapping("/nutritionform")
-  public String nutritionForm(@RequestParam(value = "name", required = false) String name,
+  @RequestMapping(value = "/nutritionform", method = RequestMethod.POST)
+  public String nutritionForm(@RequestParam("name") String name,
+      @RequestParam("random") String random,
       Model model, String food, String drink) {
     if (food.equals("")) {
       food = "nothing";
@@ -206,90 +257,134 @@ public class MainController {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        String action =
-            "Food has been changed from " + p.getFood() + " to " + food + " on " + LocalDate
-                .now()
-                + " at " + LocalTime
-                .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-        model.addAttribute("pikachu", p);
-        p.addAction(action);
-        p.setHappiness(p.getHappiness() + 2);
-        p.setWeight(p.getWeight() + 5);
-        action =
-            "Drink has been changed from " + p.getDrink() + " to " + drink + " on "
-                + LocalDate
-                .now() + " at " + LocalTime
-                .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-        p.addAction(action);
-        p.setHappiness(p.getHappiness() + 2);
-        p.setWeight(p.getWeight() + 5);
-        p.setFood(food);
-        p.setDrink(drink);
-        writePokemonsToFile();
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          String action =
+              "Food has been changed from " + p.getFood() + " to " + food + " on " + LocalDate
+                  .now()
+                  + " at " + LocalTime
+                  .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+          model.addAttribute("pikachu", p);
+          p.addAction(action);
+          p.setHappiness(p.getHappiness() + 2);
+          p.setWeight(p.getWeight() + 5);
+          action =
+              "Drink has been changed from " + p.getDrink() + " to " + drink + " on "
+                  + LocalDate
+                  .now() + " at " + LocalTime
+                  .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+          p.addAction(action);
+          p.setHappiness(p.getHappiness() + 2);
+          p.setWeight(p.getWeight() + 5);
+          p.setFood(food);
+          p.setDrink(drink);
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
+        } else {
+          return "redirect:/login?error=logout";
+        }
       }
+
     }
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + name + "&random=" + random;
   }
 
   @RequestMapping("/trickCenter")
-  public String trickCenter(@RequestParam(value = "name", required = false) String name,
+  public String trickCenter(@RequestParam("name") String name,
+      @RequestParam("random") String random,
       Model model, Model list) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        model.addAttribute("pikachu", p);
-        list.addAttribute("tricks", p.getTricks());
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          model.addAttribute("pikachu", p);
+          list.addAttribute("tricks", p.getTricks());
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
+        } else {
+          return "redirect:/login?error=logout";
+        }
       }
+
     }
     return "trickCenter";
   }
 
-  @RequestMapping("/trickform")
-  public String trickForm(@RequestParam(value = "name", required = false) String name,
+  @RequestMapping(value = "/trickform", method = RequestMethod.POST)
+  public String trickForm(@RequestParam("name") String name, @RequestParam("random") String random,
       String trick) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        String action =
-            "Learned to " + trick + " at the Trick Center on " + LocalDate.now() + " at "
-                + LocalTime
-                .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-        p.addAction(action);
-        p.addTrick(trick);
-        p.setHappiness(p.getHappiness() + 2);
-        writePokemonsToFile();
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          String action =
+              "Learned to " + trick + " at the Trick Center on " + LocalDate.now() + " at "
+                  + LocalTime
+                  .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+          p.addAction(action);
+          p.addTrick(trick);
+          p.setHappiness(p.getHappiness() + 2);
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
+        } else {
+          return "redirect:/login?error=logout";
+        }
       }
+
     }
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + name + "&random=" + random;
   }
 
-  @RequestMapping("/newtrickform")
-  public String newTrickForm(@RequestParam(value = "name", required = false) String name,
+  @RequestMapping(value = "/newtrickform", method = RequestMethod.POST)
+  public String newTrickForm(@RequestParam("name") String name,
+      @RequestParam("random") String random,
       String newTrick) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        p.getTricks().add(newTrick);
-        String action =
-            "Signed up for a course on " + newTrick + " at the Trick Center on " + LocalDate.now()
-                + " at " + LocalTime
-                .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-        p.addAction(action);
-        p.setHappiness(p.getHappiness() + 2);
-        writePokemonsToFile();
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          p.getTricks().add(newTrick);
+          String action =
+              "Signed up for a course on " + newTrick + " at the Trick Center on " + LocalDate.now()
+                  + " at " + LocalTime
+                  .of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+          p.addAction(action);
+          p.setHappiness(p.getHappiness() + 2);
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
+        } else {
+          return "redirect:/login?error=logout";
+        }
       }
+
     }
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + name + "&random=" + random;
   }
 
   @RequestMapping("/actionHistory")
-  public String actionHistory(@RequestParam(value = "name", required = false) String name,
+  public String actionHistory(@RequestParam("name") String name,
+      @RequestParam("random") String random,
       Model model, Model action) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
-        model.addAttribute("pikachu", p);
-        action.addAttribute("actionHistory", p.getActionHistory());
+        if (p.getActionHistory().get(0).equals(random)) {
+          p.getActionHistory().remove(0);
+          model.addAttribute("pikachu", p);
+          action.addAttribute("actionHistory", p.getActionHistory());
+          random = randomNumber();
+          p.addAction(random);
+          writePokemonsToFile();
+        } else {
+          return "redirect:/login?error=logout";
+        }
       }
     }
     return "actionHistory";

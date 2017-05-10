@@ -7,7 +7,7 @@
 </head>
 <body class="dark">
 <h1>Official Pikachu fan page!</h1>
-<p><a style="text-decoration: none" th:href="'/wakeup.html?name=' + ${pikachu.name}" class="darka"> - Wake me up - at your own risk! - </a></p>
+<p><a style="text-decoration: none" th:href="'/wakeup.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}" class="darka"> - Wake me up - at your own risk! - </a></p>
 <p><a style="text-decoration: none" href="/login.html" class="darka"> - Logout - </a></p>
 <div class="sleep">
 <img class="picture2" th:src="${pikachu.type} + 'Sleep.png'" height="150px"/>

@@ -7,13 +7,13 @@
 </head>
 <body>
 <h1>Official Pikachu fan page!</h1>
-<table >
+<table>
   <tr>
-    <td><a style="text-decoration: none" th:href="'/?name=' + ${pikachu.name}"> - Information - </a></td>
-    <td><a style="text-decoration: none" th:href="'/nutritionStore.html?name=' + ${pikachu.name}"> - Nutrition Store - </a></td>
-    <td><a style="text-decoration: none" th:href="'/trickCenter.html?name=' + ${pikachu.name}"> - Trick Center - </a></td>
-    <td><a style="text-decoration: none" th:href="'/actionHistory.html?name=' + ${pikachu.name}"> - Action History - </a></td>
-    <td><a style="text-decoration: none" th:href="'/sleep.html?name=' + ${pikachu.name}"> - Go To Sleep - </a></td>
+    <td><a style="text-decoration: none" th:href="'/?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Information - </a></td>
+    <td><a style="text-decoration: none" th:href="'/nutritionStore.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Nutrition Store - </a></td>
+    <td><a style="text-decoration: none" th:href="'/trickCenter.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Trick Center - </a></td>
+    <td><a style="text-decoration: none" th:href="'/actionHistory.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Action History - </a></td>
+    <td><a style="text-decoration: none" th:href="'/sleep.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Go To Sleep - </a></td>
     <td><a style="text-decoration: none" href="/login.html"> - Logout - </a></td>
   </tr>
 </table>
@@ -34,7 +34,7 @@
 </table>
 <h3>Last Action taken</h3>
 <th:block>
-  <li th:text="${actionHistory.get(0)}"></li>
+  <li th:text="${actionHistory.get(1)}"></li>
 </th:block>
 <h3>Known tricks</h3>
 <div class="th"><th:block th:each="p : ${listOfTricks}">
