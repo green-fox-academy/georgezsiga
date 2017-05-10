@@ -1,7 +1,7 @@
-package com.greenfox;
+package com.greenfox.Controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by georgezsiga on 5/10/17.
