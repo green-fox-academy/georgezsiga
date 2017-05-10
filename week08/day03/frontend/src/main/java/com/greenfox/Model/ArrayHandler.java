@@ -1,5 +1,6 @@
 package com.greenfox.Model;
 
+import java.util.ArrayList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,5 +13,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ArrayHandler {
   String what;
-  Integer[] numbers;
+  ArrayList<Integer> numbers;
   }
