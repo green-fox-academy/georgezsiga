@@ -1,5 +1,6 @@
 package com.greenfox.Controller;
 
+import com.greenfox.Model.Links;
 import com.greenfox.Model.Pikachu;
 import com.greenfox.Model.TypeOfPokemons;
 import java.io.File;
@@ -41,23 +42,24 @@ public class MainController {
   @RequestMapping("/")
   public String homepage(@RequestParam(value = "name", required = false) String name,
       @RequestParam(value = "random", required = false) String random, Model model, Model list,
-      Model action, Model age) {
+      Model action, Model age, Model links) {
     readPokemonsFromFile();
     for (Pikachu p : poke) {
       if (p.getName().equals(name)) {
         if (p.getActionHistory().get(0).equals(random)) {
           p.getActionHistory().remove(0);
-          model.addAttribute("pikachu", p);
-          list.addAttribute("listOfTricks", p.getListOfTricks());
           if (p.getActionHistory().get(0).startsWith("Went to sleep")) {
             random = randomNumber();
             p.addAction(random);
             writePokemonsToFile();
             return "redirect:/sleep?name=" + p.getName() + "&random=" + random;
           } else {
+            model.addAttribute("pikachu", p);
+            list.addAttribute("listOfTricks", p.getListOfTricks());
             action.addAttribute("actionHistory", p.getActionHistory());
             Period ageOfPikachu = Period.between(p.getDob(), LocalDate.now());
             age.addAttribute("age", ageOfPikachu.getDays());
+            links.addAttribute("links", Links.values());
             random = randomNumber();
             p.addAction(random);
             writePokemonsToFile();
