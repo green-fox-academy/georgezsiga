@@ -9,12 +9,24 @@
 <h1>Official Pikachu fan page!</h1>
 <table>
   <tr>
-    <td><a style="text-decoration: none" th:href="'/?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Information - </a></td>
-    <td><a style="text-decoration: none" th:href="'/nutritionStore.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Nutrition Store - </a></td>
-    <td><a style="text-decoration: none" th:href="'/trickCenter.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Trick Center - </a></td>
-    <td><a style="text-decoration: none" th:href="'/actionHistory.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Action History - </a></td>
-    <td><a style="text-decoration: none" th:href="'/sleep.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Go To Sleep - </a></td>
-    <td><a style="text-decoration: none" href="/login.html"> - Logout - </a></td>
+    <td><form action="/" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+      <button type="submit" name="name" title=" Well.. err.. the homepage " th:value="${pikachu.name}" class="btn-link"> - Information - </button>
+    </form></td>
+    <td><form action="/nutritionStore" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+      <button type="submit" name="name" title=" You are what you eat. Give me Fooood!! " th:value="${pikachu.name}" class="btn-link"> - Nutrition Store - </button>
+    </form></td>
+    <td><form action="/trickCenter" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+      <button type="submit" name="name" title=" Knowledge is power! Let`s learn something! " th:value="${pikachu.name}" class="btn-link"> - Trick Center - </button>
+    </form></td>
+    <td><form action="/actionHistory" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+      <button type="submit" name="name" title=" Check out what your Poke did recently " th:value="${pikachu.name}" class="btn-link"> - Action History - </button>
+    </form></td>
+    <td><form action="/sleep" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+      <button type="submit" name="name" title=" Even pokemons needs to sleep " th:value="${pikachu.name}" class="btn-link"> - Go To Sleep - </button>
+    </form></td>
+    <td><form action="/login" method="post" enctype="application/x-www-form-urlencoded">
+      <button type="submit" title=" If you have better things to do... " class="btn-link"> - Logout - </button>
+    </form></td>
   </tr>
 </table>
 <br/>
