@@ -47,6 +47,18 @@ a {
   font-size: 20px;
 }
 
+.btn-link-dark{
+  border:none;
+  outline:none;
+  background:none;
+  cursor:pointer;
+  color:gold;
+  padding:0;
+  text-decoration: none;
+  font-family:inherit;
+  font-size: 20px;
+}
+
 h1 {
   margin: 0;
   padding-top: 20px;
