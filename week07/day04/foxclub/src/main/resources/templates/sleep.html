@@ -7,8 +7,12 @@
 </head>
 <body class="dark">
 <h1>Official Pikachu fan page!</h1>
-<p><a style="text-decoration: none" th:href="'/wakeup.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}" class="darka"> - Wake me up - at your own risk! - </a></p>
-<p><a style="text-decoration: none" href="/login.html" class="darka"> - Logout - </a></p>
+<form action="/wakeup" method="post" enctype="application/x-www-form-urlencoded"><input
+    type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+  <button type="submit" name="name" title=" Do you really want to wake me up? "
+          th:value="${pikachu.name}" class="btn-link-dark"> - Wake me up - at your own risk! - </button>
+</form>
+<p><a style="text-decoration: none" href="/login" class="darka"> - Logout - </a></p>
 <div class="sleep">
 <img class="picture2" th:src="${pikachu.type} + 'Sleep.png'" height="150px"/>
 </div>
