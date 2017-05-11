@@ -7,14 +7,16 @@
 </head>
 <body>
 <h1>Action History</h1>
-<table >
+<table>
   <tr>
-    <td><a style="text-decoration: none" th:href="'/?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Information - </a></td>
-    <td><a style="text-decoration: none" th:href="'/nutritionStore.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Nutrition Store - </a></td>
-    <td><a style="text-decoration: none" th:href="'/trickCenter.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Trick Center - </a></td>
-    <td><a style="text-decoration: none" th:href="'/actionHistory.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Action History - </a></td>
-    <td><a style="text-decoration: none" th:href="'/sleep.html?name=' + ${pikachu.name}+ '&amp;random=' + ${actionHistory.get(0)}"> - Go To Sleep - </a></td>
-    <td><a style="text-decoration: none" href="/login.html"> - Logout - </a></td>
+    <td th:each="l : ${links}">
+      <form th:action="${l.getLink()}" method="post" enctype="application/x-www-form-urlencoded">
+        <input
+            type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+        <button type="submit" name="name" th:title="${l.getTitle()}"
+                th:value="${pikachu.name}" class="btn-link" th:text="${l.getText()}"></button>
+      </form>
+    </td>
   </tr>
 </table>
 <br/>
@@ -22,10 +24,10 @@
   <img class="picture" th:src="${pikachu.type} + '.png'"/>
 </div>
 <h2>Action History</h2>
-
-<div class="th"><th:block  th:each="a : ${actionHistory}" >
-  <li th:text="${a}"></li>
-</th:block><br/></div>
-
+<div class="th">
+  <th:block th:each="a : ${actionHistory}">
+    <li th:text="${a}"></li>
+  </th:block>
+  <br/></div>
 </body>
 </html>
