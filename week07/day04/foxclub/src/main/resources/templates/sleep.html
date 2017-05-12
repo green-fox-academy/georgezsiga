@@ -12,7 +12,11 @@
   <button type="submit" name="name" title=" Do you really want to wake me up? "
           th:value="${pikachu.name}" class="btn-link-dark"> - Wake me up - at your own risk! - </button>
 </form>
-<p><a style="text-decoration: none" href="/login" class="darka"> - Logout - </a></p>
+<br/>
+<form action="/login" method="post">
+  <button type="submit" title=" If you have better things to do... " class="btn-link-dark"> - Logout - </button>
+</form>
+<br/>
 <div class="sleep">
 <img class="picture2" th:src="${pikachu.type} + 'Sleep.png'" height="150px"/>
 </div>
