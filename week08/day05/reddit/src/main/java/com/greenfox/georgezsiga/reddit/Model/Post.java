@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 /**
  * Created by georgezsiga on 5/12/17.
@@ -18,7 +17,7 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 public class Post {
 
-  @Id
+  @javax.persistence.Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
   String title;
@@ -28,12 +27,12 @@ public class Post {
   String owner;
   int vote;
 
-  public Post(String title, String href, Timestamp timestamp, int score, String owner, int vote) {
+  public Post(String title, String href, String owner) {
     this.title = title;
     this.href = href;
-    this.timestamp = timestamp;
-    this.score = score;
+    this.timestamp = new Timestamp(System.currentTimeMillis() / 1000);
+    this.score = 0;
     this.owner = owner;
-    this.vote = vote;
+    this.vote = 0;
   }
 }
