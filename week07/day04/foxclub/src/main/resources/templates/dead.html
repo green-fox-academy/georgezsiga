@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <title>Official Pikachu fan page!</title>
@@ -7,6 +7,11 @@
 </head>
 <body class="dark">
 <h1>Game Over! Your Pikachu Died!</h1>
+<br/>
+<form action="/login" method="post">
+  <button type="submit" title=" Try again.. better luck next time! " class="btn-link-dark"> - Start a new game - </button>
+</form>
+<br/>
 <p><a style="text-decoration: none" href="/login" class="darka"> - Start a new game - </a></p>
 <div class="dead">
   <img class="picture2" src="d.png" width="300px"/>
