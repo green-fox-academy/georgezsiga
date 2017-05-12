@@ -14,7 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 public class Post {
 
   @javax.persistence.Id
@@ -27,6 +26,10 @@ public class Post {
   String owner = "no owner";
   int vote;
 
+  public Post() {
+
+  }
+
   public Post(String title, String href) {
     this.title = title;
     this.href = href;
@@ -38,5 +41,15 @@ public class Post {
   public Post(String title, String href, String owner) {
     this(title, href);
     this.owner = owner;
+  }
+
+  public void upVote() {
+    this.score += 1;
+    this.vote = 1;
+  }
+
+  public void downVote() {
+    this.score -= 1;
+    this.vote = -1;
   }
 }
