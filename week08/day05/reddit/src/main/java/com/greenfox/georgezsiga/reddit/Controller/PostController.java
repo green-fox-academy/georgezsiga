@@ -5,6 +5,7 @@ import com.greenfox.georgezsiga.reddit.Model.Posts;
 import com.greenfox.georgezsiga.reddit.Repository.PostRepository;
 import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by georgezsiga on 5/12/17.
  */
 @RestController("/post")
+@CrossOrigin("*")
 public class PostController {
 
   Posts posts;
