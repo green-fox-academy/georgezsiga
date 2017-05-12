@@ -24,15 +24,19 @@ public class Post {
   String href;
   Timestamp timestamp;
   int score;
-  String owner;
+  String owner = "no owner";
   int vote;
 
-  public Post(String title, String href, String owner) {
+  public Post(String title, String href) {
     this.title = title;
     this.href = href;
-    this.timestamp = new Timestamp(System.currentTimeMillis() / 1000);
+    this.timestamp = new Timestamp(System.currentTimeMillis());
     this.score = 0;
-    this.owner = owner;
     this.vote = 0;
+  }
+
+  public Post(String title, String href, String owner) {
+    this(title, href);
+    this.owner = owner;
   }
 }
