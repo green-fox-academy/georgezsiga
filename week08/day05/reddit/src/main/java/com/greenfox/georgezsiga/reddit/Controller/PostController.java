@@ -6,7 +6,9 @@ import com.greenfox.georgezsiga.reddit.Repository.PostRepository;
 import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,8 +33,22 @@ public class PostController {
 
   @PostMapping("/posts")
   public Post postPosts(@RequestBody Post post) {
-    post.setTimestamp(new Timestamp(System.currentTimeMillis()));
+//    post.setTimestamp(new Timestamp(System.currentTimeMillis()));
     postRepository.save(post);
     return post;
+  }
+
+  @PutMapping("/posts/{id}/upvote")
+  public Post upVote(@PathVariable Long id) {
+    postRepository.findOne(id).upVote();
+    postRepository.save(postRepository.findOne(id));
+    return postRepository.findOne(id);
+  }
+
+  @PutMapping("/posts/{id}/downvote")
+  public Post DownVote(@PathVariable Long id) {
+    postRepository.findOne(id).downVote();
+    postRepository.save(postRepository.findOne(id));
+    return postRepository.findOne(id);
   }
 }
