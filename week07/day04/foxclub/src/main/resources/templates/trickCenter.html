@@ -12,7 +12,7 @@
     <td th:each="l : ${links}">
       <form th:action="${l.getLink()}" method="post" enctype="application/x-www-form-urlencoded">
         <input
-            type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+            type="hidden" name="random" th:value="${pikachu.actionHistory.get(0)}"/>
         <button type="submit" name="name" th:title="${l.getTitle()}"
                 th:value="${pikachu.name}" class="btn-link" th:text="${l.getText()}"></button>
       </form>
@@ -25,23 +25,16 @@
 </div>
 <h3>What would you like to learn?</h3>
 <form action="/trickform" method="post" enctype="application/x-www-form-urlencoded"><input
-    type="hidden" name="name" th:value="${pikachu.name}"/><input type="hidden" name="random"
-                                                                 th:value="${pikachu.actionHistory.get(0)}"/>Learn
+    type="hidden" name="name" th:value="${pikachu.name}"/><input type="hidden" name="random" th:value="${pikachu.actionHistory.get(0)}"/>Learn
   new Tricks <select title="trick" name="trick">
     <th:block th:each="t : ${tricks}">
       <option th:value="${t}" th:text="${t}"></option>
     </th:block>
   </select> <input type="submit" value="Teach it to me!"/></form>
-
 <h3>What courses should I sign up for?</h3>
 <form action="/newtrickform" method="post" enctype="application/x-www-form-urlencoded"><input
-    type="hidden" name="name" th:value="${pikachu.name}"/><input type="hidden" name="random"
-                                                                 th:value="${pikachu.actionHistory.get(0)}"/>Advise
-  me what should I learn in the future <input title="newtrick" type="text" name="newTrick"
-                                              autocomplete="off"
-                                              placeholder="Add a new trick to the list"
-                                              required="required"/> <input type="submit"
-                                                                           value="Sign up for it"/>
+    type="hidden" name="name" th:value="${pikachu.name}"/><input type="hidden" name="random" th:value="${pikachu.actionHistory.get(0)}"/>Advise
+  me what should I learn in the future <input title="newtrick" type="text" name="newTrick" autocomplete="off" placeholder="Add a new trick to the list" required="required"/> <input type="submit" value="Sign up for it"/>
 </form>
 <br/>
 </body>
