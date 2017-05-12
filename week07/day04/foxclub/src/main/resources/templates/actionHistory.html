@@ -12,7 +12,7 @@
     <td th:each="l : ${links}">
       <form th:action="${l.getLink()}" method="post" enctype="application/x-www-form-urlencoded">
         <input
-            type="hidden" name="random" th:value="${actionHistory.get(0)}"/>
+            type="hidden" name="random" th:value="${pikachu.actionHistory.get(0)}"/>
         <button type="submit" name="name" th:title="${l.getTitle()}"
                 th:value="${pikachu.name}" class="btn-link" th:text="${l.getText()}"></button>
       </form>
