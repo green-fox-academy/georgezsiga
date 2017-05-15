@@ -1,10 +1,14 @@
 package com.greenfox.Controller;
 
+import com.greenfox.Logic.Logic;
+import com.greenfox.Model.Caliber50;
 import com.greenfox.Model.Cargo;
 import com.greenfox.Model.Error;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CargoController {
   Error e;
+
+  Logic logic = new Logic();
 
   @ExceptionHandler(Exception.class)
   public String handleAllExceptions() {
@@ -26,8 +32,13 @@ public class CargoController {
   }
 
   @GetMapping("/rocket")
-  public Cargo groot() {
-    Cargo cargo = new Cargo();
-    return cargo;
+  public Cargo rocket() {
+    return logic.getCargo();
+  }
+
+  @GetMapping("/rocket/fill")
+  public Caliber50 rocketFill(@RequestParam("caliber") String caliber, @RequestParam("amount") int amount) {
+    logic.addCaliber(caliber, amount);
+    return logic.getCaliber50();
   }
 }
