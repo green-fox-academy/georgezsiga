@@ -14,7 +14,6 @@ public class Logic {
   public void whatIsShipstatus() {
     double maxCargo = 12500;
     double actualCargo = caliber50.getAmount();
-//    double percentage = 40;
     double percentage = (actualCargo/maxCargo)*100;
     if (actualCargo == 0) {
       cargo.setShipstatus("empty");
