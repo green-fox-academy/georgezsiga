@@ -2,6 +2,7 @@ package com.greenfox.Controller;
 
 import com.greenfox.Model.Error;
 import com.greenfox.Model.Groot;
+import com.greenfox.Model.Yondu;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,5 +33,11 @@ public class GuardianController {
   public Groot groot(@RequestParam("message") String message) {
     Groot groot = new Groot(message);
     return groot;
+  }
+
+  @GetMapping("/yondu")
+  public Yondu yondu(@RequestParam("distance") Float distance, @RequestParam("time") Float time) {
+    Yondu yondu = new Yondu(distance, time);
+    return yondu;
   }
 }
