@@ -24,12 +24,12 @@ public class GuardianController {
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public Error exception(MissingServletRequestParameterException er) {
-    e = new Error("I am Groot");
+    e = new Error("I am Groot!");
     return e;
   }
 
   @GetMapping("/groot")
-  public Groot getPosts(@RequestParam("message") String message) {
+  public Groot groot(@RequestParam("message") String message) {
     Groot groot = new Groot(message);
     return groot;
   }
