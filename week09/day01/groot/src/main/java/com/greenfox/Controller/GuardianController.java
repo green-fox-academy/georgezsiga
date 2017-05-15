@@ -1,6 +1,11 @@
 package com.greenfox.Controller;
 
+import com.greenfox.Model.Error;
+import com.greenfox.Model.Groot;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,11 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GuardianController {
 
+  Error e;
+
+
+  @ExceptionHandler(Exception.class)
+  public String handleAllExceptions() {
+    return "Error happend";
+  }
+
+  @ExceptionHandler(MissingServletRequestParameterException.class)
+  public Error exception(MissingServletRequestParameterException er) {
+    e = new Error("I am Groot");
+    return e;
+  }
 
   @GetMapping("/groot")
-  public Posts getPosts() {
-    posts = new Posts();
-    posts.setPosts(postRepository.findAll());
-    return posts;
+  public Groot getPosts(@RequestParam("message") String message) {
+    Groot groot = new Groot(message);
+    return groot;
   }
 }
