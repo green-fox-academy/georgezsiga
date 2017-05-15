@@ -5,37 +5,37 @@ package com.greenfox.Model;
  */
 public class Yondu {
 
-  Float distance;
-  Float time;
-  Float speed;
+  double distance;
+  double time;
+  double speed;
 
-  public Yondu(Float distance, Float time) {
+  public Yondu(double distance, double time) {
     this.distance = distance;
     this.time = time;
     this.speed = distance / time;
   }
 
-  public Float getDistance() {
+  public double getDistance() {
     return distance;
   }
 
-  public void setDistance(Float distance) {
+  public void setDistance(double distance) {
     this.distance = distance;
   }
 
-  public Float getTime() {
+  public double getTime() {
     return time;
   }
 
-  public void setTime(Float time) {
+  public void setTime(double time) {
     this.time = time;
   }
 
-  public Float getSpeed() {
+  public double getSpeed() {
     return speed;
   }
 
-  public void setSpeed(Float speed) {
+  public void setSpeed(double speed) {
     this.speed = speed;
   }
 }
