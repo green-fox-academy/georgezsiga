@@ -5,6 +5,8 @@ package com.greenfox.Model;
  */
 public class Cargo {
 
+  Caliber50 caliber50model = new Caliber50();
+
   int caliber25, caliber30, caliber50;
   String shipstatus;
   Boolean ready;
@@ -12,9 +14,26 @@ public class Cargo {
   public Cargo() {
     this.caliber25 = 0;
     this.caliber30 = 0;
-    this.caliber50 = 0;
-    this.shipstatus = "empty";
-    this.ready = false;
+    this.caliber50 = caliber50model.getAmount();
+    this.shipstatus = whatIsShipstatus();
+    this.ready = isShipReady();
+  }
+
+  public String whatIsShipstatus() {
+    int maxCargo = 12500;
+    int acutalCargo = caliber50;
+    double percentage = maxCargo/acutalCargo;
+    if (acutalCargo == 0) {
+      return "empty";
+    }
+    return percentage + "%";
+  }
+
+  public Boolean isShipReady() {
+    if (getShipstatus().equals("100%")) {
+      return true;
+    }
+    return false;
   }
 
   public int getCaliber25() {
