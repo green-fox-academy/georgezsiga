@@ -1,0 +1,6 @@
+/home/georgezsiga/RiderProjects/HelloWorld/HelloWorld/bin/Debug/HelloWorld.exe
+/home/georgezsiga/RiderProjects/HelloWorld/HelloWorld/bin/Debug/HelloWorld.pdb
+/home/georgezsiga/RiderProjects/HelloWorld/HelloWorld/obj/Debug/HelloWorld.csprojResolveAssemblyReference.cache
+/home/georgezsiga/RiderProjects/HelloWorld/HelloWorld/obj/Debug/HelloWorld.csproj.CoreCompileInputs.cache
+/home/georgezsiga/RiderProjects/HelloWorld/HelloWorld/obj/Debug/HelloWorld.exe
+/home/georgezsiga/RiderProjects/HelloWorld/HelloWorld/obj/Debug/HelloWorld.pdb
