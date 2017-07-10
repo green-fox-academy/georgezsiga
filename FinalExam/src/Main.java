@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import static java.util.Arrays.asList;
 import java.util.List;
 
 /**
@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
 
   String space = " ";
-  List<String> listOfStrings = Arrays.asList("ab", "cde", "fg");
+  List<String> listOfStrings = asList("ab", "cde", "fg");
 
   public static String ConnectStrings(List listOfStrings, String space) {
     String connectedString = "";
